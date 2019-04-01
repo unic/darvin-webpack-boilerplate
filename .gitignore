@@ -136,5 +136,4 @@ log/
 dependencies.json
 activity-graph.json
 entry.report.json
-.cli/
 _sprites.scss

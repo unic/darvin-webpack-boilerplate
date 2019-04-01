@@ -1,0 +1,110 @@
+#!/usr/bin/env node
+
+const fs = require('fs-extra');
+const path = require('path');
+const originalCwd = process.cwd();
+
+const chalk = require('chalk')
+const rl = require('readline');
+const low = require('lowdb');
+var Table = require("terminal-table");
+
+const FileSync = require('lowdb/adapters/FileSync')
+
+const { _new } = require('./src/new');
+const { _add } = require('./src/add');
+
+const adapter = new FileSync('.darvinrc.json')
+const db = low(adapter)
+const args = process.argv
+
+// usage represents the help guide
+const _usage = function() {
+  const usageText = `
+  usage:
+    darvin-cli <command>
+
+    commands can be:
+
+    new:      create new settings
+    add:      scaffold new elements
+    list:     show active settings
+  `
+
+  console.log(usageText)
+}
+
+// used to log errors to the console in red color
+const errorLog = (error) => {
+  const eLog = chalk.red(error)
+  console.log(eLog)
+}
+
+// we make sure the length of the arguments is exactly three
+if (args.length > 3 && args[2] != 'complete') {
+  errorLog('only one argument can be accepted')
+  _usage()
+  return
+}
+
+const prompt = (question) => {
+  const r = rl.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+    terminal: false
+  });
+  return new Promise((resolve, error) => {
+    r.question(question, answer => {
+      r.close()
+      resolve(answer)
+    });
+  })
+},
+_get = () => {
+  const settings = db.get('settings').value()
+  let index = 1;
+  var t = new Table({
+    borderStyle: 0,
+    border: {
+      sep: "║",
+      topLeft: "╔", topMid: "╦", top: "═", topRight: "╗",
+      midLeft: "╠", midMid: "╬", mid: "═", midRight: "╣",
+      botLeft: "╚", botMid: "╩", bot: "═", botRight: "╝"
+    }
+  });
+
+  t.push(
+    ["   ", "Category", "Value"]
+  );
+
+  t.attr(0, 1, { "color": "black", "bg": "white" })
+  t.attr(0, 2, { "color": "black", "bg": "white" })
+
+  Object.keys(settings).forEach(key => {
+    let value = settings[key];
+    t.push(
+      [" ✔ ",key, value]
+    );
+  });
+
+  console.log("" + t);
+  return
+};
+
+switch(args[2]) {
+  case 'help':
+    _usage()
+    break
+  case 'list':
+    _get()
+    break
+  case 'new':
+    _new()
+    break
+  case 'add':
+    _add()
+    break
+  default:
+    errorLog('invalid command passed')
+    _usage()
+}
