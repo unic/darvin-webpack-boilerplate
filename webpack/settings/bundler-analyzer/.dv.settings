@@ -1,0 +1,5 @@
+{
+  "name": "Webpack Analyzer",
+  "alias": "analyzer",
+  "type": "addon"
+}

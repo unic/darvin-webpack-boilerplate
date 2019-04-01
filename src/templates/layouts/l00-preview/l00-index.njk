@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html class="no-js" lang="de">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <title>{{ title }}</title>
+      <meta name="description" content="Lorem description">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="format-detection" content="telephone=no">
+   </head>
+
+   <body class="preview preview--index">
+      <link href="/preview/styles/preview.css" rel="stylesheet">
+      <script>
+        if(localStorage.getItem("darvin-darkmode")) {
+          if(localStorage.getItem("darvin-darkmode")=='true') {
+            document.body.classList.add('darkmode');
+          }
+        }
+      </script>
+      <article id="prev-l-pagewrapper">
+        <!-- start preview header -->
+        <header id="prev-l-header">
+          <div class="prev-l-constrainer">
+            <div class="prev-m-title"><div class="prev-h1">Darvin Boilerplate</div></div>
+            <div class="prev-m-filter"><component is="card-filter" title="Filter"></component></div>
+          </div>
+        </header>
+        <!-- start main -->
+        <main id="prev-l-main" class="l-main--preview">
+          <div id="prev-l-content">
+            {% block preview %}
+            {% endblock %}
+          </div>
+        </main>
+      </article>
+      <script type="text/javascript">
+          var darvinPayload = {{index.payload|dump|safe }};
+      </script>
+      <script type="text/javascript" src="/preview/preview.js"></script>
+    </body>
+</html>

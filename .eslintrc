@@ -1,0 +1,36 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "eslint:recommended"
+  ],
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "globals": {
+    "Modernizr": true
+  },
+  "parserOptions": {
+      "ecmaVersion": 7,
+      "sourceType": "module"
+  },
+  "rules": {
+    "require-jsdoc": ["error", {
+      "require": {
+        "FunctionDeclaration": false,
+        "MethodDefinition": false,
+        "ClassDeclaration": false,
+        "ArrowFunctionExpression": false,
+        "FunctionExpression": false
+      }
+    }],
+    "valid-jsdoc": "error",
+    "no-param-reassign": "off",
+    "no-debugger": "off",
+    "comment-empty-line-before": "always"
+  },
+  "settings": {
+    "import/resolver": "webpack"
+  }
+}

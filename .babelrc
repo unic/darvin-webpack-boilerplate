@@ -1,0 +1,19 @@
+{
+  "presets": [
+    ["@babel/preset-env",
+    {
+      "useBuiltIns": "entry",
+      "modules": false,
+      "corejs": 3
+    }]
+  ],
+  "env": {
+    "test": {
+      "presets": ["@babel/preset-env", {"modules": false, "corejs": 3}]
+    }
+  },
+  "plugins": [
+    "@babel/plugin-syntax-dynamic-import",
+    "transform-eval"
+  ]
+}

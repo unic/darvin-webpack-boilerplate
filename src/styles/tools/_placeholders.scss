@@ -1,0 +1,102 @@
+/* ==|==================
+   Tools / Placeholders
+   ===================== */
+
+%antialiased {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+%font-title {
+  font-weight: 500;
+  font-family: $font-1;
+  font-style: italic;
+}
+
+%paragraph-base {
+  @extend %antialiased;
+  font-weight: 400;
+  font-size: rem(16px);
+  line-height: 1.79;
+  color: $color1;
+
+  @media #{$medium-up} {
+    font-size: rem(19px);
+  }
+}
+
+%label-base {
+  @extend %antialiased;
+  font-weight: 400;
+  font-size: rem(13px);
+  line-height: 1.3;
+  color: $color2;
+}
+
+%text-base-small {
+  @extend %antialiased;
+  font-weight: 600;
+  font-size: rem(14px);
+  color: $color2;
+}
+
+%text-base-large {
+  @extend %antialiased;
+  font-weight: 400;
+  font-size: rem(17px);
+  line-height: 1.275;
+  color: $color2;
+}
+
+%nav {
+  @extend %antialiased;
+  font-weight: 600;
+  font-size: rem(16px);
+  line-height: 1.275;
+  color: $color2;
+
+  @media #{$wide-up} {
+    font-size: rem(18px);
+  }
+
+  @media #{$ultra-up} {
+    font-size: rem(20px);
+  }
+}
+
+%header-base {
+  @extend %antialiased;
+  font-family: $font-1;
+}
+
+%ul-unstyled {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+%clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+%clean-button {
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+}
+
+%pseudoreset {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}

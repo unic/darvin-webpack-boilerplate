@@ -1,0 +1,4 @@
+{
+  "env": "production",
+  "image_src": "../../../dist/images/sprites/"
+}

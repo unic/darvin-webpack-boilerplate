@@ -1,0 +1,5 @@
+{
+  "name": "Webpack Sprites",
+  "alias": "sprites",
+  "type": "default"
+}

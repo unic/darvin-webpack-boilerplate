@@ -1,0 +1,70 @@
+{% extends "layouts/l00-preview/l00-index.njk" %}
+
+{% set title = 'Custom Preview' %}
+
+
+{% block preview %}
+
+  <div class="prev-m-index">
+
+  {% for category, catObj in index.payload %}
+    <div class="prev-m-index__col prev-m-index--{{category}}">
+      <h2 class="prev-m-index__title">{{category}}</h2>
+      <div class="prev-m-index__items">
+
+      {% for itemKey, item in catObj %}
+
+        <article class="prev-m-index__item" data-name="{{ item.name }}" data-type="{{ item.type }}" data-path="{{ item.path }}" data-dep="{{ item.dep }}">
+          {% if item.variants > 0 %}
+          <canvas class="canvas" width="360" height="100"></canvas>
+          {% else %}
+          <canvas class="canvas" width="360" height="100"></canvas>
+          {% endif %}
+          <div class="prev-m-index__panel">
+            <div class="prev-m-index__itemcol prev-m-index__itemcol--grow">
+              <div class="prev-m-index__itemrow">
+                {% if item.variants > 0 %}
+                <a class="prev-m-index__itemtitle" href="{{  item.path }}/{{  item.previews[0] }}.html">{{ item.name }}</a>
+                {% else %}
+                <span class="prev-m-index__itemtitle">{{ item.name }}</span>
+                {% endif %}
+              </div>
+              <div class="prev-m-index__itemrow">
+                {% if item.config.design.length > 2 %}
+                <a class="prev-m-index__flag prev-m-index__flag--design" href="{{ item.config.design }}" target="_blank">D</a>
+                {% endif %}
+                {% if item.config.jira.length > 2 %}
+                <a class="prev-m-index__flag prev-m-index__flag--jira" href="{{ item.config.jira }}" target="_blank">J</a>
+                {% endif %}
+                {% if item.config.confluence.length > 2 %}
+                <a class="prev-m-index__flag prev-m-index__flag--confluence" href="{{ item.config.confluence }}" target="_blank">C</a>
+                {% endif %}
+              </div>
+            </div>
+            <div class="prev-m-index__itemcol">
+              <div class="prev-m-index__itemrow">
+                <a class="prev-m-index__minibtn" data-dep><i class="i i-target"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <footer class="prev-m-index__itemfooter">
+            <div class="prev-m-index__itemrow">
+              <div class="prev-c-ledbox">
+                <div class="prev-c-led"></div>
+              </div>
+              <div class="prev-m-index__metalbl prev-m-index__lastupdate" data-update>&nbsp;</div>
+            </div>
+          </footer>
+
+        </article>
+      {% endfor %}
+
+      </div>
+    </div>
+  {% endfor %}
+
+  </div>
+
+
+{% endblock %}

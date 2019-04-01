@@ -1,0 +1,5 @@
+{
+  "name": "Webpack Copy",
+  "alias": "copy",
+  "type": "default"
+}

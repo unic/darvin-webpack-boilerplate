@@ -1,0 +1,96 @@
+/* ==|====================
+   Settings / Preview Vars
+   ======================= */
+
+//== Base
+//
+$base-font-size: 16px;
+$base-font-size-unit: 16;
+
+//== Font Family
+//
+$prev-font1: "barlow-semi-condensed", Arial, sans-serif;
+$prev-font2: "DroidSans", Verdana, Helvetica;
+
+//== Default Colors
+//
+$colors: (
+  main-dark: #1b1b1b,
+  main-bright: #ffffff,
+  main-shadow: #222222,
+  main-border: #ffffff,
+  main-ambiance: #52ccb8,
+  main-color: #4bd8b9,
+  main-color-light: #e8175d,
+  main-button: rgba(219, 219, 219, 0.3),
+  main-button-text: #b6b6b6,
+  main-bg: #ffffff,
+  main-bg-soft: rgba(182, 207, 203, 0.3),
+  main-bg-dark: #f0f0f0,
+  activity-bg:#e7e7e7,
+  activity-grid: #e7e7e7,
+  activity-graph: #81c0b0,
+  card-footer-bg: rgba(136, 160, 155, 0.4),
+  card-footer-text: #577374,
+  card-footer-text-hover: #494b40,
+  card-title: #505a54,
+  card-meta: #222222,
+  dependency-stroke: #9b9b9b,
+  dependency-bg: #ffffff
+);
+$colors-dark: (
+  main-dark: #000000,
+  main-bright: #ffffff,
+  main-shadow: #a8a7a7,
+  main-border: #474747,
+  main-ambiance: #cc527a,
+  main-color: #e8175d,
+  main-color-light: #fdc8e5,
+  main-button: rgba(80, 87, 86, 0.1),
+  main-button-text: #9c9c9c,
+  main-bg: #1b1b1b,
+  main-bg-soft: #363636,
+  main-bg-dark: #282828,
+  activity-bg:#282828,
+  activity-grid: #282828,
+  activity-graph: #e8175d,
+  card-footer-bg: rgb(56, 59, 59),
+  card-footer-text: #868686,
+  card-footer-text-hover: #bebebe,
+  card-title: #c5c5c5,
+  card-meta: #222222,
+  dependency-stroke: #ceb0ba,
+  dependency-bg: #161414
+);
+$spinkit-spinner-margin: 40px auto;
+$spinkit-size: 40px;
+$spinkit-spinner-color: var(--main-bg-dark);
+
+//== Layout
+//
+$max-container-width: 1420px;
+//== Gutters
+//
+$gutter-zero: 7vw;
+$gutter-micro: 6vw;
+$gutter-small: 5vw;
+$gutter-medium: 3vw;
+$gutter-large: 3.2vw;
+$gutter-wide: 2.8vw;
+$gutter-ultra: 2vw;
+//== Spacings
+//
+$space-micro: rem(8px);
+$space-small: rem(24px);
+$space-medium: rem(32px);
+$space-large: rem(48px);
+$space-wide: rem(96px);
+$space-ultra: rem(128px);
+//== Transitions
+//
+$transition-time-default: 340ms;
+$transition-time-fancy: 140ms;
+$basic-easing: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+$fancy-easing: cubic-bezier(0.19, 1, 0.22, 1);
+$basic-transition: $transition-time-default $basic-easing;
+$fancy-transition: $transition-time-fancy $fancy-easing;

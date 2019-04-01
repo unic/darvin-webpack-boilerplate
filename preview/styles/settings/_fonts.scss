@@ -1,0 +1,51 @@
+/* ==|====================
+   Settings / Fonts
+   ======================= */
+
+@font-face {
+  font-weight: 400;
+  font-family: "preview";
+  font-style: normal;
+
+  src: url("../../preview/assets/fonts/preview.woff") format("woff");
+}
+
+@font-face {
+  font-weight: 300;
+  font-family: "barlow-semi-condensed";
+  font-style: normal;
+
+  src: url("../../preview/assets/fonts/barlow-semi-condensed-v4-latin-300.woff2") format("woff2");
+}
+
+@font-face {
+  font-weight: 400;
+  font-family: "barlow-semi-condensed";
+  font-style: normal;
+
+  src: url("../../preview/assets/fonts/barlow-semi-condensed-v4-latin-regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-weight: 500;
+  font-family: "barlow-semi-condensed";
+  font-style: normal;
+
+  src: url("../../preview/assets/fonts/barlow-semi-condensed-v4-latin-500.woff2") format("woff2");
+}
+
+@font-face {
+  font-weight: 600;
+  font-family: "barlow-semi-condensed";
+  font-style: normal;
+
+  src: url("../../preview/assets/fonts/barlow-semi-condensed-v4-latin-600.woff2") format("woff2");
+}
+
+@font-face {
+  font-weight: 400;
+  font-family: "DroidSans";
+  font-style: normal;
+
+  src: url("../../preview/assets/fonts/DroidSans-webfont.woff") format("woff");
+}

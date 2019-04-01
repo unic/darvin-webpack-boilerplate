@@ -1,0 +1,5 @@
+{
+  "name": "Webpack Fonts",
+  "alias": "fonts",
+  "type": "default"
+}

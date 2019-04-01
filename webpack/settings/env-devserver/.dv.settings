@@ -1,0 +1,5 @@
+{
+  "name": "Webpack DevServer",
+  "alias": "devserver",
+  "type": "server"
+}

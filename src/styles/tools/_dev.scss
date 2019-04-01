@@ -1,0 +1,77 @@
+/* ==|==========
+   Tools / Dev
+   ============= */
+
+.breakpoint-mode,
+.dev-mode {
+  // Show current used media query
+  &:before {
+    content: "Breakpoint: zero";
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 500;
+    display: block;
+    padding: 0 rem(10px);
+    padding: 4px 10px;
+    font-size: rem(12px);
+    background: white;
+    opacity: 0.85;
+  }
+
+  @media #{$zero-only} {
+    &:before {
+      content: "zero";
+      color: black;
+      background: lightcyan;
+    }
+  }
+
+  @media #{$micro-only} {
+    &:before {
+      content: " micro";
+      color: black;
+      background: lightpink;
+    }
+  }
+
+  @media #{$small-only} {
+    &:before {
+      content: "small";
+      color: black;
+      background: lightgreen;
+    }
+  }
+
+  @media #{$medium-only} {
+    &:before {
+      content: "medium";
+      color: white;
+      background: skyblue;
+    }
+  }
+
+  @media #{$large-up} {
+    &:before {
+      content: "large";
+      color: white;
+      background: orangered;
+    }
+  }
+
+  @media #{$wide-up} {
+    &:before {
+      content: "wide";
+      color: white;
+      background: deeppink;
+    }
+  }
+
+  @media #{$ultra-up} {
+    &:before {
+      content: "ultra";
+      color: white;
+      background: black;
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{% extends "layouts/l00-preview/l00-preview.njk" %}
+
+{% import "components/c01-svg_icon/c01-svg_icon.njk" as svgIcon %}
+
+{% set variantName = "Sprite Overview" %}
+{% set variantDescr = "Project Icons" %}
+
+{% macro main() %}
+  <div class="m-prev-flexgrid m-prev-icons">
+    {% for name in sprite.icons %}
+      <div class="m-prev-flexgrid__item">
+        <a tabindex="0" class="m-prev-flexgrid__iconbox">
+          {{ svgIcon.main( basePath=basePath, icon=name ) }}
+          <input type="text" value='<svg class="ico ico-{{ name }}"><use xlink:href="#sprite-{{ name }}"></use></svg>'>
+        </a>
+        <span>{{ name }}</span>
+      </div>
+    {% endfor %}
+  </div>
+{% endmacro %}
+
+{% block preview %}
+  {{ main() }}
+{% endblock %}

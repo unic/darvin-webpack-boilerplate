@@ -1,0 +1,58 @@
+/* ==|====================
+   Modules / Flexgrid
+   ======================= */
+
+.m-prev-flexgrid {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 2rem;
+}
+
+.m-prev-flexgrid__item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 140px;
+  padding: 1rem;
+
+  span {
+    display: block;
+    width: 100%;
+    padding-top: 3px;
+    font-size: 12px;
+    text-align: center;
+  }
+}
+
+.m-prev-flexgrid__iconbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+
+  &:hover {
+    background-color: darken(#ffffff, 4);
+  }
+
+  &:focus {
+    background-color: darken(#ffffff, 4);
+    border: 0;
+    outline: 0;
+    box-shadow: none;
+  }
+
+  input {
+    position: absolute;
+    top: -30%;
+    font-size: 7px;
+  }
+
+  svg.icon {
+    body.preview & {
+      width: 50px;
+      height: 50px;
+    }
+  }
+}

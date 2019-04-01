@@ -1,0 +1,41 @@
+/* ==|====================
+   Layout / Header
+   ======================= */
+
+#prev-l-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  height: 4rem;
+  font-family: $prev-font1;
+  background-color: var(--main-bg-dark);
+  border-bottom: 5px solid var(--main-bg);
+  transform: translateY(0);
+
+  .prev-l-constrainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    padding: 0 1.25rem;
+    color: var(--main-shadow);
+  }
+
+  .prev-m-title {
+    font-size: rem(18);
+
+    @media screen and (min-width: 42rem) {
+      font-size: rem(19);
+    }
+  }
+
+  .prev-m-subtitle {
+    font-size: rem(13);
+
+    @media screen and (min-width: 42rem) {
+      font-size: rem(13);
+    }
+  }
+}
