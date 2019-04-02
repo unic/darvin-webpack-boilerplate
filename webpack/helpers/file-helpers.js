@@ -15,7 +15,6 @@ readFile = (file) => {
 writeFile = (filePath, payload) => {
   try {
     fs.writeFileSync(filePath, payload, 'utf8', () => {});
-    console.log("DV#> success!");
     return true;
   } catch (err) {
     console.error(err);

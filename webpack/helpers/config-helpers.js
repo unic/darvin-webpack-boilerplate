@@ -8,7 +8,7 @@ const { sortByKey } = require('./../helpers/darvin-helpers');
 const setDarvinRC = (rc) => {
   try{
     writeFile(`./.darvinrc.json`, JSON.stringify(rc));
-    console.log("DV#> success!");
+    console.log("DV#> .darvinrc created");
     return true;
   } catch (err){
     console.error(err);
@@ -19,22 +19,27 @@ getDarvinRC = () => {
   let rcArray = [];
   let rcString = '';
 
+  // read darvin rc config
   let rcData = readFile(basePath + '/.darvinrc.json');
 
   if(!rcData) {
-    console.error('no darvin rc file');
+    console.error('DV#> no darvin rc file');
   }
 
+  // get array values and push to string array
   const rcDataVal = Object.values(rcData.settings)
   rcDataVal.forEach((array, i) => {
-    rcArray.push(array.join(","));
+    if(array.length > 0) {
+      rcArray.push(array.join(","));
+    }
   });
 
+  // add defaults
   rcString = rcArray.join(",") + ", webpackConfig, settings";
 
   return rcString;
 },
-getSettingsConfig = () => {
+getDarvinSettings = () => {
   let settingsPath = path.resolve(basePath, `webpack/settings`);
   let dirs = getDirs(settingsPath);
   let arr = [];
@@ -67,7 +72,7 @@ getSettingsConfig = () => {
 },
 getSettingsStruct = () => {
   let rcStruct = {};
-  let settingsConfig = getSettingsConfig();
+  let settingsConfig = getDarvinSettings();
 
   settingsConfig = sortByKey(settingsConfig, 'type');
 
@@ -112,7 +117,7 @@ createDynamicRequireArray = (rcString) => {
 module.exports = {
   getDarvinRC: getDarvinRC,
   setDarvinRC: setDarvinRC,
-  getSettingsConfig: getSettingsConfig,
+  getDarvinSettings: getDarvinSettings,
   getSettingsStruct: getSettingsStruct,
   createDynamicRequireArray: createDynamicRequireArray
 };
