@@ -30,16 +30,9 @@ Please consider the [Wiki Space](https://github.com/tobiasfrei/darvin-boilerplat
 [6. CLI](https://github.com/tobiasfrei/darvin-boilerplate/wiki/6.-CLI)<br>
 
 
-## SourceTree Windows
-
-Deactivate auto CRLF endings.
-
-```
-git config --global core.autocrlf false
-```
-
 ## Author
 [https://github.com/unic](https://github.com/unic)
+
 
 ## License
 GNU General Public License (GPL)
