@@ -3,6 +3,7 @@ const path = require('path');
 const basePath = process.cwd();
 
 const { writeFile, getDirs, readFile } = require('./../helpers/file-helpers');
+const { sortByKey } = require('./../helpers/darvin-helpers');
 
 const setDarvinRC = (rc) => {
   try{
@@ -112,5 +113,6 @@ module.exports = {
   getDarvinRC: getDarvinRC,
   setDarvinRC: setDarvinRC,
   getSettingsConfig: getSettingsConfig,
+  getSettingsStruct: getSettingsStruct,
   createDynamicRequireArray: createDynamicRequireArray
 };

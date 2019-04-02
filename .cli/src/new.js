@@ -1,6 +1,6 @@
 /* eslint-disable */
 const inquirer = require('inquirer');
-const { setDarvinRC, getSettingsStruct } = require('./libs/darvin-helpers');
+const { setDarvinRC, getSettingsStruct } = require('../../webpack/helpers/config-helpers');
 
 let search = (needle, haystack, found = []) => {
   Object.keys(haystack).forEach((key) => {

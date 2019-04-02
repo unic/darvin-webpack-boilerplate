@@ -1,6 +1,6 @@
 /* eslint-disable */
 const inquirer = require('inquirer');
-const { getScaffoldingOptions, setScaffolding } = require('../../webpack/libs/darvin-helpers');
+const { getScaffoldingOptions, setScaffolding } = require('../../webpack/helpers/scaff-helpers');
 
 const _add = () => {
   let scaffStruct = getScaffoldingOptions();

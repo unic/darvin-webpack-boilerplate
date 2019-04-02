@@ -37,9 +37,9 @@ setScaffolding = (response, confirm) => {
   const inDir = path.join(process.cwd(), `.cli/.scaffold/.${response.category}/.njk`)
   const outDir = path.join(process.cwd(), `src/templates/${response.category}/${response.name}`)
 
-  copyDirectoryWithContext(inDir, outDir, vars);
+  copyDirectoryWithContext(confirm, inDir, outDir, vars);
 },
-copyDirectoryWithContext = (inDir, outDir, vars) => {
+copyDirectoryWithContext = (confirm, inDir, outDir, vars) => {
   copyScaffolding(inDir, outDir, vars, (err, createdFiles) => {
     if (err) throw err
 

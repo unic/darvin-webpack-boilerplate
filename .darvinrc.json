@@ -1,12 +1,32 @@
 {
-  "settings": {
-    "base": ["js"],
-    "default": ["cleaner", "copy", "fonts", "images", "sprites", "modernizr", "sass"],
-    "html": ["nunjucks"],
-    "devserver": ["devserver"],
-    "framework": ["vue"],
-    "addons": ["analyzer", "markdown", "i18n"]
+  "settings":{
+     "base":[
+        "js"
+     ],
+     "default":[
+        "cleaner",
+        "copy",
+        "fonts",
+        "images",
+        "sprites",
+        "modernizr",
+        "sass"
+     ],
+     "html":[
+        "nunjucks"
+     ],
+     "devserver":[
+        "devserver"
+     ],
+     "framework":[
+        "vue"
+     ],
+     "addons":[
+        "analyzer",
+        "markdown",
+        "i18n"
+     ]
   },
-  "name": "Darvin",
-  "company": "Tobias Frei"
+  "name":"Darvin",
+  "company":"Unic AG"
 }
