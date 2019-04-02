@@ -27,13 +27,13 @@
     "prev-prod": "cross-env NODE_ENV=prod webpack -p --progress --no-info --mode production --config  webpack/webpack.preview.js",
     "lint": "lint-staged",
     "lint-all": "eslint \"src/**/*.js\" --fix",
-    "pre-commit": "lint-staged; csscomb; git add --all"
+    "pre-commit": "lint-staged; csscomb"
   },
   "bin": {
     "darvin-cli": "./.cli/darvin-cli"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.0",
+    "@babel/core": "^7.4.3",
     "@babel/plugin-syntax-dynamic-import": "7.2.0",
     "@babel/preset-env": "^7.4.2",
     "autoprefixer": "^9.5.0",
