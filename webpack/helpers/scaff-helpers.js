@@ -2,7 +2,11 @@
 const path = require('path');
 const basePath = process.cwd();
 
+<<<<<<< HEAD
 const copyScaffolding = require('copy-template-dir');
+=======
+const copyScaffolding = require('./copy-template-dir');
+>>>>>>> bugfix/issue#3-darvin-cli_change_token
 
 const { capitalize } = require('./../helpers/darvin-helpers');
 const { getDirs } = require('./../helpers/file-helpers');

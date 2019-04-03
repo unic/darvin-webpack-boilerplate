@@ -1,6 +1,12 @@
 {
   "flag": false,
+<<<<<<< HEAD
   "design": "{{design}}",
   "jira": "{{tickets}}",
   "confluence": "{{projectSpace}}"
+=======
+  "design": "@@@design@@@",
+  "jira": "@@@tickets@@@",
+  "confluence": "@@@projectSpace@@@"
+>>>>>>> bugfix/issue#3-darvin-cli_change_token
 }
