@@ -1,7 +1,7 @@
 /**
- * @author @@@authorEmail@@@
+ * @author tobias.frei@unic.com
  *
- * @module @@@name@@@
+ * @module m02-test
  *
  */
 

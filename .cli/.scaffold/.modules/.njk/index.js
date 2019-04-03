@@ -1,7 +1,7 @@
 /**
- * @author {{authorEmail}}
+ * @author @@@authorEmail@@@
  *
- * @module {{name}}
+ * @module @@@name@@@
  *
  */
 
@@ -10,6 +10,9 @@ const instance = {};
 const defaults = {
   container: '.m-module',
 };
+
+let settings,
+    containers;
 
 const bindEvents = () => {
   // ...

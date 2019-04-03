@@ -1,0 +1,16 @@
+{% extends "layouts/l00-preview/l00-preview.njk" %}
+
+{% import "modules/@@@name@@@/@@@name@@@.njk" as mainTemplate %}
+
+{% set variantName = "Default Variant" %}
+{% set variantDescr = "default description" %}
+
+{% macro main() %}
+  <!-- START Preview - @@@name@@@ -->
+  {{ mainTemplate.main() }}
+  <!-- END Preview - @@@name@@@ -->
+{% endmacro %}
+
+{% block preview %}
+  {{ main() }}
+{% endblock %}

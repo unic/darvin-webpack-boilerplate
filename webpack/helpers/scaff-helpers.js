@@ -2,7 +2,7 @@
 const path = require('path');
 const basePath = process.cwd();
 
-const copyScaffolding = require('copy-template-dir');
+const copyScaffolding = require('./copy-template-dir');
 
 const { capitalize } = require('./../helpers/darvin-helpers');
 const { getDirs } = require('./../helpers/file-helpers');

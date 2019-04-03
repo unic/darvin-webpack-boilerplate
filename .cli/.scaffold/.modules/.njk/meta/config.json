@@ -1,6 +1,6 @@
 {
   "flag": false,
-  "design": "{{design}}",
-  "jira": "{{tickets}}",
-  "confluence": "{{projectSpace}}"
+  "design": "@@@design@@@",
+  "jira": "@@@tickets@@@",
+  "confluence": "@@@projectSpace@@@"
 }

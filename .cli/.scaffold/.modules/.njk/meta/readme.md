@@ -1,4 +1,4 @@
-# {{name}}
+# @@@name@@@
 
 ## Changelog
 * v1.0.0 - inital commit
