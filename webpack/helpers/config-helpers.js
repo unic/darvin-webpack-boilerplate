@@ -107,7 +107,7 @@ createDynamicRequireArray = (rcString) => {
 
     // only import if listed in darvin.rc
     if(rcArrAlias.includes(settingConfig.alias)) {
-      commandArr.push("var { dev: " + settingConfig.alias + " } = require('" + settingConfig.path + "')");
+      commandArr.push("var { " + process.env.NODE_ENV + ": " + settingConfig.alias + " } = require('" + settingConfig.path + "')");
     }
   }
 

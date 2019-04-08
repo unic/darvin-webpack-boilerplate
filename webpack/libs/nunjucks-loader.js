@@ -73,17 +73,18 @@ module.exports = function(content) {
       html,
       nunjucksContext = opt.context;
 
-  nunjucksContext.darvin = {};
+  let darvin = {};
 
   // bind specific template param context
   nunjucksContext.htmlTemplates.forEach((htmlTemplates) => {
     if (htmlTemplates.options.templateParameters.path === loaderPathRel) {
-      nunjucksContext.darvin = htmlTemplates.options.templateParameters;
+      darvin = htmlTemplates.options.templateParameters;
     }
   });
 
   // eslint-disable-next-line no-useless-escape
-  nunjucksContext.darvin.filepath = loaderPath.replace(/^.*[\\\/]/, '').replace('.njk', ''); // remove file extension
+  darvin.filepath = loaderPath.replace(/^.*[\\\/]/, '').replace('.njk', ''); // remove file extension
+  darvin.serverBase = nunjucksContext.serverBase;
 
   loader = new NunjucksLoader(nunjucksSearchPaths, ((filePath) => {
     this.addDependency(filePath);
@@ -91,6 +92,9 @@ module.exports = function(content) {
 
   nunjEnv = new nunjucks.Environment(loader);
   nunjucks.configure(null, { watch: false });
+
+  // add darvin global
+  nunjEnv.addGlobal("darvin", darvin);
 
   template = nunjucks.compile(content, nunjEnv);
   html = template.render(nunjucksContext);

@@ -6,6 +6,11 @@ const basePath = process.cwd();
 const merge = require('webpack-merge');
 const webpackConfig = require('../webpack.config');
 const WebpackMessages = require('webpack-messages');
+const isDev = (process.env.NODE_ENV === 'dev');
+
+// init globals
+const { darvinGlobals } = require('./libs/darvin-config');
+darvinGlobals();
 
 const { prev: cleaner } = require('./settings/assets-cleaner');
 const { prev: sass } = require('./settings/style-sass');

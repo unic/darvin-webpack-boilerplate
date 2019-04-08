@@ -1,5 +1,6 @@
-{% macro main(basePath="", icon="", classes=[]) %}
-    <svg class="icon icon-{{ icon }}{% for class in classes %} {{ class }}{% endfor %}">
-        <use xlink:href="/assets/images/svg-sprite.svg#sprite-{{ icon }}"></use>
-    </svg>
+
+{% macro main(icon="", classes=[]) %}
+  <svg class="icon icon-{{ icon }}{% for class in classes %} {{ class }}{% endfor %}">
+      <use xlink:href="{{ darvin.serverBase }}assets/images/svg-sprite.svg#sprite-{{ icon }}"></use>
+  </svg>
 {% endmacro %}

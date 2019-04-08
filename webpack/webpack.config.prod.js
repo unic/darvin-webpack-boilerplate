@@ -7,6 +7,10 @@ const merge = require('webpack-merge');
 const WebpackMessages = require('webpack-messages');
 const WebpackShellPlugin = require('webpack-shell-plugin-next');
 
+// init globals
+const { darvinGlobals } = require('./libs/darvin-config');
+darvinGlobals();
+
 const webpackConfig = require('../webpack.config');
 const { printFancy } = require('./helpers/darvin-helpers');
 const { getDarvinRC, createDynamicRequireArray } = require('./helpers/config-helpers');
@@ -30,7 +34,7 @@ const settings = {
     pathinfo: false,
     filename: 'assets/[name].js',
     chunkFilename: 'async/[name].chunk.js',
-    publicPath: '/'
+    publicPath: global.baseBath
   },
   devtool: 'source-map',
   plugins: [

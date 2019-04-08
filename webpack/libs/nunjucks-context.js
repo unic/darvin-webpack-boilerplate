@@ -31,7 +31,7 @@ Object.keys(previewIndexObj.payload).forEach(function (key) {
         let targetPath = `${elementObj.path}/${preview}`;
 
         let obj = new HtmlWebpackPlugin({
-          filename: targetPath + `.html`,
+          filename: targetPath + `.${global.templateExtTarget}`,
           template: `${global.dirRoot}/${global.dirTemplate}/${targetPath}.${global.templateExt}`,
           hash: true,
           inject: 'body',
@@ -53,16 +53,16 @@ htmlTemplates.push(new HtmlWebpackPlugin({
   hash: true,
   inject: `body`,
   cache: true,
-  chunks: [`js/main`],
+  chunks: [`${global.mainChunk}`],
   templateParameters: {
-    name: `index`,
+    name: `${global.prevIndexName}`,
     type: `preview`,
-    chunkName: `js/main`,
+    chunkName: `${global.mainChunk}`,
     template: `${global.dirRoot}/${global.dirTemplate}/${global.prevIndexFile}`,
     templateRel: `${global.prevIndexFile}`,
     target: `${global.prevIndexFileTarget}`,
     path: `/`,
-    previews: `index`,
+    previews: `${global.prevIndexName}`,
     variants: 1
   }
 }))
@@ -71,5 +71,6 @@ module.exports = {
   imageSrc: `/${global.dirAsset}/images/renditions/`,
   htmlTemplates: htmlTemplates, // nunjuck loader
   index: previewIndexObj, //  index generator
-  sprite: allIconsInDir
+  sprite: allIconsInDir,
+  serverBase: `${global.serverBase}`
 };

@@ -6,12 +6,8 @@ const fs = require('fs');
 const simpleGit = require('simple-git')(basePath);
 const crypto = require('crypto');
 
-const { darvinGlobals } = require('./darvin-config');
 const { filterCommitsInDateRange, prepareDependencies, getTemplateFiles, getSVGIcons } = require('./../helpers/darvin-helpers');
 const { writeFile, getDirs } = require('./../helpers/file-helpers');
-
-// init globals
-darvinGlobals();
 
 let webpackEntryObj = {},
     previewIndexObj = {

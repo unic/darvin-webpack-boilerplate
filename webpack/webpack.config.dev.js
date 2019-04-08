@@ -4,6 +4,10 @@ const path = require('path');
 const basePath = process.cwd();
 const merge = require('webpack-merge');
 
+// init globals
+const { darvinGlobals } = require('./libs/darvin-config');
+darvinGlobals();
+
 const webpackConfig = require('../webpack.config');
 const { getDarvinRC, createDynamicRequireArray } = require('./helpers/config-helpers');
 
