@@ -31,7 +31,7 @@ Object.keys(previewIndexObj.payload).forEach(function (key) {
         let targetPath = `${elementObj.path}/${preview}`;
 
         let obj = new HtmlWebpackPlugin({
-          filename: targetPath + `.${global.templateExtTarget}`,
+          filename: targetPath + `.html`,
           template: `${global.dirRoot}/${global.dirTemplate}/${targetPath}.${global.templateExt}`,
           hash: true,
           inject: 'body',
@@ -53,24 +53,23 @@ htmlTemplates.push(new HtmlWebpackPlugin({
   hash: true,
   inject: `body`,
   cache: true,
-  chunks: [`${global.mainChunk}`],
+  chunks: [`js/main`],
   templateParameters: {
-    name: `${global.prevIndexName}`,
+    name: `${global.renderPath.index}`,
     type: `preview`,
-    chunkName: `${global.mainChunk}`,
+    chunkName: `js/main`,
     template: `${global.dirRoot}/${global.dirTemplate}/${global.prevIndexFile}`,
     templateRel: `${global.prevIndexFile}`,
     target: `${global.prevIndexFileTarget}`,
     path: `/`,
-    previews: `${global.prevIndexName}`,
+    previews: `${global.renderPath.index}`,
     variants: 1
   }
 }))
 
 module.exports = {
-  imageSrc: `/${global.dirAsset}/images/renditions/`,
+  imageSrc: `/${global.serverAssets}/images/renditions/`,
   htmlTemplates: htmlTemplates, // nunjuck loader
   index: previewIndexObj, //  index generator
-  sprite: allIconsInDir,
-  serverBase: `${global.serverBase}`
+  sprite: allIconsInDir
 };

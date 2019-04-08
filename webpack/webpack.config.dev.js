@@ -26,7 +26,7 @@ const settings = {
     devtoolLineToLine: false,
     path: path.resolve(basePath, 'dist'),
     pathinfo: false,
-    filename: 'assets/[name].js',
+    filename: global.serverAssets + '/[name].js',
     publicPath: '/'
   },
   devtool: 'cheap-module-eval-source-map'

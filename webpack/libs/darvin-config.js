@@ -12,7 +12,12 @@ const darvinGlobals = () => {
   global.prevIndexName = 'index';
   global.prevIndexFile = 'index.njk';
   global.prevIndexFileTarget = 'index.html';
-  global.serverBase = isDev ? '/' : '/';
+  global.serverBase = isDev ? '/' : '/dist/';
+  global.serverAssets = 'assets';
+  global.renderPath = {
+    'index': 'index',
+    'assets': 'assets'
+  }
 };
 
 module.exports = {

@@ -7,7 +7,8 @@ const prod = {
           loader: 'file-loader',
           options: {
             name: '[name].[ext]',
-            outputPath: '/assets/fonts/',
+            outputPath: global.serverAssets + '/fonts/',
+            publicPath: '../fonts/'
           },
         }],
       },
@@ -24,7 +25,7 @@ const dev = {
           loader: 'file-loader',
           options: {
             name: '[name].[ext]',
-            outputPath: 'assets/fonts/',
+            outputPath: global.serverAssets + '/fonts/',
           },
         }],
       },

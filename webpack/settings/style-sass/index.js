@@ -41,7 +41,7 @@ const prod = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'assets/css/style.css',
+      filename: global.serverAssets + '/css/style.css',
       hot: true
     }),
   ]
@@ -86,7 +86,7 @@ const dev = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'assets/css/style.css',
+      filename: global.serverAssets + '/css/style.css',
     }),
   ]
 }

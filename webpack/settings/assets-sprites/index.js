@@ -4,9 +4,9 @@ const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
 
 const prod = {
   plugins: [
-    new SVGSpritemapPlugin(basePath + '/src/assets/images/icons/**/*.svg', {
+    new SVGSpritemapPlugin(basePath + '/' + global.dirRoot + '/' + global.serverAssets + '/images/icons/**/*.svg', {
       output: {
-        filename: 'assets/images/svg-sprite.svg',
+        filename: global.serverAssets + '/images/svg-sprite.svg',
         svg: {
           sizes: false
         }
@@ -20,7 +20,7 @@ const prod = {
       },
       styles: {
         format: 'fragment',
-        filename: path.join(basePath, 'src/styles/settings/_sprites.scss')
+        filename: path.join(basePath, global.dirRoot + '/styles/settings/_sprites.scss')
       }
     })
   ],
@@ -28,9 +28,9 @@ const prod = {
 
 const dev = {
   plugins: [
-    new SVGSpritemapPlugin(basePath + '/src/assets/images/icons/**/*.svg', {
+    new SVGSpritemapPlugin(basePath + global.dirRoot + '/' + global.serverAssets + '/images/icons/**/*.svg', {
       output: {
-        filename: 'assets/images/svg-sprite.svg',
+        filename: global.serverAssets + '/images/svg-sprite.svg',
         svg: {
           sizes: false
         }
@@ -45,7 +45,7 @@ const dev = {
       },
       styles: {
         format: 'fragment',
-        filename: path.join(basePath, 'src/styles/settings/_sprites.scss')
+        filename: path.join(basePath, global.dirRoot + '/styles/settings/_sprites.scss')
       }
     })
   ],
@@ -55,7 +55,7 @@ const prev = {
   plugins: [
     new SVGSpritemapPlugin(basePath + '/preview/assets/images/icons/**/*.svg', {
       output: {
-        filename: 'assets/images/svg-sprite.svg',
+        filename: global.serverAssets + '/images/svg-sprite.svg',
         svg: {
           sizes: false
         }
