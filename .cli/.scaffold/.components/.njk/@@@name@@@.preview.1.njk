@@ -1,24 +1,14 @@
 {% extends "layouts/l00-preview/l00-preview.njk" %}
 
-<<<<<<< HEAD:.cli/.scaffold/.components/.njk/{{name}}.preview.1.njk
-{% import "modules/{{name}}/{{name}}.njk" as mainTemplate %}
-=======
 {% import "modules/@@@name@@@/@@@name@@@.njk" as mainTemplate %}
->>>>>>> bugfix/issue#3-darvin-cli_change_token:.cli/.scaffold/.components/.njk/@@@name@@@.preview.1.njk
 
 {% set variantName = "Default Variant" %}
 {% set variantDescr = "default description" %}
 
 {% macro main() %}
-<<<<<<< HEAD:.cli/.scaffold/.components/.njk/{{name}}.preview.1.njk
-  <!-- START Preview - {{name}} -->
-  {{ mainTemplate.main() }}
-  <!-- END Preview - {{name}} -->
-=======
   <!-- START Preview - @@@name@@@ -->
   {{ mainTemplate.main() }}
   <!-- END Preview - @@@name@@@ -->
->>>>>>> bugfix/issue#3-darvin-cli_change_token:.cli/.scaffold/.components/.njk/@@@name@@@.preview.1.njk
 {% endmacro %}
 
 {% block preview %}
