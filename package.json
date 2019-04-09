@@ -1,11 +1,11 @@
 {
   "name": "darvin-boilerplate",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Darvin is a webpack boilerplate for developing static HTML pages with Nunjucks templates, ES201X transpiler and Dart-Sass precompiling with SVG/PNG sprites.",
   "email": "mail@tobiasfrei.ch",
   "author": "Tobias Frei",
   "license": "MIT",
-  "homepage": "http://tobiasfrei.ch",
+  "homepage": "http://unic.com",
   "keywords": [
     "webpack",
     "boilerplate",

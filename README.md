@@ -35,6 +35,6 @@ Please consider the [Wiki Space](https://github.com/tobiasfrei/darvin-boilerplat
 
 
 ## License
-GNU General Public License (GPL)
+MIT
 
 Darvin logo and brand related assets are protected and may not be used for personal purposes.
