@@ -20,7 +20,7 @@ const prod = {
       },
       styles: {
         format: 'fragment',
-        filename: path.join(basePath, global.dirRoot + '/styles/settings/_sprites.scss')
+        filename: path.join(basePath, global.dirRoot + '/styles/tools/_sprites.scss')
       }
     })
   ],
@@ -45,7 +45,7 @@ const dev = {
       },
       styles: {
         format: 'fragment',
-        filename: path.join(basePath, global.dirRoot + '/styles/settings/_sprites.scss')
+        filename: path.join(basePath, global.dirRoot + '/styles/tools/_sprites.scss')
       }
     })
   ],
@@ -69,7 +69,7 @@ const prev = {
       },
       styles: {
         format: 'fragment',
-        filename: path.join(basePath, 'preview/styles/settings/_sprites.scss')
+        filename: path.join(basePath, 'preview/styles/tools/_sprites.scss')
       }
     })
   ],

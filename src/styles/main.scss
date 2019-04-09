@@ -14,13 +14,13 @@ $output-bourbon-deprecation-warnings: false;
 @import "settings/breakpoints";
 @import "settings/fonts";
 @import "../templates/components/c02-grid";
-@import "settings/sprites";
 
 // Tools
 @import "tools/placeholders";
 @import "tools/mixins";
 @import "tools/transitions";
 @import "tools/helpers";
+@import "tools/sprites";
 
 // Base
 @import "base/base";
