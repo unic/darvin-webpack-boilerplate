@@ -13,7 +13,7 @@ export default createModule({
    * @param {Object} module.options - Options
    * @return {Object} state
    */
-  constructor({ el, state, options }) {
+  constructor({ el, state }) {
     /* --- Private methods --- */
 
     /**
@@ -21,8 +21,8 @@ export default createModule({
      * @param {Event} event - Native Event
      * @return {undefined}
      */
-    const clickHandler = event => {
-      console.log('clicked', event, el);
+    const clickHandler = () => {
+      // Yout custom logic here
     };
     /**
      * addEventListeners
@@ -49,10 +49,10 @@ export default createModule({
     state.init = () => {
       addEventListeners();
 
-      console.log('**************** module init ****************');
-      console.log('el', el);
-      console.log('state', state);
-      console.log('options', options);
+      // console.log('**************** module init ****************');
+      // console.log('el', el);
+      // console.log('state', state);
+      // console.log('options', options);
     };
 
     /**
