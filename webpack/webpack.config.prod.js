@@ -29,7 +29,7 @@ const settings = {
     path: path.resolve(basePath, 'dist'),
     pathinfo: false,
     filename: 'assets/[name].js',
-    chunkFilename: 'async/[name].chunk.js',
+    chunkFilename: 'async/[name].[contenthash].js',
     publicPath: '/'
   },
   devtool: 'source-map',

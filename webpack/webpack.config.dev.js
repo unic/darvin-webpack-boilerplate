@@ -23,6 +23,7 @@ const settings = {
     path: path.resolve(basePath, 'dist'),
     pathinfo: false,
     filename: 'assets/[name].js',
+    chunkFilename: 'async/[name].[contenthash].js',
     publicPath: '/'
   },
   devtool: 'cheap-module-eval-source-map'
