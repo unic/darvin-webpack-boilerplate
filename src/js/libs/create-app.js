@@ -88,7 +88,7 @@ export default ({ modules = {} } = {}) => {
    * @return {Boolean} -
    */
   state.registerModule = (name, module) => {
-    const selector = `[data-init~="${name}"]`;
+    const selector = `[data-module~="${name}"]`;
 
     state.modules[name] = {
       name,
