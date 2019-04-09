@@ -9,8 +9,7 @@ const WebpackMessages = require('webpack-messages');
 const isDev = (process.env.NODE_ENV === 'dev');
 
 // init globals
-const { darvinGlobals } = require('../.darvinconf.js');
-darvinGlobals();
+require('../.darvinconf.js');
 
 const { prev: cleaner } = require('./settings/assets-cleaner');
 const { prev: sass } = require('./settings/style-sass');

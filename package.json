@@ -105,6 +105,7 @@
     "core-js": "^3.0.0",
     "fs-extra": "^7.0.1",
     "inquirer": "^6.2.2",
+    "intersection-observer": "^0.5.1",
     "jsplumb": "^2.9.0",
     "lowdb": "^1.0.0",
     "markdown-it": "^8.4.2",
@@ -122,7 +123,8 @@
     "vue": "^2.6.10",
     "vue-masonry": "^0.11.7",
     "vueisotope": "^3.1.2",
-    "vuex": "^3.1.0"
+    "vuex": "^3.1.0",
+    "whatwg-fetch": "^3.0.0"
   },
   "engines": {
     "node": "11.12.0"

@@ -8,8 +8,7 @@ const WebpackMessages = require('webpack-messages');
 const WebpackShellPlugin = require('webpack-shell-plugin-next');
 
 // init globals
-const { darvinGlobals } = require('../.darvinconf.js');
-darvinGlobals();
+require('../.darvinconf.js');
 
 const webpackConfig = require('../webpack.config');
 const { printFancy } = require('./helpers/darvin-helpers');
@@ -33,7 +32,7 @@ const settings = {
     path: path.resolve(basePath, 'dist'),
     pathinfo: false,
     filename: global.serverAssets + '/[name].js',
-    chunkFilename: 'async/[name].chunk.js',
+    chunkFilename: global.serverAssets + '/async/[name].[contenthash].js',
     publicPath: global.baseBath
   },
   devtool: 'source-map',

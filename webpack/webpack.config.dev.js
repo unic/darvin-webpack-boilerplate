@@ -5,8 +5,7 @@ const basePath = process.cwd();
 const merge = require('webpack-merge');
 
 // init globals
-const { darvinGlobals } = require('../.darvinconf.js');
-darvinGlobals();
+require('../.darvinconf.js');
 
 const webpackConfig = require('../webpack.config');
 const { getDarvinRC, createDynamicRequireArray } = require('./helpers/config-helpers');
@@ -27,6 +26,7 @@ const settings = {
     path: path.resolve(basePath, 'dist'),
     pathinfo: false,
     filename: global.serverAssets + '/[name].js',
+    chunkFilename: global.serverAssets + '/async/[name].[contenthash].js',
     publicPath: '/'
   },
   devtool: 'cheap-module-eval-source-map'
