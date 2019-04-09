@@ -5,7 +5,7 @@ const basePath = process.cwd();
 const copyScaffolding = require('./copy-template-dir');
 
 const { capitalize } = require('./../helpers/darvin-helpers');
-const { getDirs } = require('./../helpers/file-helpers');
+const { getDirs, deleteFile } = require('./../helpers/file-helpers');
 
 const getScaffoldingOptions = () => {
   let settingsPath = path.resolve(basePath, `.cli/.scaffold/`);
@@ -37,9 +37,9 @@ setScaffolding = (response, confirm) => {
   const inDir = path.join(process.cwd(), `.cli/.scaffold/.${response.category}/.njk`)
   const outDir = path.join(process.cwd(), `src/templates/${response.category}/${response.name}`)
 
-  copyDirectoryWithContext(confirm, inDir, outDir, vars);
+  copyDirectoryWithContext(confirm, inDir, outDir, vars, response);
 },
-copyDirectoryWithContext = (confirm, inDir, outDir, vars) => {
+copyDirectoryWithContext = (confirm, inDir, outDir, vars, response) => {
   copyScaffolding(inDir, outDir, vars, (err, createdFiles) => {
     if (err) throw err
 

@@ -5,7 +5,7 @@ const basePath = process.cwd();
 const merge = require('webpack-merge');
 
 // init globals
-const { darvinGlobals } = require('./libs/darvin-config');
+const { darvinGlobals } = require('../.darvinconf.js');
 darvinGlobals();
 
 const webpackConfig = require('../webpack.config');

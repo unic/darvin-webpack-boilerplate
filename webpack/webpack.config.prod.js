@@ -8,7 +8,7 @@ const WebpackMessages = require('webpack-messages');
 const WebpackShellPlugin = require('webpack-shell-plugin-next');
 
 // init globals
-const { darvinGlobals } = require('./libs/darvin-config');
+const { darvinGlobals } = require('../.darvinconf.js');
 darvinGlobals();
 
 const webpackConfig = require('../webpack.config');

@@ -1,4 +1,3 @@
-/* eslint-disable */
 const isDev = (process.env.NODE_ENV === 'dev');
 
 const darvinGlobals = () => {
