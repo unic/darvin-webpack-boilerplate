@@ -1,16 +1,23 @@
-global.templateExt = 'njk';
-global.templateExtTarget = 'html';
-global.dirRoot = 'src';
-global.dirAsset = 'assets';
-global.dirTemplate = 'templates';
-global.dirJs = 'js';
 global.mainChunk = 'js/main';
-global.prevIndexName = 'index';
-global.prevIndexFile = 'index.njk';
-global.prevIndexFileTarget = 'index.html';
-global.serverBase = (process.env.NODE_ENV === 'dev') ? '/' : '/dist/';
-global.serverAssets = 'assets';
-global.renderPath = {
-  'index': 'index',
+global.template = {
+  'extIn': 'njk',
+  'extOut': 'html'
+}
+global.preview = {
+  indexName: 'index',
+  indexFileInput: 'index.njk',
+  indexFileOutput: 'index.html'
+}
+global.inputDirs = {
+  src: 'src',
+  assets: 'assets',
+  templates: 'templates',
+  js: 'js'
+}
+global.output = {
+  'index': 'index'
+}
+global.server = {
+  'base': (process.env.NODE_ENV === 'dev') ? '/' : '/dist/',
   'assets': 'assets'
 }

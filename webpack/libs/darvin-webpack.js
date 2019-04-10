@@ -14,8 +14,8 @@ let webpackEntryObj = {},
       types: [],
       payload: {}
     },
-    dir = path.resolve(basePath, `${global.dirRoot}/${global.dirTemplate}`),
-    webpackEntryDefault = [`./${global.dirRoot}/${global.dirJs}/main.js`],
+    dir = path.resolve(basePath, `${global.inputDirs.src}/${global.inputDirs.templates}`),
+    webpackEntryDefault = [`./${global.inputDirs.src}/${global.inputDirs.js}/main.js`],
     activityDays = 20,
     endDate = new Date(),
     startDate = new Date(endDate.getTime() - (activityDays * 24 * 60 * 60 * 1000));
@@ -31,15 +31,15 @@ previewIndexObj.types = previewIndexObj.types.filter(type => type !== 'layouts')
 previewIndexObj.types.forEach((type) => {
   previewIndexObj.payload[type] = {};
 
-  fs.readdirSync(path.resolve(basePath, `${global.dirRoot}/${global.dirTemplate}/${type}`)).forEach((file) => {
+  fs.readdirSync(path.resolve(basePath, `${global.inputDirs.src}/${global.inputDirs.templates}/${type}`)).forEach((file) => {
 
     // only accept files not starting with _ or .
-    if (fs.lstatSync(path.resolve(basePath, `${global.dirRoot}/${global.dirTemplate}/${type}/${file}`)).isDirectory() && file.charAt(0) !== '_' && file.charAt(0) !== '.') {
+    if (fs.lstatSync(path.resolve(basePath, `${global.inputDirs.src}/${global.inputDirs.templates}/${type}/${file}`)).isDirectory() && file.charAt(0) !== '_' && file.charAt(0) !== '.') {
       let templateObj = getTemplateFiles(type, file);
 
       // check if template file exist
       if(templateObj.template) {
-        let tmplPath = templateObj.template.substring(0, templateObj.template.lastIndexOf('/')).replace(`${global.dirRoot}/${global.dirTemplate}/`, ``);
+        let tmplPath = templateObj.template.substring(0, templateObj.template.lastIndexOf('/')).replace(`${global.inputDirs.src}/${global.inputDirs.templates}/`, ``);
         let config = {};
 
         previewIndexObj.payload[type][file] = {
@@ -48,7 +48,7 @@ previewIndexObj.types.forEach((type) => {
           type: type,
           chunkName: `js/main`,
           template: templateObj.template,
-          templateRel: templateObj.template.replace(`${global.dirRoot}/${global.dirTemplate}/`, ``),
+          templateRel: templateObj.template.replace(`${global.inputDirs.src}/${global.inputDirs.templates}/`, ``),
           target: `${tmplPath}/${file}.html`,
           path: tmplPath,
           previews: templateObj.previews,
@@ -66,10 +66,10 @@ previewIndexObj.types.forEach((type) => {
 
         // load element config file
         try {
-          config = require(path.resolve(basePath, `${global.dirRoot}/${global.dirTemplate}/${tmplPath}/meta/config.json`));
+          config = require(path.resolve(basePath, `${global.inputDirs.src}/${global.inputDirs.templates}/${tmplPath}/meta/config.json`));
         } catch (e) {
           if (e instanceof Error && e.code === "MODULE_NOT_FOUND") {
-            console.error("no config for " + path.resolve(basePath, `${global.dirRoot}/${global.dirTemplate}/${tmplPath}/meta/config.json`));
+            console.error("no config for " + path.resolve(basePath, `${global.inputDirs.src}/${global.inputDirs.templates}/${tmplPath}/meta/config.json`));
           } else {
             throw e;
           }
@@ -103,7 +103,7 @@ previewIndexObj.types.forEach((type) => {
         } catch (err) { }*/
 
         // filter commits from last days
-        simpleGit.log({ 'file': `./${global.dirRoot}/${global.dirTemplate}/${type}/${file}/${file}.njk` }, (err, log) => {
+        simpleGit.log({ 'file': `./${global.inputDirs.src}/${global.inputDirs.templates}/${type}/${file}/${file}.njk` }, (err, log) => {
           let obj = {};
           let filteredCommits = filterCommitsInDateRange(startDate, endDate, log.all);
 

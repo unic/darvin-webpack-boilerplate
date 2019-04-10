@@ -10,7 +10,7 @@
    </head>
 
    <body class="preview preview--index">
-      <link href="{{ darvin.serverBase }}preview/styles/preview.css" rel="stylesheet">
+      <link href="{{ darvin.server.base }}preview/styles/preview.css" rel="stylesheet">
       <script>
         if(localStorage.getItem("darvin-darkmode")) {
           if(localStorage.getItem("darvin-darkmode")=='true') {
@@ -37,6 +37,6 @@
       <script type="text/javascript">
           var darvinPayload = {{index.payload|dump|safe }};
       </script>
-      <script type="text/javascript" src="{{ darvin.serverBase }}preview/preview.js"></script>
+      <script type="text/javascript" src="{{ darvin.server.base }}preview/preview.js"></script>
     </body>
 </html>

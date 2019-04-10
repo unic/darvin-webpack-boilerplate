@@ -6,44 +6,44 @@ const prod = {
     new CopyWebpackPlugin([
       {
         from: basePath + '/log/*.{md,json}',
-        to: global.serverAssets + '/log/',
+        to: global.server.assets + '/log/',
         flatten: true
       },
       {
-        from: basePath + '/' + global.dirRoot + '/' + global.dirTemplate + '/**/meta/*.{md,json}',
+        from: basePath + '/' + global.inputDirs.src + '/' + global.inputDirs.templates + '/**/meta/*.{md,json}',
         to: '/',
         flatten: false,
         transformPath (targetPath) {
-          return targetPath.split('/' + global.dirRoot + '/' + global.dirTemplate + '/')[1];
+          return targetPath.split('/' + global.inputDirs.src + '/' + global.inputDirs.templates + '/')[1];
         }
       },
       {
-        from: basePath + '/' + global.dirRoot + '/' + global.dirTemplate + '/**/log/*.{md,json}',
+        from: basePath + '/' + global.inputDirs.src + '/' + global.inputDirs.templates + '/**/log/*.{md,json}',
         to: '/',
         flatten: false,
         transformPath (targetPath) {
-          return targetPath.split('/' + global.dirRoot + '/' + global.dirTemplate + '/')[1];
+          return targetPath.split('/' + global.inputDirs.src + '/' + global.inputDirs.templates + '/')[1];
         }
       },
       {
-        from: basePath + '/' + global.dirRoot + '/' + global.dirTemplate + '/modules/**/*.njk',
+        from: basePath + '/' + global.inputDirs.src + '/' + global.inputDirs.templates + '/modules/**/*.njk',
         to: '/',
         flatten: false,
         transformPath (targetPath) {
-          return targetPath.split('/' + global.dirRoot + '/' + global.dirTemplate + '/')[1];
+          return targetPath.split('/' + global.inputDirs.src + '/' + global.inputDirs.templates + '/')[1];
         }
       },
       {
-        from: basePath + '/' + global.dirRoot + '/' + global.dirTemplate + '/components/**/*.njk',
+        from: basePath + '/' + global.inputDirs.src + '/' + global.inputDirs.templates + '/components/**/*.njk',
         to: '/',
         flatten: false,
         transformPath (targetPath) {
-          return targetPath.split('/' + global.dirRoot + '/' + global.dirTemplate + '/')[1];
+          return targetPath.split('/' + global.inputDirs.src + '/' + global.inputDirs.templates + '/')[1];
         }
       },
       {
-        from: basePath + '/' + global.dirRoot + '/' + global.serverAssets + '/images/renditions/**/*.{png,gif,jpg,svg}',
-        to: global.serverAssets + '/images/',
+        from: basePath + '/' + global.inputDirs.src + '/' + global.server.assets + '/images/renditions/**/*.{png,gif,jpg,svg}',
+        to: global.server.assets + '/images/',
         flatten: true,
       }
     ], {})
@@ -56,51 +56,51 @@ const dev = {
     [
       {
         from: basePath + '/log/*.{md,json}',
-        to: global.serverAssets + '/log/',
+        to: global.server.assets + '/log/',
         flatten: true
       },
       {
-        from: basePath + '/' + global.dirRoot + '/' + global.serverAssets + '/images/favicons/favicon-dev.ico',
+        from: basePath + '/' + global.inputDirs.src + '/' + global.server.assets + '/images/favicons/favicon-dev.ico',
         flatten: true,
         transformPath () {
           return 'favicon.ico';
         }
       },
       {
-        from: basePath + '/' + global.dirRoot + '/' + global.dirTemplate + '/**/meta/*.{md,json}',
+        from: basePath + '/' + global.inputDirs.src + '/' + global.inputDirs.templates + '/**/meta/*.{md,json}',
         to: '/',
         flatten: false,
         transformPath (targetPath) {
-          return targetPath.split('/' + global.dirRoot + '/' + global.dirTemplate + '/')[1];
+          return targetPath.split('/' + global.inputDirs.src + '/' + global.inputDirs.templates + '/')[1];
         }
       },
       {
-        from: basePath + '/' + global.dirRoot + '/' + global.dirTemplate + '/**/log/*.{md,json}',
+        from: basePath + '/' + global.inputDirs.src + '/' + global.inputDirs.templates + '/**/log/*.{md,json}',
         to: '/',
         flatten: false,
         transformPath (targetPath) {
-          return targetPath.split('/' + global.dirRoot + '/' + global.dirTemplate + '/')[1];
+          return targetPath.split('/' + global.inputDirs.src + '/' + global.inputDirs.templates + '/')[1];
         }
       },
       {
-        from: basePath + '/' + global.dirRoot + '/' + global.dirTemplate + '/modules/**/*.njk',
+        from: basePath + '/' + global.inputDirs.src + '/' + global.inputDirs.templates + '/modules/**/*.njk',
         to: '/',
         flatten: false,
         transformPath (targetPath) {
-          return targetPath.split('/' + global.dirRoot + '/' + global.dirTemplate + '/')[1];
+          return targetPath.split('/' + global.inputDirs.src + '/' + global.inputDirs.templates + '/')[1];
         }
       },
       {
-        from: basePath + '/' + global.dirRoot + '/' + global.dirTemplate + '/components/**/*.njk',
+        from: basePath + '/' + global.inputDirs.src + '/' + global.inputDirs.templates + '/components/**/*.njk',
         to: '/',
         flatten: false,
         transformPath (targetPath) {
-          return targetPath.split('/' + global.dirRoot + '/' + global.dirTemplate + '/')[1];
+          return targetPath.split('/' + global.inputDirs.src + '/' + global.inputDirs.templates + '/')[1];
         }
       },
       {
-        from: basePath + '/' + global.dirRoot + '/' + global.serverAssets + '/images/renditions/*.{png,gif,jpg,svg}',
-        to: global.serverAssets + '/images/',
+        from: basePath + '/' + global.inputDirs.src + '/' + global.server.assets + '/images/renditions/*.{png,gif,jpg,svg}',
+        to: global.server.assets + '/images/',
         flatten: true,
       }
     ], {})

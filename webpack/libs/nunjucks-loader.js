@@ -84,8 +84,7 @@ module.exports = function(content) {
 
   // eslint-disable-next-line no-useless-escape
   darvin.filepath = loaderPath.replace(/^.*[\\\/]/, '').replace('.njk', ''); // remove file extension
-  darvin.serverBase = nunjucksContext.serverBase;
-  darvin.serverAssets = nunjucksContext.serverAssets;
+  darvin.server = global.server;
 
   loader = new NunjucksLoader(nunjucksSearchPaths, ((filePath) => {
     this.addDependency(filePath);

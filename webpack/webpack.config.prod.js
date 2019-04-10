@@ -28,11 +28,11 @@ const settings = {
   },
   output: {
     devtoolLineToLine: true,
-    sourceMapFilename: global.serverAssets + '/[name].js.map',
+    sourceMapFilename: global.server.assets + '/[name].js.map',
     path: path.resolve(basePath, 'dist'),
     pathinfo: false,
-    filename: global.serverAssets + '/[name].js',
-    chunkFilename: global.serverAssets + '/async/[name].[contenthash].js',
+    filename: global.server.assets + '/[name].js',
+    chunkFilename: global.server.assets + '/async/[name].[contenthash].js',
     publicPath: global.baseBath
   },
   devtool: 'source-map',

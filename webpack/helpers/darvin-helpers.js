@@ -27,8 +27,8 @@ const filterCommitsInDateRange = (startDate, endDate, commitsArr) => {
   return retArr;
 },
 prepareDependencies = async (file, type) => {
-  let env = nunjucks.configure(`./${global.dirRoot}/${global.dirTemplate}`);
-  let { dependencies } = await parseFile(env, `${type}/${file}/${file}.${global.templateExt}`);
+  let env = nunjucks.configure(`./${global.inputDirs.src}/${global.inputDirs.templates}`);
+  let { dependencies } = await parseFile(env, `${type}/${file}/${file}.${global.template.extIn}`);
 
   let selfIndex = 0;
   let obj = {
@@ -42,8 +42,8 @@ prepareDependencies = async (file, type) => {
 
           if (key != 'path') {
             // remove system path
-            if (dependency[key].includes(`/${global.dirRoot}/${global.dirTemplate}/`)) {
-              dependency[key] = dependency[key].split(`/${global.dirRoot}/${global.dirTemplate}/`)[1];
+            if (dependency[key].includes(`/${global.inputDirs.src}/${global.inputDirs.templates}/`)) {
+              dependency[key] = dependency[key].split(`/${global.inputDirs.src}/${global.inputDirs.templates}/`)[1];
             }
             // remove filename
             dependency[key] = dependency[key].substring(0, dependency[key].lastIndexOf("/"));
@@ -63,14 +63,14 @@ prepareDependencies = async (file, type) => {
   // remove layouts
   dependencies = dependencies.filter(dependency => !dependency.name.includes('layouts/'));
 
-  if (!fs.existsSync(`./${global.dirRoot}/${global.dirTemplate}/${type}/${file}/log`)){
-    fs.mkdirSync(`./${global.dirRoot}/${global.dirTemplate}/${type}/${file}/log`);
+  if (!fs.existsSync(`./${global.inputDirs.src}/${global.inputDirs.templates}/${type}/${file}/log`)){
+    fs.mkdirSync(`./${global.inputDirs.src}/${global.inputDirs.templates}/${type}/${file}/log`);
   }
 
-  writeFile(`./${global.dirRoot}/${global.dirTemplate}/${type}/${file}/log/dependencies.json`, JSON.stringify(obj));
+  writeFile(`./${global.inputDirs.src}/${global.inputDirs.templates}/${type}/${file}/log/dependencies.json`, JSON.stringify(obj));
 },
 getTemplateFiles = (type, file) => {
-  let templatePath = `${global.dirRoot}/${global.dirTemplate}/${type}/${file}/${file}.${global.templateExt}`;
+  let templatePath = `${global.inputDirs.src}/${global.inputDirs.templates}/${type}/${file}/${file}.${global.template.extIn}`;
   let tmplPreviews = [];
 
   if (!fs.existsSync(path.resolve(basePath, `${templatePath}`))) {
@@ -79,11 +79,11 @@ getTemplateFiles = (type, file) => {
   }
 
   // get previews
-  tmplPreviews = glob.sync(`*.preview*.${global.templateExt}`, {
-    cwd: path.join(basePath, `${global.dirRoot}/${global.dirTemplate}/${type}/${file}/`),
+  tmplPreviews = glob.sync(`*.preview*.${global.template.extIn}`, {
+    cwd: path.join(basePath, `${global.inputDirs.src}/${global.inputDirs.templates}/${type}/${file}/`),
     realpath: false
   }).map(page => {
-    return page.replace(`.${global.templateExt}`, '');
+    return page.replace(`.${global.template.extIn}`, '');
   });
 
   return {
@@ -96,7 +96,7 @@ getSVGIcons = () => {
 
   // get previews
   icons = glob.sync('*.svg', {
-    cwd: path.join(basePath, `${global.dirRoot}/${global.dirAsset}/images/icons/`),
+    cwd: path.join(basePath, `${global.inputDirs.src}/${global.inputDirs.assets}/images/icons/`),
     realpath: false
   }).map(page => {
     return page.replace('.svg', '');
