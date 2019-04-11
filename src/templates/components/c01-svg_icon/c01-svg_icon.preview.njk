@@ -10,8 +10,8 @@
     {% for name in sprite.icons %}
       <div class="m-prev-flexgrid__item">
         <a tabindex="0" class="m-prev-flexgrid__iconbox">
-          {{ svgIcon.main( basePath=basePath, icon=name ) }}
-          <input type="text" value='<svg class="ico ico-{{ name }}"><use xlink:href="#sprite-{{ name }}"></use></svg>'>
+          {{ svgIcon.main(icon=name ) }}
+          <input type="text" value='svgIcon.main(icon="{{name}}" )'>
         </a>
         <span>{{ name }}</span>
       </div>
