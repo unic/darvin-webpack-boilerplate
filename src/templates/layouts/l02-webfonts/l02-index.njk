@@ -4,12 +4,24 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>{{ title }}</title>
-    <style>
-      body {
-        font-family: Museo, serif;
-        font-weight: 700;
-      }
-    </style>
+    <script>
+      (function () {
+        if ("fonts" in document) {
+          var fontBold = new FontFace("OpenSansBold", "url('{{ darvin.server.base }}{{ darvin.server.assets }}' + 'fonts/open-sans-bold.ttf') format('ttf')");
+          var fontRegular = new FontFace("OpenSansRegular", "url('{{ darvin.server.base }}{{ darvin.server.assets }}' + 'fonts/open-sans-regular.ttf') format('ttf')");
+          Promise
+            .all([fontBold.load(), fontRegular.load()])
+            .then(function (loadedFonts) {
+              // Render them at the same time
+              loadedFonts.forEach(function (font) {
+                document
+                  .fonts
+                  .add(font);
+              });
+            });
+        }
+      })();
+    </script>
     <meta name="description" content="Lorem description">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="format-detection" content="telephone=no">
