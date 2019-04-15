@@ -20,14 +20,14 @@ Use darvin-cli to edit settings and add new modules/components.<br>
 
 
 # Setup
-Please consider the [Wiki Space](https://github.com/tobiasfrei/darvin-boilerplate/wiki) for instructions.
+Please consider the [Wiki Space](https://github.com/unic/darvin-boilerplate/wiki) for instructions.
 
-[1. Prerequisites](https://github.com/tobiasfrei/darvin-boilerplate/wiki/1.-Prerequisites)<br>
-[2. Start](https://github.com/tobiasfrei/darvin-boilerplate/wiki/2.-Start)<br>
-[3. SVG-Sprite](https://github.com/tobiasfrei/darvin-boilerplate/wiki/3.-SVG-Sprite)<br>
-[4. Breakpoints](https://github.com/tobiasfrei/darvin-boilerplate/wiki/4.-Breakpoints)<br>
-[5. Elements](https://github.com/tobiasfrei/darvin-boilerplate/wiki/5.-Elements)<br>
-[6. CLI](https://github.com/tobiasfrei/darvin-boilerplate/wiki/6.-CLI)<br>
+1. [Prerequisites](https://github.com/unic/darvin-boilerplate/wiki/1.-Prerequisites)<br>
+2. [Start](https://github.com/unic/darvin-boilerplate/wiki/2.-Start)<br>
+3. [SVG-Sprites](https://github.com/unic/darvin-boilerplate/wiki/3.-SVG-Sprites)<br>
+4. [Breakpoints](https://github.com/unic/darvin-boilerplate/wiki/4.-Breakpoints)<br>
+5. [Elements](https://github.com/unic/darvin-boilerplate/wiki/5.-Elements)<br>
+6. [Command Line Interface](https://github.com/unic/darvin-boilerplate/wiki/6.-Command-Line-Interface)<br>
 
 
 ## Author
