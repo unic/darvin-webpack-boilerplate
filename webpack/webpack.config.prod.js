@@ -1,19 +1,25 @@
 /* eslint-disable */
+const fs = require('fs');
+let nvmRcVersion = fs.readFileSync('./.nvmrc', 'utf8').replace(/[^0-9.]/g, "");
+let nodeProcessVersion = process.version.replace(/[^0-9.]/g, "");
 
-const path = require('path');
-const basePath = process.cwd();
-
-const merge = require('webpack-merge');
-const WebpackMessages = require('webpack-messages');
-const WebpackShellPlugin = require('webpack-shell-plugin-next');
+if(nodeProcessVersion != nvmRcVersion) {
+  console.error(`DV#> Please make sure node is running under v${nvmRcVersion}`);
+  process.exit();
+}
 
 // init globals
 require('../.darvinconf.js');
 
+const path = require('path');
+const basePath = process.cwd();
+const merge = require('webpack-merge');
+const WebpackMessages = require('webpack-messages');
+const WebpackShellPlugin = require('webpack-shell-plugin-next');
+
 const webpackConfig = require('../webpack.config');
 const { printFancy } = require('./helpers/darvin-helpers');
 const { getDarvinRC, createDynamicRequireArray } = require('./helpers/config-helpers');
-
 
 let darvinRcString = getDarvinRC();
 let dynamicRequireArr = createDynamicRequireArray(darvinRcString);

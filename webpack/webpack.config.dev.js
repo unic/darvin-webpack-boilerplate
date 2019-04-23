@@ -1,11 +1,19 @@
 /* eslint-disable */
+const fs = require('fs');
+let nvmRcVersion = fs.readFileSync('./.nvmrc', 'utf8').replace(/[^0-9.]/g, "");
+let nodeProcessVersion = process.version.replace(/[^0-9.]/g, "");
+
+if(nodeProcessVersion != nvmRcVersion) {
+  console.error(`DV#> Please make sure node is running under v${nvmRcVersion}`);
+  process.exit();
+}
+
+// init globals
+require('../.darvinconf.js');
 
 const path = require('path');
 const basePath = process.cwd();
 const merge = require('webpack-merge');
-
-// init globals
-require('../.darvinconf.js');
 
 const webpackConfig = require('../webpack.config');
 const { getDarvinRC, createDynamicRequireArray } = require('./helpers/config-helpers');
