@@ -1,9 +1,7 @@
 /* ==|====================
-Base
+ Base
 ======================= */
 
-// http://stackoverflow.com/questions/17045132/scrollbar-overlay-in-ie10-how-do-you-stop-that
-// Prevents IE from overlapping transparent scrollbar
 @-ms-viewport {
   width: auto;
 }
@@ -22,19 +20,17 @@ html {
   }
 }
 
-body {
-  font-weight: 400;
-  font-size: $base-font-size;
-  font-family: $font-1;
-  color: $color1;
-  letter-spacing: 0.025rem;
-  background-color: $color2;
-}
-
 body,
 html {
   margin: 0;
   padding: 0;
+}
+
+body {
+  font-weight: 400;
+  font-family: $font-1;
+  color: #000;
+  background-color: #fff;
 }
 
 ::selection {
@@ -42,64 +38,40 @@ html {
   background: $color5;
 }
 
-.h1-alike,
+h1, h2, h3, h4, h5, h6 {
+  @extend %header-base;
+}
+
 h1 {
-  @extend %header-base;
-  margin: 0;
-  padding: $space-medium 0;
-  line-height: 1.2;
-  font-family: $font-1;
+  font-size: rem(32);
 }
 
-.h2-alike,
 h2 {
-  @extend %header-base;
-  margin: 0;
-  padding: $space-small 0;
-  font-size: rem(24);
-  line-height: 1.2;
+  font-size: rem(28);
 }
 
-.h3-alike,
 h3 {
-  @extend %header-base;
-  font-weight: 600;
-  font-size: rem(20);
-  line-height: 1.5;
-  font-family: $font-1;
-  font-style: normal;
+  font-size: rem(24);
 }
 
-.h4-alike,
 h4,
 h5,
 h6 {
-  @extend %header-base;
-  margin: 0;
-  padding: em(21) 0 em(8);
-  font-weight: 600;
-  font-size: em(17);
-  line-height: 1.5;
-  font-family: $font-1;
-  font-style: normal;
-  @media #{$medium-up} {
-    font-size: em(19);
-  }
-}
+  font-size: rem(19);
 
-p {
-  margin: 0;
-  padding-bottom: 1rem;
-  line-height: 1.7;
+  @media #{$medium-up} {
+    font-size: rem(21);
+  }
 }
 
 a {
   text-decoration: none;
 }
 
-.icon {
-  width: 1.25rem;
-  height: 1.25rem;
+p {
+  margin: 0;
+  padding-bottom: rem(10);
+  line-height: 1.4;
 }
 
 img {
@@ -108,21 +80,19 @@ img {
   border: 0;
 }
 
+figure {
+  margin: 0;
+}
+
+figcaption,
 caption {
-  line-height: 1;
+  @extend %label-base;
+  padding-top: em(10);
 }
 
 button {
   @extend %clean-button;
   @extend %paragraph-base;
-}
-
-hr {
-  height: rem(1px);
-  margin: rem(20px) 0;
-  padding: 0;
-  background-color: black;
-  border: 0;
 }
 
 input,
@@ -136,27 +106,21 @@ label {
   @extend %paragraph-base;
 }
 
-figure {
-  margin: 0;
-}
-
-figcaption {
-  @extend %label-base;
-  padding-top: em(10);
-}
-
 ul {
   $list-spacer: rem(4);
+
   margin: 0;
-  padding-bottom: $space-medium;
   padding-left: rem(20);
+
   ul {
     padding-top: $list-spacer;
     padding-bottom: 0;
   }
+
   li {
     @extend %paragraph-base;
     margin-bottom: $list-spacer;
+
     &:last-child {
       margin-bottom: 0;
     }
@@ -177,13 +141,13 @@ ol {
     line-height: 1.5em;
 
     &:before {
-      $size: rem(28);
+      $ol-size: rem(28);
+
       content: counter(item);
       position: absolute;
       display: block;
-      width: $size;
-      height: $size;
-      margin: 0 $space-small $space-small -2.75rem;
+      width: $ol-size;
+      height: $ol-size;
       font-size: 0.9rem;
       line-height: 1.75;
       text-align: center;

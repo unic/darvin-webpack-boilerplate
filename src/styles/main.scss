@@ -13,6 +13,7 @@ $output-bourbon-deprecation-warnings: false;
 // Settings
 @import "settings/breakpoints";
 @import "settings/fonts";
+@import "settings/icons";
 @import "../templates/components/c02-grid";
 
 // Tools

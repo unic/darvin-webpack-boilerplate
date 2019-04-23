@@ -18,6 +18,6 @@ global.output = {
   'index': 'index'
 }
 global.server = {
-  'base': (process.env.NODE_ENV === 'dev') ? '/' : '/dist/',
+  'base': (process.env.NODE_ENV === 'dev') ? '' : '/dist',
   'assets': 'assets'
 }
