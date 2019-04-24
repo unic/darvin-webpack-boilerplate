@@ -4,8 +4,9 @@ const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-let { previewIndexObj, allIconsInDir } = require('./darvin-webpack'),
-    htmlTemplates = [];
+let { previewIndexObj, allIconsInDir } = require('./darvin-preview');
+
+let htmlTemplates = [];
 
 
 const dynamicSort = (property) => {

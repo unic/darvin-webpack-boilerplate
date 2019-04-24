@@ -6,8 +6,9 @@ const fs = require('fs');
 const simpleGit = require('simple-git')(basePath);
 const crypto = require('crypto');
 
-const { filterCommitsInDateRange, prepareDependencies, getTemplateFiles, getSVGIcons } = require('./../helpers/darvin-helpers');
-const { writeFile, getDirs } = require('./../helpers/file-helpers');
+const { filterCommitsInDateRange, getTemplateFiles, getSVGIcons } = require('../helpers/darvin-helpers');
+const { getNunjuckDependencies } = require('../helpers/nunjucks-helpers');
+const { writeFile, getDirs } = require('../helpers/file-helpers');
 
 let webpackEntryObj = {},
     previewIndexObj = {
@@ -78,7 +79,7 @@ previewIndexObj.types.forEach((type) => {
         previewIndexObj.payload[type][file].config = config;
 
         if(type!='pages') {
-          prepareDependencies(file, type);
+          getNunjuckDependencies(file, type);
         }
 
 
