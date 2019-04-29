@@ -9,7 +9,7 @@
       <meta name="format-detection" content="telephone=no">
    </head>
    <body class="preview" data-name="{{ darvin.name }}" data-filepath="{{ darvin.filepath }}" data-path="{{ darvin.path }}" data-chunk="{{ darvin.chunk }}">
-      <link href="{{ darvin.server.base }}/preview/styles/preview.css" rel="stylesheet">
+      <link href="{{ darvin.config.server.base }}/preview/styles/preview.css" rel="stylesheet">
       <script>
         if(localStorage.getItem("darvin-darkmode")) {
           if(localStorage.getItem("darvin-darkmode")=='true') {
@@ -82,6 +82,6 @@
         </main>
       </article>
 
-      <script type="text/javascript" src="{{ darvin.server.base }}/preview/preview.js"></script>
+      <script type="text/javascript" src="{{ darvin.config.server.base }}/preview/preview.js"></script>
     </body>
 </html>

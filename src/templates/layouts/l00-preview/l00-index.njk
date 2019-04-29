@@ -10,7 +10,7 @@
    </head>
 
    <body class="preview preview--index">
-      <link href="{{ darvin.server.base }}/preview/styles/preview.css" rel="stylesheet">
+      <link href="{{ darvin.config.server.base }}/preview/styles/preview.css" rel="stylesheet">
       <script>
         if(localStorage.getItem("darvin-darkmode")) {
           if(localStorage.getItem("darvin-darkmode")=='true') {
@@ -22,7 +22,7 @@
         <!-- start preview header -->
         <header id="prev-l-header">
           <div class="prev-l-constrainer">
-            <div class="prev-m-title"><div class="prev-h1">Darvin Boilerplate</div></div>
+            <div class="prev-m-title"><div class="prev-h1">{{ darvin.config.project }}</div></div>
             <div class="prev-m-filter"><component is="card-filter" title="Filter"></component></div>
           </div>
         </header>
@@ -37,6 +37,6 @@
       <script type="text/javascript">
           var darvinPayload = {{index.payload|dump|safe }};
       </script>
-      <script type="text/javascript" src="{{ darvin.server.base }}/preview/preview.js"></script>
+      <script type="text/javascript" src="{{ darvin.config.server.base }}/preview/preview.js"></script>
     </body>
 </html>

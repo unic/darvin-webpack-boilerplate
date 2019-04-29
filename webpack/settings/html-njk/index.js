@@ -2,9 +2,6 @@ const path = require('path');
 
 const basePath = process.cwd();
 const isDev = (process.env.NODE_ENV === 'dev');
-
-const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
-
 const nunjucksContext = require('../../libs/nunjucks-context');
 const nunjucksDevConfig = require('../../../src/templates/config/config.dev.json');
 const nunjucksProdConfig = require('../../../src/templates/config/config.prod.json');
@@ -28,29 +25,7 @@ const prod = {
     ]
   },
   plugins: [
-    ...htmlTemplates,
-    new FaviconsWebpackPlugin({
-      logo: path.resolve(global.inputDirs.src + '/' + global.inputDirs.assets + '/images/favicons/favicon-prod.png'),
-      prefix: global.server.assets + '/images/icons/',
-      emitStats: false,
-      statsFilename: 'iconstats-[hash].json',
-      persistentCache: true,
-      inject: true,
-      background: '#000',
-      title: 'Darvin',
-      icons: {
-        android: true,
-        appleIcon: true,
-        appleStartup: true,
-        coast: false,
-        favicons: true,
-        firefox: true,
-        opengraph: false,
-        twitter: false,
-        yandex: false,
-        windows: false
-      }
-    })
+    ...htmlTemplates
   ],
 };
 

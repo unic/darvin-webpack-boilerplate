@@ -1,3 +1,4 @@
+global.project = 'Darvin';
 global.mainChunk = 'js/main';
 global.template = {
   'extIn': 'njk',

@@ -24,7 +24,8 @@
      "addons":[
         "analyzer",
         "markdown",
-        "i18n"
+        "i18n",
+        "favicons"
      ]
   },
   "name":"Darvin",
