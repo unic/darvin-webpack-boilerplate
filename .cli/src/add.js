@@ -1,6 +1,6 @@
 /* eslint-disable */
 const inquirer = require('inquirer');
-const { getScaffoldingOptions, setScaffolding } = require('../../webpack/helpers/scaff-helpers');
+const { getScaffoldingOptions, setScaffolding, getNextIncrementalNumber } = require('../../webpack/helpers/scaff-helpers');
 
 const _add = () => {
   let scaffStruct = getScaffoldingOptions();
@@ -12,11 +12,25 @@ const _add = () => {
       name: 'category',
       message: 'Select the element to add:',
       choices: scaffStruct
-    },
+    }
+  ])
+  .then(response => {
+    _addDetails(response);
+  });
+}
+
+const _addDetails = (response) => {
+  let nextDefaultNumber = getNextIncrementalNumber(response.category);
+
+  inquirer
+  .prompt([
     {
       type: 'input',
       name: 'name',
-      message: "Type the element name:"
+      message: "Type the element name:",
+      default: () => {
+        return nextDefaultNumber
+      }
     },
     {
       type: 'input',
@@ -48,6 +62,7 @@ const _add = () => {
     _addConfirm(response);
   });
 }
+
 
 const _addConfirm = (response) => {
   inquirer

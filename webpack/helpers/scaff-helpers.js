@@ -52,9 +52,36 @@ copyDirectoryWithContext = (confirm, inDir, outDir, vars, response) => {
       deleteFile(basePath + `/src/templates/${response.category}/${response.name}/index.js`);
     }
   })
+},
+getNextIncrementalNumber = (type) => {
+  let settingsPath = path.resolve(basePath, `src/templates/${type}`);
+  let dirs = getDirs(settingsPath);
+  let alpha, numeric, highestNumber = 0;
+
+  Number.prototype.pad = function(size) {
+    var s = String(this);
+    while (s.length < (size || 2)) {s = "0" + s;}
+    return s;
+  }
+
+  dirs.forEach((dir, i) => {
+    let splitName = dir.split('-');
+    if(splitName[1]) {
+      alpha = splitName[0].replace(/[0-9]/g, '');
+      numeric = splitName[0].replace(/\D/g,'');
+      if(numeric.length > 0 && numeric > highestNumber) {
+        highestNumber = numeric;
+      }
+    }
+  });
+
+  highestNumber++;
+
+  return `${alpha}${highestNumber.pad(2)}-`;
 };
 
 module.exports = {
   getScaffoldingOptions: getScaffoldingOptions,
-  setScaffolding: setScaffolding
+  setScaffolding: setScaffolding,
+  getNextIncrementalNumber: getNextIncrementalNumber
 };
