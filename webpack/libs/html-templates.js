@@ -6,7 +6,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 let { previewIndexObj, allIconsInDir } = require('./darvin-preview');
 
-let htmlTemplates = [];
+let templates = [];
 
 
 const dynamicSort = (property) => {
@@ -41,14 +41,14 @@ Object.keys(previewIndexObj.payload).forEach(function (key) {
           templateParameters: elementObj
         });
 
-        htmlTemplates.push(obj)
+        templates.push(obj)
       })
 
   });
 });
 
 // add index
-htmlTemplates.push(new HtmlWebpackPlugin({
+templates.push(new HtmlWebpackPlugin({
   filename: `${global.preview.indexFileOutput}`,
   template: `${global.inputDirs.src}/${global.inputDirs.templates}/${global.preview.indexFileInput}`,
   hash: true,
@@ -70,7 +70,7 @@ htmlTemplates.push(new HtmlWebpackPlugin({
 
 module.exports = {
   imageSrc: `/${global.server.assets}/images/renditions/`,
-  htmlTemplates: htmlTemplates, // nunjuck loader
+  templates: templates, // nunjuck loader
   index: previewIndexObj, //  index generator
   sprite: allIconsInDir
 };

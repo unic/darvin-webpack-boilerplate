@@ -7,7 +7,7 @@ const simpleGit = require('simple-git')(basePath);
 const crypto = require('crypto');
 
 const { filterCommitsInDateRange, getTemplateFiles, getSVGIcons } = require('../helpers/darvin-helpers');
-const { getNunjuckDependencies } = require('../helpers/nunjucks-helpers');
+const { writeTemplateDependencies } = require('../helpers/nunjucks-helpers');
 const { writeFile, getDirs } = require('../helpers/file-helpers');
 
 let webpackEntryObj = {},
@@ -79,7 +79,7 @@ previewIndexObj.types.forEach((type) => {
         previewIndexObj.payload[type][file].config = config;
 
         if(type!='pages') {
-          getNunjuckDependencies(file, type);
+          writeTemplateDependencies(file, type);
         }
 
 
@@ -104,7 +104,7 @@ previewIndexObj.types.forEach((type) => {
         } catch (err) { }*/
 
         // filter commits from last days
-        simpleGit.log({ 'file': `./${global.inputDirs.src}/${global.inputDirs.templates}/${type}/${file}/${file}.njk` }, (err, log) => {
+        simpleGit.log({ 'file': `./${global.inputDirs.src}/${global.inputDirs.templates}/${type}/${file}/${file}.${global.template.extIn}` }, (err, log) => {
           let obj = {};
           let filteredCommits = filterCommitsInDateRange(startDate, endDate, log.all);
 

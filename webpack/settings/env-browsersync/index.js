@@ -10,7 +10,7 @@ const dev = {
       },
       startPath: 'index.html',
       port: 1712,
-      files: ['css/*.css', 'js/*.js', '**/*.njk'],
+      files: ['css/*.css', 'js/*.js', `**/*.${global.template.extIn}`],
       open: true,
       https: false,
       notify: false,

@@ -2,18 +2,18 @@ const path = require('path');
 
 const basePath = process.cwd();
 const isDev = (process.env.NODE_ENV === 'dev');
-const nunjucksContext = require('../../libs/nunjucks-context');
+const htmlTemplates = require('../../libs/html-templates');
 const nunjucksDevConfig = require('../../../src/templates/config/config.dev.json');
 const nunjucksProdConfig = require('../../../src/templates/config/config.prod.json');
 
-nunjucksContext.config = (isDev) ? nunjucksDevConfig : nunjucksProdConfig;
+htmlTemplates.config = (isDev) ? nunjucksDevConfig : nunjucksProdConfig;
 
 const nunjucksOptions = JSON.stringify({
   searchPaths: `${basePath}/src/templates/`,
-  context: nunjucksContext,
+  context: htmlTemplates,
 });
 
-const htmlTemplates = nunjucksContext.htmlTemplates;
+const templates = htmlTemplates.templates;
 
 const prod = {
   module: {
@@ -25,7 +25,7 @@ const prod = {
     ]
   },
   plugins: [
-    ...htmlTemplates
+    ...templates
   ],
 };
 
@@ -39,7 +39,7 @@ const dev = {
     ]
   },
   plugins: [
-    ...htmlTemplates
+    ...templates
   ],
 }
 

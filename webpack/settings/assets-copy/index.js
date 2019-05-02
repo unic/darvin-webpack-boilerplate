@@ -26,7 +26,7 @@ const prod = {
         }
       },
       {
-        from: basePath + '/' + global.inputDirs.src + '/' + global.inputDirs.templates + '/modules/**/*.njk',
+        from: basePath + '/' + global.inputDirs.src + '/' + global.inputDirs.templates + `/modules/**/*.${global.template.extIn}`,
         to: '/',
         flatten: false,
         transformPath (targetPath) {
@@ -34,7 +34,7 @@ const prod = {
         }
       },
       {
-        from: basePath + '/' + global.inputDirs.src + '/' + global.inputDirs.templates + '/components/**/*.njk',
+        from: basePath + '/' + global.inputDirs.src + '/' + global.inputDirs.templates + `/components/**/*.${global.template.extIn}`,
         to: '/',
         flatten: false,
         transformPath (targetPath) {
@@ -83,7 +83,7 @@ const dev = {
         }
       },
       {
-        from: basePath + '/' + global.inputDirs.src + '/' + global.inputDirs.templates + '/modules/**/*.njk',
+        from: basePath + '/' + global.inputDirs.src + '/' + global.inputDirs.templates + `/modules/**/*.${global.template.extIn}`,
         to: '/',
         flatten: false,
         transformPath (targetPath) {
@@ -91,7 +91,7 @@ const dev = {
         }
       },
       {
-        from: basePath + '/' + global.inputDirs.src + '/' + global.inputDirs.templates + '/components/**/*.njk',
+        from: basePath + '/' + global.inputDirs.src + '/' + global.inputDirs.templates + `/components/**/*.${global.template.extIn}`,
         to: '/',
         flatten: false,
         transformPath (targetPath) {

@@ -76,9 +76,9 @@ module.exports = function(content) {
   let darvin = {};
 
   // bind specific template param context
-  nunjucksContext.htmlTemplates.forEach((htmlTemplates) => {
-    if (htmlTemplates.options.templateParameters.path === loaderPathRel) {
-      darvin = htmlTemplates.options.templateParameters;
+  nunjucksContext.templates.forEach((templates) => {
+    if (templates.options.templateParameters.path === loaderPathRel) {
+      darvin = templates.options.templateParameters;
     }
   });
 

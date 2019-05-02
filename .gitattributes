@@ -4,6 +4,7 @@
 # Declare files that will always have CRLF line endings on checkout.
 *.js text eol=crlf
 *.njk text eol=crlf
+*.twig text eol=crlf
 *.json text eol=crlf
 *.vue text eol=crlf
 *.html text eol=crlf

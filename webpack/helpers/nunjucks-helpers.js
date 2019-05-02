@@ -5,7 +5,7 @@ const nunjucks = require('nunjucks');
 const { parseFile } = require('../libs/nunjucks-parser');
 const { writeFile } = require('./file-helpers');
 
-const getNunjuckDependencies = async (file, type) => {
+const writeTemplateDependencies = async (file, type) => {
   let env = nunjucks.configure(`./${global.inputDirs.src}/${global.inputDirs.templates}`);
   let { dependencies } = await parseFile(env, `${type}/${file}/${file}.${global.template.extIn}`);
 
@@ -50,5 +50,5 @@ const getNunjuckDependencies = async (file, type) => {
 };
 
 module.exports = {
-  getNunjuckDependencies: getNunjuckDependencies
+  writeTemplateDependencies: writeTemplateDependencies
 };

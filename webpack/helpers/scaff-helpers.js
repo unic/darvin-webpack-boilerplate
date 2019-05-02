@@ -34,7 +34,7 @@ setScaffolding = (response, confirm) => {
     design: response.design
   }
 
-  const inDir = path.join(process.cwd(), `.cli/.scaffold/.${response.category}/.njk`)
+  const inDir = path.join(process.cwd(), `.cli/.scaffold/.${response.category}/.${global.template.extIn}`)
   const outDir = path.join(process.cwd(), `src/templates/${response.category}/${response.name}`)
 
   copyDirectoryWithContext(confirm, inDir, outDir, vars, response);
