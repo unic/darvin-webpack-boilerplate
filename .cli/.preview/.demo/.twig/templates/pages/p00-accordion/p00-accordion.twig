@@ -1,0 +1,9 @@
+{% extends "@layouts/l00-default/l00-default.twig" %}
+
+{% import "@modules/m00-accordion/m00-accordion.preview.1.twig" as accordion01 %}
+
+{% set title = 'Preview Test Page' %}
+
+{% block content %}
+  {{ accordion01.main() }}
+{% endblock %}

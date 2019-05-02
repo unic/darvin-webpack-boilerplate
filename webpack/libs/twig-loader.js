@@ -16,13 +16,13 @@ module.exports = async function(content) {
 
   let loader,
       html,
-      nunjucksContext = opt.context,
+      twigContext = opt.context,
       darvin = {},
       twing,
       dependencies;
 
   // bind specific template param context
-  nunjucksContext.templates.forEach((templates) => {
+  twigContext.templates.forEach((templates) => {
     if (templates.options.templateParameters.path === loaderPathRel) {
       darvin = templates.options.templateParameters;
     }
@@ -55,7 +55,7 @@ module.exports = async function(content) {
 
   twing.addGlobal("darvin", darvin);
 
-  html = twing.render(loaderPath, nunjucksContext);
+  html = twing.render(loaderPath, twigContext);
 
   callback(null, html);
 };

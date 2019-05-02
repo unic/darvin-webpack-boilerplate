@@ -1,9 +1,6 @@
 ![](http://tobiasfrei.ch/github/darvin-boilerplate/darvin-MIT_(c)TobiasFrei.svg)
 
-create static HTML pages with preview. Suitable for the delivery of frontend prototypes for CMS purpose.
-
-Webpack Bundler | ES201X Transpiler | Mozilla Nunjucks HTML | Dart-Sass | SVG Sprite Generator | Hot Module Replacement | Bundle Analyzer | i18n Configuration | Custom Modernizr | Preview Build
-
+webpack only boilerplate for sophisticated templating with Nunjucks or Twig. providing lazy-loading JavaScript chunks, frontend preview and easy extendable Webpack settings.
 
 ## Quickstart
 ```
@@ -13,7 +10,7 @@ npm run start
 
 ## CLI
 
-Use darvin-cli to edit settings and add new modules/components.<br>
+Use darvin-cli for switch template engine to Twig or customize config.<br>
 [> CLI Usage](https://github.com/tobiasfrei/darvin-boilerplate/wiki/6.-CLI)<br>
 
 ![](http://tobiasfrei.ch/github/darvin-boilerplate/darvin-cli.gif)

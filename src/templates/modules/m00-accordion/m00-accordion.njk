@@ -1,0 +1,31 @@
+{% import "components/c00-svg_icon/c00-svg_icon.njk" as svgIcon %}
+
+{#
+    Module Accordion
+#}
+
+{% macro main(label='', classes = false) %}
+    <!-- m-Accordion Item -->
+    <div class="m-accordion{% if classes %}{% for class in classes %} {{ class }}{% endfor %}{% endif %}" data-acc>
+      <a class="trigger" data-acc-t>
+        <div class="label-wrapper">
+          {{ accordionLabel(label=label) }}
+        </div>
+
+        <div class="acc-icon">
+          {{ svgIcon.main(icon='arrow-thick-down' ) }}
+        </div>
+      </a>
+
+      <div class="contentbox" data-acc-cb>
+        <div class="content" data-acc-c>
+          {{ caller() }}
+        </div>
+      </div>
+    </div>
+    <!-- END - m-Accordion Item-->
+{% endmacro %}
+
+{% macro accordionLabel(label='') %}
+    <div class="default-label">{{ label }}</div>
+{% endmacro %}

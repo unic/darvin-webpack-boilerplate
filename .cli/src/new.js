@@ -1,6 +1,8 @@
 /* eslint-disable */
 const inquirer = require('inquirer');
 const { setDarvinRC, getSettingsStruct } = require('../../webpack/helpers/config-helpers');
+const { copyDemo, setConfig } = require('../../webpack/helpers/scaff-helpers');
+
 
 let search = (needle, haystack, found = []) => {
   Object.keys(haystack).forEach((key) => {
@@ -96,8 +98,27 @@ const _newMeta = (rcSettings) => {
   .prompt([
     {
       type: 'input',
+      name: 'entry',
+      message: "define the main entry:",
+      default: () => {
+        return 'js/main'
+      }
+    },
+    {
+      type: 'input',
+      name: 'router',
+      message: "define the absolute path for prod:",
+      default: () => {
+        return '/dist'
+      }
+    },
+    {
+      type: 'input',
       name: 'name',
-      message: "Type the project name:"
+      message: "Type the project name:",
+      default: () => {
+        return 'Darvin'
+      }
     },
     {
       type: 'input',
@@ -105,17 +126,22 @@ const _newMeta = (rcSettings) => {
       message: "Type the company name:"
     }
   ])
-  .then(answer => {
-    rc['name'] = answer.name;
-    rc['company'] = answer.company;
-    console.log(JSON.stringify(rc, null, '  '));
-    _newConfirm(rc);
+  .then(ansMeta => {
+    rc['name'] = ansMeta.name;
+    rc['company'] = ansMeta.company;
+
+    _newConfirm(rc, ansMeta);
   });
 }
 
-const _newConfirm = (rc) => {
+const _newConfirm = (rc, ansMeta) => {
   inquirer
   .prompt([
+    {
+      type: 'confirm',
+      name: 'demo',
+      message: 'Add template demo?'
+    },
     {
       type: 'confirm',
       name: 'write',
@@ -124,6 +150,24 @@ const _newConfirm = (rc) => {
   ])
   .then(confirm => {
     if(confirm.write) {
+
+      if(confirm.demo) {
+
+        let activeEngine = rc.settings.html[0];
+
+        if(activeEngine == 'nunjucks') {
+          activeEngine = 'njk';
+        }
+
+        copyDemo(activeEngine);
+        setConfig({
+          name: ansMeta.name,
+          extIn: activeEngine,
+          entry: ansMeta.entry,
+          router: ansMeta.router
+        })
+      }
+
       console.log("DV#> write settings");
       setDarvinRC(rc);
     } else {

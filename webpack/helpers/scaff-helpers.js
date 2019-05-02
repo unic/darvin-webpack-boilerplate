@@ -3,6 +3,7 @@ const path = require('path');
 const basePath = process.cwd();
 
 const copyScaffolding = require('./copy-template-dir');
+const fs = require('fs-extra');
 
 const { capitalize } = require('./../helpers/darvin-helpers');
 const { getDirs, deleteFile } = require('./../helpers/file-helpers');
@@ -78,10 +79,40 @@ getNextIncrementalNumber = (type) => {
   highestNumber++;
 
   return `${alpha}${highestNumber.pad(2)}-`;
+},
+copyDemo = (engine, category) => {
+  fs.copy(path.join(process.cwd(), `.cli/.preview/.demo/.${engine}`), path.join(process.cwd(), `src`), {overwrite: true}, function (err) {
+    if (err) {
+      console.error(err);
+    } else {
+      console.log("demo copy success!");
+    }
+  });
+},
+setConfig = (data) => {
+  const vars = {
+    name: data.name,
+    extIn: data.extIn,
+    entry: data.entry,
+    router: data.router
+  }
+
+  const inDir = path.join(process.cwd(), `.cli/.config`);
+  const outDir = process.cwd();
+
+  copyConfigFile(inDir, outDir, vars);
+},
+copyConfigFile = (inDir, outDir, vars) => {
+  copyScaffolding(inDir, outDir, vars, (err, createdFiles) => {
+    if (err) throw err
+    console.log("config copy ok");
+  })
 };
 
 module.exports = {
   getScaffoldingOptions: getScaffoldingOptions,
   setScaffolding: setScaffolding,
-  getNextIncrementalNumber: getNextIncrementalNumber
+  getNextIncrementalNumber: getNextIncrementalNumber,
+  copyDemo: copyDemo,
+  setConfig: setConfig
 };

@@ -26,6 +26,10 @@ getDarvinRC = () => {
     console.error('DV#> no darvin rc file');
   }
 
+  if(!rcData.settings) {
+    return '';
+  }
+
   // get array values and push to string array
   const rcDataVal = Object.values(rcData.settings)
   rcDataVal.forEach((array, i) => {
