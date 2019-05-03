@@ -5,46 +5,52 @@
  * @module icon
  */
 
-const instance = {};
-const defaults = {
-  container: '.m-prev-icons',
-  icon: '.m-prev-flexgrid__iconbox'
-};
+import createModule from '@js/libs/create-module';
 
-const settings = {};
+export default createModule({
+  options: () => ({
+    container: '.m-prev-icons',
+    icon: '.m-prev-flexgrid__iconbox'
+  }),
 
-// Module Variables
-let container,
-    icons;
+  /**
+   * createButton
+   * @param {Object} module - Module
+   * @param {Element} module.el - Element
+   * @param {Object} module.state - State
+   * @param {Object} module.options - Options
+   * @return {Object} state
+   */
+  constructor({ el, state, options }) {
+    let container,
+        icons;
 
-// Private Functions
-const copyIcon = (e) => {
-  var copyText = e.currentTarget.querySelector('input');
-  copyText.select();
-  document.execCommand("copy");
-};
+    // Private Functions
+    const copyIcon = (e) => {
+      var copyText = e.currentTarget.querySelector('input');
+      copyText.select();
+      document.execCommand("copy");
+    };
 
-/**
- * Initialize module
- *
- * @param {object} options - Override default settings with options object.
- * @return {object|undefined} Instance of created module.
- */
+    /* --- Public methods --- */
 
-instance.init = (options) => {
-  Object.assign(settings, defaults, options);
+    /**
+     * init
+     * @return {undefined}
+     */
+    state.init = () => {
+      container = document.querySelector(options.container);
+      if(!container) return;
 
-  // Public Code
-  container = document.querySelector(settings.container);
-  if(!container) return;
+      icons = document.querySelectorAll(options.icon);
 
-  icons = document.querySelectorAll(settings.icon);
+      [...icons].forEach((icon) => {
+        icon.addEventListener('click', copyIcon);
+      });
+    };
 
-  [...icons].forEach((icon) => {
-    icon.addEventListener('click', copyIcon);
-  });
+    state.init();
 
-  return instance;
-};
-
-export default instance;
+    return state;
+  },
+});

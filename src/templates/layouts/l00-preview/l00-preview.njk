@@ -26,7 +26,7 @@
               <div class="prev-m-title">{{ darvin.name }}</div>
               <div class="prev-m-subtitle">{{ variantName }}</div>
             </div>
-            <nav class="prev-m-servicenav">
+            <nav class="prev-m-servicenav" data-module="lazy-prev-bar">
               {% if darvin.previews.length > 1 %}
                   {% for link in darvin.previews %}
                     {% set linkNumber = loop.index %}

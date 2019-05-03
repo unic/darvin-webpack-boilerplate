@@ -26,7 +26,8 @@ const settings = {
     path: path.resolve(basePath, 'dist/preview'),
     pathinfo: false,
     filename: 'preview.js',
-    publicPath: '/'
+    chunkFilename: '[name].[contenthash].js',
+    publicPath: '/preview/'
   },
   devtool: 'cheap-module-eval-source-map',
   watchOptions: {
@@ -46,7 +47,16 @@ const settings = {
     PREVIEW  DONE`, "font-family:monospace")
       }
     })
-  ]
+  ],
+  resolve: {
+    alias: {
+      '@root': basePath,
+      '@preview': path.resolve(basePath, 'preview/'),
+      '@js': path.resolve(basePath, 'preview/js/'),
+      '@css': path.resolve(basePath, 'preview/styles/'),
+      '@html': path.resolve(basePath, 'preview/templates/')
+    }
+  }
 };
 
 module.exports = merge(webpackConfig, settings, cleaner, js, sass, fonts, vue, sprites);

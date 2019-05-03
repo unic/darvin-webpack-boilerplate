@@ -1,4 +1,4 @@
-import loadPolyfills from '@js/helpers/polyfills';
+import loadPolyfills from '../helpers/polyfills';
 
 /**
  * createApp

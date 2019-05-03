@@ -29,9 +29,6 @@ for (var i = 0; i < dynamicRequireArr.length; i++) {
 }
 
 const settings = {
-  entry: {
-    "js/main": ["./src/js/main.js"]
-  },
   output: {
     devtoolLineToLine: true,
     sourceMapFilename: global.server.assets + '/[name].js.map',
@@ -60,7 +57,19 @@ const settings = {
       logger: str => console.log(`DV#> ${str}`),
       onComplete: printFancy
     })
-  ]
+  ],
+  resolve: {
+    alias: {
+      '@root': basePath,
+      '@src': path.resolve(basePath, 'src/'),
+      '@js': path.resolve(basePath, 'src/js/'),
+      '@css': path.resolve(basePath, 'src/styles/'),
+      '@html': path.resolve(basePath, 'src/templates/')
+    }
+  }
 };
+
+settings.entry = {};
+settings.entry[global.mainChunk] = [`./src/${global.mainChunk}.js`];
 
 module.exports = eval('merge(' + darvinRcString + ')');

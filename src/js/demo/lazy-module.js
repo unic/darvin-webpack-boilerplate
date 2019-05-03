@@ -1,4 +1,4 @@
-import createModule from '../libs/create-module';
+import createModule from '@js/libs/create-module';
 
 export default createModule({
   options: () => ({

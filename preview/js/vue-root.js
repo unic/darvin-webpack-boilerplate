@@ -1,12 +1,12 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import store from './vuex';
+import store from '@js/vuex';
 
 // Components
-import CardList from './card-list/card-list';
-import CardItem from './card-list/card-item/card-item';
-import CardIndex from './card-index/card-index';
-import FilterView from './card-filter/card-filter';
+import CardList from '@js/card-list/card-list';
+import CardItem from '@js/card-list/card-item/card-item';
+import CardIndex from '@js/card-index/card-index';
+import FilterView from '@js/card-filter/card-filter';
 
 Vue.use(Vuex);
 

@@ -18,7 +18,7 @@ let settings = {},
     moduleCards,
     counter = 0;
 
-let j = require("../../node_modules/jsplumb/dist/js/jsplumb.js").jsPlumb.getInstance({
+let j = require("@root/node_modules/jsplumb/dist/js/jsplumb.js").jsPlumb.getInstance({
   Connector: ["Bezier", {curviness: 100, stub: 10}, {cssClass:"connectorClass", lineWidth:2, strokeStyle:'blue'}],
   Anchor: "Bottom",
   endpoint:[ "Dot", { radius: 1 } ],

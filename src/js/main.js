@@ -1,15 +1,15 @@
-import './helpers/polyfills';
+import '@js/helpers/polyfills';
 
 // Bundle Config
-import '../../.modernizrrc';
-import './libs/modernizr-custom-tests';
-import '../styles/main.scss';
+import '@root/.modernizrrc';
+import '@js/libs/modernizr-custom-tests';
+import '@css/main.scss';
 
 // Page Defaults
-import './main.config';
+import '@js/main.config';
 
-import createApp from './libs/create-app';
-import button from './demo/button';
+import createApp from '@js/libs/create-app';
+import button from '@js/demo/button';
 
 // TODO: Define namespace where modules are registered
 window.apps = {};
@@ -29,5 +29,5 @@ window.apps.main = createApp({
   },
 });
 
-import '../templates/modules/m00-accordion/main.js';
+import '@html/modules/m00-accordion/main.js';
 

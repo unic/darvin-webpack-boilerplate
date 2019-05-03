@@ -26,9 +26,6 @@ for (var i = 0; i < dynamicRequireArr.length; i++) {
 }
 
 const settings = {
-  entry: {
-    "js/main": ["./src/js/main.js"]
-  },
   output: {
     devtoolLineToLine: false,
     path: path.resolve(basePath, 'dist'),
@@ -37,7 +34,20 @@ const settings = {
     chunkFilename: global.server.assets + '/async/[name].[contenthash].js',
     publicPath: '/'
   },
-  devtool: 'cheap-module-eval-source-map'
+  devtool: 'cheap-module-eval-source-map',
+  resolve: {
+    alias: {
+      '@root': basePath,
+      '@src': path.resolve(basePath, 'src/'),
+      '@js': path.resolve(basePath, 'src/js/'),
+      '@css': path.resolve(basePath, 'src/styles/'),
+      '@html': path.resolve(basePath, 'src/templates/'),
+      '@webpack': path.resolve(basePath, 'webpack/'),
+    }
+  }
 };
+
+settings.entry = {};
+settings.entry[global.mainChunk] = [`./src/${global.mainChunk}.js`];
 
 module.exports = eval('merge(' + darvinRcString + ')');
