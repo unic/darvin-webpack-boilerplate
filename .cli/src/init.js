@@ -1,4 +1,7 @@
 /* eslint-disable */
+const path = require('path');
+var merge = require('deepmerge');
+
 const { _presets } = require('./partials/presets');
 const { _rc } = require('./partials/rc');
 const { _meta } = require('./partials/meta');
@@ -6,9 +9,11 @@ const { _confirm } = require('./partials/confirm');
 
 const { search } = require('./helpers/cli-helpers');
 const { getSettingsStruct, setDarvinRC } = require('../../webpack/helpers/config-helpers');
+const { readFile, writeFile } = require('../../webpack/helpers/file-helpers');
 const { setConfig, copyDemo, copyPreview } = require('../../webpack/helpers/scaff-helpers');
 
 let cliObj = {};
+let cliPackages = [];
 
 
 const _init = () => {
@@ -24,8 +29,11 @@ const setPresets = () => {
     console.error('DV#> error in presets.')
   });
 },
-hookPresets = (data) => {
-  cliObj.presets = data;
+hookPresets = (resultObj) => {
+  // store values
+  cliObj.presets = resultObj.data;
+  // push package.json
+  cliPackages.push(resultObj.package);
   setRc();
 }
 
@@ -39,8 +47,13 @@ const setRc = () => {
   });
 },
 hookRc = (resultObj) => {
+  // store values
   let data = resultObj.data;
   let rcStruct = resultObj.rcStruct;
+  let packages = resultObj.packages;
+
+  // merge rc packages
+  cliPackages = cliPackages.concat(packages);
 
   cliObj.rc = data;
 
@@ -122,9 +135,10 @@ const _action = () => {
       }
 
       copyPreview(activeEngine);
-    }
 
-    console.log("DV#> write settings");
+      let package = readFile(path.join(process.cwd(), `.cli/.preview/.scripts/package.json`));
+      cliPackages.push(package);
+    }
 
     setConfig({
       name: cliObj.meta.name,
@@ -135,6 +149,11 @@ const _action = () => {
     })
 
     setDarvinRC(cliObj.rc);
+
+    // merge package.json
+    writeFile(path.join(process.cwd(), `package.json`), merge.all(cliPackages));
+
+    console.log("DV#> install new packages with 'npm run start'");
   } else {
     console.log("DV#> cancel settings");
   }

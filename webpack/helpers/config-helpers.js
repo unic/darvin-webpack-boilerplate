@@ -61,6 +61,7 @@ getDarvinSettings = () => {
     }
 
     settingConfig.path = `./settings/${setting}`;
+    settingConfig.package = `./settings/${setting}/package.json`;
     settingConfig.dir = `${setting}`;
 
     // if active in darvin rc
@@ -91,6 +92,7 @@ getDarvinPresets = () => {
     }
 
     settingConfig.path = `./.cli/.presets/${setting}/.files`;
+    settingConfig.package = `./.cli/.presets/${setting}/package.json`;
     settingConfig.dir = `${setting}`;
 
     // only import if listed in darvin.rc

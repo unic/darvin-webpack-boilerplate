@@ -1,6 +1,10 @@
 /* eslint-disable */
 const inquirer = require('inquirer');
+const path = require('path');
+var merge = require('deepmerge');
+
 const { getDarvinPresets } = require('../../../webpack/helpers/config-helpers');
+const { readFile, writeFile } = require('../../../webpack/helpers/file-helpers');
 
 const _presets = (cliObj) => {
   return new Promise((resolve, reject) => {
@@ -16,8 +20,10 @@ const _presets = (cliObj) => {
       }
     ])
     .then((data) => {
-      console.log(data);
-      resolve(data);
+      let selectedObj = presets.find(x => x.value === data.preset);
+      let package = readFile(path.join(process.cwd(), `${selectedObj.package}`));
+
+      resolve({ data: data, package: package });
     });
   });
 }
