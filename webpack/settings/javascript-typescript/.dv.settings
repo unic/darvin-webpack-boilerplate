@@ -1,6 +1,6 @@
 {
   "name": "TypeScript",
-  "alias": "typescript",
+  "value": "typescript",
   "type": "base",
   "disabled": "Unavailable at this time"
 }

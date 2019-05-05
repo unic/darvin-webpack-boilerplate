@@ -1,5 +1,5 @@
 {
   "name": "Vue.js",
-  "alias": "vue",
+  "value": "vue",
   "type": "framework"
 }

@@ -1,5 +1,5 @@
 {
   "name": "Mozilla Nunjucks",
-  "alias": "nunjucks",
+  "value": "nunjucks",
   "type": "html"
 }

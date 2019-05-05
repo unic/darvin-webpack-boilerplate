@@ -25,10 +25,20 @@ deleteFile = (file) => {
   fs.unlink(file, function (err) {
     if (err) throw err;
   });
+},
+copyDir = (from, to, msg) => {
+  fs.copy(from, to, {overwrite: true}, function (err) {
+    if (err) {
+      console.error(err);
+    } else {
+      console.log(`DV#> ${msg}`);
+    }
+  });
 };
 
 module.exports = {
   getDirs: getDirs,
+  copyDir: copyDir,
   readFile: readFile,
   writeFile: writeFile,
   deleteFile: deleteFile

@@ -6,7 +6,7 @@ const copyScaffolding = require('./copy-template-dir');
 const fs = require('fs-extra');
 
 const { capitalize } = require('./../helpers/darvin-helpers');
-const { getDirs, deleteFile } = require('./../helpers/file-helpers');
+const { getDirs, deleteFile, copyDir } = require('./../helpers/file-helpers');
 
 const getScaffoldingOptions = () => {
   let settingsPath = path.resolve(basePath, `.cli/.scaffold/`);
@@ -80,14 +80,15 @@ getNextIncrementalNumber = (type) => {
 
   return `${alpha}${highestNumber.pad(2)}-`;
 },
-copyDemo = (engine, category) => {
-  fs.copy(path.join(process.cwd(), `.cli/.preview/.demo/.${engine}`), path.join(process.cwd(), `src`), {overwrite: true}, function (err) {
-    if (err) {
-      console.error(err);
-    } else {
-      console.log("demo copy success!");
-    }
-  });
+copyDemo = (engine) => {
+  copyDir(path.join(process.cwd(), `.cli/.preview/.demo/.${engine}`), path.join(process.cwd(), `src`), 'demo files added');
+},
+copyPreview = (engine) => {
+  copyDir(path.join(process.cwd(), `.cli/.preview/.index/.${engine}`), path.join(process.cwd(), `src/templates`), 'preview index updated');
+  copyDir(path.join(process.cwd(), `.cli/.preview/.files`), path.join(process.cwd(), `preview`), 'preview files updated');
+  copyDir(path.join(process.cwd(), `.cli/.preview/.scripts`), process.cwd(), 'package.json updated');
+  copyDir(path.join(process.cwd(), `.cli/.preview/.layouts/.${engine}`), path.join(process.cwd(), `src/templates`), 'package.json updated');
+  copyDir(path.join(process.cwd(), `.cli/.preview/.layouts/.${engine}`), path.join(process.cwd(), `src/templates`), 'preview layouts updated');
 },
 setConfig = (data) => {
   const vars = {
@@ -114,5 +115,6 @@ module.exports = {
   setScaffolding: setScaffolding,
   getNextIncrementalNumber: getNextIncrementalNumber,
   copyDemo: copyDemo,
+  copyPreview: copyPreview,
   setConfig: setConfig
 };

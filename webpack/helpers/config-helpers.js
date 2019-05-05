@@ -64,9 +64,34 @@ getDarvinSettings = () => {
     settingConfig.dir = `${setting}`;
 
     // if active in darvin rc
-    if(rcArrAlias.includes(settingConfig.alias)) {
+    if(rcArrAlias.includes(settingConfig.value)) {
       settingConfig.checked = 'true';
     }
+
+    // only import if listed in darvin.rc
+    arr.push(settingConfig);
+  }
+
+  return arr;
+},
+getDarvinPresets = () => {
+  let settingsPath = path.resolve(basePath, `.cli/.presets`);
+  let dirs = getDirs(settingsPath);
+  let arr = [];
+
+  for (var i = 0; i < dirs.length; i++) {
+    let setting = dirs[i];
+    let settingConfigPath = path.resolve(settingsPath, setting + '/.dv.settings');
+    let settingConfig;
+
+    try{
+      settingConfig = readFile(settingConfigPath);
+    } catch (err){
+      console.error(err);
+    }
+
+    settingConfig.path = `./.cli/.presets/${setting}/.files`;
+    settingConfig.dir = `${setting}`;
 
     // only import if listed in darvin.rc
     arr.push(settingConfig);
@@ -110,8 +135,8 @@ createDynamicRequireArray = (rcString) => {
     settingConfig.dir = `${setting}`;
 
     // only import if listed in darvin.rc
-    if(rcArrAlias.includes(settingConfig.alias)) {
-      commandArr.push("var { " + process.env.NODE_ENV + ": " + settingConfig.alias + " } = require('" + settingConfig.path + "')");
+    if(rcArrAlias.includes(settingConfig.value)) {
+      commandArr.push("var { " + process.env.NODE_ENV + ": " + settingConfig.value + " } = require('" + settingConfig.path + "')");
     }
   }
 
@@ -123,5 +148,6 @@ module.exports = {
   setDarvinRC: setDarvinRC,
   getDarvinSettings: getDarvinSettings,
   getSettingsStruct: getSettingsStruct,
+  getDarvinPresets: getDarvinPresets,
   createDynamicRequireArray: createDynamicRequireArray
 };

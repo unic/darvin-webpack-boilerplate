@@ -24,9 +24,11 @@
     "cli"
   ],
   "scripts": {
-    "start": "npm install; npm run dev",
+    "start": "npm install; npm run prev-prod; npm run dev",
     "dev": "cross-env NODE_ENV=dev webpack-dev-server --hot --inline --progress --no-info --mode development --config webpack/webpack.config.dev.js",
-    "prod": "cross-env NODE_ENV=prod webpack -p --progress --no-info --mode production --config webpack/webpack.config.prod.js",
+    "prod": "npm run prev-prod; cross-env NODE_ENV=prod webpack -p --progress --no-info --mode production --config webpack/webpack.config.prod.js",
+    "prev-dev": "cross-env NODE_ENV=dev webpack -p --progress --no-info --mode development --config  webpack/webpack.preview.js --watch",
+    "prev-prod": "cross-env NODE_ENV=prod webpack -p --progress --no-info --mode production --config  webpack/webpack.preview.js",
     "lint": "lint-staged",
     "lint-all": "eslint \"src/**/*.js\" --fix",
     "pre-commit": "lint-staged; csscomb"

@@ -1,5 +1,5 @@
 {
   "name": "Webpack Cleaner",
-  "alias": "cleaner",
+  "value": "cleaner",
   "type": "default"
 }

@@ -3,8 +3,8 @@ const path = require('path');
 const basePath = process.cwd();
 const isDev = (process.env.NODE_ENV === 'dev');
 const htmlTemplates = require('../../libs/html-templates');
-const nunjucksDevConfig = require('../../../src/templates/config/config.dev.json');
-const nunjucksProdConfig = require('../../../src/templates/config/config.prod.json');
+const nunjucksDevConfig = require('./config/config.dev.json');
+const nunjucksProdConfig = require('./config/config.prod.json');
 
 htmlTemplates.config = (isDev) ? nunjucksDevConfig : nunjucksProdConfig;
 

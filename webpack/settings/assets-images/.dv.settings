@@ -1,5 +1,5 @@
 {
   "name": "Webpack Images",
-  "alias": "images",
+  "value": "images",
   "type": "default"
 }

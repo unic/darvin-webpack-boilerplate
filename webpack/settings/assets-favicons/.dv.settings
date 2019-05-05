@@ -1,5 +1,5 @@
 {
   "name": "Favicons Generator",
-  "alias": "favicons",
+  "value": "favicons",
   "type": "addon"
 }

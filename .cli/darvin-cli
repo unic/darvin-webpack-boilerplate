@@ -11,7 +11,7 @@ var Table = require("terminal-table");
 
 const FileSync = require('lowdb/adapters/FileSync')
 
-const { _new } = require('./src/new');
+const { _init } = require('./src/init');
 const { _add } = require('./src/add');
 
 const adapter = new FileSync('.darvinrc.json')
@@ -26,7 +26,7 @@ const _usage = function() {
 
     commands can be:
 
-    new:      create new settings
+    init:     init boilerplate
     add:      scaffold new elements
     list:     show active settings
   `
@@ -98,8 +98,8 @@ switch(args[2]) {
   case 'list':
     _get()
     break
-  case 'new':
-    _new()
+  case 'init':
+    _init()
     break
   case 'add':
     _add()

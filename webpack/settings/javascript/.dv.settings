@@ -1,5 +1,5 @@
 {
   "name": "EcmaScript",
-  "alias": "js",
+  "value": "js",
   "type": "base"
 }

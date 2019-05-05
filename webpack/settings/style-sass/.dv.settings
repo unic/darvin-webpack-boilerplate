@@ -1,5 +1,5 @@
 {
   "name": "Dart-Sass",
-  "alias": "sass",
+  "value": "sass",
   "type": "default"
 }
