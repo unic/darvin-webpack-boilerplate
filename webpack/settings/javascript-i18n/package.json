@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "file-loader": "^3.0.1"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "scripts": {
+    "start": "npm install; npm run prev-prod; npm run dev",
+    "dev": "cross-env NODE_ENV=dev webpack-dev-server --hot --inline --progress --no-info --mode development --config webpack/webpack.config.dev.js",
+    "prod": "npm run prev-prod; cross-env NODE_ENV=prod webpack -p --progress --no-info --mode production --config webpack/webpack.config.prod.js",
+    "lint": "lint-staged",
+    "lint-all": "eslint \"src/**/*.js\" --fix",
+    "pre-commit": "lint-staged; csscomb"
+  },
+  "devDependencies": {
+
+  },
+  "dependencies": {
+
+  }
+}

@@ -1,6 +1,12 @@
 ![](http://tobiasfrei.ch/github/darvin-boilerplate/darvin-MIT_(c)TobiasFrei.svg)
 
-webpack only boilerplate for sophisticated templating with Nunjucks or Twig. providing lazy-loading JavaScript chunks, frontend preview and easy extendable Webpack settings.
+webpack boilerplate for SPA, static HTML with preview and Drupal themes. 
+
++ lazy loading chunks with intersection observer.
++ frontend preview for static HTML.
++ sophisticated templating with Nunjucks or Twig.
++ easy extendable Webpack settings.
+
 
 ## Quickstart
 ```
@@ -8,9 +14,9 @@ nvm use 11.12.0
 npm run start
 ```
 
-## CLI
+## Config
 
-Use darvin-cli for switch template engine to Twig or customize config.<br>
+initialize boilerplate for SPA, static HTML or Drupal Themes.<br>
 [> CLI Usage](https://github.com/tobiasfrei/darvin-boilerplate/wiki/6.-CLI)<br>
 
 ![](http://tobiasfrei.ch/github/darvin-boilerplate/darvin-cli.gif)
@@ -28,6 +34,7 @@ Please consider the [Wiki Space](https://github.com/unic/darvin-boilerplate/wiki
 
 
 ## Author
+Tobias Frei
 [https://github.com/unic](https://github.com/unic)
 
 

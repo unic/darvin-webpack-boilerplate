@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "clean-webpack-plugin": "^2.0.1"
+  }
+}

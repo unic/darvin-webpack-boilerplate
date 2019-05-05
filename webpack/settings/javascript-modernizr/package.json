@@ -1,0 +1,9 @@
+{
+  "devDependencies": {
+    "expose-loader": "^0.7.5",
+    "webpack-modernizr-loader": "^5.0.0"
+  },
+  "dependencies": {
+    "modernizr": "^3.7.1"
+  }
+}

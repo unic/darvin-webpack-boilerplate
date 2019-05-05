@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "browser-sync": "^2.26.3",
+    "browser-sync-webpack-plugin": "^2.2.2"
+  }
+}
