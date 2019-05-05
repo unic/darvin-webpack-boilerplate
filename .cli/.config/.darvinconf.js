@@ -19,6 +19,6 @@ global.output = {
   'index': 'index'
 }
 global.server = {
-  'base': (process.env.NODE_ENV === 'dev') ? '' : '@@@router@@@',
+  'base': (process.env.NODE_ENV === 'dev') ? '@@@routerDev@@@' : '@@@routerProd@@@',
   'assets': 'assets'
 }

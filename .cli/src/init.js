@@ -5,7 +5,8 @@ const { _meta } = require('./partials/meta');
 const { _confirm } = require('./partials/confirm');
 
 const { search } = require('./helpers/cli-helpers');
-const { getSettingsStruct } = require('../../webpack/helpers/config-helpers');
+const { getSettingsStruct, setDarvinRC } = require('../../webpack/helpers/config-helpers');
+const { setConfig } = require('../../webpack/helpers/scaff-helpers');
 
 let cliObj = {};
 
@@ -104,18 +105,19 @@ hookConfirm = (data) => {
 const _action = () => {
   if(cliObj.confirm.write) {
 
+    let activeEngine = 'html';
+
     if(cliObj.confirm.preview) {
-      copyPreview(activeEngine);
+      activeEngine = cliObj.rc.html[0];
+      if(activeEngine == 'nunjucks') {
+        activeEngine = 'njk';
+      }
 
       if(cliObj.confirm.demo) {
-        let activeEngine = rc.settings.html[0];
-
-        if(activeEngine == 'nunjucks') {
-          activeEngine = 'njk';
-        }
-
         copyDemo(activeEngine);
       }
+
+      copyPreview(activeEngine);
     }
 
     console.log("DV#> write settings");
@@ -124,7 +126,8 @@ const _action = () => {
       name: cliObj.meta.name,
       extIn: activeEngine,
       entry: cliObj.meta.entry,
-      router: cliObj.meta.router
+      routerProd: cliObj.meta.routerProd,
+      routerDev: cliObj.meta.routerDev
     })
 
     setDarvinRC(cliObj.rc);

@@ -16,7 +16,7 @@ const _meta = (cliObj) => {
       },
       {
         type: 'input',
-        name: 'router',
+        name: 'routerDev',
         message: "define the absolute path for dev:",
         default: () => {
           if(cliObj.presets.preset === 'drupal8') return '/themes/unic/dist/';
@@ -28,7 +28,7 @@ const _meta = (cliObj) => {
       },
       {
         type: 'input',
-        name: 'router',
+        name: 'routerProd',
         message: "define the absolute path for prod:",
         default: () => {
           if(cliObj.presets.preset === 'drupal8') return '/themes/unic/dist/';
