@@ -6,7 +6,7 @@ const { _confirm } = require('./partials/confirm');
 
 const { search } = require('./helpers/cli-helpers');
 const { getSettingsStruct, setDarvinRC } = require('../../webpack/helpers/config-helpers');
-const { setConfig } = require('../../webpack/helpers/scaff-helpers');
+const { setConfig, copyDemo, copyPreview } = require('../../webpack/helpers/scaff-helpers');
 
 let cliObj = {};
 
@@ -59,6 +59,10 @@ hookRc = (resultObj) => {
     }
   });
 
+  if(cliObj.presets.preset === 'drupal8') {
+    data.settings.html = ['browsersync'];
+  }
+
   // save transformed rc settings
   cliObj.rcSettings = data;
 
@@ -108,7 +112,7 @@ const _action = () => {
     let activeEngine = 'html';
 
     if(cliObj.confirm.preview) {
-      activeEngine = cliObj.rc.html[0];
+      activeEngine = cliObj.rc.settings.html[0];
       if(activeEngine == 'nunjucks') {
         activeEngine = 'njk';
       }

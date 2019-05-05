@@ -1,7 +1,7 @@
 /* eslint-disable */
 const path = require('path');
 const glob = require('glob');
-const fs = require('fs');
+const fs = require('fs-extra');
 const basePath = process.cwd();
 
 const filterCommitsInDateRange = (startDate, endDate, commitsArr) => {

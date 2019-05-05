@@ -1,6 +1,6 @@
 /* eslint-disable */
 const path = require('path');
-const fs = require('fs');
+const fs = require('fs-extra');
 
 const getDirs = p => fs.readdirSync(p).filter(f => fs.statSync(path.join(p, f)).isDirectory()),
 readFile = (file) => {

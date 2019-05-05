@@ -2,7 +2,7 @@
 const path = require('path');
 const basePath = process.cwd();
 
-const fs = require('fs');
+const fs = require('fs-extra');
 const simpleGit = require('simple-git')(basePath);
 const crypto = require('crypto');
 

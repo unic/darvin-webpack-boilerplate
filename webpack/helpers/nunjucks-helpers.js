@@ -1,5 +1,5 @@
 /* eslint-disable */
-const fs = require('fs');
+const fs = require('fs-extra');
 const nunjucks = require('nunjucks');
 
 const { parseFile } = require('../libs/nunjucks-parser');

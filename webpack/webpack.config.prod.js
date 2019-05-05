@@ -1,5 +1,5 @@
 /* eslint-disable */
-const fs = require('fs');
+const fs = require('fs-extra');
 let nvmRcVersion = fs.readFileSync('./.nvmrc', 'utf8').replace(/[^0-9.]/g, "");
 let nodeProcessVersion = process.version.replace(/[^0-9.]/g, "");
 

@@ -30,8 +30,27 @@ const _rc = (cliObj, rcStruct) => {
         name: 'html',
         message: 'Select the template engine:',
         choices: rcStruct.html,
+        validate: function(answer) {
+          if (answer.length < 1) {
+            return 'You must choose at least one loader.';
+          }
+
+          return true;
+        },
         when: function(answers) {
-          return cliObj.presets === 'static'
+          let ret = false;
+          switch(cliObj.presets.preset) {
+            case "static":
+              ret = true;
+              break;
+            case "drupal8":
+              ret = false;
+              break;
+            case "spa":
+              ret = false;
+              break;
+          }
+          return ret;
         }
       },
       {
@@ -40,7 +59,19 @@ const _rc = (cliObj, rcStruct) => {
         message: 'Select the dev server:',
         choices: rcStruct.server,
         when: function(answers) {
-          return cliObj.presets !== 'drupal8'
+          let ret = false;
+          switch(cliObj.presets.preset) {
+            case "static":
+              ret = true;
+              break;
+            case "drupal8":
+              ret = false;
+              break;
+            case "spa":
+              ret = false;
+              break;
+          }
+          return ret;
         }
       },
       {

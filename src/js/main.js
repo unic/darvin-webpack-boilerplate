@@ -28,6 +28,3 @@ window.apps.main = createApp({
     },
   },
 });
-
-import '@html/modules/m00-accordion/main.js';
-

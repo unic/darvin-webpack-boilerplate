@@ -1,10 +1,10 @@
-/* use darvin cli to extend settings for SPA/Static HTML/Drupal Themes */
 {
   "settings": {
     "base": ["js"],
     "default": ["cleaner", "copy", "fonts", "images", "sprites", "modernizr", "sass"],
     "devserver": ["devserver"],
-    "addons": ["favicons", "analyzer"]
+    "framework": ["vue"],
+    "addons": ["favicons", "analyzer", "markdown", "i18n"]
   },
   "name": "Darvin",
   "company": "Unic AG"
