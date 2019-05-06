@@ -90,17 +90,10 @@ copyPreview = (engine) => {
   copyDir(path.join(process.cwd(), `.cli/.preview/.layouts/.${engine}`), path.join(process.cwd(), `src/templates/layouts`), 'preview layouts updated');
 },
 setConfig = (data) => {
-  const vars = {
-    name: data.name,
-    extIn: data.extIn,
-    entry: data.entry,
-    router: data.router
-  }
-
   const inDir = path.join(process.cwd(), `.cli/.config`);
   const outDir = process.cwd();
 
-  copyConfigFile(inDir, outDir, vars);
+  copyConfigFile(inDir, outDir, data);
 },
 copyConfigFile = (inDir, outDir, vars) => {
   copyScaffolding(inDir, outDir, vars, (err, createdFiles) => {
