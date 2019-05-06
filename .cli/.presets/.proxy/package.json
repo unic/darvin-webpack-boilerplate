@@ -2,6 +2,6 @@
   "scripts": {
     "start": "npm install; npm run dev",
     "dev": "cross-env NODE_ENV=dev webpack --mode development --watch --config webpack/webpack.config.dev.js",
-    "prod": "cross-env NODE_ENV=prod webpack -p --progress --no-info --mode production --config webpack/webpack.config.prod.js",
+    "prod": "cross-env NODE_ENV=prod webpack -p --progress --no-info --mode production --config webpack/webpack.config.prod.js"
   }
 }
