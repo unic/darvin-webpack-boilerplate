@@ -23,7 +23,10 @@
     "cli"
   ],
   "scripts": {
-    "start": "npm install; npm link; darvin-cli init"
+    "start": "npm install; npm link; darvin-cli init",
+    "lint": "lint-staged",
+    "lint-all": "eslint \"src/**/*.js\" --fix",
+    "pre-commit": "lint-staged; csscomb"
   },
   "bin": {
     "darvin-cli": "./.cli/darvin-cli"

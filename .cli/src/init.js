@@ -33,6 +33,7 @@ const setPresets = () => {
 hookPresets = (resultObj) => {
   // store values
   cliObj.presets = resultObj.data;
+
   // push package.json
   cliPackages.push(resultObj.package);
   setRc();
@@ -154,8 +155,7 @@ const _action = () => {
 
     setDarvinRC(cliObj.rc);
 
-    // merge package.json
-    writeFile(path.join(process.cwd(), `package.json`), merge.all(cliPackages));
+    writeFile(path.join(process.cwd(), `package.json`), JSON.stringify(merge.all(cliPackages)) );
 
     console.log("DV#> install new packages with 'npm run start'");
   } else {
