@@ -5,6 +5,8 @@ const basePath = process.cwd();
 const prod = {
   plugins: [
     new CleanWebpackPlugin({
+      cleanStaleWebpackAssets: false,
+      protectWebpackAssets: false,
       cleanOnceBeforeBuildPatterns: [path.join(basePath, 'dist/*'), '!' + path.join(basePath, 'dist/preview')]
     }),
   ],
@@ -13,6 +15,8 @@ const prod = {
 const dev = {
   plugins: [
     new CleanWebpackPlugin({
+      cleanStaleWebpackAssets: false,
+      protectWebpackAssets: false,
       cleanOnceBeforeBuildPatterns: [path.join(basePath, 'dist/*'), '!' + path.join(basePath, 'dist/preview')]
     }),
   ],
@@ -21,6 +25,8 @@ const dev = {
 const prev = {
   plugins: [
     new CleanWebpackPlugin({
+      cleanStaleWebpackAssets: false,
+      protectWebpackAssets: false,
       cleanOnceBeforeBuildPatterns: [path.join(basePath, 'dist/preview/*/**')]
     }),
   ],
