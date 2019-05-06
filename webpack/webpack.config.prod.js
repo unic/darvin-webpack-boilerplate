@@ -8,6 +8,7 @@ const merge = require('webpack-merge');
 const WebpackMessages = require('webpack-messages');
 const WebpackShellPlugin = require('webpack-shell-plugin-next');
 
+const webpackConfig = require('../webpack.config');
 const { printFancy } = require('./helpers/darvin-helpers');
 const { getDarvinRC, createDynamicRequireArray } = require('./helpers/config-helpers');
 
