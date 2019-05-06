@@ -13,6 +13,7 @@ const FileSync = require('lowdb/adapters/FileSync')
 
 const { _init } = require('./src/init');
 const { _add } = require('./src/add');
+const { _clean } = require('./src/clean');
 
 const adapter = new FileSync('.darvinrc.json')
 const db = low(adapter)
@@ -103,6 +104,9 @@ switch(args[2]) {
     break
   case 'add':
     _add()
+    break
+  case 'clean':
+    _clean()
     break
   default:
     errorLog('invalid command passed')

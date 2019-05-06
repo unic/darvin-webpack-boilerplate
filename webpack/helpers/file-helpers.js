@@ -24,9 +24,13 @@ writeFile = (filePath, payload) => {
   }
 },
 deleteFile = (file) => {
-  fs.unlink(file, function (err) {
-    if (err) throw err;
-  });
+  try {
+    fs.removeSync(file);
+    return true;
+  } catch (err) {
+    console.error(err);
+    return false;
+  }
 },
 copyDir = (from, to, msg) => {
   fs.copy(from, to, {overwrite: true}, function (err) {
