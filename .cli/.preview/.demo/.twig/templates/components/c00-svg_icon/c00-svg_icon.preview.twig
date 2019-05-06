@@ -1,12 +1,11 @@
 {% extends "@layouts/l00-preview/l00-preview.twig" %}
-
-{% import "@components/c00-svg_icon/c00-svg_icon.twig" as svgIcon %}
 {% import _self as self %}
 
 {% set variantName = "Sprite Overview" %}
 {% set variantDescr = "Project Icons" %}
 
 {% macro main() %}
+  {% import "@components/c00-svg_icon/c00-svg_icon.twig" as svgIcon %}
   <div class="m-prev-flexgrid m-prev-icons" data-module="lazy-prev-icons">
     {% for name in sprite.icons %}
       <div class="m-prev-flexgrid__item">
