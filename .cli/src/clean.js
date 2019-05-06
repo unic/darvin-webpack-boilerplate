@@ -11,6 +11,8 @@ const _clean = (response) => {
   deleteFile(path.join(process.cwd(), '/src/templates/layouts'));
   deleteFile(path.join(process.cwd(), '/src/templates/pages'));
   deleteFile(path.join(process.cwd(), '/src/templates/modules'));
+  deleteFile(path.join(process.cwd(), '/src/templates/index.njk'));
+  deleteFile(path.join(process.cwd(), '/src/templates/index.twig'));
 }
 
 module.exports = {
