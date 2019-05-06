@@ -6,21 +6,20 @@
     "prev-prod": "cross-env NODE_ENV=prod webpack -p --progress --no-info --mode production --config  webpack/webpack.preview.js"
   },
   "devDependencies": {
-    "simple-git": "^1.110.0",
-    "spinkit": "^1.2.5",
-    "vue-loader": "^15.7.0",
-    "vue-masonry-css": "^1.0.3",
-    "vue-template-compiler": "^2.6.10"
-  },
-  "dependencies": {
     "@unic/composite-observer": "0.0.10",
+    "axios": "^0.18.0",
     "fuzzyset.js": "0.0.8",
     "markdown-it": "^8.4.2",
     "prismjs": "^1.16.0",
     "jsplumb": "^2.9.0",
+    "simple-git": "^1.110.0",
+    "spinkit": "^1.2.5",
     "vue": "^2.6.10",
     "vuex": "^3.1.0",
     "vue-masonry": "^0.11.7",
-    "vueisotope": "^3.1.2"
+    "vue-masonry-css": "^1.0.3",
+    "vueisotope": "^3.1.2",
+    "vue-loader": "^15.7.0",
+    "vue-template-compiler": "^2.6.10"
   }
 }

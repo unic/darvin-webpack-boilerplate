@@ -5,9 +5,7 @@
     "prod": "cross-env NODE_ENV=prod webpack -p --progress --no-info --mode production --config webpack/webpack.config.prod.js"
   },
   "devDependencies": {
+    "@unic/composite-observer": "0.0.10",
     "simple-git": "^1.110.0"
-  },
-  "dependencies": {
-    "@unic/composite-observer": "0.0.10"
   }
 }

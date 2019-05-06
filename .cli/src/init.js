@@ -18,6 +18,7 @@ let cliPackages = [];
 
 const _init = () => {
   cliObj = {};
+  cliPackages.push(readFile(path.join(process.cwd(), `package.json`)));
   setPresets();
 }
 
@@ -141,8 +142,8 @@ const _action = () => {
 
       copyPreview(activeEngine);
 
-      /*let package = readFile(path.join(process.cwd(), `.cli/.preview/.scripts/package.json`));
-      cliPackages.push(package);*/
+      let package = readFile(path.join(process.cwd(), `.cli/.preview/.scripts/package.json`));
+      cliPackages.push(package);
     }
 
     setConfig({
