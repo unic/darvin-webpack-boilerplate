@@ -78,6 +78,8 @@ hookRc = (resultObj) => {
 
   // bind browsersync for third party
   if(cliObj.presets.preset === 'proxy') {
+    let package = readFile(path.join(process.cwd(), `webpack/settings/env-browsersync/package.json`));
+    cliPackages.push(package);
     data.devserver = ['browsersync'];
   }
 
