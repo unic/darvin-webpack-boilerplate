@@ -19,7 +19,7 @@ const _meta = (cliObj) => {
         name: 'routerDev',
         message: "define the absolute path for dev:",
         default: () => {
-          if(cliObj.presets.preset === 'drupal8') return '/themes/unic/dist/';
+          if(cliObj.presets.preset === 'proxy') return '/themes/unic/dist/';
           return '';
         },
         when: () => {
@@ -31,11 +31,32 @@ const _meta = (cliObj) => {
         name: 'routerProd',
         message: "define the absolute path for prod:",
         default: () => {
-          if(cliObj.presets.preset === 'drupal8') return '/themes/unic/dist/';
+          if(cliObj.presets.preset === 'proxy') return '/themes/unic/dist/';
           return '/dist';
         },
         when: () => {
           return cliObj.presets.preset !== 'spa'
+        }
+      },
+      {
+        type: 'input',
+        name: 'proxy',
+        message: "type the proxy url:",
+        default: () => {
+          if(cliObj.presets.preset === 'proxy') return 'unic.local';
+          return '';
+        },
+        when: () => {
+          return cliObj.presets.preset === 'proxy'
+        }
+      },
+      {
+        type: 'input',
+        name: 'port',
+        message: "type the dev port:",
+        default: () => {
+          if(cliObj.presets.preset === 'proxy') return '3000';
+          return '7001';
         }
       },
       {

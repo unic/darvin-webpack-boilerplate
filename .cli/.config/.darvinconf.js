@@ -1,5 +1,7 @@
 global.project = '@@@name@@@';
 global.mainChunk = '@@@entry@@@';
+global.proxy = '@@@proxy@@@';
+global.port = '@@@port@@@';
 global.template = {
   'extIn': '@@@extIn@@@',
   'extOut': 'html'

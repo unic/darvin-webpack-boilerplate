@@ -76,7 +76,7 @@ hookRc = (resultObj) => {
     }
   });
 
-  if(cliObj.presets.preset === 'drupal8') {
+  if(cliObj.presets.preset === 'proxy') {
     data.settings.html = ['browsersync'];
   }
 
@@ -151,16 +151,18 @@ const _action = () => {
       extIn: activeEngine,
       entry: cliObj.meta.entry,
       routerProd: cliObj.meta.routerProd,
-      routerDev: cliObj.meta.routerDev
+      routerDev: cliObj.meta.routerDev,
+      proxy: cliObj.meta.proxy,
+      port: cliObj.meta.port
     })
 
     setDarvinRC(cliObj.rc);
 
     writeFile(path.join(process.cwd(), `package.json`), JSON.stringify(merge.all(cliPackages)) );
 
-    console.log("DV#> install new packages with 'npm run start'");
+    console.log("DV#> 🔥 continue by typing 'npm start'");
   } else {
-    console.log("DV#> cancel settings");
+    console.log("DV#> 🤡 cancel settings");
   }
 }
 

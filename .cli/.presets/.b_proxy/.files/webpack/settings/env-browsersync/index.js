@@ -3,8 +3,8 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const dev = {
   plugins: [
     new BrowserSyncPlugin({
-      proxy: 'https://unic.local',
-      port: 3000,
+      proxy: global.proxy,
+      port: global.port,
       files: ['css/*.css', 'js/*.js'],
       open: true,
       https: true,

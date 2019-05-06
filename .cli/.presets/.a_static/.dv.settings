@@ -1,5 +1,5 @@
 {
-  "name": "Static HTML",
+  "name": "Local Devserver",
   "value": "static",
   "type": "preset"
 }

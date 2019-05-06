@@ -9,7 +9,7 @@ const dev = {
         directory: false,
       },
       startPath: 'index.html',
-      port: 1712,
+      port: global.port,
       files: ['css/*.css', 'js/*.js', `**/*.${global.template.extIn}`],
       open: true,
       https: false,

@@ -17,7 +17,7 @@ const dev = {
     contentBase: [path.resolve(basePath, 'dist')],
     watchContentBase: true,
     compress: true,
-    port: 7001,
+    port: global.port,
     open: 'Google Chrome',
     writeToDisk: true,
     publicPath: '/',

@@ -35,8 +35,6 @@ copyDir = (from, to, msg) => {
     if (err) {
       console.log('error in copyDir');
       console.error(err);
-    } else {
-      console.log(`DV#> ${msg}`);
     }
   });
 };

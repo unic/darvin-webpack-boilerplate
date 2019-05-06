@@ -46,7 +46,7 @@ const _rc = (cliObj, rcStruct) => {
             case "static":
               ret = true;
               break;
-            case "drupal8":
+            case "proxy":
               ret = false;
               break;
             case "spa":
@@ -59,7 +59,7 @@ const _rc = (cliObj, rcStruct) => {
       {
         type: 'list',
         name: 'devserver',
-        message: 'Select the dev server:',
+        message: 'Select your dev server:',
         choices: rcStruct.devserver,
         when: function(answers) {
           let ret = false;
@@ -67,7 +67,7 @@ const _rc = (cliObj, rcStruct) => {
             case "static":
               ret = true;
               break;
-            case "drupal8":
+            case "proxy":
               ret = false;
               break;
             case "spa":
