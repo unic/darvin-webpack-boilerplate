@@ -2,7 +2,7 @@
 const utils = require('loader-utils');
 
 const { addDependencies } = require('../helpers/twig-helpers');
-const {TwingEnvironment, TwingLoaderFilesystem} = require('twing');
+const {TwingEnvironment, TwingLoaderFilesystem, TwingExtensionDebug} = require('twing');
 
 module.exports = async function(content) {
   this.cacheable();
@@ -32,13 +32,6 @@ module.exports = async function(content) {
   darvin.filepath = loaderPath.replace(/^.*[\\\/]/, '').replace('.twig', ''); // remove file extension
   darvin.config = global;
 
-  /*
-  // Load as array
-  let loadingObj = {};
-  loadingObj[loaderPath] = content;
-  loader = new TwingLoaderArray(loadingObj);
-  */
-
   dependencies = await addDependencies(loaderPath, this, twigNamespaces);
 
   loader = new TwingLoaderFilesystem([twigSearchPaths]);
@@ -48,12 +41,12 @@ module.exports = async function(content) {
     loader.addPath(twigNamespaces[key], key);
   })
 
-  twing = new TwingEnvironment(loader, {strict_variables: false, debug: false, auto_reload: true});
+  twing = new TwingEnvironment(loader, {strict_variables: false, debug: true, auto_reload: true});
 
   // debug flag
-  // twing.addExtension(new TwingExtensionDebug());
-
+  twing.addExtension(new TwingExtensionDebug());
   twing.addGlobal("darvin", darvin);
+  twing.addGlobal("sprite", twigContext.sprite);
 
   html = twing.render(loaderPath, twigContext);
 
