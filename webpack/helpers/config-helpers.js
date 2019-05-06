@@ -8,7 +8,7 @@ const { sortByKey } = require('./../helpers/darvin-helpers');
 const setDarvinRC = (rc) => {
   try{
     writeFile(`./.darvinrc.json`, JSON.stringify(rc));
-    console.log("DV#> .darvinrc created");
+    console.log("DV#> boilerplate successful initalized.");
     return true;
   } catch (err){
     console.error(err);

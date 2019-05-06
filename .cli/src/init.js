@@ -76,8 +76,9 @@ hookRc = (resultObj) => {
     }
   });
 
+  // bind browsersync for third party
   if(cliObj.presets.preset === 'proxy') {
-    data.settings.html = ['browsersync'];
+    data.devserver = ['browsersync'];
   }
 
   // save transformed rc settings
