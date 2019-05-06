@@ -1,15 +1,15 @@
 /* eslint-disable */
+require('./helpers/node-check');
+require('../.darvinconf.js');
 
 const path = require('path');
 const basePath = process.cwd();
+const fs = require('fs-extra');
 
 const merge = require('webpack-merge');
 const webpackConfig = require('../webpack.config');
 const WebpackMessages = require('webpack-messages');
 const isDev = (process.env.NODE_ENV === 'dev');
-
-// init globals
-require('../.darvinconf.js');
 
 const { prev: cleaner } = require('./settings/assets-cleaner');
 const { prev: sass } = require('./settings/style-sass');

@@ -26,7 +26,8 @@ const setPresets = () => {
   const setPresets = _presets(cliObj);
 
   setPresets.then(hookPresets, data => {
-    console.error('DV#> error in presets.')
+    console.error('DV#> error in presets.');
+    process.exit();
   });
 },
 hookPresets = (resultObj) => {
@@ -43,7 +44,8 @@ const setRc = () => {
   const setRc = _rc(cliObj, rcStruct);
 
   setRc.then(hookRc, data => {
-    console.error('DV#> error in rc.')
+    console.error('DV#> error in rc.');
+    process.exit();
   });
 },
 hookRc = (resultObj) => {
@@ -87,7 +89,8 @@ const _setMeta = () => {
   const setMeta = _meta(cliObj);
 
   setMeta.then(hookMeta, data => {
-    console.error('DV#> error in meta.')
+    console.error('DV#> error in meta.');
+    process.exit();
   });
 },
 hookMeta = (data) => {
@@ -110,7 +113,8 @@ const _setConfirm = () => {
   const setConfirm = _confirm(cliObj);
 
   setConfirm.then(hookConfirm, data => {
-    console.error('DV#> error in confirm.')
+    console.error('DV#> error in confirm.');
+    process.exit();
   });
 },
 hookConfirm = (data) => {

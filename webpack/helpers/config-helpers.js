@@ -12,6 +12,7 @@ const setDarvinRC = (rc) => {
     return true;
   } catch (err){
     console.error(err);
+    process.exit();
     return false;
   }
 },
@@ -24,6 +25,7 @@ getDarvinRC = () => {
 
   if(!rcData) {
     console.error('DV#> no darvin rc file');
+    process.exit();
   }
 
   if(!rcData.settings) {
@@ -58,6 +60,7 @@ getDarvinSettings = () => {
       settingConfig = readFile(settingConfigPath);
     } catch (err){
       console.error(err);
+      process.exit();
     }
 
     settingConfig.path = `./settings/${setting}`;
@@ -89,6 +92,7 @@ getDarvinPresets = () => {
       settingConfig = readFile(settingConfigPath);
     } catch (err){
       console.error(err);
+      process.exit();
     }
 
     settingConfig.path = `./.cli/.presets/${setting}/.files`;
@@ -131,6 +135,7 @@ createDynamicRequireArray = (rcString) => {
       settingConfig = readFile(settingConfigPath);
     } catch (err){
       console.error(err);
+      process.exit();
     }
 
     settingConfig.path = `./settings/${setting}`;

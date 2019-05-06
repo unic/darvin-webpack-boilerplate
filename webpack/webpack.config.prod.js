@@ -1,14 +1,5 @@
 /* eslint-disable */
-const fs = require('fs-extra');
-let nvmRcVersion = fs.readFileSync('./.nvmrc', 'utf8').replace(/[^0-9.]/g, "");
-let nodeProcessVersion = process.version.replace(/[^0-9.]/g, "");
-
-if(nodeProcessVersion != nvmRcVersion) {
-  console.error(`DV#> make sure node is running under v${nvmRcVersion}`);
-  process.exit();
-}
-
-// init globals
+require('./helpers/node-check');
 require('../.darvinconf.js');
 
 const path = require('path');
@@ -17,7 +8,6 @@ const merge = require('webpack-merge');
 const WebpackMessages = require('webpack-messages');
 const WebpackShellPlugin = require('webpack-shell-plugin-next');
 
-const webpackConfig = require('../webpack.config');
 const { printFancy } = require('./helpers/darvin-helpers');
 const { getDarvinRC, createDynamicRequireArray } = require('./helpers/config-helpers');
 
