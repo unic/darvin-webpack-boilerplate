@@ -97,7 +97,6 @@ setConfig = (data) => {
 copyConfigFile = (inDir, outDir, vars) => {
   copyScaffolding(inDir, outDir, vars, (err, createdFiles) => {
     if (err) throw err
-    console.log("config copy ok");
   })
 };
 

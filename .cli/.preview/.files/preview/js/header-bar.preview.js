@@ -110,7 +110,7 @@ export default createModule({
         return;
       }
 
-      fetch('/' + document.body.getAttribute('data-path') + '/' + document.body.getAttribute('data-name') + '.njk')
+      fetch('/' + document.body.getAttribute('data-path') + '/' + document.body.getAttribute('data-name') + '.' + document.body.getAttribute('data-ext'))
         .then(response => {
           if (response.ok) {
             return Promise.resolve(response);
