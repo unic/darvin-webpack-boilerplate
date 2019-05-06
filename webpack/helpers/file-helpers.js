@@ -9,7 +9,6 @@ readFile = (file) => {
     return JSON.parse(rawdata);
   } catch (err) {
     console.error(err);
-    process.exit();
     return {};
   }
 },
@@ -19,7 +18,6 @@ writeFile = (filePath, payload) => {
     return true;
   } catch (err) {
     console.error(err);
-    process.exit();
     return false;
   }
 },
@@ -35,8 +33,8 @@ deleteFile = (file) => {
 copyDir = (from, to, msg) => {
   fs.copy(from, to, {overwrite: true}, function (err) {
     if (err) {
+      console.log('error in copyDir');
       console.error(err);
-      process.exit();
     } else {
       console.log(`DV#> ${msg}`);
     }
