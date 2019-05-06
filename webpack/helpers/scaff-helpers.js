@@ -86,7 +86,6 @@ copyDemo = (engine) => {
 copyPreview = (engine) => {
   copyDir(path.join(process.cwd(), `.cli/.preview/.index/.${engine}`), path.join(process.cwd(), `src/templates`), 'preview index updated');
   copyDir(path.join(process.cwd(), `.cli/.preview/.files`), process.cwd(), 'preview files updated');
-  copyDir(path.join(process.cwd(), `.cli/.preview/.scripts`), process.cwd(), 'package.json updated');
   copyDir(path.join(process.cwd(), `.cli/.preview/.layouts/.${engine}`), path.join(process.cwd(), `src/templates/layouts`), 'preview layouts updated');
 },
 setConfig = (data) => {

@@ -12,10 +12,5 @@
   },
   "dependencies": {
     "@unic/composite-observer": "0.0.10"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run pre-commit"
-    }
   }
 }
