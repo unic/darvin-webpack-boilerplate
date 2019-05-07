@@ -1,6 +1,6 @@
 ![](http://tobiasfrei.ch/github/darvin-boilerplate/darvin-MIT_(c)TobiasFrei.svg)
 
-webpack4 boilerplate for HTML templating and CMS theming.
+🚀 webpack4 boilerplate for HTML templating and CMS theming with Nunjucks or Twig. Hot reload with DevServer or Browsersync, easy extendable webpack settings and frontend preview for shipping.
 
 + lazy loading chunks with intersection observer.
 + frontend preview for HTML templates.
