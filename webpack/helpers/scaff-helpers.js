@@ -6,7 +6,7 @@ const copyScaffolding = require('./copy-template-dir');
 const fs = require('fs-extra');
 
 const { capitalize } = require('./../helpers/darvin-helpers');
-const { getDirs, deleteFile, copyDir } = require('./../helpers/file-helpers');
+const { getDirs, deleteFile, fsCopy } = require('./../helpers/file-helpers');
 
 const getScaffoldingOptions = () => {
   let settingsPath = path.resolve(basePath, `.cli/.scaffold/`);
@@ -81,12 +81,12 @@ getNextIncrementalNumber = (type) => {
   return `${alpha}${highestNumber.pad(2)}-`;
 },
 copyDemo = (engine) => {
-  copyDir(path.join(process.cwd(), `.cli/.preview/.demo/.${engine}`), path.join(process.cwd(), `src`), 'demo files added');
+  fsCopy(path.join(process.cwd(), `.cli/.preview/.demo/.${engine}`), path.join(process.cwd(), `src`), 'demo files added');
 },
 copyPreview = (engine) => {
-  copyDir(path.join(process.cwd(), `.cli/.preview/.index/.${engine}`), path.join(process.cwd(), `src/templates`), 'preview index updated');
-  copyDir(path.join(process.cwd(), `.cli/.preview/.files`), process.cwd(), 'preview files updated');
-  copyDir(path.join(process.cwd(), `.cli/.preview/.layouts/.${engine}`), path.join(process.cwd(), `src/templates/layouts`), 'preview layouts updated');
+  fsCopy(path.join(process.cwd(), `.cli/.preview/.index/.${engine}/index.${engine}`), path.join(process.cwd(), `src/templates/index.${engine}`), 'preview index updated');
+  fsCopy(path.join(process.cwd(), `.cli/.preview/.files`), process.cwd(), 'preview files updated');
+  fsCopy(path.join(process.cwd(), `.cli/.preview/.layouts/.${engine}`), path.join(process.cwd(), `src/templates/layouts`), 'preview layouts updated');
 },
 setConfig = (data) => {
   const inDir = path.join(process.cwd(), `.cli/.config`);
