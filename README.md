@@ -1,22 +1,22 @@
 ![](http://tobiasfrei.ch/github/darvin-boilerplate/darvin-MIT_(c)TobiasFrei.svg)
 
-webpack boilerplate for SPA, static HTML with preview and Drupal themes. 
+webpack4 boilerplate for HTML templating and CMS theming.
 
 + lazy loading chunks with intersection observer.
-+ frontend preview for static HTML.
++ frontend preview for HTML templates.
 + sophisticated templating with Nunjucks or Twig.
 + easy extendable Webpack settings.
-
 
 ## Quickstart
 ```
 nvm use 11.12.0
-npm run start
+npm install -g cross-env
+npm start
 ```
 
 ## Config
 
-initialize boilerplate for SPA, static HTML or Drupal Themes.<br>
+Use the cli for config setup.<br>
 [> CLI Usage](https://github.com/tobiasfrei/darvin-boilerplate/wiki/6.-CLI)<br>
 
 ![](http://tobiasfrei.ch/github/darvin-boilerplate/darvin-cli.gif)
@@ -29,7 +29,7 @@ Please consider the [Wiki Space](https://github.com/unic/darvin-boilerplate/wiki
 2. [Start](https://github.com/unic/darvin-boilerplate/wiki/2.-Start)<br>
 3. [SVG-Sprites](https://github.com/unic/darvin-boilerplate/wiki/3.-SVG-Sprites)<br>
 4. [Breakpoints](https://github.com/unic/darvin-boilerplate/wiki/4.-Breakpoints)<br>
-5. [Elements](https://github.com/unic/darvin-boilerplate/wiki/5.-Elements)<br>
+5. [HTML Elements](https://github.com/unic/darvin-boilerplate/wiki/5.-Elements)<br>
 6. [Command Line Interface](https://github.com/unic/darvin-boilerplate/wiki/6.-Command-Line-Interface)<br>
 
 
