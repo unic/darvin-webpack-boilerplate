@@ -19,7 +19,7 @@ npm start
 Use the cli for config setup.<br>
 [> CLI Usage](https://github.com/tobiasfrei/darvin-boilerplate/wiki/6.-CLI)<br>
 
-![](http://tobiasfrei.ch/github/darvin-boilerplate/darvin-cli.gif)
+![](http://tobiasfrei.ch/github/darvin-boilerplate/darvin-cli-2.gif)
 
 
 # Setup
