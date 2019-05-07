@@ -36,7 +36,7 @@ const settings = {
   },
   plugins: [
     new WebpackMessages({
-      name: 'darvin client',
+      name: 'Darvin Preview',
       logger: str => console.log(`DV#> ${str}`),
       onComplete: ()=> {
         console.log(`%c
