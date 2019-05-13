@@ -1,5 +1,6 @@
 /* eslint-disable */
 const inquirer = require('inquirer');
+require('../../.darvinconf.js');
 const { getScaffoldingOptions, setScaffolding, getNextIncrementalNumber } = require('../../webpack/helpers/scaff-helpers');
 
 const _add = () => {
@@ -20,6 +21,7 @@ const _add = () => {
 }
 
 const _addDetails = (response) => {
+  let category = response.category;
   let nextDefaultNumber = getNextIncrementalNumber(response.category);
 
   inquirer
@@ -59,12 +61,14 @@ const _addDetails = (response) => {
     },
   ])
   .then(response => {
+    response.category = category;
     _addConfirm(response);
   });
 }
 
 
 const _addConfirm = (response) => {
+
   inquirer
   .prompt([
     {

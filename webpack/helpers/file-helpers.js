@@ -2,16 +2,25 @@
 const path = require('path');
 const fs = require('fs-extra');
 
-const getDirs = p => fs.readdirSync(p).filter(f => fs.statSync(path.join(p, f)).isDirectory()),
-readFile = (file) => {
+const getDirs = (p) => {
+  let dirs = [];
   try {
-    let rawdata = fs.readFileSync(file);
-    return JSON.parse(rawdata);
+    dirs = fs.readdirSync(p);
+  } catch (err) {
+
+  }
+  return dirs.filter(f => fs.statSync(path.join(p, f)).isDirectory());
+},
+readFile = (file) => {
+  let rawdata;
+  try {
+    rawdata = fs.readFileSync(file);
   } catch (err) {
     console.log('error in readFile');
     console.error(err);
     return {};
   }
+  return JSON.parse(rawdata);
 },
 writeFile = (filePath, payload) => {
   try {

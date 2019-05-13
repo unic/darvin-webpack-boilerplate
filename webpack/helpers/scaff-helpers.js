@@ -56,8 +56,14 @@ copyDirectoryWithContext = (confirm, inDir, outDir, vars, response) => {
 },
 getNextIncrementalNumber = (type) => {
   let settingsPath = path.resolve(basePath, `src/templates/${type}`);
+
   let dirs = getDirs(settingsPath);
-  let alpha, numeric, highestNumber = 0;
+  let alpha = type.charAt(0);
+  let numeric, highestNumber = 0;
+
+  if(dirs.length < 1) {
+    return `${alpha}00-`;
+  }
 
   Number.prototype.pad = function(size) {
     var s = String(this);
