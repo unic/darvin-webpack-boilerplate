@@ -7,9 +7,12 @@
 + sophisticated templating with Nunjucks or Twig.
 + easy extendable Webpack settings.
 
+
 ## Quickstart
+
 ```
-nvm use 11.12.0
+nvm install 11.12.0; nvm use 11.12.0
+git clone https://github.com/unic/darvin-boilerplate.git myProject; cd myProject
 npm install -g cross-env
 npm start
 ```
@@ -23,6 +26,7 @@ Use the cli for config setup.<br>
 
 
 # Setup
+
 Please consider the [Wiki Space](https://github.com/unic/darvin-boilerplate/wiki) for instructions.
 
 1. [Prerequisites](https://github.com/unic/darvin-boilerplate/wiki/1.-Prerequisites)<br>
@@ -33,12 +37,19 @@ Please consider the [Wiki Space](https://github.com/unic/darvin-boilerplate/wiki
 6. [Command Line Interface](https://github.com/unic/darvin-boilerplate/wiki/6.-Command-Line-Interface)<br>
 
 
+## Windows
+
+Use WSL for running boilerplate on Windows 10.
+
+
 ## Author
+
 Tobias Frei
 [https://github.com/unic](https://github.com/unic)
 
 
 ## License
+
 MIT
 
 Darvin logo and brand related assets are protected and may not be used for personal purposes.
