@@ -12,11 +12,18 @@ const webpackConfig = require('../webpack.config');
 const { printFancy } = require('./helpers/darvin-helpers');
 const { getDarvinRC, createDynamicRequireArray } = require('./helpers/config-helpers');
 
+let serverBase;
 let darvinRcString = getDarvinRC();
 let dynamicRequireArr = createDynamicRequireArray(darvinRcString);
 
 for (var i = 0; i < dynamicRequireArr.length; i++) {
   eval(dynamicRequireArr[i]);
+}
+
+if(global.server.base==='') {
+  serverBase = '/';
+} else {
+  serverBase = global.server.base;
 }
 
 const settings = {
@@ -27,7 +34,7 @@ const settings = {
     pathinfo: false,
     filename: global.server.assets + '/[name].js',
     chunkFilename: global.server.assets + '/js/async/[name].[contenthash].js',
-    publicPath: global.baseBath
+    publicPath: serverBase
   },
   devtool: 'source-map',
   plugins: [
