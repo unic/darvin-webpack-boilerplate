@@ -6,19 +6,35 @@
     <title>{{ title }}</title>
     <script>
       (function () {
-        if ("fonts" in document) {
-          var fontBold = new FontFace("OpenSansBold", "url('{{ darvin.server.base }}{{ darvin.server.assets }}' + 'fonts/open-sans-bold.ttf') format('ttf')");
-          var fontRegular = new FontFace("OpenSansRegular", "url('{{ darvin.server.base }}{{ darvin.server.assets }}' + 'fonts/open-sans-regular.ttf') format('ttf')");
-          Promise
-            .all([fontBold.load(), fontRegular.load()])
-            .then(function (loadedFonts) {
-              // Render them at the same time
-              loadedFonts.forEach(function (font) {
-                document
-                  .fonts
-                  .add(font);
+        const html = document.documentElement;
+        const fontsClass = 'wf-active';
+
+        if (sessionStorage.fontsLoaded) {
+          html
+            .classList
+            .add(fontsClass);
+        } else {
+          const script = document.createElement("script");
+          script.src = "https://cdnjs.cloudflare.com/ajax/libs/fontfaceobserver/2.0.7/fontfaceobserver.js";
+          script.async = true;
+          script.onload = function () {
+            const fontFamily = 'Merriweather';
+            const regular = new FontFaceObserver(fontFamily);
+            const bold = new FontFaceObserver(fontFamily, {weight: 'bold'});
+            const italic = new FontFaceObserver(fontFamily, {style: 'italic'});
+
+            Promise
+              .all([regular.load(), bold.load(), italic.load()])
+              .then(function () {
+                html
+                  .classList
+                  .add(fontsClass);
+                sessionStorage.fontsLoaded = true;
               });
-            });
+          }
+          document
+            .head
+            .appendChild(script);
         }
       })();
     </script>

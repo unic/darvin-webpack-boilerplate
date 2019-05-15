@@ -1,19 +1,48 @@
-/* ==|====================
-   Settings / Fonts
-   ======================= */
+@font-face {
+  font-family: "Merriweather";
+  font-weight: normal;
+  font-style: normal;
+  src: local("Merriweather"),
+    url("../assets/fonts/Merriweather-Regular.ttf") format("truetype");
+}
 
-// @font-face {
-//   font-weight: 400;
-//   font-family: "Roboto";
-//   font-style: normal;
+@font-face {
+  font-family: "Merriweather";
+  font-weight: bold;
+  font-style: normal;
+  src: local("Merriweather"),
+    url("../assets/fonts/Merriweather-Bold.ttf") format("truetype");
+}
 
-//   src: url("../assets/fonts/roboto-v18-latin-regular.woff2") format("woff2");
-// }
+@font-face {
+  font-family: "Merriweather";
+  font-weight: normal;
+  font-style: italic;
+  src: local("Merriweather"),
+    url("../assets/fonts/Merriweather-Italic.ttf") format("truetype");
+}
 
-// @font-face {
-//   font-weight: 700;
-//   font-family: "Roboto";
-//   font-style: normal;
+html {
 
-//   src: url("../assets/fonts/roboto-v18-latin-700.woff2") format("woff2");
-// }
+  h1,
+  h2,
+  h3,
+  p,
+  ul,
+  li {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  }
+}
+
+html.wf-active {
+
+  h1,
+  h2,
+  h3,
+  p,
+  ul,
+  li {
+    font-family: "Merriweather", Georgia, "New Times Roman", serif;
+    color: red;
+  }
+}
