@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "stylelint-webpack-plugin": "^0.10.5"
+  }
+}
