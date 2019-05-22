@@ -1,7 +1,6 @@
 const path = require('path');
 
 const basePath = process.cwd();
-const isDev = (process.env.NODE_ENV === 'dev');
 const htmlTemplates = require('../../libs/html-templates');
 
 const templates = htmlTemplates.templates;

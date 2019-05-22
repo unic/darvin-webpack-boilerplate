@@ -138,7 +138,7 @@ export default createModule({
      * @return {undefined}
      */
     state.init = () => {
-      container = document.querySelector(options.container);
+      container = el;
       if(!container) return;
 
       triggerBtns = document.querySelectorAll('.prev-m-servicenav__link[data-trigger]');
