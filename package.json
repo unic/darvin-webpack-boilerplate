@@ -89,7 +89,7 @@
       "eslint --fix \"{,**,**/**}*.js\""
     ],
     "*.scss": [
-      "eslint --fix \"{,**,**/**}*.scss\""
+      "stylelint --fix \"{,**,**/**}*.scss\""
     ]
   },
   "repository": {
