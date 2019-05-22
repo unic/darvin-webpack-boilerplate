@@ -1,4 +1,5 @@
 const MiniCssExtractPlugin = require("extract-css-chunks-webpack-plugin");
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const Fiber = require('fibers');
 
@@ -40,6 +41,14 @@ const prod = {
     ]
   },
   plugins: [
+    new StyleLintPlugin({
+      context: 'src',
+      configFile: '.stylelintrc',
+      files: '**/*.scss',
+      failOnError: false,
+      quiet: false,
+      syntax: 'scss'
+    }),
     new MiniCssExtractPlugin({
       filename: global.server.assets + '/css/style.css',
       hot: true
@@ -85,6 +94,14 @@ const dev = {
     ]
   },
   plugins: [
+    new StyleLintPlugin({
+      context: 'src',
+      configFile: '.stylelintrc',
+      files: '**/*.scss',
+      failOnError: false,
+      quiet: false,
+      syntax: 'scss'
+    }),
     new MiniCssExtractPlugin({
       filename: global.server.assets + '/css/style.css',
     }),
@@ -129,6 +146,14 @@ const prev = {
     ]
   },
   plugins: [
+    new StyleLintPlugin({
+      context: 'src',
+      configFile: '.stylelintrc',
+      files: '**/*.scss',
+      failOnError: false,
+      quiet: false,
+      syntax: 'scss'
+    }),
     new MiniCssExtractPlugin({
       filename: 'styles/preview.css',
     }),

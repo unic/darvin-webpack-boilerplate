@@ -1,7 +1,0 @@
-{
-  "devDependencies": {
-    "stylelint": "^10.0.1",
-    "stylelint-webpack-plugin": "^0.10.5",
-    "time-fix-plugin": "^2.0.6"
-  }
-}

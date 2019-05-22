@@ -4,7 +4,9 @@
     "extract-css-chunks-webpack-plugin": "^4.0.2",
     "mini-css-extract-plugin": "^0.5.0",
     "sass": "1.17.4",
-    "sass-loader": "^7.1.0"
+    "sass-loader": "^7.1.0",
+    "stylelint-webpack-plugin": "^0.10.5",
+    "time-fix-plugin": "^2.0.6"
   },
   "dependencies": {
     "postcss-loader": "^3.0.0"
