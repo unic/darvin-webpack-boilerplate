@@ -147,12 +147,13 @@ const prev = {
   },
   plugins: [
     new StyleLintPlugin({
-      context: 'src',
+      context: 'preview',
       configFile: '.stylelintrc',
       files: '**/*.scss',
-      failOnError: false,
+      failOnError: true,
       quiet: false,
-      syntax: 'scss'
+      syntax: 'scss',
+      fix: true
     }),
     new MiniCssExtractPlugin({
       filename: 'styles/preview.css',

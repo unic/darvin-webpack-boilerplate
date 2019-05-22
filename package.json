@@ -26,7 +26,7 @@
     "start": "npm install; npm link; darvin-cli init",
     "lint": "lint-staged",
     "lint-script": "eslint \"src/**/*.js\" --fix",
-    "lint-style": "stylelint \"src/**/*.js\" --fix",
+    "lint-style": "stylelint \"src/**/*.scss\" --fix",
     "pre-commit": "csscomb; lint-staged"
   },
   "bin": {
