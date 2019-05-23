@@ -50,7 +50,7 @@ const settings = {
       name: `${global.project} Develop`,
       logger: str => console.log(`DV#> ${str}`),
       onComplete: ()=> {
-        console.log(`💥💥💥💥💥`);
+        console.log(`DV#> Build Done 💯`);
       }
     })
   ],
