@@ -33,11 +33,11 @@
   overflow: hidden;
 
   &:hover {
-    background-color: darken(#ffffff, 4);
+    background-color: darken(#fff, 4);
   }
 
   &:focus {
-    background-color: darken(#ffffff, 4);
+    background-color: darken(#fff, 4);
     border: 0;
     outline: 0;
     box-shadow: none;

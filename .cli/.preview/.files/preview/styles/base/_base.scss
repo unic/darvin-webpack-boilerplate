@@ -2,7 +2,7 @@
   Preview Base
 ======================= */
 
-@import '../../node_modules/spinkit/scss/spinners/3-wave';
+@import "../../node_modules/spinkit/scss/spinners/3-wave";
 
 body.preview {
   @each $name, $color in $colors {
@@ -117,7 +117,7 @@ body.preview {
   position: absolute;
   left: 50%;
   top: 40%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
 
   .is-loaded & {
     display: none;
