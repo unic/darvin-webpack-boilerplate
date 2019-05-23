@@ -1,6 +1,6 @@
 {
   "name": "darvin-boilerplate",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "webpack only boilerplate for sophisticated templating with Nunjucks or Twig. providing lazy-loading javascript chunks, frontend preview and easy extendable webpack settings.",
   "email": "mail@tobiasfrei.ch",
   "author": "Tobias Frei",
