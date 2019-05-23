@@ -150,10 +150,9 @@ const prev = {
       context: 'preview',
       configFile: '.stylelintrc',
       files: '**/*.scss',
-      failOnError: true,
+      failOnError: false,
       quiet: false,
-      syntax: 'scss',
-      fix: true
+      syntax: 'scss'
     }),
     new MiniCssExtractPlugin({
       filename: 'styles/preview.css',

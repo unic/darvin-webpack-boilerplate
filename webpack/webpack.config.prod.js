@@ -51,9 +51,11 @@ const settings = {
       }
     }),*/
     new WebpackMessages({
-      name: 'Production',
+      name: `${global.project} Production`,
       logger: str => console.log(`DV#> ${str}`),
-      onComplete: printFancy
+      onComplete: ()=> {
+        console.log(`💥💥💥💥💥`);
+      }
     })
   ],
   resolve: {
