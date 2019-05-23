@@ -25,7 +25,7 @@ export default createModule({
    * @param {Object} module.options - Options
    * @return {Object} state
    */
-  constructor({ el, state, options }) {
+  constructor({ el, state }) {
     let container,
     triggerBtns,
     overlay,

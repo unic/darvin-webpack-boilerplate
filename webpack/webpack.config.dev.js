@@ -42,7 +42,8 @@ const settings = {
       '@html': path.resolve(basePath, 'src/templates/'),
       '@webpack': path.resolve(basePath, 'webpack/'),
     }
-  }
+  },
+  stats: 'errors-only'
 };
 
 settings.entry = {};
