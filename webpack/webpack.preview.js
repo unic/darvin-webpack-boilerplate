@@ -15,6 +15,7 @@ const { prev: cleaner } = require('./settings/assets-cleaner');
 const { prev: sass } = require('./settings/style-sass');
 const { prev: fonts } = require('./settings/assets-fonts');
 const { dev: js } = require('./settings/javascript');
+const { dev: ts } = require('./settings/javascript-typescript');
 const { dev: vue } = require('./settings/javascript-vue');
 const { prev: sprites } = require('./settings/assets-sprites');
 
@@ -38,7 +39,7 @@ const settings = {
     new WebpackMessages({
       name: 'Darvin Preview',
       logger: str => console.log(`DV#> ${str}`),
-      onComplete: ()=> {
+      onComplete: () => {
         console.log(`%c
           V
         (o o)
