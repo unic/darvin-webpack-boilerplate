@@ -1,7 +1,7 @@
 global.project = 'Darvin';
 global.mainChunk = 'js/main';
-global.proxy = 'unic.local';
-global.port = 7001;
+global.proxy = '';
+global.port = '7001';
 global.template = {
   'extIn': 'njk',
   'extOut': 'html'

@@ -1,0 +1,75 @@
+/* ==|====================
+   Layout / LED Light
+   ======================= */
+
+.prev-c-ledbox {
+  display: flex;
+  align-items: center;
+  margin-right: rem(6);
+}
+
+.prev-c-led {
+  display: block;
+  width: 8px;
+  height: 8px;
+  margin-right: 5px;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  box-shadow: inset rgba(0, 0, 0, 0.3) 0 0 0 0.5px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.prev-c-led--green {
+  background-color: rgba(171, 255, 0, 1);
+  box-shadow: inset rgba(0, 0, 0, 0.1) 0 0 0 0.5px, inset lighten(rgba(171, 255, 0, 1), 10) 0 0 1px 3px, rgba(171, 255, 0, 0.4) 0 0 8px 4px;
+  animation: flare-green 20s infinite;
+}
+
+@for $i from 1 to 20 {
+  .prev-m-index__item:nth-child(#{$i}) .prev-c-led {
+    animation-delay: $i * 2000ms;
+  }
+}
+
+.prev-c-led--yellow {
+  background-color: rgb(214, 154, 41);
+  box-shadow: inset rgba(0, 0, 0, 0.1) 0 0 0 0.5px, inset lighten(rgba(214, 154, 41, 1), 10) 0 0 1px 3px, rgba(255, 81, 0, 0.314) 0 0 4px 2px;
+}
+
+.prev-c-led--blue {
+  background-color: rgb(35, 183, 252);
+  box-shadow: inset rgba(0, 0, 0, 0.1) 0 0 0 0.5px, inset lighten(rgb(19, 214, 240), 10) 0 0 1px 3px, rgba(0, 204, 255, 0.514) 0 0 8px 4px;
+  animation: flare-blue 20s infinite;
+}
+
+.prev-c-led--red {
+  background-color: rgb(223, 0, 0);
+  box-shadow: inset rgba(0, 0, 0, 0.1) 0 0 0 0.5px, inset lighten(rgba(250, 24, 24, 0.801), 10) 0 0 1px 3px, rgba(245, 28, 28, 0.548) 0 0 8px 4px;
+}
+
+@keyframes flare-green {
+  18% {
+    box-shadow: inset rgba(0, 0, 0, 0.1) 0 0 0 0.5px, inset lighten(rgb(123, 255, 0), 10) 0 0 1px 3px, rgba(171, 255, 0, 0.4) 0 0 8px 2px;
+  }
+  42% {
+    box-shadow: inset rgba(0, 0, 0, 0.1) 0 0 0 0.5px, inset lighten(rgb(103, 238, 13), 10) 0 0 1px 3px, rgba(171, 255, 0, 0.3) 0 0 4px 3px;
+  }
+  78% {
+    box-shadow: inset rgba(0, 0, 0, 0.1) 0 0 0 0.5px, inset lighten(rgba(171, 255, 0, 1), 10) 0 0 1px 3px, rgba(171, 255, 0, 0.4) 0 0 8px 2px;
+  }
+}
+
+@keyframes flare-blue {
+  18% {
+    box-shadow: inset rgba(0, 0, 0, 0.1) 0 0 0 0.5px, inset lighten(rgb(19, 214, 240), 10) 0 0 1px 3px, rgba(0, 204, 255, 0.514) 0 0 8px 4px;
+  }
+  24% {
+    box-shadow: inset rgba(0, 0, 0, 0.1) 0 0 0 0.5px, inset lighten(rgb(19, 214, 240), 10) 0 0 1px 3px, rgba(0, 204, 255, 0.47) 0 0 6px 3px;
+  }
+  38% {
+    box-shadow: inset rgba(0, 0, 0, 0.1) 0 0 0 0.5px, inset lighten(rgb(19, 214, 240), 10) 0 0 1px 3px, rgba(0, 204, 255, 0.514) 0 0 8px 4px;
+  }
+}

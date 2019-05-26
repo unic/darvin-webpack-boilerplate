@@ -1,0 +1,47 @@
+/* ==|====================
+   Settings / Breakpoints
+   ======================= */
+
+//== Variables
+//
+$screen-micro: 375px;
+$screen-small: 540px;
+$screen-medium: 768px;
+$screen-large: 1024px;
+$screen-wide: $max-container-width; // 1420px
+$screen-ultra: 1920px;
+
+//== keywords
+//
+$zero: "only screen";
+$micro: "only screen and (min-width: #{em($screen-micro)})";
+$small: "only screen and (min-width: #{em($screen-small)})";
+$medium: "only screen and (min-width: #{em($screen-medium)})";
+$large: "only screen and (min-width: #{em($screen-large)})";
+$wide: "only screen and (min-width: #{em($screen-wide)})";
+$ultra: "only screen and (min-width: #{em($screen-ultra)})";
+
+//== keywords range
+//
+$zero-up: $zero;
+$zero-only: "#{$zero} and (max-width: #{em($screen-micro - 1px)})";
+$micro-up: $micro;
+$micro-down: "(max-width: #{em($screen-micro - 1px)})";
+$micro-only: "#{$micro} and (max-width: #{em($screen-small - 1px)})";
+$small-up: $small;
+$small-down: "(max-width: #{em($screen-small - 1px)})";
+$small-only: "#{$small} and (max-width: #{em($screen-medium - 1px)})";
+$medium-up: $medium;
+$medium-down: "(max-width: #{em($screen-medium - 1px)})";
+$medium-only: "#{$medium} and (max-width:#{em($screen-large - 1px)})";
+$large-up: $large;
+$large-down: "(max-width: #{em($screen-large - 1px)})";
+$large-only: "#{$large} and (max-width:#{em($screen-wide - 1px)})";
+$wide-up: $wide;
+$wide-down: "(max-width: #{em($screen-wide - 1px)})";
+$wide-only: "#{$wide} and (max-width:#{em($screen-ultra - 1px)})";
+$ultra-up: $ultra;
+
+//== define mobile breakpoint
+//
+$mobilenav: $large-up;

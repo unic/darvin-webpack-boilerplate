@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html class="no-js" lang="de">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <title>{{ darvin.name }}</title>
+      <meta name="description" content="Lorem description">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="format-detection" content="telephone=no">
+   </head>
+   <body class="preview" data-ext="njk" data-name="{{ darvin.name }}" data-filepath="{{ darvin.filepath }}" data-path="{{ darvin.path }}" data-chunk="{{ darvin.chunk }}">
+      <link href="{{ darvin.config.server.base }}/preview/styles/preview.css" rel="stylesheet">
+      <script>
+        if(localStorage.getItem("darvin-darkmode")) {
+          if(localStorage.getItem("darvin-darkmode")=='true') {
+            document.body.classList.add('darkmode');
+          }
+        }
+      </script>
+      <article id="prev-l-pagewrapper">
+
+        <!-- start preview header -->
+        <header id="prev-l-header">
+          <div class="prev-l-constrainer">
+            <div class="prev-m-title{% if variantName %} prev-m-title--column{% endif %}">
+              <div class="prev-m-title">{{ darvin.name }}</div>
+              <div class="prev-m-subtitle">{{ variantName }}</div>
+            </div>
+            <nav class="prev-m-servicenav" data-module="lazy-prev-bar">
+              {% if darvin.previews.length > 1 %}
+                  {% for link in darvin.previews %}
+                    {% set linkNumber = loop.index %}
+                    <div class="prev-m-servicenav__item variant">
+                      {% if link!=darvin.filepath %}
+                        <a class="prev-m-servicenav__link" href="{{ link }}.html">{{ linkNumber }}</a>
+                      {% else %}
+                        <span class="prev-m-servicenav__link prev-m-servicenav__link--active">{{ linkNumber }}</span>
+                      {% endif %}
+                    </div>
+                  {% endfor %}
+              {% endif %}
+              <div class="break"></div>
+              <div class="prev-m-servicenav__item">
+                <a class="prev-m-servicenav__link prev-m-servicenav__link--readme" tabindex="0" data-target="readme" data-trigger>
+                  <span class="prev-m-servicenav__linklbl"><i class="i i-info"></i></span><span class="prev-m-servicenav__linklbl prev-m-servicenav__linklbl--active"><i class="i i-close"></i></span>
+                </a>
+              </div>
+              <div class="prev-m-servicenav__item">
+                <a class="prev-m-servicenav__link prev-m-servicenav__link--source" tabindex="0" data-target="source" data-trigger>
+                  <span class="prev-m-servicenav__linklbl"><i class="i i-source"></i></span><span class="prev-m-servicenav__linklbl prev-m-servicenav__linklbl--active"><i class="i i-close"></i></span>
+                </a>
+              </div>
+              <div class="prev-m-servicenav__item">
+                <a href="/" class="prev-m-servicenav__link prev-m-servicenav__link--index">
+                  <i class="i i-nav"></i>
+                </a>
+              </div>
+            </nav>
+            <nav class="prev-m-servicenavtrigger">
+                <a href="#" class="prev-m-servicenav__link prev-m-servicenav__link--servicenav" data-target="servicenav" data-trigger>
+                  <i class="i i-maximize"></i>
+                </a>
+            </nav>
+          </div>
+        </header>
+        <!-- start main -->
+        <main id="prev-l-main" class="l-main--preview">
+          <div id="l-content">
+            {% block preview %}
+            {% endblock %}
+          </div>
+          <div class="prev-m-overlay">
+            <div class="prev-l-constrainer">
+              <div class="prev-m-overlay__item" data-readme>
+
+              </div>
+              <div class="prev-m-overlay__item" data-source>
+
+              </div>
+            </div>
+          </div>
+        </main>
+      </article>
+
+      <script type="text/javascript" src="{{ darvin.config.server.base }}/preview/preview.js"></script>
+    </body>
+</html>

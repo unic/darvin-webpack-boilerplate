@@ -23,10 +23,14 @@
     "cli"
   ],
   "scripts": {
-    "start": "npm install; npm link; darvin-cli init",
+    "start": "npm install; npm run prev-prod; npm run dev",
     "lint": "lint-staged",
     "lint-all": "eslint \"src/**/*.js\" --fix",
-    "pre-commit": "lint-staged; csscomb"
+    "pre-commit": "lint-staged; csscomb",
+    "dev": "cross-env NODE_ENV=dev webpack-dev-server --hot --inline --progress --no-info --mode development --config webpack/webpack.config.dev.js",
+    "prod": "npm run prev-prod; cross-env NODE_ENV=prod webpack -p --progress --no-info --mode production --config webpack/webpack.config.prod.js",
+    "prev-dev": "cross-env NODE_ENV=dev webpack -p --progress --no-info --mode development --config  webpack/webpack.preview.js --watch",
+    "prev-prod": "cross-env NODE_ENV=prod webpack -p --progress --no-info --mode production --config  webpack/webpack.preview.js"
   },
   "bin": {
     "darvin-cli": "./.cli/darvin-cli"
@@ -77,7 +81,43 @@
     "webpack-merge": "^4.2.1",
     "webpack-messages": "^2.0.4",
     "webpack-shell-plugin-next": "^0.6.4",
-    "whatwg-fetch": "^3.0.0"
+    "whatwg-fetch": "^3.0.0",
+    "@unic/composite-observer": "0.0.10",
+    "simple-git": "^1.110.0",
+    "ts-loader": "^6.0.1",
+    "typescript": "^3.4.5",
+    "clean-webpack-plugin": "^2.0.1",
+    "copy-webpack-plugin": "^5.0.2",
+    "file-loader": "^3.0.1",
+    "image-webpack-loader": "^4.6.0",
+    "svg-spritemap-webpack-plugin": "^3.3.0",
+    "expose-loader": "^0.7.5",
+    "webpack-modernizr-loader": "^5.0.0",
+    "css-loader": "^2.1.1",
+    "extract-css-chunks-webpack-plugin": "^4.0.2",
+    "mini-css-extract-plugin": "^0.5.0",
+    "sass": "1.17.4",
+    "sass-loader": "^7.1.0",
+    "nunjucks": "^3.2.0",
+    "nunjucks-loader": "^3.0.0",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack-dev-server": "^3.2.1",
+    "favicons-webpack-plugin": "0.0.9",
+    "webpack-bundle-analyzer": "3.1.0",
+    "axios": "^0.18.0",
+    "fuzzyset.js": "0.0.8",
+    "markdown-it": "^8.4.2",
+    "prismjs": "^1.16.0",
+    "jsplumb": "^2.9.0",
+    "spinkit": "^1.2.5",
+    "vue": "^2.6.10",
+    "vuex": "^3.1.0",
+    "vue-masonry": "^0.11.7",
+    "vue-masonry-css": "^1.0.3",
+    "vueisotope": "^3.1.2",
+    "vue-loader": "^15.7.0",
+    "vue-template-compiler": "^2.6.10"
   },
   "engines": {
     "node": "11.12.0"
@@ -101,5 +141,12 @@
     "hooks": {
       "pre-commit": "npm run pre-commit"
     }
+  },
+  "dependencies": {
+    "modernizr": "^3.7.1",
+    "postcss-loader": "^3.0.0",
+    "vue": "^2.6.10",
+    "vue-loader": "^15.7.0",
+    "vue-template-compiler": "^2.6.10"
   }
 }

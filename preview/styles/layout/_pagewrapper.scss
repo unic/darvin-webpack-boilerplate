@@ -1,0 +1,14 @@
+/* ==|====================
+   Layout / Pagewrapper
+   ======================= */
+
+#prev-l-pagewrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  .ie & {
+    display: block;
+    min-height: initial;
+  }
+}
