@@ -132,6 +132,7 @@ sftp-config.json
 
 ### Darvin ###
 dist/
+preview/
 log/
 dependencies.json
 activity-graph.json

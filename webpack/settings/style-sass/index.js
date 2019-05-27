@@ -22,7 +22,7 @@ const prod = {
           options: {
             plugins: () => [
               autoprefixer({
-                flexbox: 'no-2009'
+                grid: 'autoplace'
               }),
             ],
             sourceMap: true,
@@ -67,7 +67,7 @@ const dev = {
           options: {
             plugins: () => [
               autoprefixer({
-                flexbox: 'no-2009'
+                grid: 'autoplace'
               }),
             ],
             sourceMap: true,
@@ -89,7 +89,7 @@ const dev = {
       filename: global.server.assets + '/css/style.css',
     }),
   ]
-}
+};
 
 const prev = {
   module: {
@@ -111,7 +111,7 @@ const prev = {
           options: {
             plugins: () => [
               autoprefixer({
-                flexbox: 'no-2009'
+                grid: 'autoplace'
               }),
             ],
             sourceMap: true,
@@ -133,7 +133,7 @@ const prev = {
       filename: 'styles/preview.css',
     }),
   ]
-}
+};
 
 
 module.exports = {

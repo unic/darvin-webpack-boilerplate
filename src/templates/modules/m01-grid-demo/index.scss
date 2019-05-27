@@ -1,0 +1,90 @@
+/* ======================
+   Modules / m01-grid-demo
+======================= */
+
+// DEMO 1
+// 12 columns, with 1 column left & right as "gap"
+.banner {
+  @include grid();
+  //grid-template-columns: repeat(12, minmax(0, 1fr));
+  //grid-template-columns: 1fr 5fr 5fr 1fr;
+  grid-template:
+    ". a a a a a b b b b b ." 1fr /
+    1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  background-color: bisque;
+}
+
+.banner__text {
+  // 5 columns wide, 1 column offset
+  grid-area: a;
+  background-color: burlywood;
+}
+
+.banner__img {
+  // 5 columns wide
+  grid-area: b;
+  background-color: burlywood;
+}
+
+// DEMO 1.1
+// with 1 column left & right as "gap"
+.banner2 {
+  /* autoprefixer grid: no-autoplace */
+  @include grid(0);
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: 1fr;
+  background-color: bisque;
+}
+
+.banner2__text {
+  // 5 columns wide, 1 column offset
+  grid-column: 2 / span 5;
+  grid-row: 1;
+  background-color: #bada55;
+}
+
+.banner2__img {
+  // 5 columns wide
+  grid-column: 7 / span 5;
+  grid-row: 1;
+  background-color: #badaba;
+}
+
+////DEMO 2
+.three-column {
+  @include grid();
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: none;
+  background-color: bisque;
+}
+
+.three-column__col {
+  grid-column: auto;
+  grid-row: 1;
+  background-color: burlywood;
+}
+
+////DEMO 3
+.three-column2 {
+  @include grid();
+  grid-template:
+    "col1 col2" 100px
+    "row2 row2" 200px /
+    1fr 1fr;
+  background-color: bisque;
+}
+
+.three-column2__col1 {
+  grid-area: col1;
+  background-color: burlywood;
+}
+.three-column2__col2 {
+  grid-area: col2;
+  background-color: burlywood;
+}
+.three-column2__col3 {
+  grid-area: row2;
+  background-color: burlywood;
+}
+

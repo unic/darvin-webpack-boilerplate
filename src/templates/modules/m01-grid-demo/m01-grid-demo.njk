@@ -1,0 +1,34 @@
+{#
+    Modules m01-grid-demo
+     - 
+#}
+
+{% macro main(label='', classes = false) %}
+  <!-- START - m01-grid-demo -->
+  <section class="banner">
+    <div class="banner__text">TEXT</div>
+    <div class="banner__img">IMG</div>
+  </section>
+  <hr>
+
+  <section class="banner2">
+    <div class="banner2__text">TEXT</div>
+    <div class="banner2__img">IMG</div>
+  </section>
+  <hr>
+
+  <section class="three-column">
+    <div class="three-column__col">TEXT 1</div>
+    <div class="three-column__col">TEXT 2</div>
+    <div class="three-column__col">TEXT 3</div>
+  </section>
+  <hr>
+
+  <section class="three-column2">
+    <div class="three-column2__col1">TEXT 1</div>
+    <div class="three-column2__col2">TEXT 2</div>
+    <div class="three-column2__col3">ROW 2</div>
+  </section>
+  <hr>
+  <!-- END - m01-grid-demo -->
+{% endmacro %}
