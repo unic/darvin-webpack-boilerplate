@@ -1,0 +1,35 @@
+/* ==|====================
+   Modules / m01-toggle
+======================= */
+
+.m-toggle-trigger,
+.m-toggle-body {
+  margin: 1em 0;
+  padding: 0 1em;
+}
+
+.m-toggle-trigger {
+  display: block;
+  cursor: pointer;
+  user-select: none;
+
+  &:after {
+    content: "\25BC";
+    display: inline-block;
+    margin-left: 1em;
+  }
+}
+
+.m-toggle-body {
+  display: none;
+}
+
+.m-toggle__open {
+  .m-toggle-trigger:after {
+    content: "\25B2";
+  }
+
+  .m-toggle-body {
+    display: block;
+  }
+}

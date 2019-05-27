@@ -1,0 +1,19 @@
+{% import "components/c00-svg_icon/c00-svg_icon.njk" as svgIcon %}
+
+{#
+    Modules m01-toggle
+    Nenad Brcic - nenad.brcic@css.ch
+#}
+
+{% macro main(label = '', classes = false) %}
+  <!-- START - m01-toggle -->
+  <div class="m-toggle">
+    <a class="m-toggle-trigger">
+      Reiseversicherung abschliessen
+    </a>
+    <div class="m-toggle-body">
+      Stehen die schönsten Tage des Jahres für Sie an? Mit einem rundum sicheren Gefühl in die Ferien – vertrauen Sie dem Schutz unserer Reiseversicherung.
+    </div>
+  </div>
+  <!-- END - m01-toggle -->
+{% endmacro %}
