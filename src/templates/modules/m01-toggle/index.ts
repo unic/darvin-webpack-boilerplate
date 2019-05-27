@@ -20,7 +20,7 @@ const defaults: IToggleOptions = {
 interface IToggle extends IDefaultModule {
   el: Element;
   settings: IToggleOptions;
-  trigger: Element;
+  trigger: Element | null;
   listener: EventListener;
   toggle: Function;
 }
@@ -28,7 +28,7 @@ interface IToggle extends IDefaultModule {
 class Toggle implements IToggle {
   el: Element;
   settings: IToggleOptions;
-  trigger: Element;
+  trigger: Element | null;
   listener: EventListener;
 
   constructor(el: Element, options = defaults) {
@@ -52,14 +52,14 @@ class Toggle implements IToggle {
   }
 
   destroy() {
-    this.trigger.removeEventListener('click', this.toggle);
+    if (this.trigger) {
+      this.trigger.removeEventListener('click', this.toggle);
+    }
   }
 }
 
-let module: ModuleLoader;
-
 const initToggles = () => {
-  module = new ModuleLoader(Toggle, defaults.toggleClass);
+  new ModuleLoader(Toggle, defaults.toggleClass);
 }
 
 export default initToggles;
