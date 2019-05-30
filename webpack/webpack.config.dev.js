@@ -54,6 +54,10 @@ const settings = {
       }
     })
   ],
+  watchOptions: {
+    aggregateTimeout: 300,
+    ignored: ['**/*.woff', '**/*.json', '**/*.woff2', '**/*.jpg', '**/*.png', '**/*.svg', 'node_modules'],
+  },
 };
 
 settings.entry = {};

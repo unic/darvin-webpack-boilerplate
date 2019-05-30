@@ -63,6 +63,10 @@ const dev = {
         test: /\.(css|sass|scss)$/,
         use: [{
           loader: MiniCssExtractPlugin.loader,
+          options: {
+            hot: true,
+            reloadAll: true
+          }
         },
         {
           loader: 'css-loader',

@@ -1,5 +1,5 @@
 {
   "devDependencies": {
-    "svg-spritemap-webpack-plugin": "^3.3.0"
+    "svg-spritemap-webpack-plugin": "^3.3.3"
   }
 }

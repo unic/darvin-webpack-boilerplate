@@ -4,7 +4,7 @@
 
 + lazy loading chunks with intersection observer.
 + frontend preview for HTML templates.
-+ sophisticated templating with Nunjucks or Twig.
++ templating with Nunjucks or Twig.
 + easy extendable Webpack settings.
 
 
