@@ -1,6 +1,6 @@
 /* ==|====================
-   Components / Accordion
-   ======================= */
+ Components / Accordion
+======================= */
 
 $accordion-spacing: 12px;
 
@@ -9,9 +9,9 @@ $accordion-spacing: 12px;
   padding-bottom: rem(56px);
 
   &.is-open {
-     > .trigger {
+    > .trigger {
       .acc-icon {
-        &:after {
+        &::after {
           opacity: 1;
           transition: opacity 140ms ease-in-out;
         }
@@ -27,17 +27,17 @@ $accordion-spacing: 12px;
       }
     }
 
-     > .contentbox {
+    > .contentbox {
       height: auto;
 
-       > .content {
+      > .content {
         transform: translateY(0);
         opacity: 1;
       }
     }
   }
 
-   + .m-accordion {
+  + .m-accordion {
     margin-top: calc(#{rem(-56px)} - 1px);
   }
 
@@ -54,8 +54,8 @@ $accordion-spacing: 12px;
     display: flex;
     width: 100%;
     padding-left: rem($accordion-spacing);
-    border-top: 1px solid #cccccc;
-    border-bottom: 1px solid #cccccc;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
     cursor: pointer;
   }
 
@@ -72,7 +72,7 @@ $accordion-spacing: 12px;
     flex: 0 0 rem(70px);
     justify-content: center;
     align-items: center;
-    border-left: 1px solid #cccccc;
+    border-left: 1px solid #ccc;
     transition: background 140ms ease-out;
 
     .icon {
@@ -85,10 +85,10 @@ $accordion-spacing: 12px;
       transform-origin: 50% 50%;
       transition: transform 140ms ease-out, fill 140ms ease-out;
 
-      fill: #000000;
+      fill: #000;
     }
 
-    &:after {
+    &::after {
       content: " ";
       position: absolute;
       top: -1px;

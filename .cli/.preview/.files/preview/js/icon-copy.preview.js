@@ -39,7 +39,7 @@ export default createModule({
      * @return {undefined}
      */
     state.init = () => {
-      container = document.querySelector(options.container);
+      container = el;
       if(!container) return;
 
       icons = document.querySelectorAll(options.icon);

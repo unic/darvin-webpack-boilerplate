@@ -3,7 +3,9 @@
     "start": "npm install; npm run prev-prod; npm run dev",
     "prod": "npm run prev-prod; cross-env NODE_ENV=prod webpack -p --progress --no-info --mode production --config webpack/webpack.config.prod.js",
     "prev-dev": "cross-env NODE_ENV=dev webpack -p --progress --no-info --mode development --config  webpack/webpack.preview.js --watch",
-    "prev-prod": "cross-env NODE_ENV=prod webpack -p --progress --no-info --mode production --config  webpack/webpack.preview.js"
+    "prev-prod": "cross-env NODE_ENV=prod webpack -p --progress --no-info --mode production --config  webpack/webpack.preview.js",
+    "lint-prev-script": "eslint \"preview/**/*.js\" --fix",
+    "lint-prev-style": "stylelint \"preview/**/*.scss\" --fix"
   },
   "devDependencies": {
     "@unic/composite-observer": "0.0.10",

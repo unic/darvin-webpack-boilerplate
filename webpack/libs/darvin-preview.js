@@ -70,7 +70,7 @@ previewIndexObj.types.forEach((type) => {
           config = require(path.resolve(basePath, `${global.inputDirs.src}/${global.inputDirs.templates}/${tmplPath}/meta/config.json`));
         } catch (e) {
           if (e instanceof Error && e.code === "MODULE_NOT_FOUND") {
-            console.error("no config for " + path.resolve(basePath, `${global.inputDirs.src}/${global.inputDirs.templates}/${tmplPath}/meta/config.json`));
+            // console.error("no config for " + path.resolve(basePath, `${global.inputDirs.src}/${global.inputDirs.templates}/${tmplPath}/meta/config.json`));
           } else {
             throw e;
           }

@@ -5,6 +5,7 @@ require('../.darvinconf.js');
 const path = require('path');
 const basePath = process.cwd();
 const merge = require('webpack-merge');
+const WebpackMessages = require('webpack-messages');
 
 const webpackConfig = require('../webpack.config');
 const { getDarvinRC, createDynamicRequireArray } = require('./helpers/config-helpers');
@@ -42,7 +43,21 @@ const settings = {
       '@html': path.resolve(basePath, 'src/templates/'),
       '@webpack': path.resolve(basePath, 'webpack/'),
     }
-  }
+  },
+  stats: 'errors-only',
+  plugins: [
+    new WebpackMessages({
+      name: `${global.project} Develop`,
+      logger: str => console.log(`DV#> ${str}`),
+      onComplete: ()=> {
+        console.log(`DV#> Build Done 💯`);
+      }
+    })
+  ],
+  watchOptions: {
+    aggregateTimeout: 300,
+    ignored: ['**/*.woff', '**/*.json', '**/*.woff2', '**/*.jpg', '**/*.png', '**/*.svg', 'node_modules'],
+  },
 };
 
 settings.entry = {};

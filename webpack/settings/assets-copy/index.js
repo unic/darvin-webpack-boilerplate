@@ -7,7 +7,8 @@ const prod = {
       {
         from: basePath + '/log/*.{md,json}',
         to: global.server.assets + '/log/',
-        flatten: true
+        flatten: true,
+        cache: true
       },
       {
         from: basePath + '/' + global.inputDirs.src + '/' + global.inputDirs.templates + '/**/meta/*.{md,json}',
@@ -15,7 +16,8 @@ const prod = {
         flatten: false,
         transformPath (targetPath) {
           return targetPath.split('/' + global.inputDirs.src + '/' + global.inputDirs.templates + '/')[1];
-        }
+        },
+        cache: true
       },
       {
         from: basePath + '/' + global.inputDirs.src + '/' + global.inputDirs.templates + '/**/log/*.{md,json}',
@@ -23,7 +25,8 @@ const prod = {
         flatten: false,
         transformPath (targetPath) {
           return targetPath.split('/' + global.inputDirs.src + '/' + global.inputDirs.templates + '/')[1];
-        }
+        },
+        cache: true
       },
       {
         from: basePath + '/' + global.inputDirs.src + '/' + global.inputDirs.templates + `/modules/**/*.${global.template.extIn}`,
@@ -31,7 +34,8 @@ const prod = {
         flatten: false,
         transformPath (targetPath) {
           return targetPath.split('/' + global.inputDirs.src + '/' + global.inputDirs.templates + '/')[1];
-        }
+        },
+        cache: true
       },
       {
         from: basePath + '/' + global.inputDirs.src + '/' + global.inputDirs.templates + `/components/**/*.${global.template.extIn}`,
@@ -39,12 +43,14 @@ const prod = {
         flatten: false,
         transformPath (targetPath) {
           return targetPath.split('/' + global.inputDirs.src + '/' + global.inputDirs.templates + '/')[1];
-        }
+        },
+        cache: true
       },
       {
         from: basePath + '/' + global.inputDirs.src + '/' + global.server.assets + '/images/renditions/**/*.{png,gif,jpg,svg}',
         to: global.server.assets + '/images/',
         flatten: true,
+        cache: true
       }
     ], {})
   ],

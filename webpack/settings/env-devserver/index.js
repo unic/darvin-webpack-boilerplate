@@ -10,17 +10,12 @@ const dev = {
       devServer.server = server;
       devServer.app = app;
     },
-    /*watchOptions: {
-      aggregateTimeout: 300,
-      poll: 1000,
-    },*/
-    contentBase: [path.resolve(basePath, 'dist')],
-    watchContentBase: true,
+    contentBase: path.resolve(basePath, 'dist'),
+    watchContentBase: false,
     compress: true,
     port: global.port,
     open: 'Google Chrome',
     writeToDisk: true,
-    publicPath: '/',
     index: 'index.html'
   }
 }

@@ -101,8 +101,14 @@ module.exports = function(content) {
 
   // force reload
   if(cacheRegister[loaderPath]) {
-    if(cacheRegister[loaderPath] !== crypto.createHash('md5').update(html).digest("hex")) {
-      devServer.server.sockWrite(devServer.server.sockets, 'content-changed');
+    if(cacheRegister[loaderPath] !== crypto.createHash('md5').update(html).digest("hex") && devServer.server) {
+      if(devServer.app === 'bs') {
+        // force browsersync reload
+        devServer.server.reload(loaderPath);
+      } else {
+        // force webpack devserver reload
+        devServer.server.sockWrite(devServer.server.sockets, 'content-changed');
+      }
     }
   }
 

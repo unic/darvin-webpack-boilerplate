@@ -36,15 +36,10 @@ const settings = {
   },
   plugins: [
     new WebpackMessages({
-      name: 'Darvin Preview',
+      name: `${global.project} Preview`,
       logger: str => console.log(`DV#> ${str}`),
       onComplete: ()=> {
-        console.log(`%c
-          V
-        (o o)
-       (  V  )
-  .......m.m........
-    PREVIEW  DONE`, "font-family:monospace")
+        console.log(`DV#> Build Done 💫`);
       }
     })
   ],

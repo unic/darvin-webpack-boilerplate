@@ -3,7 +3,7 @@
     "dev": "cross-env NODE_ENV=dev webpack --mode development --watch --config webpack/webpack.config.dev.js"
   },
   "devDependencies": {
-    "browser-sync": "^2.26.3",
+    "browser-sync": "^2.26.5",
     "browser-sync-webpack-plugin": "^2.2.2"
   }
 }
