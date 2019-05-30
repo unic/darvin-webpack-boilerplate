@@ -100,10 +100,5 @@
     "last 2 versions",
     "ie > 10",
     "iOS > 9"
-  ],
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run pre-commit"
-    }
-  }
+  ]
 }
