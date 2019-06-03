@@ -18,7 +18,6 @@
           script.src = "https://cdnjs.cloudflare.com/ajax/libs/fontfaceobserver/2.1.0/fontfaceobserver.js";
           script.async = true;
           script.onload = function () {
-            console.log('fontfaceobserver loaded');
             const fontFamily = 'Plex Serif';
             const regular = new FontFaceObserver(fontFamily);
             const bold = new FontFaceObserver(fontFamily, {weight: 'bold'});
@@ -27,7 +26,6 @@
             Promise
               .all([regular.load(), bold.load(), italic.load()])
               .then(function () {
-                console.log('all fonts loaded!');
                 html
                   .classList
                   .add(fontsClass);
