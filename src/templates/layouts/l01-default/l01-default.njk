@@ -4,12 +4,42 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>{{ title }}</title>
-    <style>
-      body {
-        font-family: Museo, serif;
-        font-weight: 700;
-      }
-    </style>
+    <script>
+      (function () {
+        const html = document.documentElement;
+        const fontsClass = 'wf-active';
+
+        if (sessionStorage.fontsLoaded) {
+          html
+            .classList
+            .add(fontsClass);
+        } else {
+          const script = document.createElement("script");
+          script.src = "https://cdnjs.cloudflare.com/ajax/libs/fontfaceobserver/2.1.0/fontfaceobserver.js";
+          script.async = true;
+          script.onload = function () {
+            console.log('fontfaceobserver loaded');
+            const fontFamily = 'Plex Serif';
+            const regular = new FontFaceObserver(fontFamily);
+            const bold = new FontFaceObserver(fontFamily, {weight: 'bold'});
+            const italic = new FontFaceObserver(fontFamily, {style: 'italic'});
+
+            Promise
+              .all([regular.load(), bold.load(), italic.load()])
+              .then(function () {
+                console.log('all fonts loaded!');
+                html
+                  .classList
+                  .add(fontsClass);
+                sessionStorage.fontsLoaded = true;
+              });
+          }
+          document
+            .head
+            .appendChild(script);
+        }
+      })();
+    </script>
     <meta name="description" content="Lorem description">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="format-detection" content="telephone=no">

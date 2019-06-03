@@ -22,15 +22,35 @@
     url("../assets/fonts/Merriweather-Italic.ttf") format("truetype");
 }
 
-html {
+@font-face {
+  font-family: "Plex Serif";
+  font-style: normal;
+  font-weight: bold;
+  src: url('../assets/fonts/IBMPlexSerif-Bold.woff2') format('woff');
+}
 
+@font-face {
+  font-family: "Plex Serif";
+  font-style: italic;
+  font-weight: normal;
+  src: url('../assets/fonts/IBMPlexSerif-Italic.woff2') format('woff');
+}
+
+@font-face {
+  font-family: "Plex Serif";
+  font-style: normal;
+  font-weight: normal;
+  src: url('../assets/fonts/IBMPlexSerif-Regular.woff2') format('woff');
+}
+
+html {
   h1,
   h2,
   h3,
   p,
   ul,
   li {
-    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-family: $font-0;
   }
 }
 
@@ -42,7 +62,7 @@ html.wf-active {
   p,
   ul,
   li {
-    font-family: "Merriweather", Georgia, "New Times Roman", serif;
+    font-family: $font-1;
     color: red;
   }
 }

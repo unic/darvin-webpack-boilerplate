@@ -9,7 +9,8 @@ $base-font-size-unit: 16;
 
 //== Font Family
 //
-$font-1: "Merriweather", Georgia, "New Times Roman", serif !default;
+$font-0: Georgia, "New Times Roman", serif;
+$font-1: "Plex Serif", #{$font-0};
 $color1: #000000 !default;
 $color2: #ffffff !default;
 $color3: #a8a7a7 !default;
