@@ -1,3 +1,3 @@
-import initToggles from './index';
+import instance from './index.ts';
 
-initToggles();
+instance.init();

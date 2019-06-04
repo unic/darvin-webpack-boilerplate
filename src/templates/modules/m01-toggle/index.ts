@@ -2,64 +2,48 @@
  * @module m01-toggle
  */
 
-import ModuleLoader from '../../../js/libs/module-loader';
-import {IDefaultModule} from '../../../js/models/models';
+import {IModuleInstance} from '../../../js/models/models';
 
 interface IToggleOptions {
-  toggleClass: string;
   triggerClass: string;
   openClass: string;
 }
 
 const defaults: IToggleOptions = {
-  toggleClass: 'm-toggle',
   triggerClass: 'm-toggle-trigger',
   openClass: 'm-toggle__open'
 };
 
-interface IToggle extends IDefaultModule {
-  el: Element;
-  settings: IToggleOptions;
-  trigger: Element | null;
-  listener: EventListener;
-  toggle: Function;
+function toggle(e: MouseEvent) {
+  const trigger = <Element>e.target;
+  if (trigger && trigger.classList.contains(settings.triggerClass)) {
+    const container = <Element>trigger.parentNode;
+    container.classList.toggle(settings.openClass);
+  }
 }
 
-class Toggle implements IToggle {
-  el: Element;
-  settings: IToggleOptions;
-  trigger: Element | null;
-  listener: EventListener;
+function bindEvents(elements: Element[]) {
+  elements.forEach((el: Element) => el.addEventListener('click', toggle));
+}
 
-  constructor(el: Element, options = defaults) {
-    this.el = el;
-    this.settings = options;
-    this.trigger = this.el.querySelector(`.${this.settings.triggerClass}`);
+function unbindEvents(elements: Element[]) {
+  elements.forEach((el: Element) => el.removeEventListener('click', toggle));
+}
 
-    if (this.trigger) {
-      this.trigger.addEventListener('click', () => {
-        this.toggle()
-      });
-    }
-  }
+let settings: IToggleOptions;
+let toggles: Element[] = [];
 
-  toggle() {
-    if (this.el.classList.contains(this.settings.openClass)) {
-      this.el.classList.remove(this.settings.openClass);
-    } else {
-      this.el.classList.add(this.settings.openClass);
-    }
-  }
-
+const instance: IModuleInstance = {
+  init(options?: IToggleOptions) {
+    settings = {...defaults, ...options};
+    document.querySelectorAll(`.${settings.triggerClass}`).forEach((el: Element) => {
+      toggles.push(el);
+    })
+    bindEvents(toggles);
+  },
   destroy() {
-    if (this.trigger) {
-      this.trigger.removeEventListener('click', this.toggle);
-    }
+    unbindEvents(toggles);
   }
-}
+};
 
-const initToggles = () => {
-  new ModuleLoader(Toggle, defaults.toggleClass);
-}
-
-export default initToggles;
+export default instance;

@@ -1,11 +1,1 @@
-{
-  "settings": {
-    "base": ["js"],
-    "default": ["cleaner", "copy", "fonts", "images", "sprites", "modernizr", "sass"],
-    "devserver": ["devserver"],
-    "framework": ["vue"],
-    "addons": ["favicons", "analyzer", "markdown", "i18n"]
-  },
-  "name": "Darvin",
-  "company": "Unic AG"
-}
+{"settings":{"base":["typescript"],"default":["cleaner","copy","fonts","images","sprites","modernizr","sass"],"html":["nunjucks"],"devserver":["webpackdev"],"framework":["vue"],"addons":["favicons","analyzer","markdown","i18n"]},"name":"Darvin","company":""}
