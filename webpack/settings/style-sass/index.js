@@ -2,6 +2,7 @@ const MiniCssExtractPlugin = require("extract-css-chunks-webpack-plugin");
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const Fiber = require('fibers');
+const postcssCustomProperties = require('postcss-custom-properties');
 
 const prod = {
   module: {
@@ -22,6 +23,7 @@ const prod = {
           loader: 'postcss-loader',
           options: {
             plugins: () => [
+              postcssCustomProperties(),
               autoprefixer({
                 flexbox: 'no-2009'
               }),
@@ -79,6 +81,7 @@ const dev = {
           loader: 'postcss-loader',
           options: {
             plugins: () => [
+              postcssCustomProperties(),
               autoprefixer({
                 flexbox: 'no-2009'
               }),
@@ -131,6 +134,7 @@ const prev = {
           loader: 'postcss-loader',
           options: {
             plugins: () => [
+              postcssCustomProperties(),
               autoprefixer({
                 flexbox: 'no-2009'
               }),
