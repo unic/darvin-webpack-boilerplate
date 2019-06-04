@@ -2,12 +2,23 @@ const prod = {
   module: {
     rules: [
       {
+        enforce: 'pre',
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'eslint-loader',
+          options: {
+            // eslint options (if necessary)
+          }
+        },
+      },
+      {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
-        },
-      },
+        }
+      }
     ]
   },
   resolve: {
@@ -19,12 +30,20 @@ const dev = {
   module: {
     rules: [
       {
+        enforce: 'pre',
         test: /\.js$/,
         exclude: /node_modules/,
-        use: [{
-          loader: 'babel-loader',
-        }]
+        use: {
+          loader: 'eslint-loader',
+        }
       },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+        }
+      }
     ]
   },
   resolve: {

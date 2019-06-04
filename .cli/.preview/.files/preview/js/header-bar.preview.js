@@ -25,7 +25,7 @@ export default createModule({
    * @param {Object} module.options - Options
    * @return {Object} state
    */
-  constructor({ el, state, options }) {
+  constructor({ el, state }) {
     let container,
     triggerBtns,
     overlay,
@@ -138,7 +138,7 @@ export default createModule({
      * @return {undefined}
      */
     state.init = () => {
-      container = document.querySelector(options.container);
+      container = el;
       if(!container) return;
 
       triggerBtns = document.querySelectorAll('.prev-m-servicenav__link[data-trigger]');

@@ -61,6 +61,7 @@ const _rc = (cliObj, rcStruct) => {
         name: 'devserver',
         message: 'Select your dev server:',
         choices: rcStruct.devserver,
+        default: 'webpackdev',
         when: function(answers) {
           let ret = false;
           switch(cliObj.presets.preset) {

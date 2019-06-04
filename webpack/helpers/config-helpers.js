@@ -19,6 +19,8 @@ const setDarvinRC = (rc) => {
 getDarvinRC = () => {
   let rcArray = [];
   let rcString = '';
+  let settingsPath = path.resolve(basePath, `webpack/settings`);
+  let dirs = getDirs(settingsPath);
 
   // read darvin rc config
   let rcData = readFile(basePath + '/.darvinrc.json');
@@ -36,7 +38,16 @@ getDarvinRC = () => {
   const rcDataVal = Object.values(rcData.settings)
   rcDataVal.forEach((array, i) => {
     if(array.length > 0) {
-      rcArray.push(array.join(","));
+      array.forEach((item, i) => {
+        for (var i = 0; i < dirs.length; i++) {
+          let setting = getDarvinSettingFile(dirs[i]);
+
+          // push only if setting exist
+          if(setting.value === item) {
+            rcArray.push(item);
+          }
+        }
+      });
     }
   });
 
@@ -77,6 +88,20 @@ getDarvinSettings = () => {
   }
 
   return arr;
+},
+getDarvinSettingFile = (settingName) => {
+  let settingsPath = path.resolve(basePath, `webpack/settings`);
+  let settingConfigPath = path.resolve(settingsPath, settingName + '/.dv.settings');
+  let json;
+
+  try{
+    json = readFile(settingConfigPath);
+  } catch (err){
+    console.error(err);
+    return { value: '' };
+  }
+
+  return json;
 },
 getDarvinPresets = () => {
   let settingsPath = path.resolve(basePath, `.cli/.presets`);

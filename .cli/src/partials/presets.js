@@ -16,7 +16,8 @@ const _presets = (cliObj) => {
         type: 'list',
         name: 'preset',
         message: 'Select your presets:',
-        choices: presets
+        choices: presets,
+        default: 'static'
       }
     ])
     .then((data) => {

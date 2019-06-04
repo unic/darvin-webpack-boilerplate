@@ -11,14 +11,12 @@ $output-bourbon-deprecation-warnings: false;
 @import "settings/breakpoints";
 @import "settings/fonts";
 @import "settings/icons";
-
 @import "tools/sprites";
 @import "tools/functions";
 @import "tools/placeholders";
 @import "tools/mixins";
 @import "tools/transitions";
 @import "tools/helpers";
-
 @import "base/base";
 
 // Layout

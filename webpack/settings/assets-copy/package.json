@@ -1,5 +1,5 @@
 {
   "devDependencies": {
-    "copy-webpack-plugin": "^5.0.2"
+    "copy-webpack-plugin": "^5.0.3"
   }
 }

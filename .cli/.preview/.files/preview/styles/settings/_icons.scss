@@ -5,7 +5,7 @@
    * https://glyphter.com/
    ======================= */
 
-[class*="i-"]:before {
+[class*="i-"]::before {
   display: inline-block;
   margin-top: 2.5px;
   font-weight: normal;
@@ -17,147 +17,147 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.i-git:before {
+.i-git::before {
   content: "\0041";
 }
-.i-chart:before {
+.i-chart::before {
   content: "\0042";
 }
-.i-night:before {
+.i-night::before {
   content: "\0043";
 }
-.i-nav:before {
+.i-nav::before {
   content: "\0044";
 }
-.i-shuffle:before {
+.i-shuffle::before {
   content: "\0045";
 }
-.i-search:before {
+.i-search::before {
   content: "\0046";
 }
-.i-star:before {
+.i-star::before {
   content: "\0047";
 }
-.i-sun:before {
+.i-sun::before {
   content: "\0048";
 }
-.i-settings:before {
+.i-settings::before {
   content: "\0049";
 }
-.i-branch:before {
+.i-branch::before {
   content: "\004a";
 }
-.i-push:before {
+.i-push::before {
   content: "\004b";
 }
-.i-pull:before {
+.i-pull::before {
   content: "\004c";
 }
-.i-commit:before {
+.i-commit::before {
   content: "\004d";
 }
-.i-speed:before {
+.i-speed::before {
   content: "\004e";
 }
-.i-reload:before {
+.i-reload::before {
   content: "\004f";
 }
-.i-home:before {
+.i-home::before {
   content: "\0050";
 }
-.i-download:before {
+.i-download::before {
   content: "\0051";
 }
-.i-dots:before {
+.i-dots::before {
   content: "\0052";
 }
-.i-close:before {
+.i-close::before {
   content: "\0053";
 }
-.i-speech:before {
+.i-speech::before {
   content: "\0054";
 }
-.i-export:before {
+.i-export::before {
   content: "\0055";
 }
-.i-splash:before {
+.i-splash::before {
   content: "\0056";
 }
-.i-plussquare:before {
+.i-plussquare::before {
   content: "\0057";
 }
-.i-plus:before {
+.i-plus::before {
   content: "\0058";
 }
-.i-attach:before {
+.i-attach::before {
   content: "\0059";
 }
-.i-quote:before {
+.i-quote::before {
   content: "\005a";
 }
-.i-rocket:before {
+.i-rocket::before {
   content: "\0061";
 }
-.i-settings:before {
+.i-settings::before {
   content: "\0062";
 }
-.i-batch:before {
+.i-batch::before {
   content: "\0063";
 }
-.i-puzzle:before {
+.i-puzzle::before {
   content: "\0064";
 }
-.i-label:before {
+.i-label::before {
   content: "\0065";
 }
-.i-male:before {
+.i-male::before {
   content: "\0066";
 }
-.i-female:before {
+.i-female::before {
   content: "\0067";
 }
-.i-target:before {
+.i-target::before {
   content: "\0068";
 }
-.i-question:before {
+.i-question::before {
   content: "\0069";
 }
-.i-maximize:before {
+.i-maximize::before {
   content: "\006a";
 }
-.i-pen:before {
+.i-pen::before {
   content: "\006b";
 }
-.i-collapsible:before {
+.i-collapsible::before {
   content: "\006c";
 }
-.i-unlock:before {
+.i-unlock::before {
   content: "\006d";
 }
-.i-lock:before {
+.i-lock::before {
   content: "\006e";
 }
-.i-cards:before {
+.i-cards::before {
   content: "\006f";
 }
-.i-link:before {
+.i-link::before {
   content: "\0070";
 }
-.i-idea:before {
+.i-idea::before {
   content: "\0071";
 }
-.i-info:before {
+.i-info::before {
   content: "\0072";
 }
-.i-db:before {
+.i-db::before {
   content: "\0073";
 }
-.i-source:before {
+.i-source::before {
   content: "\0074";
 }
-.i-time:before {
+.i-time::before {
   content: "\0075";
 }
-.i-refresh:before {
+.i-refresh::before {
   content: "\0076";
 }

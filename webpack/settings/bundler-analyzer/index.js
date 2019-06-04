@@ -12,12 +12,7 @@ const prod = {
 };
 
 const dev = {
-  plugins: [
-    new BundleAnalyzerPlugin({
-      analyzerMode: 'static',
-      openAnalyzer: false,
-    }),
-  ],
+
 }
 
 module.exports = {

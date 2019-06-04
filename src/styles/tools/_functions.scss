@@ -13,6 +13,7 @@
   @if $unit == deg {
     $unitless: $unitless / 180 * pi();
   }
+
   @return $unitless;
 }
 
@@ -23,6 +24,7 @@
   @for $i from 0 through 10 {
     $sin: $sin + pow(-1, $i) * pow($angle, (2 * $i + 1)) / fact(2 * $i + 1);
   }
+
   @return $sin;
 }
 
@@ -33,6 +35,7 @@
   @for $i from 0 through 10 {
     $cos: $cos + pow(-1, $i) * pow($angle, 2 * $i) / fact(2 * $i);
   }
+
   @return $cos;
 }
 
@@ -50,7 +53,6 @@
 
   @return $number;
 }
-
 
 // Convert pixels to rems
 // eg. for a relational value of 12px write rem(12)

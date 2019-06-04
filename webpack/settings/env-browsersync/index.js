@@ -1,4 +1,6 @@
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const browserSync = require('browser-sync');
+let devServer = require('../../libs/devserver-storage');
 
 const dev = {
   plugins: [
@@ -10,7 +12,7 @@ const dev = {
       },
       startPath: 'index.html',
       port: global.port,
-      files: ['css/*.css', 'js/*.js', `**/*.${global.template.extIn}`],
+      files: ['css/*.css', 'js/*.js'],
       open: true,
       https: false,
       notify: false,
@@ -18,12 +20,20 @@ const dev = {
       reloadOnRestart: true,
       injectChanges: true,
       online: true,
-      //reloadDelay: 30,
       ghostMode: {
         clicks: false,
         forms: false,
         scroll: false,
       },
+    },
+    {
+        name: 'bsInstance',
+        callback: () => {
+            let browserSyncInstance = browserSync.get('bsInstance');
+
+            devServer.server = browserSyncInstance;
+            devServer.app = "bs";
+        }
     }),
   ],
 }

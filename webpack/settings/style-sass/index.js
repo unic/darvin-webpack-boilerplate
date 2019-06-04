@@ -1,6 +1,8 @@
 const MiniCssExtractPlugin = require("extract-css-chunks-webpack-plugin");
+const StyleLintPlugin = require('stylelint-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const Fiber = require('fibers');
+const postcssCustomProperties = require('postcss-custom-properties');
 
 const prod = {
   module: {
@@ -21,6 +23,7 @@ const prod = {
           loader: 'postcss-loader',
           options: {
             plugins: () => [
+              postcssCustomProperties(),
               autoprefixer({
                 flexbox: 'no-2009'
               }),
@@ -40,6 +43,14 @@ const prod = {
     ]
   },
   plugins: [
+    new StyleLintPlugin({
+      context: 'src',
+      configFile: '.stylelintrc',
+      files: '**/*.scss',
+      failOnError: false,
+      quiet: false,
+      syntax: 'scss'
+    }),
     new MiniCssExtractPlugin({
       filename: global.server.assets + '/css/style.css',
       hot: true
@@ -54,6 +65,10 @@ const dev = {
         test: /\.(css|sass|scss)$/,
         use: [{
           loader: MiniCssExtractPlugin.loader,
+          options: {
+            hot: true,
+            reloadAll: true
+          }
         },
         {
           loader: 'css-loader',
@@ -66,6 +81,7 @@ const dev = {
           loader: 'postcss-loader',
           options: {
             plugins: () => [
+              postcssCustomProperties(),
               autoprefixer({
                 flexbox: 'no-2009'
               }),
@@ -85,6 +101,14 @@ const dev = {
     ]
   },
   plugins: [
+    new StyleLintPlugin({
+      context: 'src',
+      configFile: '.stylelintrc',
+      files: '**/*.scss',
+      failOnError: false,
+      quiet: false,
+      syntax: 'scss'
+    }),
     new MiniCssExtractPlugin({
       filename: global.server.assets + '/css/style.css',
     }),
@@ -110,6 +134,7 @@ const prev = {
           loader: 'postcss-loader',
           options: {
             plugins: () => [
+              postcssCustomProperties(),
               autoprefixer({
                 flexbox: 'no-2009'
               }),
@@ -129,6 +154,14 @@ const prev = {
     ]
   },
   plugins: [
+    new StyleLintPlugin({
+      context: 'preview',
+      configFile: '.stylelintrc',
+      files: '**/*.scss',
+      failOnError: false,
+      quiet: false,
+      syntax: 'scss'
+    }),
     new MiniCssExtractPlugin({
       filename: 'styles/preview.css',
     }),

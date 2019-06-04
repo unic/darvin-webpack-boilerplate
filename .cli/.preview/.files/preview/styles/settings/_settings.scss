@@ -16,15 +16,15 @@ $prev-font2: "DroidSans", Verdana, Helvetica;
 //
 $colors: (
   main-dark: #1b1b1b,
-  main-bright: #ffffff,
-  main-shadow: #222222,
-  main-border: #ffffff,
+  main-bright: #fff,
+  main-shadow: #222,
+  main-border: #fff,
   main-ambiance: #52ccb8,
   main-color: #4bd8b9,
   main-color-light: #e8175d,
   main-button: rgba(219, 219, 219, 0.3),
   main-button-text: #b6b6b6,
-  main-bg: #ffffff,
+  main-bg: #fff,
   main-bg-soft: rgba(182, 207, 203, 0.3),
   main-bg-dark: #f0f0f0,
   activity-bg:#e7e7e7,
@@ -34,13 +34,13 @@ $colors: (
   card-footer-text: #577374,
   card-footer-text-hover: #494b40,
   card-title: #505a54,
-  card-meta: #222222,
+  card-meta: #222,
   dependency-stroke: #9b9b9b,
-  dependency-bg: #ffffff
+  dependency-bg: #fff
 );
 $colors-dark: (
-  main-dark: #000000,
-  main-bright: #ffffff,
+  main-dark: #000,
+  main-bright: #fff,
   main-shadow: #a8a7a7,
   main-border: #474747,
   main-ambiance: #cc527a,
@@ -58,7 +58,7 @@ $colors-dark: (
   card-footer-text: #868686,
   card-footer-text-hover: #bebebe,
   card-title: #c5c5c5,
-  card-meta: #222222,
+  card-meta: #222,
   dependency-stroke: #ceb0ba,
   dependency-bg: #161414
 );

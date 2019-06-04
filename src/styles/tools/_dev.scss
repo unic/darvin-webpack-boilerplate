@@ -5,7 +5,7 @@
 .breakpoint-mode,
 .dev-mode {
   // Show current used media query
-  &:before {
+  &::before {
     content: "Breakpoint: zero";
     position: fixed;
     top: 0;
@@ -20,7 +20,7 @@
   }
 
   @media #{$zero-only} {
-    &:before {
+    &::before {
       content: "zero";
       color: black;
       background: lightcyan;
@@ -28,7 +28,7 @@
   }
 
   @media #{$micro-only} {
-    &:before {
+    &::before {
       content: " micro";
       color: black;
       background: lightpink;
@@ -36,7 +36,7 @@
   }
 
   @media #{$small-only} {
-    &:before {
+    &::before {
       content: "small";
       color: black;
       background: lightgreen;
@@ -44,7 +44,7 @@
   }
 
   @media #{$medium-only} {
-    &:before {
+    &::before {
       content: "medium";
       color: white;
       background: skyblue;
@@ -52,7 +52,7 @@
   }
 
   @media #{$large-up} {
-    &:before {
+    &::before {
       content: "large";
       color: white;
       background: orangered;
@@ -60,7 +60,7 @@
   }
 
   @media #{$wide-up} {
-    &:before {
+    &::before {
       content: "wide";
       color: white;
       background: deeppink;
@@ -68,7 +68,7 @@
   }
 
   @media #{$ultra-up} {
-    &:before {
+    &::before {
       content: "ultra";
       color: white;
       background: black;
