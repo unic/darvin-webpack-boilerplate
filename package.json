@@ -23,7 +23,7 @@
     "cli"
   ],
   "scripts": {
-    "start": "npm install; npm link; darvin-cli init",
+    "start": "npm install -g cross-env; DARVIN_ENV=darvinrc DARVIN_CONF=darvinconf.system; npm install; npm link; darvin-cli init",
     "lint": "lint-staged",
     "lint-script": "eslint \"src/**/*.js\" --fix",
     "lint-style": "stylelint \"src/**/*.scss\" --fix",
