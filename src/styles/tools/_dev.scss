@@ -6,7 +6,7 @@
 .dev-mode {
   // Show current used media query
   &::before {
-    content: "Breakpoint: zero";
+    content: 'Breakpoint: zero';
     position: fixed;
     top: 0;
     left: 0;
@@ -21,7 +21,7 @@
 
   @media #{$zero-only} {
     &::before {
-      content: "zero";
+      content: 'zero';
       color: black;
       background: lightcyan;
     }
@@ -29,7 +29,7 @@
 
   @media #{$micro-only} {
     &::before {
-      content: " micro";
+      content: ' micro';
       color: black;
       background: lightpink;
     }
@@ -37,7 +37,7 @@
 
   @media #{$small-only} {
     &::before {
-      content: "small";
+      content: 'small';
       color: black;
       background: lightgreen;
     }
@@ -45,7 +45,7 @@
 
   @media #{$medium-only} {
     &::before {
-      content: "medium";
+      content: 'medium';
       color: white;
       background: skyblue;
     }
@@ -53,7 +53,7 @@
 
   @media #{$large-up} {
     &::before {
-      content: "large";
+      content: 'large';
       color: white;
       background: orangered;
     }
@@ -61,7 +61,7 @@
 
   @media #{$wide-up} {
     &::before {
-      content: "wide";
+      content: 'wide';
       color: white;
       background: deeppink;
     }
@@ -69,7 +69,7 @@
 
   @media #{$ultra-up} {
     &::before {
-      content: "ultra";
+      content: 'ultra';
       color: white;
       background: black;
     }

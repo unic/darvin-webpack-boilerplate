@@ -10,7 +10,6 @@
     } ],
     "at-rule-name-case": "lower",
     "at-rule-name-space-after": "always-single-line",
-    "at-rule-no-vendor-prefix": true,
     "at-rule-semicolon-newline-after": "always",
     "block-closing-brace-empty-line-before": "never",
     "block-closing-brace-newline-after": ["always", {
@@ -83,7 +82,7 @@
     "keyframe-declaration-no-important": true,
     "length-zero-no-unit": true,
     "max-empty-lines": 1,
-    "max-nesting-depth": [ 3, {
+    "max-nesting-depth": [ 4, {
       "ignore": ["blockless-at-rules"]
     } ],
     "media-feature-colon-space-after": "always",

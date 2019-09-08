@@ -2,10 +2,6 @@
  Base
 ======================= */
 
-@-ms-viewport {
-  width: auto;
-}
-
 html {
   box-sizing: border-box;
   overflow-y: scroll;
@@ -13,6 +9,7 @@ html {
 
 * {
   font-variant-ligatures: none;
+
   &,
   &::after,
   &::before {

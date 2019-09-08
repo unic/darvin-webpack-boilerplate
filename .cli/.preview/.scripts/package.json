@@ -19,6 +19,7 @@
     "@unic/composite-observer": "0.0.10",
     "axios": "^0.19.0",
     "fuzzyset.js": "0.0.8",
+    "lodash.merge": "^4.6.2",
     "markdown-it": "^9.1.0",
     "nunjucks": "^3.2.0",
     "prismjs": "^1.17.1",
