@@ -4,15 +4,43 @@
 
 @import "../../node_modules/spinkit/scss/spinners/3-wave";
 
-body.preview {
+:root {
   @each $name, $color in $colors {
     --#{$name}: #{$color};
   }
 
-  &.darkmode {
+  body.preview.darkmode {
     @each $name, $color in $colors-dark {
       --#{$name}: #{$color};
     }
+  }
+}
+
+::selection {
+  color: var(--main-bright);
+  background-color: var(--main-color);
+}
+
+body.preview {
+  .leader-line {
+    z-index: 100;
+  }
+
+  .tippy-tooltip.darvin-theme {
+    background-color: var(--main-color);
+    color: var(--main-bright);
+
+    .tippy-content {
+      font-size: rem(13);
+    }
+  }
+
+  .tippy-tooltip.darvin-theme[data-animatefill] {
+    background-color: transparent;
+  }
+
+  .tippy-tooltip.darvin-theme .tippy-backdrop {
+    background-color: var(--main-color);
   }
 
   &.dependency-mode {
@@ -26,20 +54,24 @@ body.preview {
       .prev-m-overlay__item[data-source] {
         display: block;
       }
+
       .prev-m-servicenav__link--source {
         .prev-m-servicenav__linklbl {
           display: none;
         }
+
         .prev-m-servicenav__linklbl--active {
           display: flex;
           margin-top: 4px;
         }
       }
     }
+
     &[data-active="readme"] {
       .prev-m-overlay__item[data-readme] {
         display: block;
       }
+
       .prev-m-servicenav__link--readme {
         .prev-m-servicenav__linklbl {
           display: none;
@@ -65,11 +97,6 @@ body.preview {
     margin: 0 !important;
     border-radius: 0;
     font-family: $prev-font1;
-  }
-
-  ::selection {
-    color: var(--main-bright);
-    background-color: var(--main-color);
   }
 
   .prev-h1 {

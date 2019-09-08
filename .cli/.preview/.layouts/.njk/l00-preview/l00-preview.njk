@@ -2,14 +2,51 @@
 <html class="no-js" lang="de">
    <head>
       <meta charset="utf-8">
-      <meta http-equiv="x-ua-compatible" content="ie=edge">
       <title>{{ darvin.name }}</title>
+      <script>
+        (function () {
+          const html = document.documentElement;
+          const fontsClass = 'fonts-loaded';
+
+          if (sessionStorage.fontsLoaded) {
+            html
+              .classList
+              .add(fontsClass);
+          } else {
+            const script = document.createElement("script");
+            script.src = "https://cdnjs.cloudflare.com/ajax/libs/fontfaceobserver/2.1.0/fontfaceobserver.js";
+            script.async = true;
+            script.onload = function () {
+              const fontFamilyA = 'Museo';
+              const fontFamilyB = 'MuseoSans';
+
+              const fontA500 = new FontFaceObserver(fontFamilyA, {weight: '500'});
+              const fontA700 = new FontFaceObserver(fontFamilyA, {weight: '700'});
+              const fontB300 = new FontFaceObserver(fontFamilyB, {weight: '300'});
+              const fontB500 = new FontFaceObserver(fontFamilyB, {weight: '500'});
+              const fontB700 = new FontFaceObserver(fontFamilyB, {weight: '700'});
+
+              Promise
+                .all([fontA500.load(), fontA700.load(), fontB300.load(), fontB500.load(), fontB700.load()])
+                .then(function () {
+                  html
+                    .classList
+                    .add(fontsClass);
+                  sessionStorage.fontsLoaded = true;
+                });
+            };
+            document
+              .head
+              .appendChild(script);
+          }
+        })();
+      </script>
       <meta name="description" content="Lorem description">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
       <meta name="format-detection" content="telephone=no">
+      <link href="{{ darvin.config.server.base }}/preview/styles/preview.css" rel="stylesheet">
    </head>
    <body class="preview" data-ext="njk" data-name="{{ darvin.name }}" data-filepath="{{ darvin.filepath }}" data-path="{{ darvin.path }}" data-chunk="{{ darvin.chunk }}">
-      <link href="{{ darvin.config.server.base }}/preview/styles/preview.css" rel="stylesheet">
       <script>
         if(localStorage.getItem("darvin-darkmode")) {
           if(localStorage.getItem("darvin-darkmode")=='true') {
@@ -82,6 +119,6 @@
         </main>
       </article>
 
-      <script type="text/javascript" src="{{ darvin.config.server.base }}/preview/preview.js"></script>
+      <script type="text/javascript" src="{{ darvin.config.server.base }}/preview/preview.js" async></script>
     </body>
 </html>

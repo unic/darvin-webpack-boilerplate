@@ -1,6 +1,6 @@
 /* eslint-disable */
 require('./helpers/node-check');
-require('../.darvinconf.js');
+require(`../config/.${process.env.DARVIN_CONF}.js`);
 
 const path = require('path');
 const basePath = process.cwd();
@@ -28,15 +28,16 @@ if(global.server.base==='') {
 
 const settings = {
   output: {
-    devtoolLineToLine: true,
+    devtoolLineToLine: false,
     sourceMapFilename: global.server.assets + '/js/maps/[name].js.map',
     path: path.resolve(basePath, 'dist'),
     pathinfo: false,
-    filename: global.server.assets + '/[name].js',
+    filename: global.server.assets + '/[name].[hash].js',
     chunkFilename: global.server.assets + '/js/async/[name].[contenthash].js',
     publicPath: serverBase
   },
   devtool: 'source-map',
+  stats: 'errors-only',
   plugins: [
     /*new WebpackShellPlugin({
       onBuildStart:{

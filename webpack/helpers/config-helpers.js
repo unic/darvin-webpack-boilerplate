@@ -7,8 +7,19 @@ const { sortByKey } = require('./../helpers/darvin-helpers');
 
 const setDarvinRC = (rc) => {
   try{
-    writeFile(`./.darvinrc.json`, JSON.stringify(rc));
-    console.log("DV#> boilerplate successful initalized.");
+    writeFile(`./config/.darvinrc.all.json`, JSON.stringify(rc));
+
+    // replace sass with sassie for ie dev
+    writeFile(`./config/.darvinrc.ie.json`, JSON.stringify(rc).replace('sass',  'sassie'));
+
+    // remove non sass tasks for ie prod
+    rc.settings.html = [];
+    rc.settings.devserver = [];
+    rc.settings.framework = [];
+    rc.settings.addons = [];
+    writeFile(`./config/.darvinrc.ie.prod.json`, JSON.stringify(rc).replace('sass', 'sassie'));
+
+    console.log("DV#> remove the '.git' directory");
     return true;
   } catch (err){
     console.error(err);
@@ -21,12 +32,13 @@ getDarvinRC = () => {
   let rcString = '';
   let settingsPath = path.resolve(basePath, `webpack/settings`);
   let dirs = getDirs(settingsPath);
+  let rcData;
 
   // read darvin rc config
-  let rcData = readFile(basePath + '/.darvinrc.json');
+  rcData = readFile(basePath + `/config/.${process.env.DARVIN_ENV}.json`);
 
   if(!rcData) {
-    console.error('DV#> no darvin rc file');
+    console.error(`DV#> file .${process.env.DARVIN_ENV}.json not found in config directory`);
     process.exit();
   }
 

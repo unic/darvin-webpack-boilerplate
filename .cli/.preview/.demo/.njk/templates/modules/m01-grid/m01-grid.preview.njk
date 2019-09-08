@@ -1,0 +1,56 @@
+{% extends "layouts/l00-preview/l00-preview.njk" %}
+
+{% import "modules/m01-grid/m01-grid.njk" as grid %}
+
+
+{% block preview %}
+
+  {% call grid.container() %}
+      {% call grid.row() %}
+         {% call grid.cell(columns = [12, 12, 12]) %}
+               <div style="background-color: #ccc; padding: 20px"></div>
+         {% endcall %}
+
+         {% call grid.cell(columns = [12, 10, 10], offsets = [0, 1, 1]) %}
+               <div style="background-color: #ccc; padding: 20px"></div>
+         {% endcall %}
+
+         {% call grid.cell(columns = [12, 6, 6]) %}
+               <div style="background-color: #ccc; padding: 20px"></div>
+         {% endcall %}
+
+         {% call grid.cell(columns = [12, 6, 6]) %}
+               <div style="background-color: #ccc; padding: 20px"></div>
+         {% endcall %}
+
+         {% call grid.cell(columns = [12, 8, 8]) %}
+               <div style="background-color: #ccc; padding: 20px"></div>
+         {% endcall %}
+
+         {% call grid.cell(columns = [12, 4, 4]) %}
+               <div style="background-color: #ccc; padding: 20px"></div>
+         {% endcall %}
+
+         {% call grid.cell(columns = [12, 4, 4]) %}
+               <div style="background-color: #ccc; padding: 20px"></div>
+         {% endcall %}
+
+         {% call grid.cell(columns = [12, 8, 8]) %}
+               <div style="background-color: #ccc; padding: 20px"></div>
+         {% endcall %}
+
+         {% call grid.cell(columns = [12, 6, 4]) %}
+               <div style="background-color: #ccc; padding: 20px"></div>
+         {% endcall %}
+
+         {% call grid.cell(columns = [12, 6, 4]) %}
+               <div style="background-color: #ccc; padding: 20px"></div>
+         {% endcall %}
+
+         {% call grid.cell(columns = [12, 6, 4]) %}
+               <div style="background-color: #ccc; padding: 20px"></div>
+         {% endcall %}
+      {% endcall %}
+   {% endcall %}
+
+{% endblock %}

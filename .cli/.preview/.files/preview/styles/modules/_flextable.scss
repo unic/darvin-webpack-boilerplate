@@ -1,0 +1,47 @@
+/* ==|====================
+   Modules / Flextable
+   ======================= */
+
+.darvin-prev-flextable {
+  width: 100%;
+  max-width: rem(1440);
+  margin: auto;
+}
+
+.darvin-prev-flextable__row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: rem(32);
+}
+
+.darvin-prev-flextable__item {
+  width: rem(150);
+  display: flex;
+  align-items: center;
+  margin-bottom: rem(32);
+}
+
+.darvin-prev-flextable__item--title {
+  font-size: rem(10);
+  flex-basis: 100%;
+  padding-top: rem(12);
+}
+
+@media only screen and (min-width: 52.5em) {
+  .darvin-prev-flextable__row {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2rem;
+    flex-direction: row;
+    flex-wrap: no-wrap;
+  }
+
+  .darvin-prev-flextable__item {
+    margin-bottom: 0;
+  }
+
+  .darvin-prev-flextable__item--title {
+    flex-basis: auto;
+    align-items: flex-start;
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "devDependencies": {
+    "css-loader": "^3.2.0",
+    "extract-css-chunks-webpack-plugin": "^4.6.0",
+    "mini-css-extract-plugin": "^0.8.0",
+    "postcss-css-variables": "^0.13.0",
+    "postcss-custom-properties": "^9.0.2",
+    "sass": "1.23.0-module.beta.1",
+    "sass-loader": "^8.0.0",
+    "stylelint-scss": "^3.10.1",
+    "stylelint-webpack-plugin": "^0.10.5",
+    "time-fix-plugin": "^2.0.6"
+  },
+  "dependencies": {
+    "postcss-loader": "^3.0.0"
+  }
+}

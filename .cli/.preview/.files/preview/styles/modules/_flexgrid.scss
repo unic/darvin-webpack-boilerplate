@@ -2,13 +2,13 @@
    Modules / Flexgrid
    ======================= */
 
-.m-prev-flexgrid {
+.darvin-prev-flexgrid {
   display: flex;
   flex-wrap: wrap;
   margin: 0 2rem;
 }
 
-.m-prev-flexgrid__item {
+.darvin-prev-flexgrid__item {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -24,7 +24,7 @@
   }
 }
 
-.m-prev-flexgrid__iconbox {
+.darvin-prev-flexgrid__iconbox {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -49,10 +49,582 @@
     font-size: 7px;
   }
 
-  svg.icon {
+  svg.c-icon {
+    margin-right: 0;
+
     body.preview & {
       width: 50px;
       height: 50px;
     }
   }
+}
+
+.darvin-prev-flexgrid__colorbox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100px;
+  height: 120px;
+  overflow: hidden;
+  position: relative;
+  flex-direction: column;
+
+  &:focus {
+    background-color: darken(#fff, 4);
+    border: 0;
+    outline: 0;
+    box-shadow: none;
+  }
+
+  input {
+    position: absolute;
+    top: -30%;
+    font-size: 7px;
+  }
+}
+
+.darvin-prev-flexgrid__colorboxbval {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 100%;
+  width: 100px;
+  height: 100px;
+}
+
+.darvin-prev-flexgrid__colorboxlabel {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 11px;
+}
+
+.darvin-prev-flexgrid__item.icontest {
+  width: 25%;
+
+  a {
+    margin: 1rem 0;
+    text-decoration: none;
+    font-family: 'MuseoSans';
+  }
+
+  .eight-px & {
+    .c-icon {
+      @extend .c-icon--8;
+    }
+
+    a {
+      font-size: 14px;
+
+      &:nth-child(1) {
+        font-weight: 300;
+
+        .c-icon {
+          stroke-width: get-stroke('14', '8', '300');
+        }
+      }
+
+      &:nth-child(2) {
+        font-weight: 500;
+
+        .c-icon {
+          stroke-width: get-stroke('14', '8', '500');
+        }
+      }
+
+      &:nth-child(3) {
+        font-weight: 700;
+        font-family: 'Museo';
+
+        .c-icon {
+          stroke-width: get-stroke('14', '8', '700');
+        }
+      }
+    }
+  }
+
+  .sixteen-px & {
+    .c-icon {
+      @extend .c-icon--16;
+    }
+
+    a {
+      font-size: 14px;
+
+      &:nth-child(1) {
+        font-weight: 300;
+
+        .c-icon {
+          stroke-width: get-stroke('14', '16', '300');
+        }
+      }
+
+      &:nth-child(2) {
+        font-weight: 500;
+
+        .c-icon {
+          stroke-width: get-stroke('14', '16', '500');;
+        }
+      }
+
+      &:nth-child(3) {
+        font-weight: 700;
+        font-family: 'Museo';
+
+        .c-icon {
+          stroke-width: get-stroke('14', '16', '700');
+        }
+      }
+    }
+  }
+
+  .sixteen2-px & {
+    .c-icon {
+      @extend .c-icon--16;
+    }
+
+    a {
+      font-size: 16px;
+
+      &:nth-child(1) {
+        font-weight: 300;
+
+        .c-icon {
+          stroke-width: get-stroke('16', '16', '300');
+        }
+      }
+
+      &:nth-child(2) {
+        font-weight: 500;
+
+        .c-icon {
+          stroke-width: get-stroke('16', '16', '500');
+        }
+      }
+
+      &:nth-child(3) {
+        font-weight: 700;
+        font-family: 'Museo';
+
+        .c-icon {
+          stroke-width: get-stroke('16', '16', '700');
+        }
+      }
+    }
+  }
+
+  .sixteen3-px & {
+    .c-icon {
+      @extend .c-icon--16;
+    }
+
+    a {
+      font-size: 18px;
+
+      &:nth-child(1) {
+        font-weight: 300;
+
+        .c-icon {
+          stroke-width: get-stroke('18', '16', '300');
+        }
+      }
+
+      &:nth-child(2) {
+        font-weight: 500;
+
+        .c-icon {
+          stroke-width: get-stroke('18', '16', '500');
+        }
+      }
+
+      &:nth-child(3) {
+        font-weight: 700;
+        font-family: 'Museo';
+
+        .c-icon {
+          stroke-width: get-stroke('18', '16', '700');
+        }
+      }
+    }
+  }
+
+  .twenty-px & {
+    .c-icon {
+      @extend .c-icon--20;
+    }
+
+    a {
+      font-size: 18px;
+      color: white;
+
+      &:nth-child(1) {
+        font-weight: 300;
+
+        .c-icon {
+          stroke-width: get-stroke('18', '20', '300');
+        }
+      }
+
+      &:nth-child(2) {
+        font-weight: 500;
+
+        .c-icon {
+          stroke-width: get-stroke('18', '20', '500');
+
+        }
+      }
+
+      &:nth-child(3) {
+        font-weight: 700;
+        font-family: 'Museo';
+
+        .c-icon {
+          stroke-width: get-stroke('18', '20', '700');
+        }
+      }
+    }
+  }
+
+  .twentyfour-px & {
+    .c-icon {
+      @extend .c-icon--24;
+    }
+
+    a {
+      font-size: 14px;
+
+      &:nth-child(1) {
+        font-weight: 300;
+
+        .c-icon {
+          stroke-width: get-stroke('14', '24', '300');
+        }
+      }
+
+      &:nth-child(2) {
+        font-weight: 500;
+
+        .c-icon {
+          stroke-width: get-stroke('14', '24', '500');
+        }
+      }
+
+      &:nth-child(3) {
+        font-weight: 700;
+        font-family: 'Museo';
+
+        .c-icon {
+          stroke-width: get-stroke('14', '24', '700');
+        }
+      }
+    }
+  }
+
+  .twentyfour2-px & {
+    .c-icon {
+      @extend .c-icon--24;
+    }
+
+    a {
+      font-size: 16px;
+
+      &:nth-child(1) {
+        font-weight: 300;
+
+        .c-icon {
+          stroke-width: get-stroke('16', '24', '300');
+        }
+      }
+
+      &:nth-child(2) {
+        font-weight: 500;
+
+        .c-icon {
+          stroke-width: get-stroke('16', '24', '500');
+        }
+      }
+
+      &:nth-child(3) {
+        font-weight: 700;
+        font-family: 'Museo';
+
+        .c-icon {
+          stroke-width: get-stroke('16', '24', '700');
+        }
+      }
+    }
+  }
+
+  .twentyfour3-px & {
+    .c-icon {
+      @extend .c-icon--24;
+    }
+
+    a {
+      font-size: 18px;
+
+      &:nth-child(1) {
+        font-weight: 300;
+
+        .c-icon {
+          stroke-width: get-stroke('18', '24', '300');
+        }
+      }
+
+      &:nth-child(2) {
+        font-weight: 500;
+
+        .c-icon {
+          stroke-width: get-stroke('18', '24', '500');
+        }
+      }
+
+      &:nth-child(3) {
+        font-weight: 700;
+        font-family: 'Museo';
+
+        .c-icon {
+          stroke-width: get-stroke('18', '24', '700');
+        }
+      }
+    }
+  }
+
+  .twentyfour4-px & {
+    .c-icon {
+      @extend .c-icon--24;
+    }
+
+    a {
+      font-size: 20px;
+
+      &:nth-child(1) {
+        font-weight: 300;
+
+        .c-icon {
+          stroke-width: get-stroke('20', '24', '300');
+        }
+      }
+
+      &:nth-child(2) {
+        font-weight: 500;
+
+        .c-icon {
+          stroke-width: get-stroke('20', '24', '500');
+        }
+      }
+
+      &:nth-child(3) {
+        font-weight: 700;
+        font-family: 'Museo';
+
+        .c-icon {
+          stroke-width: get-stroke('20', '24', '700');
+        }
+      }
+    }
+  }
+
+  .twentyfour5-px & {
+    .c-icon {
+      @extend .c-icon--24;
+    }
+
+    a {
+      font-size: 24px;
+
+      &:nth-child(1) {
+        font-weight: get-stroke('24', '24', '700');
+        font-family: 'Museo';
+
+        .c-icon {
+          stroke-width: 2.5px;
+        }
+      }
+    }
+  }
+
+  .thirtytwo-px & {
+    .c-icon {
+      @extend .c-icon--32;
+    }
+
+    a {
+      font-size: 28px;
+
+      &:nth-child(1) {
+        font-weight: 500;
+        font-family: 'Museo';
+
+        .c-icon {
+          stroke-width: get-stroke('28', '32', '300');
+        }
+      }
+    }
+  }
+
+  .fourty-px & {
+    .c-icon {
+      @extend .c-icon--40;
+    }
+
+    a {
+      font-size: 32px;
+
+      &:nth-child(1) {
+        font-weight: 500;
+        font-family: 'Museo';
+
+        .c-icon {
+          stroke-width: get-stroke('32', '40', '300');
+        }
+      }
+    }
+  }
+
+  .fourtyeight-px & {
+    .c-icon {
+      @extend .c-icon--48;
+    }
+
+    a {
+      font-size: 40px;
+
+      &:nth-child(1) {
+        font-weight: 500;
+        font-family: 'Museo';
+
+        .c-icon {
+          stroke-width: get-stroke('40', '48', '300');
+        }
+      }
+    }
+  }
+
+  .fourtyeight2-px & {
+    .c-icon {
+      @extend .c-icon--48;
+    }
+
+    a {
+      font-size: 48px;
+
+      &:nth-child(1) {
+        font-weight: 500;
+        font-family: 'Museo';
+
+        .c-icon {
+          stroke-width: get-stroke('48', '48', '300');
+        }
+      }
+    }
+  }
+
+  .sixtyfour-px & {
+    .c-icon {
+      @extend .c-icon--64;
+    }
+
+    a {
+      font-size: 18px;
+      color: white;
+
+      &:nth-child(1) {
+        font-family: 'Museo';
+
+        .c-icon {
+          stroke-width: get-stroke('18', '64', '300');
+        }
+      }
+    }
+  }
+
+  .ninetysix-px & {
+    .c-icon {
+      @extend .c-icon--96;
+    }
+
+    a {
+      font-size: 18px;
+      color: white;
+
+      &:nth-child(1) {
+        font-family: 'Museo';
+
+        .c-icon {
+          stroke-width: get-stroke('18', '96', '300');
+        }
+      }
+    }
+  }
+
+
+  .all-px & {
+    a {
+
+      &:nth-child(1) {
+        .c-icon {
+          width: 8px;
+          height: 8px;
+          stroke-width: 1px;
+        }
+      }
+      &:nth-child(2) {
+        .c-icon {
+          width: 16px;
+          height: 16px;
+          stroke-width: 1.25px;
+        }
+      }
+      &:nth-child(3) {
+        .c-icon {
+          width: 20px;
+          height: 20px;
+          stroke-width: 1.5px;
+        }
+      }
+      &:nth-child(4) {
+        .c-icon {
+          width: 24px;
+          height: 24px;
+          stroke-width: 1.5px;
+        }
+      }
+      &:nth-child(5) {
+        .c-icon {
+          width: 32px;
+          height: 32px;
+          stroke-width: 1.5px;
+        }
+      }
+      &:nth-child(6) {
+        .c-icon {
+          width: 40px;
+          height: 40px;
+          stroke-width: 1.5px;
+        }
+      }
+      &:nth-child(7) {
+        .c-icon {
+          width: 48px;
+          height: 48px;
+          stroke-width: 1.75px;
+        }
+      }
+      &:nth-child(8) {
+        .c-icon {
+          width: 64px;
+          height: 64px;
+          stroke-width: 2px;
+        }
+      }
+      &:nth-child(9) {
+        .c-icon {
+          width: 96px;
+          height: 96px;
+          stroke-width: 4px;
+        }
+      }
+    }
+  }
+
 }

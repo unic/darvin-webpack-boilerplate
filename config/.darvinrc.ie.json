@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "base": ["js"],
+    "default": ["cleaner", "copy", "fonts", "images", "sprites", "modernizr", "sassie"],
+    "devserver": ["devserver"],
+    "framework": ["vue"],
+    "addons": ["favicons", "analyzer", "markdown", "i18n"]
+  },
+  "name": "Darvin",
+  "company": "Unic AG"
+}

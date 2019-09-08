@@ -7,7 +7,6 @@
  * @module headerbar
  */
 
-
 import Prism from 'prismjs';
 import MarkdownIt from 'markdown-it';
 import createModule from '@js/libs/create-module';

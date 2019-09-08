@@ -34,11 +34,24 @@ Object.keys(previewIndexObj.payload).forEach(function (key) {
         let obj = new HtmlWebpackPlugin({
           filename: targetPath + `.html`,
           template: `${global.inputDirs.src}/${global.inputDirs.templates}/${targetPath}.${global.template.extIn}`,
-          hash: true,
+          hash: false,
           inject: 'body',
           cache: true,
           chunks: [elementObj.chunkName],
-          templateParameters: elementObj
+          templateParameters: elementObj,
+          minify: {
+            collapseWhitespace: false,
+            conservativeCollapse: false,
+            removeComments: false,
+            removeRedundantAttributes: false,
+            removeScriptTypeAttributes: false,
+            removeStyleLinkTypeAttributes: false,
+            useShortDoctype: false,
+            removeAttributeQuotes: false,
+            removeEmptyAttributes: false,
+            removeEmptyElements: false,
+            removeOptionalTags: false
+          }
         });
 
         templates.push(obj)
@@ -51,10 +64,23 @@ Object.keys(previewIndexObj.payload).forEach(function (key) {
 templates.push(new HtmlWebpackPlugin({
   filename: `${global.preview.indexFileOutput}`,
   template: `${global.inputDirs.src}/${global.inputDirs.templates}/${global.preview.indexFileInput}`,
-  hash: true,
+  hash: false,
   inject: `body`,
   cache: true,
   chunks: [`js/main`],
+  minify: {
+    collapseWhitespace: false,
+    conservativeCollapse: false,
+    removeComments: false,
+    removeRedundantAttributes: false,
+    removeScriptTypeAttributes: false,
+    removeStyleLinkTypeAttributes: false,
+    useShortDoctype: false,
+    removeAttributeQuotes: false,
+    removeEmptyAttributes: false,
+    removeEmptyElements: false,
+    removeOptionalTags: false
+  },
   templateParameters: {
     name: `${global.output.index}`,
     type: `preview`,

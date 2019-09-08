@@ -1,20 +1,28 @@
 /* eslint-disable */
 const fs = require('fs-extra');
 const nunjucks = require('nunjucks');
+const merge = require('lodash.merge');
 
 const { parseFile } = require('../libs/nunjucks-parser');
 const { writeFile } = require('./file-helpers');
 
-const writeTemplateDependencies = async (file, type) => {
+
+const writeTemplateDependencies = async (file, type, previews) => {
   let env = nunjucks.configure(`./${global.inputDirs.src}/${global.inputDirs.templates}`);
   let { dependencies } = await parseFile(env, `${type}/${file}/${file}.${global.template.extIn}`);
+  let allDependencies = dependencies;
 
-  let selfIndex = 0;
-  let obj = {
-    dependencies: dependencies
+  // get preview dependencies
+  for(let i = 0; i < previews.length; i++) {
+    let path = `${type}/${file}/${previews[i]}.${global.template.extIn}`;
+    path = path.replace(/ /g,'');
+    let { dependencies } = await parseFile(env, `${type}/${file}/${previews[i]}.${global.template.extIn}`);
+    merge(allDependencies, dependencies);
   }
 
-  dependencies.forEach((dependency, i) => {
+  let selfIndex = 0;
+
+  allDependencies.forEach((dependency, i) => {
     for (let key in dependency) {
       if (dependency.hasOwnProperty(key)) {
         if (dependency[key] != null) {
@@ -32,18 +40,22 @@ const writeTemplateDependencies = async (file, type) => {
     }
 
     // remove own dep
-    if (dependency['name'] == `${type}/${file}`) {
+    if (allDependencies['name'] == `${type}/${file}`) {
       selfIndex = i;
     }
   });
 
-  dependencies.splice(selfIndex, 1);
+  allDependencies.splice(selfIndex, 1);
 
   // remove layouts
-  dependencies = dependencies.filter(dependency => !dependency.name.includes('layouts/'));
+  allDependencies = allDependencies.filter(dependency => !dependency.name.includes('layouts/'));
 
   if (!fs.existsSync(`./${global.inputDirs.src}/${global.inputDirs.templates}/${type}/${file}/log`)){
     fs.mkdirSync(`./${global.inputDirs.src}/${global.inputDirs.templates}/${type}/${file}/log`);
+  }
+
+  let obj = {
+    dependencies: allDependencies
   }
 
   writeFile(`./${global.inputDirs.src}/${global.inputDirs.templates}/${type}/${file}/log/dependencies.json`, JSON.stringify(obj));

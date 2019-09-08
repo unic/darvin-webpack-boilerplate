@@ -1,5 +1,3 @@
-import {ExpandableTile} from '../tile-list/TileList';
-
 /**
  * Interface for the component itself
  */
@@ -41,7 +39,7 @@ export interface CategoryFilter {
 /**
  * Single tile which extends the default expandable tile
  */
-export interface FilterableTile extends ExpandableTile {
+export interface FilterableTile {
 
     /**
      * All categories which this tile should be visible in. These values should match the `CategoryFilter.value` values
