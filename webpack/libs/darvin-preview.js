@@ -79,7 +79,7 @@ previewIndexObj.types.forEach((type) => {
         previewIndexObj.payload[type][file].config = config;
 
         if(type!='pages') {
-          writeTemplateDependencies(file, type);
+          writeTemplateDependencies(file, type, templateObj.previews);
         }
 
 

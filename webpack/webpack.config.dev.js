@@ -1,6 +1,7 @@
 /* eslint-disable */
 require('./helpers/node-check');
-require('../.darvinconf.js');
+require(`../config/.${process.env.DARVIN_CONF}.js`);
+
 
 const path = require('path');
 const basePath = process.cwd();
@@ -29,7 +30,7 @@ const settings = {
     devtoolLineToLine: false,
     path: path.resolve(basePath, 'dist'),
     pathinfo: false,
-    filename: global.server.assets + '/[name].js',
+    filename: global.server.assets + '/[name].[hash].js',
     chunkFilename: global.server.assets + '/async/[name].[contenthash].js',
     publicPath: serverBase
   },

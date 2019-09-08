@@ -60,18 +60,19 @@
 }
 
 .prev-m-servicenav__link {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 44px;
-  height: 44px;
-  color: rgba(var(--main-bright), 0.5);
-  border-radius: 4px;
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: 44px !important;
+  height: 44px !important;
+  color: rgba(var(--main-bright), 0.5) !important;
+  border-radius: 4px !important;
   cursor: pointer;
-  transition: color 120ms linear;
-  user-select: none;
+  transition: color 120ms linear !important;
+  user-select: none !important;
+  text-decoration: none !important;
 
   &::before {
     content: "";
@@ -80,10 +81,10 @@
     left: 50%;
     width: 48px;
     height: 48px;
-    background: rgba(var(--main-ambiance), 0.05);
+    background: rgba(var(--main-ambiance), 0.05) !important;
     border-radius: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
+    transform: translate(-50%, -50%) !important;
+    opacity: 0 !important;
     transition: opacity 0.2s ease;
   }
 

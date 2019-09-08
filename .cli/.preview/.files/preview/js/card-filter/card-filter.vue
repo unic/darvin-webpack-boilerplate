@@ -11,7 +11,6 @@
             name="selectedFilters"
             v-model="selectedFilters"
             :value="filter"
-            :checked="true"
             :id="filter">
             <label class="prev-m-filterbar__lbl check" :for="filter">
                 <svg width="18px" height="18px" viewBox="0 0 18 18">

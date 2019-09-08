@@ -1,0 +1,12 @@
+{
+  "settings": {
+    "base": ["js"],
+    "default": ["fonts", "images", "sprites", "sassie"],
+    "html": [],
+    "devserver": [],
+    "framework": [],
+    "addons": []
+  },
+  "name": "Darvin",
+  "company": "Unic AG"
+}

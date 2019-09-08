@@ -15,7 +15,7 @@ const { _init } = require('./src/init');
 const { _add } = require('./src/add');
 const { _clean } = require('./src/clean');
 
-const adapter = new FileSync('.darvinrc.json')
+const adapter = new FileSync('./config/.darvinrc.all.json')
 const db = low(adapter)
 const args = process.argv
 

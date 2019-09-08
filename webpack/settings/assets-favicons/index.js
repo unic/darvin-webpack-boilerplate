@@ -10,7 +10,7 @@ const prod = {
       statsFilename: 'iconstats.json',
       persistentCache: false,
       inject: false,
-      background: '#000',
+      background: '#fff',
       title: global.project,
       icons: {
         android: true,
@@ -22,7 +22,7 @@ const prod = {
         opengraph: true,
         twitter: true,
         yandex: false,
-        windows: false
+        windows: true
       }
     })
   ],

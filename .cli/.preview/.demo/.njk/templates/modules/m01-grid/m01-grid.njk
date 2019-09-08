@@ -1,0 +1,37 @@
+{#
+    Grid Container
+    classes (0-1) = [],
+    fluid (0-1) = true/false || default = false,
+    mobilefluid (0-1) = true/false || default = false,
+    flexed (0-1) = true/false || default = false,
+#}
+
+
+{% macro container(classes = [], fluid = false, mobilefluid = false, flexed = false) %}
+   <div class="container{% if fluid %}-fluid{% elif mobilefluid %} container--mobilefluid{% endif %}{% if flexed %} container--flexed{% endif %}{% for class in classes %} {{ class }}{% endfor %}">
+      {{ caller() }}
+   </div>
+{% endmacro %}
+
+{#
+    Grid Row
+    classes (0-1) = []
+#}
+
+{% macro row(classes=[]) %}
+   <div class="grid-row{% for class in classes %} {{ class }}{% endfor %}" data-c-gridrow>
+      {{ caller() }}
+   </div>
+{% endmacro %}
+
+{#
+    Grid Cell
+    columns (1-1) = [Number [, Number[, Number[, Number[, Number[, Number]]]]]], => maximum of 6 numbers allowed (xs, sm, md, lg, xl, xxl)
+    offsets (0-1) = [Number [, Number[, Number[, Number[, Number[, Number]]]]]], => maximum of 6 numbers allowed (xs, sm, md, lg, xl, xxl)
+    classes (0-1) = []
+#}
+{% macro cell(columns=[], offsets=[], classes=[]) %}
+   <div class="grid-col grid-col--zero-{{ columns[0] }}{% if columns[1] and columns[0] != columns[1] %} grid-col--micro-{{ columns[1] }}{% endif %}{% if columns[2] and columns[1] != columns[2] %} grid-col--medium-{{ columns[2] }}{% endif %}{% if columns[3] and columns[2] != columns[3] %} grid-col--large-{{ columns[3] }}{% endif %}{% if columns[4] and columns[3] != columns[4] %} grid-col--wide-{{ columns[4] }}{% endif %}{% if columns[5] and columns[4] != columns[5] %} grid-col-ultra--{{ columns[5] }}{% endif %}{% if offsets[0] %} grid-col-zero--off-{{ offsets[0] }}{% endif %}{% if offsets[1] %} grid-col-micro--off-{{ offsets[1] }}{% endif %}{% if offsets[2] %} grid-col-small--off-{{ offsets[2] }}{% endif %}{% if offsets[3] %} grid-col-medium--off-{{ offsets[3] }}{% endif %}{% if offsets[4] %} grid-col-large--off-{{ offsets[4] }}{% endif %}{% if offsets[5] %} grid-col-wide--off-{{ offsets[5] }}{% endif %}{% if offsets[6] %} grid-col-ultra--off-{{ offsets[6] }}{% endif %}{% for class in classes %} {{ class }}{% endfor %}">
+      {{ caller() }}
+   </div>
+{% endmacro %}

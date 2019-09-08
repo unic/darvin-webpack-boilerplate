@@ -5,7 +5,7 @@
             <div class="prev-m-index__itemcol prev-m-index__itemcol--grow">
               <div class="prev-m-index__itemrow">
                 <a v-if="item.variants >= 1" class="prev-m-index__itemtitle" :href="item.path + '/' + item.previews[0] + '.html'">{{ name }}</a>
-                <span v-else class="prev-m-index__itemtitle" href="">{{ name }}</span>
+                <span v-else class="prev-m-index__itemtitle" style="opacity: 0.64;">{{ name }}</span>
               </div>
             </div>
           </div>
@@ -18,10 +18,10 @@
               <div class="prev-m-index__metalbl prev-m-index__lastupdate" data-update>&nbsp;</div>
             </div>
             <div class="prev-m-index__itemrow">
-              <a class="prev-m-index__minibtn" data-dep @click="getDep" v-if="this.dependencies.length < 1 && item.type != 'pages' && trigger"><i class="i i-target"></i></a>
-              <a v-if="item.config.design" class="prev-m-index__speclink prev-m-index__speclink--design" :href="item.config.design" target="_blank">D</a>
-              <a v-if="item.config.jira" class="prev-m-index__speclink prev-m-index__speclink--jira" :href="item.config.jira" target="_blank">J</a>
-              <a v-if="item.config.confluence" class="prev-m-index__speclink prev-m-index__speclink--confluence" :href="item.config.confluence" target="_blank">C</a>
+              <a class="prev-m-index__minibtn" data-tippy-content="Dependencies" data-dep @click="getDep" v-if="this.dependencies.length < 1 && item.type != 'pages' && trigger"><i class="i i-target"></i></a>
+              <a v-if="item.config.design" data-tippy-content="Design" class="prev-m-index__speclink prev-m-index__speclink--design" :href="item.config.design" target="_blank">D</a>
+              <a v-if="item.config.jira" data-tippy-content="Jira" class="prev-m-index__speclink prev-m-index__speclink--jira" :href="item.config.jira" target="_blank">J</a>
+              <a v-if="item.config.confluence" data-tippy-content="Confluence" class="prev-m-index__speclink prev-m-index__speclink--confluence" :href="item.config.confluence" target="_blank">C</a>
             </div>
           </footer>
 
@@ -32,6 +32,7 @@
   import facetMixin from '../../libs/vue/facetMixin';
   import { mapActions, mapState } from 'vuex';
   import axios from 'axios';
+  import tippy from 'tippy.js';
 
   let bodyStyle = getComputedStyle(document.body);
 
@@ -154,6 +155,9 @@
         });
       },
       initVisualizer() {
+        if(document.documentElement.classList.contains('ie')) {
+          return;
+        }
         let name = this.name;
         let el = this.$el;
         let data = this.activity[this.name];
@@ -281,6 +285,11 @@
       if(this.darkmode) {
         this.updateLayout();
       }
+
+      tippy('.prev-m-index__speclink, .prev-m-index__minibtn', {
+        theme: 'darvin',
+      });
+
     }
   };
 </script>

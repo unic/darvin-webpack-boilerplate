@@ -1,6 +1,6 @@
 /* eslint-disable */
 const inquirer = require('inquirer');
-require('../../.darvinconf.js');
+require('../../config/.darvinconf.main.js');
 const { getScaffoldingOptions, setScaffolding, getNextIncrementalNumber } = require('../../webpack/helpers/scaff-helpers');
 
 const _add = () => {

@@ -7,6 +7,7 @@ const prod = {
     new SVGSpritemapPlugin(path.join(basePath, global.inputDirs.src + '/' + global.server.assets + '/images/icons/**/*.svg'), {
       output: {
         filename: global.server.assets + '/images/svg-sprite.svg',
+        svg4everybody: true,
         svg: {
           sizes: false
         }
@@ -31,6 +32,7 @@ const dev = {
     new SVGSpritemapPlugin(path.join(basePath, global.inputDirs.src + '/' + global.server.assets + '/images/icons/**/*.svg'), {
       output: {
         filename: global.server.assets + '/images/svg-sprite.svg',
+        svg4everybody: true,
         svg: {
           sizes: false
         }
@@ -56,6 +58,7 @@ const prev = {
     new SVGSpritemapPlugin(basePath + '/preview/assets/images/icons/**/*.svg', {
       output: {
         filename: global.server.assets + '/images/svg-sprite.svg',
+        svg4everybody: true,
         svg: {
           sizes: false
         }

@@ -1,8 +1,12 @@
 {
-  "devDependencies": {
-
+  "scripts": {
+    "tslint": "tslint --project tsconfig.json src/**/**.ts"
   },
-  "dependencies": {
-
-  }
+  "devDependencies": {
+    "ts-loader": "^6.0.4",
+    "tslint": "^5.19.0",
+    "typescript": "^3.6.2",
+    "vue-class-component": "^7.1.0"
+  },
+  "dependencies": {}
 }

@@ -15,7 +15,7 @@ const dev = {
     compress: true,
     port: global.port,
     open: 'Google Chrome',
-    writeToDisk: true,
+    writeToDisk: false,
     index: 'index.html'
   }
 }

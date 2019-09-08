@@ -3,6 +3,7 @@ const path = require('path');
 const basePath = process.cwd();
 const htmlTemplates = require('../../libs/html-templates');
 
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const templates = htmlTemplates.templates;
 
 const twigOptions = JSON.stringify({
@@ -26,7 +27,10 @@ const prod = {
     ]
   },
   plugins: [
-    ...templates
+    ...templates,
+    new ScriptExtHtmlWebpackPlugin({
+      defaultAttribute: 'async'
+    })
   ],
 };
 
@@ -40,7 +44,10 @@ const dev = {
     ]
   },
   plugins: [
-    ...templates
+    ...templates,
+    new ScriptExtHtmlWebpackPlugin({
+      defaultAttribute: 'async'
+    })
   ],
 }
 

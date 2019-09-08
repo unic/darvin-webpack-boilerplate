@@ -1,14 +1,14 @@
-global.project = 'Darvin';
-global.mainChunk = 'js/main';
-global.proxy = 'unic.local';
-global.port = 7001;
+global.project = '@@@name@@@';
+global.mainChunk = '@@@entry@@@';
+global.proxy = '@@@proxy@@@';
+global.port = '@@@port@@@';
 global.template = {
-  'extIn': 'njk',
+  'extIn': '@@@extIn@@@',
   'extOut': 'html'
 }
 global.preview = {
   indexName: 'index',
-  indexFileInput: 'index.njk',
+  indexFileInput: 'index.@@@extIn@@@',
   indexFileOutput: 'index.html'
 }
 global.inputDirs = {
@@ -21,6 +21,6 @@ global.output = {
   'index': 'index'
 }
 global.server = {
-  'base': (process.env.NODE_ENV === 'dev') ? '' : '/dist',
+  'base': (process.env.NODE_ENV === 'dev') ? '/cms/frontend/main/' : '/cms/frontend/main/',
   'assets': 'assets'
 }

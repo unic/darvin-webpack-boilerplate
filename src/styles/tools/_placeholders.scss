@@ -16,6 +16,7 @@
 
 %paragraph-base {
   @extend %antialiased;
+
   font-weight: 400;
   font-size: rem(16px);
   line-height: 1.79;
@@ -28,6 +29,7 @@
 
 %label-base {
   @extend %antialiased;
+
   font-weight: 400;
   font-size: rem(13px);
   line-height: 1.3;
@@ -36,6 +38,7 @@
 
 %text-base-small {
   @extend %antialiased;
+
   font-weight: 600;
   font-size: rem(14px);
   color: $color2;
@@ -43,6 +46,7 @@
 
 %text-base-large {
   @extend %antialiased;
+
   font-weight: 400;
   font-size: rem(17px);
   line-height: 1.275;
@@ -51,6 +55,7 @@
 
 %nav {
   @extend %antialiased;
+
   font-weight: 600;
   font-size: rem(16px);
   line-height: 1.275;
@@ -67,6 +72,7 @@
 
 %header-base {
   @extend %antialiased;
+
   font-family: $font-1;
 }
 
@@ -78,7 +84,7 @@
 
 %clearfix {
   &::after {
-    content: "";
+    content: '';
     display: table;
     clear: both;
   }
@@ -92,7 +98,7 @@
 }
 
 %pseudoreset {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   right: 0;

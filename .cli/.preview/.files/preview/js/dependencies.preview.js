@@ -18,13 +18,22 @@ let settings = {},
     moduleCards,
     counter = 0;
 
+function getRandomRolor() {
+  var letters = '0123456789'.split('');
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+      color += letters[Math.round(Math.random() * 10)];
+  }
+  return color;
+}
+
 let j = require("@root/node_modules/jsplumb/dist/js/jsplumb.js").jsPlumb.getInstance({
-  Connector: ["Bezier", {curviness: 100, stub: 10}, {cssClass:"connectorClass", lineWidth:2, strokeStyle:'blue'}],
+  Connector: ["Bezier", {curviness: 100, stub: 10}, {cssClass:"connectorClass", lineWidth:2, strokeStyle: getRandomRolor()}],
   Anchor: "Bottom",
   endpoint:[ "Dot", { radius: 1 } ],
   ConnectionOverlays: [
     [ "Arrow", { location: 0, width: 10, length: 7, foldbackPoint: 0.62, direction:-1 }]
-]
+  ]
 });
 
 // Private Functions

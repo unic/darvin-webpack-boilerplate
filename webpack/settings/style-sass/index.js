@@ -2,7 +2,6 @@ const MiniCssExtractPlugin = require("extract-css-chunks-webpack-plugin");
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const Fiber = require('fibers');
-const postcssCustomProperties = require('postcss-custom-properties');
 
 const prod = {
   module: {
@@ -15,7 +14,7 @@ const prod = {
         {
           loader: 'css-loader',
           options: {
-            sourceMap: true,
+            sourceMap: false,
             importLoaders: 2,
           },
         },
@@ -23,19 +22,20 @@ const prod = {
           loader: 'postcss-loader',
           options: {
             plugins: () => [
-              postcssCustomProperties(),
               autoprefixer({
+                grid: 'autoplace',
                 flexbox: 'no-2009'
-              }),
+              })
             ],
-            sourceMap: true,
+            sourceMap: false,
           },
         },
         {
           loader: 'sass-loader',
           options: {
             implementation: require("sass"),
-            fiber: Fiber
+            fiber: Fiber,
+            data: "$env: " + process.env.NODE_ENV + ";"
           }
         },
         ],
@@ -52,8 +52,7 @@ const prod = {
       syntax: 'scss'
     }),
     new MiniCssExtractPlugin({
-      filename: global.server.assets + '/css/style.css',
-      hot: true
+      filename: global.server.assets + '/css/style.[hash].css'
     }),
   ]
 };
@@ -81,10 +80,10 @@ const dev = {
           loader: 'postcss-loader',
           options: {
             plugins: () => [
-              postcssCustomProperties(),
               autoprefixer({
+                grid: 'autoplace',
                 flexbox: 'no-2009'
-              }),
+              })
             ],
             sourceMap: true,
           },
@@ -93,7 +92,8 @@ const dev = {
           loader: 'sass-loader',
           options: {
             implementation: require("sass"),
-            fiber: Fiber
+            fiber: Fiber,
+            data: "$env: " + process.env.NODE_ENV + ";"
           }
         },
         ],
@@ -110,10 +110,10 @@ const dev = {
       syntax: 'scss'
     }),
     new MiniCssExtractPlugin({
-      filename: global.server.assets + '/css/style.css',
+      filename: global.server.assets + '/css/style.[hash].css',
     }),
   ]
-}
+};
 
 const prev = {
   module: {
@@ -134,10 +134,10 @@ const prev = {
           loader: 'postcss-loader',
           options: {
             plugins: () => [
-              postcssCustomProperties(),
               autoprefixer({
+                grid: 'autoplace',
                 flexbox: 'no-2009'
-              }),
+              })
             ],
             sourceMap: true,
           },
@@ -146,7 +146,8 @@ const prev = {
           loader: 'sass-loader',
           options: {
             implementation: require("sass"),
-            fiber: Fiber
+            fiber: Fiber,
+            data: "$env: " + process.env.NODE_ENV + ";"
           }
         },
         ],
@@ -154,19 +155,11 @@ const prev = {
     ]
   },
   plugins: [
-    new StyleLintPlugin({
-      context: 'preview',
-      configFile: '.stylelintrc',
-      files: '**/*.scss',
-      failOnError: false,
-      quiet: false,
-      syntax: 'scss'
-    }),
     new MiniCssExtractPlugin({
       filename: 'styles/preview.css',
     }),
   ]
-}
+};
 
 
 module.exports = {

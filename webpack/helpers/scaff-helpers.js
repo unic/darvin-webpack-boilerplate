@@ -96,7 +96,7 @@ copyPreview = (engine) => {
 },
 setConfig = (data) => {
   const inDir = path.join(process.cwd(), `.cli/.config`);
-  const outDir = process.cwd();
+  const outDir = path.join(process.cwd(), `config`);
 
   copyConfigFile(inDir, outDir, data);
 },

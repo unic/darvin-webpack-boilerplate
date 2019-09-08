@@ -1,6 +1,6 @@
 /* eslint-disable */
 require('./helpers/node-check');
-require('../.darvinconf.js');
+require(`../config/.${process.env.DARVIN_CONF}.js`);
 
 const path = require('path');
 const basePath = process.cwd();
@@ -17,7 +17,7 @@ const { prev: fonts } = require('./settings/assets-fonts');
 const { dev: js } = require('./settings/javascript');
 const { dev: vue } = require('./settings/javascript-vue');
 const { prev: sprites } = require('./settings/assets-sprites');
-
+const { prod: modernizr } = require('./settings/javascript-modernizr');
 
 const settings = {
   entry: ["./preview/app.js"],
@@ -29,7 +29,8 @@ const settings = {
     chunkFilename: '[name].[contenthash].js',
     publicPath: '/preview/'
   },
-  devtool: 'cheap-module-eval-source-map',
+  stats: 'errors-only',
+  devtool: 'eval',
   watchOptions: {
     aggregateTimeout: 300,
     ignored: ['**/*.woff', '**/*.woff2', '**/*.jpg', '**/*.png', '**/*.svg', 'node_modules'],
@@ -54,4 +55,4 @@ const settings = {
   }
 };
 
-module.exports = merge(webpackConfig, settings, cleaner, js, sass, fonts, vue, sprites);
+module.exports = merge(webpackConfig, settings, cleaner, js, sass, fonts, vue, modernizr, sprites);

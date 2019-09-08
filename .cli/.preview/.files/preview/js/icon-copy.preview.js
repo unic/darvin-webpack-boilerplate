@@ -9,8 +9,8 @@ import createModule from '@js/libs/create-module';
 
 export default createModule({
   options: () => ({
-    container: '.m-prev-icons',
-    icon: '.m-prev-flexgrid__iconbox'
+    container: '.darvin-prev-icons',
+    icon: '.darvin-prev-flexgrid__iconbox'
   }),
 
   /**
