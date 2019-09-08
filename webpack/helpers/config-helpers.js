@@ -35,10 +35,10 @@ getDarvinRC = () => {
   let rcData;
 
   // read darvin rc config
-  rcData = readFile(basePath + `/config/.${process.env.DARVIN_ENV}.json`);
+  rcData = readFile(basePath + `/config/.darvinrc.all.json`);
 
   if(!rcData) {
-    console.error(`DV#> file .${process.env.DARVIN_ENV}.json not found in config directory`);
+    console.error(`DV#> file .darvinrc.all.json not found in config directory`);
     process.exit();
   }
 
