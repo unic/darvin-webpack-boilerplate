@@ -1,6 +1,7 @@
 /* eslint-disable */
 const path = require('path');
-var merge = require('deepmerge');
+const sortPackageJson = require('sort-package-json');
+const merge = require('deepmerge');
 
 const { _presets } = require('./partials/presets');
 const { _rc } = require('./partials/rc');
@@ -161,7 +162,10 @@ const _action = () => {
 
     setDarvinRC(cliObj.rc);
 
-    writeFile(path.join(process.cwd(), `package.json`), JSON.stringify(merge.all(cliPackages)) );
+    let mergedPackageJson = merge.all(cliPackages),
+        mergedPackageJsonStr = JSON.stringify(sortPackageJson(mergedPackageJson), null, 2);
+
+    writeFile(path.join(process.cwd(), `package.json`), mergedPackageJsonStr );
 
     console.log("DV#> 🔥 continue by typing 'npm start'");
   } else {
