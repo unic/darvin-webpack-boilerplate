@@ -17,9 +17,10 @@ const setDarvinRC = (rc) => {
     rc.settings.devserver = [];
     rc.settings.framework = [];
     rc.settings.addons = [];
+
+    console.log("DV#> write darvinrc in /config");
     writeFile(`./config/.darvinrc.ie.prod.json`, JSON.stringify(rc).replace('sass', 'sassie'));
 
-    console.log("DV#> remove the '.git' directory");
     return true;
   } catch (err){
     console.error(err);
