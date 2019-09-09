@@ -10,7 +10,7 @@ const { _confirm } = require('./partials/confirm');
 
 const { search } = require('./helpers/cli-helpers');
 const { getSettingsStruct, setDarvinRC } = require('../../webpack/helpers/config-helpers');
-const { readFile, writeFile, deleteDir } = require('../../webpack/helpers/file-helpers');
+const { readFile, writeFile, deleteDir, fileExist } = require('../../webpack/helpers/file-helpers');
 const { setConfig, copyDemo, copyPreview } = require('../../webpack/helpers/scaff-helpers');
 
 let cliObj = {};
@@ -167,8 +167,10 @@ const _action = () => {
 
     writeFile(path.join(process.cwd(), `package.json`), mergedPackageJsonStr );
 
-    // remove git dir
-    deleteDir(path.join(process.cwd(), `.git`));
+    // remove git dir if no darvin.lock file exist
+    if(!fileExist(path.join(process.cwd(), `darvin.lock`))) {
+      deleteDir(path.join(process.cwd(), `.git`));
+    }
 
     console.log("DV#> 🔥 continue by typing 'npm start'");
   } else {

@@ -42,6 +42,15 @@ writeFile = (filePath, payload) => {
     return false;
   }
 },
+fileExist = (file) => {
+  try {
+    if (fs.existsSync(file)) {
+      return true;
+    }
+  } catch(err) {
+    return false;
+  }
+},
 deleteFile = (file) => {
   try {
     fs.removeSync(file);
@@ -67,5 +76,6 @@ module.exports = {
   readFile: readFile,
   writeFile: writeFile,
   deleteFile: deleteFile,
-  deleteDir: deleteDir
+  deleteDir: deleteDir,
+  fileExist: fileExist
 };
