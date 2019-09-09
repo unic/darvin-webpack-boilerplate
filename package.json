@@ -1,6 +1,6 @@
 {
   "name": "darvin-boilerplate",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "webpack boilerplate for static templating with Nunjucks or Twig. providing lazy-loading javascript chunks, frontend preview and easy extendable webpack settings.",
   "email": "mail@tobiasfrei.ch",
   "author": "Tobias Frei",
@@ -10,6 +10,7 @@
     "webpack",
     "boilerplate",
     "no gulp",
+    "custom properties",
     "sass",
     "sprites",
     "webfont",
@@ -20,7 +21,8 @@
     "csscomb",
     "githooks",
     "typescript",
-    "cli"
+    "cli",
+    "unic ag"
   ],
   "scripts": {
     "start": "npm install; npm link; darvin-cli init",
@@ -70,6 +72,7 @@
     "readdirp": "^2.2.1",
     "replace-in-file": "^4.1.3",
     "run-parallel": "^1.1.9",
+    "sort-package-json": "^1.22.1",
     "speed-measure-webpack-plugin": "^1.3.1",
     "split2": "^3.1.1",
     "stylelint": "^10.1.0",
