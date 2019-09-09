@@ -15,9 +15,9 @@ $accordion-spacing: 12px;
           opacity: 1;
           transition: opacity 140ms ease-in-out;
         }
+
         .icon {
           transform: rotate(-180deg);
-
           fill: white;
         }
       }
@@ -84,12 +84,11 @@ $accordion-spacing: 12px;
       transform: rotate(0deg);
       transform-origin: 50% 50%;
       transition: transform 140ms ease-out, fill 140ms ease-out;
-
       fill: #000;
     }
 
     &::after {
-      content: " ";
+      content: ' ';
       position: absolute;
       top: -1px;
       right: 0;
