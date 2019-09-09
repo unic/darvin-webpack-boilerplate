@@ -11,7 +11,7 @@
 ## Quickstart
 
 ```
-nvm install 12.3.1; nvm use 12.3.1
+nvm install 12.6.0; nvm use 12.6.0
 git clone https://github.com/unic/darvin-boilerplate.git myProject; cd myProject
 npm install -g cross-env
 npm start
