@@ -11,6 +11,16 @@ const getDirs = (p) => {
   }
   return dirs.filter(f => fs.statSync(path.join(p, f)).isDirectory());
 },
+deleteDir = (file) => {
+  try {
+    fs.removeSync(file);
+    return true;
+  } catch (err) {
+    console.log('error in delete dir');
+    console.error(err);
+    return false;
+  }
+},
 readFile = (file) => {
   let rawdata;
   try {
@@ -56,5 +66,6 @@ module.exports = {
   fsCopy: fsCopy,
   readFile: readFile,
   writeFile: writeFile,
-  deleteFile: deleteFile
+  deleteFile: deleteFile,
+  deleteDir: deleteDir
 };
