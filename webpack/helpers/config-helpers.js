@@ -10,20 +10,18 @@ const setDarvinRC = (rc) => {
     console.log("DV#> write darvinrc to /config");
     writeFile(`./config/.darvinrc.all.json`, JSON.stringify(rc));
 
-    if(darvin.config.build.legacy && rc.includes('sass')) {
-      console.log("DV#> write darvinrc.legacy to /config");
+    console.log("DV#> write darvinrc.legacy to /config");
 
-      // replace sass with sasslegacy for ie dev
-      writeFile(`./config/.darvinrc.legacy.json`, JSON.stringify(rc).replace('sass',  'sasslegacy'));
+    // replace sass with sasslegacy for ie dev
+    writeFile(`./config/.darvinrc.legacy.json`, JSON.stringify(rc).replace('sass',  'sasslegacy'));
 
-      // remove non sass tasks for ie prod
-      rc.settings.html = [];
-      rc.settings.devserver = [];
-      rc.settings.framework = [];
-      rc.settings.addons = [];
+    // remove non sass tasks for ie prod
+    rc.settings.html = [];
+    rc.settings.devserver = [];
+    rc.settings.framework = [];
+    rc.settings.addons = [];
 
-      writeFile(`./config/.darvinrc.legacy.prod.json`, JSON.stringify(rc).replace('sass', 'sasslegacy'));
-    }
+    writeFile(`./config/.darvinrc.legacy.prod.json`, JSON.stringify(rc).replace('sass', 'sasslegacy'));
 
     return true;
   } catch (err){
