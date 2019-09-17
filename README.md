@@ -1,7 +1,7 @@
 ![](http://tobiasfrei.ch/github/darvin-boilerplate/darvin-MIT_(c)TobiasFrei.svg)
 
 
-webpack boilerplate for HTML templating and CMS theming with Nunjucks or Twig. Hot reload with DevServer or Browsersync, easy extendable webpack settings and frontend preview for shipping.
+static webpack boilerplate for templating and system theming with Nunjucks or Twig. Hot reload with DevServer or Browsersync, easy extendable webpack settings and frontend preview for shipping.
 
 + lazy loading chunks
 + frontend preview
@@ -18,9 +18,9 @@ webpack boilerplate for HTML templating and CMS theming with Nunjucks or Twig. H
 
 ## Author
 
-Unic AG | Tobias Frei
-[https://github.com/unic](https://github.com/unic)
-[https://github.com/tobiasfrei](https://github.com/tobiasfrei)
+Unic AG | Tobias Frei<br>
+[https://github.com/unic](https://github.com/unic)<br>
+[https://github.com/tobiasfrei](https://github.com/tobiasfrei)<br>
 
 
 ## License
