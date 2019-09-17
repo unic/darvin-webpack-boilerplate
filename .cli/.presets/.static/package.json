@@ -3,14 +3,14 @@
   "scripts": {
     "start": "npm install -g cross-env; npm install; npm run dev",
     "dev": "cross-env NODE_ENV=dev DARVIN_ENV=darvinrc.all DARVIN_CONF=darvinconf.main webpack-dev-server --hot --inline --progress --no-info --mode development --config webpack/webpack.config.dev.js --disable-host-check",
-    "dev-teamcity": "cross-env NODE_ENV=dev DARVIN_ENV=darvinrc.all DARVIN_CONF=darvinconf.main webpack --inline --progress --no-info --mode development --config webpack/webpack.config.dev.js",
-    "dev-teamcity-cms": "cross-env NODE_ENV=dev DARVIN_ENV=darvinrc.all DARVIN_CONF=darvinconf.system webpack --inline --progress --no-info --mode development --config webpack/webpack.config.dev.js",
-    "dev-ie": "cross-env NODE_ENV=dev DARVIN_ENV=darvinrc.ie DARVIN_CONF=darvinconf.main webpack --mode development --watch --config webpack/webpack.config.dev.js",
-    "dev-ie-cms": "cross-env NODE_ENV=dev DARVIN_ENV=darvinrc.ie DARVIN_CONF=darvinconf.system webpack --mode development --watch --config webpack/webpack.config.dev.js",
-    "prod": "cross-env NODE_ENV=prod DARVIN_ENV=darvinrc.all DARVIN_CONF=darvinconf.main webpack -p --progress --no-info --mode production --config webpack/webpack.config.prod.js; npm run prod-ie",
-    "prod-cms": "cross-env NODE_ENV=prod DARVIN_ENV=darvinrc.all DARVIN_CONF=darvinconf.system webpack -p --progress --no-info --mode production --config webpack/webpack.config.prod.js; npm run prod-ie",
-    "prod-ie": "cross-env NODE_ENV=prod DARVIN_ENV=darvinrc.ie.prod DARVIN_CONF=darvinconf.main webpack -p --progress --no-info --mode production --config webpack/webpack.config.prod.ie.js",
-    "prod-ie-cms": "cross-env NODE_ENV=prod DARVIN_ENV=darvinrc.ie.prod DARVIN_CONF=darvinconf.system webpack -p --progress --no-info --mode production --config webpack/webpack.config.prod.ie.js"
+    "dev-bundle": "cross-env NODE_ENV=dev DARVIN_ENV=darvinrc.all DARVIN_CONF=darvinconf.main webpack --inline --progress --no-info --mode development --config webpack/webpack.config.dev.js",
+    "dev-bundle-system": "cross-env NODE_ENV=dev DARVIN_ENV=darvinrc.all DARVIN_CONF=darvinconf.system webpack --inline --progress --no-info --mode development --config webpack/webpack.config.dev.js",
+    "dev-legacy": "cross-env NODE_ENV=dev DARVIN_ENV=darvinrc.legacy DARVIN_CONF=darvinconf.main webpack --mode development --watch --config webpack/webpack.config.dev.js",
+    "dev-legacy-system": "cross-env NODE_ENV=dev DARVIN_ENV=darvinrc.legacy DARVIN_CONF=darvinconf.system webpack --mode development --watch --config webpack/webpack.config.dev.js",
+    "prod": "cross-env NODE_ENV=prod DARVIN_ENV=darvinrc.all DARVIN_CONF=darvinconf.main webpack -p --progress --no-info --mode production --config webpack/webpack.config.prod.js; npm run prod-legacy",
+    "prod-system": "cross-env NODE_ENV=prod DARVIN_ENV=darvinrc.all DARVIN_CONF=darvinconf.system webpack -p --progress --no-info --mode production --config webpack/webpack.config.prod.js; npm run prod-legacy",
+    "prod-legacy": "cross-env NODE_ENV=prod DARVIN_ENV=darvinrc.legacy.prod DARVIN_CONF=darvinconf.main webpack -p --progress --no-info --mode production --config webpack/webpack.config.prod.legacy.js",
+    "prod-legacy-system": "cross-env NODE_ENV=prod DARVIN_ENV=darvinrc.legacy.prod DARVIN_CONF=darvinconf.system webpack -p --progress --no-info --mode production --config webpack/webpack.config.prod.legacy.js"
   },
   "devDependencies": {
     "@unic/composite-observer": "0.0.10",

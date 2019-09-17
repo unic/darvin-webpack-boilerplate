@@ -7,19 +7,23 @@ const { sortByKey } = require('./../helpers/darvin-helpers');
 
 const setDarvinRC = (rc) => {
   try{
+    console.log("DV#> write darvinrc to /config");
     writeFile(`./config/.darvinrc.all.json`, JSON.stringify(rc));
 
-    // replace sass with sassie for ie dev
-    writeFile(`./config/.darvinrc.ie.json`, JSON.stringify(rc).replace('sass',  'sassie'));
+    if(darvin.config.build.legacy && rc.includes('sass')) {
+      console.log("DV#> write darvinrc.legacy to /config");
 
-    // remove non sass tasks for ie prod
-    rc.settings.html = [];
-    rc.settings.devserver = [];
-    rc.settings.framework = [];
-    rc.settings.addons = [];
+      // replace sass with sasslegacy for ie dev
+      writeFile(`./config/.darvinrc.legacy.json`, JSON.stringify(rc).replace('sass',  'sasslegacy'));
 
-    console.log("DV#> write darvinrc in /config");
-    writeFile(`./config/.darvinrc.ie.prod.json`, JSON.stringify(rc).replace('sass', 'sassie'));
+      // remove non sass tasks for ie prod
+      rc.settings.html = [];
+      rc.settings.devserver = [];
+      rc.settings.framework = [];
+      rc.settings.addons = [];
+
+      writeFile(`./config/.darvinrc.legacy.prod.json`, JSON.stringify(rc).replace('sass', 'sasslegacy'));
+    }
 
     return true;
   } catch (err){
@@ -34,12 +38,16 @@ getDarvinRC = () => {
   let settingsPath = path.resolve(basePath, `webpack/settings`);
   let dirs = getDirs(settingsPath);
   let rcData;
+  let darvinEnv = process.env.DARVIN_ENV;
+  if(!darvinEnv) {
+    darvinEnv = 'darvinrc.all';
+  }
 
   // read darvin rc config
-  rcData = readFile(basePath + `/config/.darvinrc.all.json`);
+  rcData = readFile(basePath + `/config/.${darvinEnv}.json`);
 
   if(!rcData) {
-    console.error(`DV#> file .darvinrc.all.json not found in config directory`);
+    console.error(`DV#> file .${darvinEnv}.json not found in config directory`);
     process.exit();
   }
 

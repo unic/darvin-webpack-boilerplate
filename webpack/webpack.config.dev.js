@@ -2,7 +2,6 @@
 require('./helpers/node-check');
 require(`../config/.${process.env.DARVIN_CONF}.js`);
 
-
 const path = require('path');
 const basePath = process.cwd();
 const merge = require('webpack-merge');
@@ -14,6 +13,11 @@ const { getDarvinRC, createDynamicRequireArray } = require('./helpers/config-hel
 let serverBase;
 let darvinRcString = getDarvinRC();
 let dynamicRequireArr = createDynamicRequireArray(darvinRcString);
+
+// build legacy global
+if(global.build.legacy) {
+  process.env.DARVIN_LEGACY = global.build.legacy;
+}
 
 for (var i = 0; i < dynamicRequireArr.length; i++) {
   eval(dynamicRequireArr[i]);
