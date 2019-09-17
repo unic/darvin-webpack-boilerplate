@@ -24,3 +24,6 @@ global.server = {
   'base': (process.env.NODE_ENV === 'dev') ? '@@@routerDev@@@' : '@@@routerProd@@@',
   'assets': 'assets'
 }
+global.build = {
+  'legacy': true
+}
