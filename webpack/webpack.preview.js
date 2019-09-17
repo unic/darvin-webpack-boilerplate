@@ -11,6 +11,11 @@ const webpackConfig = require('../webpack.config');
 const WebpackMessages = require('webpack-messages');
 const isDev = (process.env.NODE_ENV === 'dev');
 
+// build legacy global
+if(global.build.legacy) {
+  process.env.DARVIN_LEGACY = global.build.legacy;
+}
+
 const { prev: cleaner } = require('./settings/assets-cleaner');
 const { prev: sass } = require('./settings/style-sass');
 const { prev: fonts } = require('./settings/assets-fonts');

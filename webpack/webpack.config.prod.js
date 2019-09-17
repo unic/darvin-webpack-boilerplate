@@ -16,6 +16,11 @@ let serverBase;
 let darvinRcString = getDarvinRC();
 let dynamicRequireArr = createDynamicRequireArray(darvinRcString);
 
+// build legacy global
+if(global.build.legacy) {
+  process.env.DARVIN_LEGACY = global.build.legacy;
+}
+
 for (var i = 0; i < dynamicRequireArr.length; i++) {
   eval(dynamicRequireArr[i]);
 }

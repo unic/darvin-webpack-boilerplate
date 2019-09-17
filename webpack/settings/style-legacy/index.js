@@ -53,7 +53,7 @@ const prod = {
       syntax: 'scss'
     }),
     new MiniCssExtractPlugin({
-      filename: global.server.assets + '/css/style-ie.css'
+      filename: global.server.assets + '/css/style-legacy.[hash].css'
     }),
   ]
 };

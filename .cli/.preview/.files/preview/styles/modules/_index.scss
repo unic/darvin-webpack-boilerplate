@@ -5,6 +5,12 @@
 $preview-index-spacer: 0.5rem;
 $preview-index-spacer-small: 0.25rem;
 
+.no-git {
+  .prev-m-index__item canvas {
+    background-color: var(--activity-bg);
+  }
+}
+
 .prev-m-index {
   display: flex;
   padding: 0 1rem;

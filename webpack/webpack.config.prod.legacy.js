@@ -14,7 +14,14 @@ const { getDarvinRC, createDynamicRequireArray } = require('./helpers/config-hel
 
 let serverBase;
 let darvinRcString = getDarvinRC();
+
+// build legacy global
+if(global.build.legacy) {
+  process.env.DARVIN_LEGACY = global.build.legacy;
+}
+
 let dynamicRequireArr = createDynamicRequireArray(darvinRcString);
+
 
 for (var i = 0; i < dynamicRequireArr.length; i++) {
   eval(dynamicRequireArr[i]);
@@ -71,6 +78,6 @@ const settings = {
 };
 
 settings.entry = {};
-settings.entry[global.mainChunk] = [`./src/js/main.ie.js`];
+settings.entry[global.mainChunk] = [`./src/js/main.legacy.js`];
 
 module.exports = eval('merge(' + darvinRcString + ')');

@@ -1,11 +1,11 @@
 {
   "name": "darvin-boilerplate",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "webpack boilerplate for static templating with Nunjucks or Twig. providing lazy-loading javascript chunks, frontend preview and easy extendable webpack settings.",
   "email": "mail@tobiasfrei.ch",
   "author": "Tobias Frei",
   "license": "MIT",
-  "homepage": "http://unic.com",
+  "homepage": "http://www.darvin.dev",
   "keywords": [
     "webpack",
     "boilerplate",
@@ -18,7 +18,6 @@
     "favicons",
     "lazy loading js",
     "ES201X",
-    "csscomb",
     "githooks",
     "typescript",
     "cli",
@@ -29,7 +28,7 @@
     "lint": "lint-staged",
     "lint-script": "eslint \"src/**/*.js\" --fix",
     "lint-style": "stylelint \"src/**/*.scss\" --fix",
-    "pre-commit": "csscomb; lint-staged"
+    "pre-commit": "lint-staged"
   },
   "bin": {
     "darvin-cli": "./.cli/darvin-cli"
@@ -48,7 +47,6 @@
     "chalk": "^2.4.2",
     "core-js": "^3.2.1",
     "cross-env": "^5.2.1",
-    "csscomb": "4.3.0",
     "deepmerge": "^4.0.0",
     "end-of-stream": "^1.4.1",
     "eslint": "6.3.0",

@@ -1,0 +1,6 @@
+{
+  "name": "Transpiled Styles - CSS Properties for IE",
+  "value": "sasslegacy",
+  "type": "default",
+  "disabled": "auto included if build.legacy is on"
+}

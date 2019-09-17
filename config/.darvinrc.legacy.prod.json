@@ -1,7 +1,7 @@
 {
   "settings": {
     "base": ["js"],
-    "default": ["fonts", "images", "sprites", "sassie"],
+    "default": ["fonts", "images", "sprites", "sasslegacy"],
     "html": [],
     "devserver": [],
     "framework": [],

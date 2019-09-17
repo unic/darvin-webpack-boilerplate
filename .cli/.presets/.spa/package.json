@@ -5,7 +5,7 @@
     "prod": "npm run prev-prod; cross-env NODE_ENV=prod webpack -p --progress --no-info --mode production --config webpack/webpack.config.prod.js",
     "lint": "lint-staged",
     "lint-all": "eslint \"src/**/*.js\" --fix",
-    "pre-commit": "lint-staged; csscomb"
+    "pre-commit": "lint-staged"
   },
   "devDependencies": {
 

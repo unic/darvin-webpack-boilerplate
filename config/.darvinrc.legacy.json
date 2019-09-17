@@ -1,7 +1,7 @@
 {
   "settings": {
     "base": ["js"],
-    "default": ["cleaner", "copy", "fonts", "images", "sprites", "modernizr", "sassie"],
+    "default": ["cleaner", "copy", "fonts", "images", "sprites", "modernizr", "sasslegacy"],
     "devserver": ["devserver"],
     "framework": ["vue"],
     "addons": ["favicons", "analyzer", "markdown", "i18n"]

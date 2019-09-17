@@ -149,6 +149,7 @@
             .catch((err) => {
               this.dataReady = true;
               document.body.classList.add('is-loaded');
+              document.body.classList.add('no-git');
             });
         }
       },

@@ -105,23 +105,30 @@ previewIndexObj.types.forEach((type) => {
 
         // filter commits from last days
         simpleGit.log({ 'file': `./${global.inputDirs.src}/${global.inputDirs.templates}/${type}/${file}/${file}.${global.template.extIn}` }, (err, log) => {
-          let obj = {};
-          let filteredCommits = filterCommitsInDateRange(startDate, endDate, log.all);
 
-          log.all = filteredCommits;
+          if(err) {
+            if (!fs.existsSync('./log')){
+              fs.mkdirSync('./log');
+            }
+          } else {
+            let obj = {};
+            let filteredCommits = filterCommitsInDateRange(startDate, endDate, log.all);
 
-          // get object to extend if exist
-          try {
-            obj = JSON.parse(fs.readFileSync('./log/activity-visualizer.json', 'utf8'));
-          } catch (err) {}
+            log.all = filteredCommits;
 
-          obj[file] = log;
+            // get object to extend if exist
+            try {
+              obj = JSON.parse(fs.readFileSync('./log/activity-visualizer.json', 'utf8'));
+            } catch (err) {}
 
-          if (!fs.existsSync('./log')){
-            fs.mkdirSync('./log');
+            obj[file] = log;
+
+            if (!fs.existsSync('./log')){
+              fs.mkdirSync('./log');
+            }
+
+            writeFile('./log/activity-visualizer.json', JSON.stringify(obj));
           }
-
-          writeFile('./log/activity-visualizer.json', JSON.stringify(obj));
         });
       }
 

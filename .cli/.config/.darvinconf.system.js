@@ -24,3 +24,6 @@ global.server = {
   'base': (process.env.NODE_ENV === 'dev') ? '/cms/frontend/main/' : '/cms/frontend/main/',
   'assets': 'assets'
 }
+global.build = {
+  'legacy': true
+}
