@@ -105,23 +105,33 @@ previewIndexObj.types.forEach((type) => {
 
         // filter commits from last days
         simpleGit.log({ 'file': `./${global.inputDirs.src}/${global.inputDirs.templates}/${type}/${file}/${file}.${global.template.extIn}` }, (err, log) => {
-          let obj = {};
-          let filteredCommits = filterCommitsInDateRange(startDate, endDate, log.all);
 
-          log.all = filteredCommits;
+          if(err) {
+            if (!fs.existsSync('./log')){
+              fs.mkdirSync('./log');
+            }
 
-          // get object to extend if exist
-          try {
-            obj = JSON.parse(fs.readFileSync('./log/activity-visualizer.json', 'utf8'));
-          } catch (err) {}
+            // write stub
+            writeFile('./log/activity-visualizer.json', JSON.stringify({"c00-svg_icon":{"all":[{"hash":"b185951b17f2d8db24809264c29bf4abc0e323d7","date":"2019-04-12 00:11:39 +0200","message":"replace icon copy string and adjust icon paths","refs":"","body":"","author_name":"tobias.frei","author_email":"mail@tobiasfrei.ch"},{"hash":"86fb7097a792aff79fbed09358efeaed5cb4dec9","date":"2019-04-10 11:04:02 +0200","message":"rebase darvinconfig","refs":" Closes #7","body":"HEAD","author_name":"","author_email":"Tobias Frei"},{"hash":"4269d0ee12eda3dc3946871398d9ed398fd32fcf","date":"2019-04-08 21:09:41 +0200","message":"add path config","refs":"","body":"","author_name":"tobias.frei","author_email":"mail@tobiasfrei.ch"},{"hash":"9c23bd40684b066dcde8fe08972bb689963a102a","date":"2019-04-08 18:50:15 +0200","message":"add serverBase in config","refs":"","body":"","author_name":"tobias.frei","author_email":"mail@tobiasfrei.ch"},{"hash":"a61103fef9729e4f2347bc027ccdb359b692921e","date":"2019-04-03 18:12:09 +0200","message":"fix line endings","refs":"","body":"","author_name":"tobias.frei","author_email":"mail@tobiasfrei.ch"},{"hash":"ed19be5c28800e221deb734dc6429248b3d251fc","date":"2019-04-03 18:11:27 +0200","message":"fix line endings","refs":"","body":"","author_name":"tobias.frei","author_email":"mail@tobiasfrei.ch"},{"hash":"28b12403a3bfdf50f78c0d8779109c7b7661bd19","date":"2019-04-03 00:28:27 +0200","message":"avoid empty array config in rc string","refs":" Closes #1","body":"origin/bugfix/issue#1-darvin-cli_frameworks","author_name":"","author_email":"tobias.frei"},{"hash":"2da1e636107201628850a92f7a683cd0dc0db4d4","date":"2019-04-01 16:32:14 +0200","message":"rebase darvin on v0.0.8 from github.com/tobiasfrei","refs":"","body":"","author_name":"Tobias Frei","author_email":"tobias.frei@unic.com"}],"latest":{"hash":"b185951b17f2d8db24809264c29bf4abc0e323d7","date":"2019-04-12 00:11:39 +0200","message":"replace icon copy string and adjust icon paths","refs":"","body":"","author_name":"tobias.frei","author_email":"mail@tobiasfrei.ch"},"total":8},"c02-grid":{"all":[{"hash":"a61103fef9729e4f2347bc027ccdb359b692921e","date":"2019-04-03 18:12:09 +0200","message":"fix line endings","refs":"","body":"","author_name":"tobias.frei","author_email":"mail@tobiasfrei.ch"},{"hash":"ed19be5c28800e221deb734dc6429248b3d251fc","date":"2019-04-03 18:11:27 +0200","message":"fix line endings","refs":"","body":"","author_name":"tobias.frei","author_email":"mail@tobiasfrei.ch"},{"hash":"28b12403a3bfdf50f78c0d8779109c7b7661bd19","date":"2019-04-03 00:28:27 +0200","message":"avoid empty array config in rc string","refs":" Closes #1","body":"origin/bugfix/issue#1-darvin-cli_frameworks","author_name":"","author_email":"tobias.frei"},{"hash":"2da1e636107201628850a92f7a683cd0dc0db4d4","date":"2019-04-01 16:32:14 +0200","message":"rebase darvin on v0.0.8 from github.com/tobiasfrei","refs":"","body":"","author_name":"Tobias Frei","author_email":"tobias.frei@unic.com"}],"latest":{"hash":"a61103fef9729e4f2347bc027ccdb359b692921e","date":"2019-04-03 18:12:09 +0200","message":"fix line endings","refs":"","body":"","author_name":"tobias.frei","author_email":"mail@tobiasfrei.ch"},"total":4},"m01-accordion":{"all":[{"hash":"a61103fef9729e4f2347bc027ccdb359b692921e","date":"2019-04-03 18:12:09 +0200","message":"fix line endings","refs":"","body":"","author_name":"tobias.frei","author_email":"mail@tobiasfrei.ch"},{"hash":"ed19be5c28800e221deb734dc6429248b3d251fc","date":"2019-04-03 18:11:27 +0200","message":"fix line endings","refs":"","body":"","author_name":"tobias.frei","author_email":"mail@tobiasfrei.ch"},{"hash":"28b12403a3bfdf50f78c0d8779109c7b7661bd19","date":"2019-04-03 00:28:27 +0200","message":"avoid empty array config in rc string","refs":" Closes #1","body":"origin/bugfix/issue#1-darvin-cli_frameworks","author_name":"","author_email":"tobias.frei"},{"hash":"2da1e636107201628850a92f7a683cd0dc0db4d4","date":"2019-04-01 16:32:14 +0200","message":"rebase darvin on v0.0.8 from github.com/tobiasfrei","refs":"","body":"","author_name":"Tobias Frei","author_email":"tobias.frei@unic.com"}],"latest":{"hash":"a61103fef9729e4f2347bc027ccdb359b692921e","date":"2019-04-03 18:12:09 +0200","message":"fix line endings","refs":"","body":"","author_name":"tobias.frei","author_email":"mail@tobiasfrei.ch"},"total":4},"p01-accordion":{"all":[{"hash":"a61103fef9729e4f2347bc027ccdb359b692921e","date":"2019-04-03 18:12:09 +0200","message":"fix line endings","refs":"","body":"","author_name":"tobias.frei","author_email":"mail@tobiasfrei.ch"},{"hash":"ed19be5c28800e221deb734dc6429248b3d251fc","date":"2019-04-03 18:11:27 +0200","message":"fix line endings","refs":"","body":"","author_name":"tobias.frei","author_email":"mail@tobiasfrei.ch"},{"hash":"28b12403a3bfdf50f78c0d8779109c7b7661bd19","date":"2019-04-03 00:28:27 +0200","message":"avoid empty array config in rc string","refs":" Closes #1","body":"origin/bugfix/issue#1-darvin-cli_frameworks","author_name":"","author_email":"tobias.frei"},{"hash":"2da1e636107201628850a92f7a683cd0dc0db4d4","date":"2019-04-01 16:32:14 +0200","message":"rebase darvin on v0.0.8 from github.com/tobiasfrei","refs":"","body":"","author_name":"Tobias Frei","author_email":"tobias.frei@unic.com"}],"latest":{"hash":"a61103fef9729e4f2347bc027ccdb359b692921e","date":"2019-04-03 18:12:09 +0200","message":"fix line endings","refs":"","body":"","author_name":"tobias.frei","author_email":"mail@tobiasfrei.ch"},"total":4},"p02-demo":{"all":[{"hash":"cf9ebf33943b4b9bdd93c60e44e578f57daa5ceb","date":"2019-04-09 16:06:41 +0200","message":"Add the basis of new js architecture","refs":"","body":"","author_name":"Christian Sany","author_email":"christian.sany@bluewin.ch"}],"latest":{"hash":"cf9ebf33943b4b9bdd93c60e44e578f57daa5ceb","date":"2019-04-09 16:06:41 +0200","message":"Add the basis of new js architecture","refs":"","body":"","author_name":"Christian Sany","author_email":"christian.sany@bluewin.ch"},"total":1}}));
+          } else {
+            let obj = {};
+            let filteredCommits = filterCommitsInDateRange(startDate, endDate, log.all);
 
-          obj[file] = log;
+            log.all = filteredCommits;
 
-          if (!fs.existsSync('./log')){
-            fs.mkdirSync('./log');
+            // get object to extend if exist
+            try {
+              obj = JSON.parse(fs.readFileSync('./log/activity-visualizer.json', 'utf8'));
+            } catch (err) {}
+
+            obj[file] = log;
+
+            if (!fs.existsSync('./log')){
+              fs.mkdirSync('./log');
+            }
+
+            writeFile('./log/activity-visualizer.json', JSON.stringify(obj));
           }
-
-          writeFile('./log/activity-visualizer.json', JSON.stringify(obj));
         });
       }
 

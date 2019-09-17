@@ -133,6 +133,10 @@ $preview-index-spacer-small: 0.25rem;
     .ie & {
       background-color: white;
     }
+
+    .no-git & {
+      background-color: var(--activity-bg);
+    }
   }
 }
 
