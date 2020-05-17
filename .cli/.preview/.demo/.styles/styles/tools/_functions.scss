@@ -1,0 +1,225 @@
+/* ==|===============
+   Tools / Functions
+   ================== */
+
+/// Remove the unit of a length
+/// @param {Number} $number - Number to remove unit from
+/// @return {Number} - Unitless number
+@function strip-units($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+@function rem($value, $context: 16) {
+  @if (type-of($value) == 'string') {
+    @return $value;
+  }
+
+  @if (is-percentage($value) or is-viewport($value)) {
+    @return $value;
+  }
+
+  @if (unitless($value)) {
+    $value: $value * 1px;
+  }
+
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+
+  @return ($value / $context) * 1rem;
+}
+
+@function em($value, $context: 16) {
+  @if (is-percentage($value) or is-viewport($value)) {
+    @return $value;
+  }
+
+  @if (unitless($value)) {
+    $value: $value * 1px;
+  }
+
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+
+  @return ($value / $context) * 1em;
+}
+
+@function is-percentage($value) {
+  @return is-number($value) and unit($value) == '%';
+}
+
+@function is-viewport($value) {
+  @return is-number($value) and unit($value) == 'vw';
+}
+
+@function calc-constrainer($value, $maxWidth) {
+  @return ($maxWidth - $value) / 2;
+}
+
+@function map-deep-get($map, $keys...) {
+  @each $key in $keys {
+    $map: map-get($map, $key);
+  }
+
+  @return $map;
+}
+
+// get first item in list
+@function first($list) {
+  @return nth($list, 1);
+}
+
+// check if type map
+@function is-map($var) {
+  @return type-of($var) == 'map';
+}
+
+// get value from stroke-curve
+// -> get-stroke(fontSize, iconSize, fontWeigt)
+@function get-stroke($keys...) {
+  $map: $stroke-curve;
+
+  @each $key in $keys {
+    @if (map-get($map, $key)) {
+      $map: map-get($map, $key);
+    }
+  }
+
+  @if (is-map($map)) {
+    // return default stroke based on iconsize
+    @return map-get($stroke-default, first($keys));
+  }
+
+  @return $map;
+}
+
+// Round a number to specified digits.
+//
+// @param  {Number} $number A number to round
+// @param  {Number} [$digits:0] Digits to output
+// @param  {String} [$mode:round] (round|ceil|floor) How to round a number
+// @return {Number} A rounded number
+// @example
+//     decimal-round(0.333)    => 0
+//     decimal-round(0.333, 1) => 0.3
+//     decimal-round(0.333, 2) => 0.33
+//     decimal-round(0.666)    => 1
+//     decimal-round(0.666, 1) => 0.7
+//     decimal-round(0.666, 2) => 0.67
+//
+@function decimal-round($number, $digits: 0, $mode: round) {
+  $n: 1;
+  // $number must be a number
+  @if type-of($number) != number {
+    @warn '#{ $number } is not a number.';
+    @return $number;
+  }
+  // $digits must be a unitless number
+  @if type-of($digits) != number {
+    @warn '#{ $digits } is not a number.';
+    @return $number;
+  } @else if not unitless($digits) {
+    @warn '#{ $digits } has a unit.';
+    @return $number;
+  }
+
+  @for $i from 1 through $digits {
+    $n: $n * 10;
+  }
+
+  @if $mode == round {
+    @return round($number * $n) / $n;
+  } @else if $mode == ceil {
+    @return ceil($number * $n) / $n;
+  } @else if $mode == floor {
+    @return floor($number * $n) / $n;
+  } @else {
+    @warn '#{ $mode } is undefined keyword.';
+    @return $number;
+  }
+}
+
+// Ceil a number to specified digits.
+//
+// @param  {Number} $number A number to round
+// @param  {Number} [$digits:0] Digits to output
+// @return {Number} A ceiled number
+// @example
+//     decimal-ceil(0.333)    => 1
+//     decimal-ceil(0.333, 1) => 0.4
+//     decimal-ceil(0.333, 2) => 0.34
+//     decimal-ceil(0.666)    => 1
+//     decimal-ceil(0.666, 1) => 0.7
+//     decimal-ceil(0.666, 2) => 0.67
+//
+@function decimal-ceil($number, $digits: 0) {
+  @return decimal-round($number, $digits, ceil);
+}
+
+// Floor a number to specified digits.
+//
+// @param  {Number} $number A number to round
+// @param  {Number} [$digits:0] Digits to output
+// @return {Number} A floored number
+// @example
+//     decimal-floor(0.333)    => 0
+//     decimal-floor(0.333, 1) => 0.3
+//     decimal-floor(0.333, 2) => 0.33
+//     decimal-floor(0.666)    => 0
+//     decimal-floor(0.666, 1) => 0.6
+//     decimal-floor(0.666, 2) => 0.66
+//
+@function decimal-floor($number, $digits: 0) {
+  @return decimal-round($number, $digits, floor);
+}
+
+@function z-index($key1, $key2: null) {
+  $map: $z-indexes;
+  $found-index: null;
+
+  @if ($key1 == 'hidden') {
+    $found-index: -1;
+  }
+
+  @if ($key1 == 'deep') {
+    $found-index: -2;
+  }
+
+  @if (map-has-key($map, $key1)) {
+    $found-index: index(map-keys($map), $key1);
+
+    @if ($key2) {
+      $map: map-get($map, $key1);
+      $found-index: index($map, $key2);
+    }
+  }
+
+  @return $found-index;
+}
+
+// TODO: properties
+@function grid-column-width($breakpoint, $cols) {
+  $total-cols: map-get($grid-col-curve, $breakpoint);
+  $width: calc((#{$cols} * (100% - ((#{$total-cols} - 1) * var(--grid-gap))) / #{$total-cols}) + (#{$cols} - 1) * var(--grid-gap));
+
+  @return $width;
+}
+
+@function grid-offset-width($breakpoint, $cols) {
+  $offset-total-cols: map-get($grid-col-curve, $breakpoint);
+
+  @return calc(#{$cols} * ((100% - ((#{$offset-total-cols} - 1) * var(--grid-gap))) / #{$offset-total-cols}) + (#{$cols} * var(--grid-gap)));
+}
+
+// because of IE11 we must not have double calcs -> calc(calc())
+// therefore we are using this function
+// Solution without IE11, eg: width: calc(#{rem(grid-column-width('medium', 6))} + var(--size-curve-large));
+// TODO: properties
+@function grid-calc($total-cols, $cols, $summand1: var(--size-curve-large), $summand2: '0rem') {
+  @return calc((#{$cols} * (100% - ((#{$total-cols} - 1) * var(--grid-gap))) / #{$total-cols}) + (#{$cols} - 1) * var(--grid-gap) + (#{$summand1} + #{$summand2}));
+}

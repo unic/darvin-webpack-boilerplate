@@ -1,8 +1,7 @@
-/* eslint-disable */
 const inquirer = require('inquirer');
 
 const _meta = (cliObj) => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
 
     inquirer
     .prompt([
@@ -11,31 +10,25 @@ const _meta = (cliObj) => {
         name: 'entry',
         message: "define the main entry:",
         default: () => {
-          return 'js/main'
+          return 'scripts/main'
         }
       },
       {
         type: 'input',
         name: 'routerDev',
-        message: "define the absolute path for dev:",
+        message: "asset path for develop (empty for devserver):",
         default: () => {
           if(cliObj.presets.preset === 'proxy') return '/themes/unic/dist/';
           return '';
-        },
-        when: () => {
-          return cliObj.presets.preset !== 'spa'
         }
       },
       {
         type: 'input',
         name: 'routerProd',
-        message: "define the absolute path for prod:",
+        message: "asset path for production:",
         default: () => {
           if(cliObj.presets.preset === 'proxy') return '/themes/unic/dist/';
-          return '/dist';
-        },
-        when: () => {
-          return cliObj.presets.preset !== 'spa'
+          return '/htdocs/frontend/';
         }
       },
       {
@@ -56,7 +49,7 @@ const _meta = (cliObj) => {
         message: "type the dev port:",
         default: () => {
           if(cliObj.presets.preset === 'proxy') return '3000';
-          return '7001';
+          return '8001';
         }
       },
       {
@@ -70,7 +63,10 @@ const _meta = (cliObj) => {
       {
         type: 'input',
         name: 'company',
-        message: "Type the company name:"
+        message: "Type the company name:",
+        default: () => {
+          return 'Unic AG'
+        }
       }
     ])
     .then(data => {

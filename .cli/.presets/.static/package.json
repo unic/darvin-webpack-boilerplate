@@ -2,18 +2,24 @@
   "keywords": [],
   "scripts": {
     "start": "npm install -g cross-env; npm install; npm run dev",
-    "dev": "cross-env NODE_ENV=dev DARVIN_ENV=darvinrc.all DARVIN_CONF=darvinconf.main webpack-dev-server --hot --inline --progress --no-info --mode development --config webpack/webpack.config.dev.js --disable-host-check",
-    "dev-bundle": "cross-env NODE_ENV=dev DARVIN_ENV=darvinrc.all DARVIN_CONF=darvinconf.main webpack --inline --progress --no-info --mode development --config webpack/webpack.config.dev.js",
-    "dev-bundle-system": "cross-env NODE_ENV=dev DARVIN_ENV=darvinrc.all DARVIN_CONF=darvinconf.system webpack --inline --progress --no-info --mode development --config webpack/webpack.config.dev.js",
-    "dev-legacy": "cross-env NODE_ENV=dev DARVIN_ENV=darvinrc.legacy DARVIN_CONF=darvinconf.main webpack --mode development --watch --config webpack/webpack.config.dev.js",
-    "dev-legacy-system": "cross-env NODE_ENV=dev DARVIN_ENV=darvinrc.legacy DARVIN_CONF=darvinconf.system webpack --mode development --watch --config webpack/webpack.config.dev.js",
-    "prod": "cross-env NODE_ENV=prod DARVIN_ENV=darvinrc.all DARVIN_CONF=darvinconf.main webpack -p --progress --no-info --mode production --config webpack/webpack.config.prod.js; npm run prod-legacy",
-    "prod-system": "cross-env NODE_ENV=prod DARVIN_ENV=darvinrc.all DARVIN_CONF=darvinconf.system webpack -p --progress --no-info --mode production --config webpack/webpack.config.prod.js; npm run prod-legacy",
-    "prod-legacy": "cross-env NODE_ENV=prod DARVIN_ENV=darvinrc.legacy.prod DARVIN_CONF=darvinconf.main webpack -p --progress --no-info --mode production --config webpack/webpack.config.prod.legacy.js",
-    "prod-legacy-system": "cross-env NODE_ENV=prod DARVIN_ENV=darvinrc.legacy.prod DARVIN_CONF=darvinconf.system webpack -p --progress --no-info --mode production --config webpack/webpack.config.prod.legacy.js"
+    "dev": "cross-env NODE_ENV=dev SCRIPT_ENV=modern DARVIN_ENV=darvinrc.modern DARVIN_CONF=darvinconf.dev webpack-dev-server --hot --inline --progress --no-info --mode development --config webpack/webpack.config.dev.js --disable-host-check",
+    "dev-bundle": "cross-env SCRIPT_ENV=modern NODE_ENV=dev DARVIN_ENV=darvinrc.modern DARVIN_CONF=darvinconf.dev webpack --inline --progress --no-info --mode development --config webpack/webpack.config.dev.js",
+    "dev-bundle-system": "cross-env SCRIPT_ENV=modern NODE_ENV=dev DARVIN_ENV=darvinrc.modern DARVIN_CONF=darvinconf.prod webpack --inline --progress --no-info --mode development --config webpack/webpack.config.dev.js",
+    "dev-legacy": "cross-env SCRIPT_ENV=legacy NODE_ENV=dev DARVIN_ENV=darvinrc.legacy DARVIN_CONF=darvinconf.dev webpack --watch --inline --progress --no-info --mode development --config webpack/webpack.config.dev.js",
+    "dev-legacy-system": "cross-env SCRIPT_ENV=legacy NODE_ENV=dev DARVIN_ENV=darvinrc.legacy DARVIN_CONF=darvinconf.prod webpack --inline --progress --no-info  --mode development --config webpack/webpack.config.dev.js",
+    "prod-with-dev": "cross-env NODE_ENV=dev DARVIN_ENV=darvinrc.modern DARVIN_CONF=darvinconf.dev webpack-dev-server --hot --inline --no-info --mode production --config webpack/webpack.config.dev.js --disable-host-check",
+    "prod": "cross-env NODE_ENV=prod DARVIN_CONF=darvinconf.dev webpack -p --progress --no-info --mode production --config webpack/webpack.config.prod.js",
+    "prod-system": "cross-env NODE_ENV=prod DARVIN_CONF=darvinconf.prod webpack -p --progress --no-info --mode production --config webpack/webpack.config.prod.js",
+    "prod-legacy": "cross-env SCRIPT_ENV=legacy NODE_ENV=prod DARVIN_ENV=darvinrc.legacy DARVIN_CONF=darvinconf.dev webpack -p --progress --no-info --mode production --config webpack/webpack.config.prod.legacy.js",
+    "prod-legacy-system": "cross-env SCRIPT_ENV=legacy NODE_ENV=prod DARVIN_ENV=darvinrc.legacy DARVIN_CONF=darvinconf.prod webpack -p --progress --no-info --mode production --config webpack/webpack.config.prod.legacy.js",
+    "prod-modern": "cross-env SCRIPT_ENV=modern NODE_ENV=prod DARVIN_ENV=darvinrc.modern DARVIN_CONF=darvinconf.dev webpack -p --progress --no-info --mode production --config webpack/webpack.config.prod.modern.js",
+    "prod-modern-system": "cross-env SCRIPT_ENV=modern NODE_ENV=prod DARVIN_ENV=darvinrc.modern DARVIN_CONF=darvinconf.prod webpack -p --progress --no-info --mode production --config webpack/webpack.config.prod.modern.js",
+    "lint": "lint-staged",
+    "lint-script": "eslint -c .eslintrc.js --ext ts,js,jsx,vue,svelve \"src/**/*.{js,mjs,jsx,ts,vue,svelve}\" --fix",
+    "lint-style": "stylelint \"src/**/*.{js,mjs,jsx,vue,svelve}\" --fix",
+    "tslint": "tslint  --project tsconfig.json src/**/**.ts"
   },
   "devDependencies": {
-    "@unic/composite-observer": "0.0.10",
-    "simple-git": "^1.126.0"
+    "@unic/composite-observer": "0.0.10"
   }
 }

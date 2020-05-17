@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "svelte": "^3.22.2",
+  },
+  "devDependencies": {
+    "svelte-loader": "^2.13.6",
+  }
+}

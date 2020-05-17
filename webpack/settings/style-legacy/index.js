@@ -1,7 +1,7 @@
 const MiniCssExtractPlugin = require("extract-css-chunks-webpack-plugin");
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const autoprefixer = require('autoprefixer');
-const Fiber = require('fibers');
+const OptimizeCssnanoPlugin = require('@intervolga/optimize-cssnano-plugin');
 
 const prod = {
   module: {
@@ -34,9 +34,8 @@ const prod = {
         {
           loader: 'sass-loader',
           options: {
-            implementation: require("sass"),
-            fiber: Fiber,
-            data: "$env: " + process.env.NODE_ENV + ";"
+            prependData: '$env: ' + process.env.NODE_ENV + ';',
+            webpackImporter: false,
           }
         },
         ],
@@ -54,6 +53,16 @@ const prod = {
     }),
     new MiniCssExtractPlugin({
       filename: global.server.assets + '/css/style-legacy.[hash].css'
+    }),
+    new OptimizeCssnanoPlugin({
+      cssnanoOptions: {
+        preset: ['default', {
+          calc: false,
+          discardComments: {
+            removeAll: true,
+          },
+        }],
+      },
     }),
   ]
 };
@@ -85,7 +94,7 @@ const dev = {
                 grid: 'autoplace',
                 flexbox: 'no-2009'
               }),
-              require('postcss-css-variables')({ preserve : true, preserveAtRulesOrder: true })
+              require('postcss-css-variables')({ preserve : false, preserveAtRulesOrder: true })
             ],
             sourceMap: true,
           },
@@ -93,9 +102,8 @@ const dev = {
         {
           loader: 'sass-loader',
           options: {
-            implementation: require("sass"),
-            fiber: Fiber,
-            data: "$env: " + process.env.NODE_ENV + ";"
+            prependData: '$env: ' + process.env.NODE_ENV + ';',
+            webpackImporter: false,
           }
         },
         ],
@@ -115,7 +123,7 @@ const dev = {
       filename: global.server.assets + '/css/style.css',
     }),
   ]
-}
+};
 
 const prev = {
   module: {
@@ -148,9 +156,8 @@ const prev = {
         {
           loader: 'sass-loader',
           options: {
-            implementation: require("sass"),
-            fiber: Fiber,
-            data: "$env: " + process.env.NODE_ENV + ";"
+            prependData: '$env: ' + process.env.NODE_ENV + ';',
+            webpackImporter: false,
           }
         },
         ],
@@ -162,7 +169,7 @@ const prev = {
       filename: 'styles/preview.css',
     }),
   ]
-}
+};
 
 
 module.exports = {

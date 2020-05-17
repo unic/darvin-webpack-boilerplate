@@ -1,6 +1,5 @@
-/* eslint-disable */
 const inquirer = require('inquirer');
-require('../../config/.darvinconf.main.js');
+
 const { getScaffoldingOptions, setScaffolding, getNextIncrementalNumber } = require('../../webpack/helpers/scaff-helpers');
 
 const _add = () => {
@@ -66,9 +65,7 @@ const _addDetails = (response) => {
   });
 }
 
-
 const _addConfirm = (response) => {
-
   inquirer
   .prompt([
     {
@@ -88,17 +85,14 @@ const _addConfirm = (response) => {
     },
   ])
   .then(confirm => {
-
     if(confirm.write) {
       console.log("DV#> write scaffold");
       setScaffolding(response, confirm);
     } else {
       console.log("DV#> cancel scaffolding");
     }
-
   });
 }
-
 
 module.exports = {
   _add: _add

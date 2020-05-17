@@ -27,7 +27,8 @@
     }],
     "valid-jsdoc": "error",
     "no-param-reassign": "off",
-    "no-debugger": "off"
+    "no-debugger": "off",
+    "comment-empty-line-before": "off"
   },
   "settings": {
     "import/resolver": "webpack"

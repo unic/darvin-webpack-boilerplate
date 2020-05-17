@@ -1,7 +1,7 @@
 # @@@name@@@
 
 ## Changelog
-* v1.0.0 - inital commit
+* v1.0.0 - initial commit
 
 ## Description
 description text of {{name}}

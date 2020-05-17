@@ -4,23 +4,14 @@ require(`../config/.${process.env.DARVIN_CONF}.js`);
 
 const path = require('path');
 const basePath = process.cwd();
-const fs = require('fs-extra');
 
 const merge = require('webpack-merge');
 const webpackConfig = require('../webpack.config');
-const WebpackMessages = require('webpack-messages');
-const isDev = (process.env.NODE_ENV === 'dev');
-
-// build legacy global
-if(global.build.legacy) {
-  process.env.DARVIN_LEGACY = global.build.legacy;
-}
 
 const { prev: cleaner } = require('./settings/assets-cleaner');
 const { prev: sass } = require('./settings/style-sass');
 const { prev: fonts } = require('./settings/assets-fonts');
-const { dev: js } = require('./settings/javascript');
-const { dev: vue } = require('./settings/javascript-vue');
+const { dev: js } = require('./settings/javascript-legacy');
 const { prev: sprites } = require('./settings/assets-sprites');
 const { prod: modernizr } = require('./settings/javascript-modernizr');
 
@@ -40,24 +31,16 @@ const settings = {
     aggregateTimeout: 300,
     ignored: ['**/*.woff', '**/*.woff2', '**/*.jpg', '**/*.png', '**/*.svg', 'node_modules'],
   },
-  plugins: [
-    new WebpackMessages({
-      name: `${global.project} Preview`,
-      logger: str => console.log(`DV#> ${str}`),
-      onComplete: ()=> {
-        console.log(`DV#> Build Done 💫`);
-      }
-    })
-  ],
+  plugins: [],
   resolve: {
     alias: {
       '@root': basePath,
       '@preview': path.resolve(basePath, 'preview/'),
-      '@js': path.resolve(basePath, 'preview/js/'),
+      '@scripts': path.resolve(basePath, 'preview/scripts/'),
       '@css': path.resolve(basePath, 'preview/styles/'),
       '@html': path.resolve(basePath, 'preview/templates/')
     }
   }
 };
 
-module.exports = merge(webpackConfig, settings, cleaner, js, sass, fonts, vue, modernizr, sprites);
+module.exports = merge(webpackConfig, settings, cleaner, js, sass, fonts, modernizr, sprites);

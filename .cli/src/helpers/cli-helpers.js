@@ -1,4 +1,3 @@
-/* eslint-disable */
 const search = (needle, haystack, found = []) => {
   Object.keys(haystack).forEach((key) => {
     if(haystack[key] === needle){

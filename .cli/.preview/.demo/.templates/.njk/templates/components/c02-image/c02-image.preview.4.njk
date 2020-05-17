@@ -1,0 +1,32 @@
+{% extends "layouts/l00-preview/l00-preview.njk" %}
+
+{% import "components/c02-image/c02-image.njk" as mainTemplate %}
+
+{% set variantName = "Image with Ratio Original"  %}
+{% set variantDescr = "" %}
+
+{% macro main() %}
+  <!-- START Preview - c02-image -->
+  {{ mainTemplate.image(
+    classes = ['c-image--ratio-original'],
+    lazy = true,
+    dataSrc = '/assets/images/gruene-smoothies-d-illustration.png',
+    dataSrcset = '
+      /assets/images/gruene-smoothies-d-illustration.png 300w,
+      /assets/images/gruene-smoothies-d-illustration.png 400w,
+      /assets/images/gruene-smoothies-d-illustration.png 600w,
+      /assets/images/gruene-smoothies-d-illustration.png 800w,
+      /assets/images/gruene-smoothies-d-illustration.png 1200w,
+      /assets/images/gruene-smoothies-d-illustration.png 1600w,
+      /assets/images/gruene-smoothies-d-illustration.png 2000w
+    ',
+    sizes = '100vw',
+    alt = 'Demo alt-text',
+    focusPoint = false
+  ) }}
+  <!-- END Preview - c02-image -->
+{% endmacro %}
+
+{% block preview %}
+  {{ main() }}
+{% endblock %}

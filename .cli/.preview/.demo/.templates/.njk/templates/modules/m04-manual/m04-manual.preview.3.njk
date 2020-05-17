@@ -1,0 +1,125 @@
+{% extends "layouts/l00-preview/l00-preview.njk" %}
+
+{% import "modules/m04-manual/m04-manual.njk" as mainTemplate %}
+
+{% set variantName = "Default Variant" %}
+{% set variantDescr = "default description" %}
+
+{% macro main() %}
+  <!-- START Preview - m04-manual -->
+  {{ mainTemplate.main(html=markup()) }}
+  <!-- END Preview - m04-manual -->
+{% endmacro %}
+
+{% macro markup() %}
+  <section id="develop" class="doc-section">
+    <h2 class="section-title">Scripts</h2>
+    <div id="develop-1" class="section-block">
+      <p>Darvin load chunks from a almost empty scriptbase. Dynamic chunk load if module exist in dom or lazy load with intersection observer.</p>
+      <p>Lets take a look over the different loading options:</p>
+      <div class="code-block">
+        <h6>src/scripts/main.js</h6>
+        <pre class=" language-javascript"><code class=" language-javascript">window<span class="token punctuation">.</span>apps <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+window<span class="token punctuation">.</span>apps<span class="token punctuation">.</span>main <span class="token operator">=</span> <span class="token function">createApp</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  modules<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// Directly integrate module</span>
+    button<span class="token punctuation">,</span>
+
+    <span class="token comment" spellcheck="true">// lazy-load module if it's found in the DOM</span>
+    <span class="token string">'vue-module'</span><span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token comment" spellcheck="true">/* webpackChunkName: "vue-mod" */</span> <span class="token string">'./demo/vue-module'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+    <span class="token comment" spellcheck="true">// lazy laod when scrolled to this element</span>
+    <span class="token string">'lazy-module'</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      lazy<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+      handler<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token comment" spellcheck="true">/* webpackChunkName: "lazy-mod" */</span> <span class="token string">'./demo/lazy-module'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+      </div>
+      <!--//code-block-->
+      <p>Use the 'create-module.js' to create your chunks. Set options and declare functions in the constructor. You can find examples in the demo directory.</p>
+      <div class="code-block">
+        <h6>src/scripts/demo/lazy-module.js</h6>
+        <pre class=" language-javascript"><code class=" language-javascript"><span class="token keyword">import</span> createModule <span class="token keyword">from</span> <span class="token string">'@scripts/libs/create-module'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">createModule</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  options<span class="token punctuation">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+    foo<span class="token punctuation">:</span> <span class="token string">'bar'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+
+  <span class="token comment" spellcheck="true">/**
+   * createVueModule
+   * @param {Object} module - Module
+   * @param {Element} module.el - Element
+   * @param {Object} module.state - State
+   * @param {Object} module.options - Options
+   * @return {Object} state
+   */</span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">{</span> el<span class="token punctuation">,</span> state<span class="token punctuation">,</span> options <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true"></span>el<span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token string">'this is lazy initiated by IntersectionObserver; '</span> <span class="token operator">+</span> options<span class="token punctuation">.</span>foo<span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> state<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+</code></pre>
+      </div><!--//code-block-->
+      <p>Set the data-module on the root element to hook your module. You can also overwrite the JS options from HTML {moduleName='lazy-mod'}</p>
+      <div class="code-block">
+        <h6>Hook HTML with script</h6>
+        <pre class=" language-markup"><code class=" language-markup"><span class="token comment" spellcheck="true">&lt;!-- START - m01-lazymod --&gt;</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>m-lazymod<span class="token punctuation">"</span></span> <span class="token attr-name">data-module</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>lazymod<span class="token punctuation">"</span></span> <span class="token attr-name">data-lazymod-options</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">'</span>{<span class="token punctuation">"</span>json<span class="token punctuation">"</span>: true}<span class="token punctuation">'</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>lazylink<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+      ..
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>lazybody<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+      ..
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token comment" spellcheck="true">&lt;!-- END - m01-lazymod --&gt;</span>
+</code></pre>
+      </div>
+      <!--//code-block-->
+    </div>
+  </section><!--//doc-section-->
+<section>
+<h2 class="section-title">Sass</h2>
+  <div id="css-1" class="section-block">
+    <p>Legacy mode is on by default and support CSS features also for IE11.</p>
+    <div class="code-block">
+      <h6>CSS Custom Properties</h6>
+      <pre class=" language-css"><code class=" language-css"><span class="token selector">//== Grid
+//
+$grid-gap: (
+  small: #</span><span class="token punctuation">{</span><span class="token function">rem</span><span class="token punctuation">(</span>20<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token selector">,
+  regular: #</span><span class="token punctuation">{</span><span class="token function">rem</span><span class="token punctuation">(</span>26<span class="token punctuation">)</span><span class="token punctuation">}</span>,
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+$<span class="token property">grid-gap-index</span><span class="token punctuation">:</span> <span class="token punctuation">(</span>
+  <span class="token string">'zero'</span><span class="token punctuation">:</span> <span class="token string">'small'</span>,
+  <span class="token string">'large'</span><span class="token punctuation">:</span> <span class="token string">'regular'</span>,
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+..
+
+<span class="token atrule"><span class="token rule">@each</span> $breakpoint, $value in $grid-gap-index</span> <span class="token punctuation">{</span>
+  <span class="token selector">:root</span> <span class="token punctuation">{</span>
+    <span class="token atrule"><span class="token rule">@if</span> $breakpoint == <span class="token string">'zero'</span></span> <span class="token punctuation">{</span>
+      <span class="token selector">--grid-gap: #</span><span class="token punctuation">{</span><span class="token function">map-get</span><span class="token punctuation">(</span>$grid-gap, $value<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token atrule"><span class="token rule">@else</span></span> <span class="token punctuation">{</span>
+      <span class="token atrule"><span class="token rule">@include</span> <span class="token function">media-breakpoint-up</span><span class="token punctuation">(</span>$breakpoint<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
+        <span class="token selector">--grid-gap: #</span><span class="token punctuation">{</span><span class="token function">map-get</span><span class="token punctuation">(</span>$grid-gap, $value<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+      </div><!--//code-block-->
+  </div><!--//section-block-->
+</section><!--//doc-section-->
+{% endmacro %}
+
+{% block preview %}
+  {{ main() }}
+{% endblock %}

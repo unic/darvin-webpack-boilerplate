@@ -1,0 +1,26 @@
+{
+  "settings": {
+    "default": [
+      "cleaner",
+      "copy",
+      "fonts",
+      "images",
+      "sprites",
+      "modernizr",
+      "sass"
+    ],
+    "html": ["nunjucks"],
+    "devserver": ["webpackdev"],
+    "framework": ["vue"],
+    "addons": [
+      "favicons",
+      "analyzer",
+      "markdown",
+      "copyvendors",
+      "i18n"
+    ],
+    "base": ["js", "typescript"]
+  },
+  "name": "Darvin",
+  "company": "Unic AG"
+}

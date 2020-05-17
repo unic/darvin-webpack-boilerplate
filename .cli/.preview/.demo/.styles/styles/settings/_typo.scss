@@ -1,0 +1,271 @@
+/* ==|====================
+   Settings / Typo
+   ======================= */
+
+//== Typo Sizes
+//
+$typo-atomic: (
+  'size': #{rem(10)},
+  'line-height-text': 1,
+  'line-height-heading': 1.2,
+  'spacing': #{rem(10)}
+);
+
+$typo-tiny: (
+  'size': #{rem(11)},
+  'line-height-text': 1,
+  'line-height-heading': 1.2,
+  'spacing': #{rem(10)}
+);
+
+$typo-small: (
+  'size': #{rem(13)},
+  'line-height-text': 1.2,
+  'line-height-heading': 1.2,
+  'spacing': #{rem(12)}
+);
+
+$typo-regular: (
+  'size': #{rem(15)},
+  'line-height-text': 1.4,
+  'line-height-heading': 1.4,
+  'spacing': #{rem(12)}
+);
+
+$typo-bigger-regular: (
+  'size': #{rem(16)},
+  'line-height-text': 1.4,
+  'line-height-heading': 1.6,
+  'spacing': #{rem(14)}
+);
+
+$typo-medium: (
+  'size': #{rem(18)},
+  'line-height-text': 1.4,
+  'line-height-heading': 1.6,
+  'spacing': #{rem(16)}
+);
+
+$typo-large: (
+  'size': #{rem(20)},
+  'line-height-text': 1.4,
+  'line-height-heading': 1.6,
+  'spacing': #{rem(18)},
+);
+
+$typo-smaller-big: (
+  'size': #{rem(21)},
+  'line-height-text': 1.4,
+  'line-height-heading': 1.6,
+  'spacing': #{rem(21)},
+);
+
+$typo-big: (
+  'size': #{rem(24)},
+  'line-height-text': 1.6,
+  'line-height-heading': 1.6,
+  'spacing': #{rem(24)},
+);
+
+$typo-bigger-big: (
+  'size': #{rem(28)},
+  'line-height-text': 1.6,
+  'line-height-heading': 1.6,
+  'spacing': #{rem(30)},
+);
+
+$typo-smaller-huge: (
+  'size': #{rem(32)},
+  'line-height-text': 1.6,
+  'line-height-heading': 1.6,
+  'spacing': #{rem(36)}
+);
+
+$typo-huge: (
+  'size': #{rem(36)},
+  'line-height-text': 1.6,
+  'line-height-heading': 1.6,
+  'spacing': #{rem(44)}
+);
+
+//== Typo Curves
+//
+// @extend %typo-curve-tiny
+// @extend %typo-curve-tiny-text
+// @extend %typo-curve-tiny-heading
+// --typo-curve-tiny-size
+// --typo-curve-tiny-lh-text
+// --typo-curve-tiny-lh-heading
+// --typo-curve-tiny-spacing
+$typo-curve-tiny: (
+  'zero': $typo-tiny, // 13px
+  'small': $typo-small, // 14px
+);
+
+// @extend %typo-curve-small
+// @extend %typo-curve-small-text
+// @extend %typo-curve-small-heading
+// --typo-curve-small-size
+// --typo-curve-small-lh-text
+// --typo-curve-small-lh-heading
+// --typo-curve-small-spacing
+$typo-curve-small: (
+  'zero': $typo-small, // 14px
+  'small': $typo-regular, // 16px
+);
+
+// @extend %typo-curve-regular
+// @extend %typo-curve-regular-text
+// @extend %typo-curve-regular-heading
+// --typo-curve-regular-size
+// --typo-curve-regular-lh-text
+// --typo-curve-regular-lh-heading
+// --typo-curve-regular-spacing
+$typo-curve-regular: (
+  'zero': $typo-bigger-regular, // 18px
+  'small': $typo-medium, // 20px
+);
+
+// @extend %typo-curve-medium
+// @extend %typo-curve-medium-text
+// @extend %typo-curve-medium-heading
+// --typo-curve-medium-size
+// --typo-curve-medium-lh-text
+// --typo-curve-medium-lh-heading
+// --typo-curve-medium-spacing
+$typo-curve-medium: (
+  'zero': $typo-small, // 16px
+  'large': $typo-regular, // 20px
+);
+
+// @extend %typo-curve-large
+// @extend %typo-curve-large-text
+// @extend %typo-curve-large-heading
+// --typo-curve-large-size
+// --typo-curve-large-lh-text
+// --typo-curve-large-lh-heading
+// --typo-curve-large-spacing
+$typo-curve-large: (
+  'zero': $typo-bigger-regular, // 18px
+  'small': $typo-medium, // 20px
+  'large': $typo-large, // 24px
+);
+
+// @extend %typo-curve-smaller-big
+// @extend %typo-curve-smaller-big-text
+// @extend %typo-curve-smaller-big-heading
+// --typo-curve-smaller-big-size
+// --typo-curve-smaller-big-lh-text
+// --typo-curve-smaller-big-lh-heading
+// --typo-curve-smaller-big-spacing
+$typo-curve-smaller-big: (
+  'zero': $typo-medium, // 20px
+  'small': $typo-large, // 24px
+);
+
+// @extend %typo-curve-big
+// @extend %typo-curve-big-text
+// @extend %typo-curve-big-heading
+// --typo-curve-big-size
+// --typo-curve-big-lh-text
+// --typo-curve-big-lh-heading
+// --typo-curve-big-spacing
+$typo-curve-big: (
+  'zero': $typo-medium, // 20px
+  'small': $typo-large, // 24px
+  'large': $typo-smaller-big, // 28px
+);
+
+// @extend %typo-curve-bigger-big
+// @extend %typo-curve-bigger-big-text
+// @extend %typo-curve-bigger-big-heading
+// --typo-curve-bigger-big-size
+// --typo-curve-bigger-big-lh-text
+// --typo-curve-bigger-big-lh-heading
+// --typo-curve-bigger-big-spacing
+$typo-curve-bigger-big: (
+  'zero': $typo-large, // 24px
+  'small': $typo-smaller-big, // 28px
+  'large': $typo-big,
+  'wide': $typo-bigger-big,
+);
+
+// @extend %typo-curve-smaller-huge
+// @extend %typo-curve-smaller-huge-text
+// @extend %typo-curve-smaller-huge-heading
+// --typo-curve-smaller-huge-size
+// --typo-curve-smaller-huge-lh-text
+// --typo-curve-smaller-huge-lh-heading
+// --typo-curve-smaller-huge-spacing
+$typo-curve-smaller-huge: (
+  'zero': $typo-smaller-big, // 28px
+  'small': $typo-big,
+  'large': $typo-bigger-big,
+  'wide': $typo-smaller-huge,
+);
+
+// @extend %typo-curve-huge
+// @extend %typo-curve-huge-text
+// @extend %typo-curve-huge-heading
+// --typo-curve-huge-size
+// --typo-curve-huge-lh-text
+// --typo-curve-huge-lh-heading
+// --typo-curve-huge-spacing
+$typo-curve-huge: (
+  'zero': $typo-big,
+  'small': $typo-bigger-big,
+  'large': $typo-smaller-huge,
+  'wide': $typo-huge,
+);
+
+//== Typo Curves Cluster
+//
+$typo-curves: (
+  'typo-curve-tiny': $typo-curve-tiny,
+  'typo-curve-small': $typo-curve-small,
+  'typo-curve-regular': $typo-curve-regular,
+  'typo-curve-medium': $typo-curve-medium,
+  'typo-curve-large': $typo-curve-large,
+  'typo-curve-smaller-big': $typo-curve-smaller-big,
+  'typo-curve-big': $typo-curve-big,
+  'typo-curve-bigger-big': $typo-curve-bigger-big,
+  'typo-curve-smaller-huge': $typo-curve-smaller-huge,
+  'typo-curve-huge': $typo-curve-huge,
+);
+
+//== Typo Spaces
+//
+$typo-spacing-curve-tiny: (
+  'zero': 16px,
+);
+
+$typo-spacing-curve-small: (
+  'zero': 16px,
+  'large': 20px,
+);
+
+$typo-spacing-curve-regular: (
+  'zero': 16px,
+  'small': 20px,
+);
+
+$typo-spacing-curve-medium: (
+  'zero': 16px,
+  'small': 20px,
+  'wide': 24px,
+);
+
+$typo-spacing-curve-large: (
+  'zero': 20px,
+  'small': 24px,
+);
+
+//== Typo Spacing Curves Cluster
+//
+$typo-spacing-curves: (
+  'typo-spacing-curve-tiny': $typo-spacing-curve-tiny,
+  'typo-spacing-curve-small': $typo-spacing-curve-small,
+  'typo-spacing-curve-regular': $typo-spacing-curve-regular,
+  'typo-spacing-curve-medium': $typo-spacing-curve-medium,
+  'typo-spacing-curve-large': $typo-spacing-curve-large,
+);

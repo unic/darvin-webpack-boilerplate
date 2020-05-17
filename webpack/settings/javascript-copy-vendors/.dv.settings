@@ -1,0 +1,5 @@
+{
+  "name": "Copy JavaScript Vendor Files",
+  "value": "copyvendors",
+  "type": "addons"
+}

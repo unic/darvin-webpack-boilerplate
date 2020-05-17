@@ -8,7 +8,6 @@
 
 .prev-m-overlay__item {
   display: none;
-  font-family: $prev-font2;
 
   &[data-readme] {
     padding: 2rem 1.75rem;
@@ -22,15 +21,31 @@
     h1 {
       padding: 16px 0;
       font-size: 22px;
+      margin-bottom: 0;
     }
 
     h2 {
       padding: 12px 0;
       font-size: 19px;
+      margin-bottom: 0;
     }
 
-    ul {
+    h3 {
+      padding: 10px 0;
+      font-size: 17px;
+      margin-bottom: 0;
+    }
+
+    ul,
+    ol {
       padding-bottom: 1rem;
+      padding-left: 17px;
+    }
+
+    pre {
+      background-color: lightgoldenrodyellow;
+      padding: 4px;
+      display: inline-block;
     }
   }
 }

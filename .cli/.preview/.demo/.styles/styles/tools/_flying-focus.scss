@@ -1,0 +1,52 @@
+// ----------------------------------------------------------------------------------------------------
+// Flying Focus
+// ----------------------------------------------------------------------------------------------------
+
+*:focus {
+  outline: none;
+}
+
+.flying-focus {
+  display: none;
+  position: absolute;
+
+  // Setting default
+  top: 0;
+  left: 0;
+  margin: 0;
+  background: transparent;
+  box-shadow: none;
+  transition-timing-function: $transition-easing-decelerate;
+  transition-duration: $transition-time-default;
+  transition-property: left, top, width, height;
+  pointer-events: none;
+
+  &::after {
+    position: absolute;
+    top: - rem(7);
+    right: - rem(7);
+    bottom: - rem(7);
+    left: - rem(7);
+    border: rem(2) solid $color-main-4;
+    border-radius: rem(4);
+    content: '';
+  }
+
+  &--visible {
+    display: block;
+    z-index: z-index(flying-focus);
+    will-change: top, left, width, height;
+  }
+
+  &__target {
+    /* stylelint-disable */
+    outline: none !important;
+    /* stylelint-enable */
+  }
+
+  &__target::-moz-focus-inner {
+    /* stylelint-disable */
+    border: 0 !important;
+    /* stylelint-enable */
+  }
+}

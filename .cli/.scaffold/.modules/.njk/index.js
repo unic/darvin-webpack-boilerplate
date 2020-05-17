@@ -1,48 +1,72 @@
 /**
- * @author @@@authorEmail@@@
+ * @author @@@authorName@@@
  *
  * @module @@@name@@@
  *
  */
 
-const instance = {};
+import createModule from '@scripts/libs/create-module';
+import BreakpointManager from '@scripts/helpers/breakpoint-manager';
 
-const defaults = {
-  container: '.m-module',
-};
+export default createModule({
+  options: () => ({
+    myOption: 'small-device'
+  }),
 
-let settings,
-    containers;
+  /**
+   * myModuleName
+   * @param {Object} module - Module
+   * @param {Element} module.el - Element
+   * @param {Object} module.state - State
+   * @param {Object} module.options - Options
+   * @return {Object} state
+   */
+  constructor({ el, state, options }) {
+    /* --- Private methods --- */
+    let subscriptionId;
 
-const bindEvents = () => {
-  // ...
-},
-unbindEvents = () => {
-  // ...
-};
+    /**
+     * demo
+     * do something
+     */
+    const something = () => {
+      el.classList.add(options.myOption);
+    };
 
-/**
- * Initialize module
- *
- * @param {object} options - Override default settings with options object.
- * @return {object} Instance of created module.
- */
-instance.init = (options) => {
-  settings = Object.assign({}, defaults, options);
-  containers = [...document.querySelectorAll(`${settings.container}`)];
+    /**
+     * breakpointChangeHandler
+     * @return {undefined}
+     */
+    const breakpointChangeHandler = () => {
+      requestAnimationFrame(() => {
+        const breakpoint = BreakpointManager.getState().breakpoint.name;
+        if (['micro', 'small', 'medium'].includes(breakpoint)) {
+          something();
+        }
+      });
+    };
 
-  bindEvents();
+    /* --- Public methods --- */
 
-  return instance;
-};
+    /**
+     * init
+     * @return {undefined}
+     */
+    state.init = () => {
+      subscriptionId = BreakpointManager.on('change', breakpointChangeHandler);
+    };
 
-/**
- * Destroy this module.
- *
- * @return {undefined}
- */
-instance.destroy = () => {
-  unbindEvents();
-};
+    /**
+     * destroy
+     * @return {undefined}
+     */
+    state.destroy = () => {
+      // Unsubscribe from breakpoint changes
+      BreakpointManager.off(subscriptionId);
+    };
 
-export default instance;
+    state.init();
+
+    return state;
+  },
+});

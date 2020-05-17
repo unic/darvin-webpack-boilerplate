@@ -11,12 +11,22 @@ const dev = {
       devServer.app = app;
     },
     contentBase: path.resolve(basePath, 'dist'),
-    watchContentBase: false,
+    watchContentBase: true,
     compress: true,
     port: global.port,
-    open: 'Google Chrome',
-    writeToDisk: false,
-    index: 'index.html'
+    open: true,
+    writeToDisk: true,
+    index: 'index.html',
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Headers': '*',
+    },
+    proxy: {
+      "/api": {
+        target: "http://localhost:8002",
+        secure: false
+      }
+    },
   }
 }
 

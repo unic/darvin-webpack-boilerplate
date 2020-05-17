@@ -1,0 +1,149 @@
+/* ==|====================
+   Settings / General
+   ======================= */
+
+//== Font Family
+//
+$font-fallback: Helvetica, Arial, sans-serif !default;
+$font-1: 'Roboto', $font-fallback;
+
+//== Colors
+//
+$color-main-1: #556270;
+$color-main-2: #4ecdc4;
+$color-main-3: #c7f464;
+$color-main-4: #ff6b6b;
+$color-main-5: #c44d58;
+$color-main-6: #101113;
+
+$color-secondary-1: rgb(240, 240, 240);
+$color-secondary-2: #000;
+
+//== Breakpoints
+//
+$breakpoints: (
+  zero: 0,
+  micro: 340px,
+  small: 640px,
+  medium: 860px,
+  large: 1024px,
+  wide: 1280px,
+  ultra: 1460px,
+  epic: 2680px,
+  orbit: 3800px
+);
+
+//== Z-Axis
+//
+$z-indexes: (
+  page-layout: (
+    main,
+    header
+  )
+);
+
+//== Image Aspects
+//
+$aspect-ratio-21-9: (100% / 21 * 9);
+$aspect-ratio-16-9: (100% / 16 * 9);
+$aspect-ratio-4-3: (100% / 4 * 3);
+$aspect-ratio-2-1: (100% / 2 * 1);
+$aspect-ratio-1-1: 100%;
+$aspect-ratio-3-4: (100% / 3 * 4);
+$aspect-ratio-5-7: (100% / 5 * 7);
+
+//== Offset Curves
+//
+$offsetCurve: (
+  zero: 24px,
+  micro: 32px,
+  small: 48px,
+  medium: 56px,
+  wide: 72px,
+  ultra: 0
+);
+
+$offsetCurveWide: (
+  zero: 12px,
+  micro: 16px,
+  small: 24px,
+  medium: 28px,
+  wide: 32px,
+  ultra: 0
+);
+
+//== MaxWidth Curves
+//
+$maxWidthCurve: (
+  zero: calc(100% - 2 * #{rem(map-get($offsetCurve, 'zero'))}),
+  micro: calc(100% - 2 * #{rem(map-get($offsetCurve, 'micro'))}),
+  small: calc(100% - 2 * #{rem(map-get($offsetCurve, 'small'))}),
+  medium: calc(100% - 2 * #{rem(map-get($offsetCurve, 'medium'))}),
+  wide: calc(100% - 2 * #{rem(map-get($offsetCurve, 'wide'))}),
+  ultra: 1248px
+);
+
+$maxWidthCurveWide: (
+  zero: calc(100% - 2 * #{rem(map-get($offsetCurveWide, 'zero'))}),
+  micro: calc(100% - 2 * #{rem(map-get($offsetCurveWide, 'micro'))}),
+  small: calc(100% - 2 * #{rem(map-get($offsetCurveWide, 'small'))}),
+  medium: calc(100% - 2 * #{rem(map-get($offsetCurveWide, 'medium'))}),
+  wide: calc(100% - 2 * #{rem(map-get($offsetCurveWide, 'wide'))}),
+  ultra: 1440px
+);
+
+$maxWidthCurveFull: (
+  zero: 100%,
+  ultra: 1920px
+);
+
+//== Size Curves
+//
+$sizeCurveTiny: (
+  zero: 4px
+);
+
+$sizeCurveSmall: (
+  zero: 8px
+);
+
+// H4 to element
+$sizeCurveSmallerRegular: (
+  zero: 16px,
+  small: 24px,
+  large: 32px
+);
+
+$sizeCurveRegular: (
+  zero: 24px,
+  medium: 32px
+);
+
+// H3 to element
+$sizeCurveSmallerMedium: (
+  zero: 16px,
+  small: 24px,
+  large: 32px,
+  wide: 40px
+);
+
+// H1/H2 to element
+$sizeCurveMedium: (
+  zero: 24px,
+  small: 32px,
+  large: 40px,
+  wide: 48px
+);
+
+$sizeCurveLarge: (
+  zero: 48px,
+  small: 56px,
+  large: 80px
+);
+
+$sizeCurveBig: (
+  zero: 48px,
+  small: 56px,
+  large: 80px,
+  wide: 96px
+);

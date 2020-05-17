@@ -1,0 +1,303 @@
+{% extends "layouts/l00-preview/l00-preview.njk" %}
+
+{% import "modules/m04-manual/m04-manual.njk" as mainTemplate %}
+
+{% set variantName = "Default Variant" %}
+{% set variantDescr = "default description" %}
+
+{% macro main() %}
+  <!-- START Preview - m04-manual -->
+  {{ mainTemplate.main(html=markup()) }}
+  <!-- END Preview - m04-manual -->
+{% endmacro %}
+
+{% macro markup() %}
+<section id="download" class="doc-section">
+  <h2 class="section-title">Webpack HTML Boilerplate</h2>
+  <div class="section-block">
+    <p>Useful for static prototyping, gpu rendering and shipping modular html. Extendable webpack ecosystem and config, default loaders and preview features.</p>
+    <ul class="chips">
+      <li>Node 14</li>
+      <li>Npm 6</li>
+      <li>Webpack 4</li>
+      <li>Babel 7</li>
+      <li>Modernizr</li>
+      <li>Typescript</li>
+      <li>Sass</li>
+      <li>Twing</li>
+      <li>Nunjucks</li>
+      <li>Vue</li>
+      <li>React</li>
+      <li>Svelte</li>
+      <li>Stylelint</li>
+      <li>Eslint</li>
+      <li>TSLint</li>
+      <li>Husky</li>
+      <li>Browsersync</li>
+      <li>WDS</li>
+      <li>WebGL</li>
+      <li>GLSL</li>
+      <li>SVG Sprites</li>
+      <li>Favicons</li>
+      <li>Lazy Imports</li>
+      <li>Jasmine</li>
+      <li>Ally</li>
+      <li>Legacy Build</li>
+      <li style="background-color:#a4c400;">Unic AG</li>
+    </ul>
+    <!-- Place this tag where you want the button to render. -->
+    <a class="github-button" href="https://github.com/unic/darvin-webpack-boilerplate/" data-color-scheme="no-preference: light; light: light; dark: dark;" data-size="large" aria-label="Visit unic/darvin-webpack-boilerplate on GitHub">Github Repo</a>
+  </div>
+  <h3 class="section-title">Motivation</h3>
+  <div class="section-block">
+    <p>create a simple webpack ecosystem to test technologies, approaches or mechanism independently of framework CLI. While many static frontend generators aren't maintained anymore, Darvin came up with the latest packages.</p>
+  </div>
+  <div class="section-block">
+    <h3>Quickstart</h3>
+    <div class="code-block">
+        <code style="text-align:left;">
+          git clone https://github.com/unic/darvin-webpack-boilerplate.git myProject<br>
+          cd myProject<br>
+          nvm install 14.1.0; nvm use 14.1.0<br>
+          npm start
+        </code>
+    </div>
+  </div>
+</section>
+<!--//doc-section-->
+<section id="install" class="doc-section">
+  <h2 class="section-title">Installation</h2>
+  <div id="installation-1" class="section-block">
+    <h3 class="block-title">1. Prerequisites</h3>
+    <p>It's highly recommended to install the Node Version Manager according to the links:</p>
+    <div class="code-block">
+      <h6>Linux/Mac</h6>
+      <p>
+        <code>https://github.com/creationix/nvm</code>
+      </p>
+      <h6>Windows</h6>
+      <p>
+        <code>https://github.com/coreybutler/nvm-windows</code>
+      </p>
+    </div>
+    <!--//code-block-->
+    <div class="code-block">
+      <h6>Install Node.js</h6>
+      <p>
+        <code>nvm install 14.1.0</code>
+      </p>
+    </div>
+    <!--//code-block-->
+    <p>Switch between installed versions in your project directory:</p>
+    <div class="code-block">
+      <h6>list versions</h6>
+      <p>
+        <code>nvm list</code>
+      </p>
+      <h6>use version</h6>
+      <p>
+        <code>nvm use 14.1.0</code>
+      </p>
+    </div>
+    <!--//code-block-->
+  </div>
+  <!--//section-block-->
+  <div id="installation-2" class="section-block">
+    <h3 class="block-title">2. Clone Repo</h3>
+    <p>Clone the actual repo to a new empty directory (e.g myProject) and navigate inside.</p>
+    <div class="code-block">
+      <p>
+        <code>git clone https://github.com/unic/darvin-boilerplate.git myProject</code>
+      </p>
+      <p>
+        <code>cd myProject</code>
+      </p>
+    </div>
+    <!--//code-block-->
+  </div>
+  <!--//section-block-->
+  <div id="installation-3" class="section-block">
+    <h3 class="block-title">3. Configure Darvin</h3>
+    <p>Its time to configure your darvin setup and select your favorite configs and engines.</p>
+    <div class="code-block">
+      <p>
+        <code>npm start</code>
+      </p>
+    </div>
+    <!--//code-block-->
+    <div class="list-block">
+      <h6>Recommended</h6>
+      <ul class="list">
+        <li>assets-cleaner (clean-webpack-plugin)</li>
+        <li>assets-copy (copy-webpack-plugin)</li>
+        <li>assets-favicons (favicons-webpack-plugin)</li>
+        <li>assets-fonts (file-loader)</li>
+        <li>assets-images (image-webpack-loader)</li>
+        <li>assets-sprites (svg-spritemap-webpack-plugin)</li>
+        <li>bundler-analyzer (webpack-bundle-analyzer)</li>
+      </ul>
+    </div>
+    <div class="list-block">
+      <h6>Related</h6>
+      <ul class="list">
+        <li>
+          server
+          <ul>
+            <li>env-browsersync (browser-sync-webpack-plugin)</li>
+            <li>env-devserver (webpack-dev-server)</li>
+          </ul>
+        </li>
+        <li>
+          template
+          <ul>
+            <li>html-njk (nunjucks-loader)</li>
+            <li>html-twig (twig-loader/twing)</li>
+          </ul>
+        </li>
+        <li>
+          styles
+          <ul>
+            <li>style-sass (sass-loader/postcss-css-variables)</li>
+            <li>style-sass-svelte (sass-loader-svelte) [undone]</li>
+          </ul>
+        </li>
+        <li>
+          scripts
+          <ul>
+            <li>javascript-i18n (file-loader)</li>
+            <li>javascript-modernizr (webpack-modernizr-loader)</li>
+            <li>javascript-typescript (ts-loader)</li>
+            <li>javascript-vue (vue-loader)</li>
+            <li>javascript-react (react-loader)</li>
+            <li>javascript-svelte (svelte-loader)</li>
+          </ul>
+        </li>
+        <li>html-markdown (markdown-loader)</li>
+      </ul>
+    </div>
+    <!--//row-->
+  </div>
+</section>
+<!--//section-block-->
+<section id="startup" class="doc-section">
+  <h2 class="section-title">Startup</h2>
+  <div id="startup-dev" class="section-block">
+    <p>Use Full-Start after darvin installation or package updates. Start fast if npm packages up to date and preview already builded.</p>
+
+    <div class="code-block">
+      <h6>Full start</h6>
+      <span class="subtext">installation, preview bundle and devserver</span>
+      <p>
+        <code>npm start</code>
+      </p>
+    </div>
+    <!--//code-block-->
+    <div class="code-block">
+      <h6>Fast start</h6>
+      <span class="subtext">devserver only</span>
+      <p>
+        <code>npm run dev</code>
+      </p>
+    </div>
+    <!--//code-block-->
+  </div>
+  <!--//section-block-->
+</section>
+<!--//doc-section-->
+<section id="publish" class="doc-section">
+  <h2 class="section-title">Publish Bundles</h2>
+  <div id="publish-dev" class="section-block">
+    <h3 class="block-title">Develop</h3>
+    <p>Bundle in develop mode without dev-server for rollout.</p>
+    <div class="code-block">
+      <h6>bundle dev</h6>
+      <span class="subtext">bundle dev mode</span>
+      <p>
+        <code>npm run dev-bundle</code>
+      </p>
+    </div>
+    <!--//code-block-->
+    <div class="code-block">
+      <h6>bundle system dev</h6>
+      <span class="subtext">bundle dev mode with system settings</span>
+      <p>
+        <code>npm run dev-bundle-system</code>
+      </p>
+    </div>
+    <!--//code-block-->
+  </div>
+  <!--//section-block-->
+  <div id="publish-prod" class="section-block">
+    <h3 class="block-title">Production</h3>
+    <p>Bundle local and system builds in production mode.</p>
+    <div class="code-block">
+      <h6>bundle dev</h6>
+      <span class="subtext">dual bundle prod-modern and prod-legacy with dev settings</span>
+      <p>
+        <code>npm run prod</code>
+      </p>
+    </div>
+    <!--//code-block-->
+    <div class="code-block">
+      <h6>bundle prod</h6>
+      <span class="subtext">dual bundle prod-modern and prod-legacy with system settings</span>
+      <p>
+        <code>npm run prod-system</code>
+      </p>
+    </div>
+    <!--//code-block-->
+  </div>
+  <!--//section-block-->
+</section>
+<!--//doc-section-->
+<section>
+  <h2 class="section-title">Legacy Build (IE11)</h2>
+  <div id="legacy-dev" class="section-block">
+    <h3 class="block-title">Develop</h3>
+    <p>Only run legacy scripts</p>
+    <div class="code-block">
+      <h6>bundle dev</h6>
+      <span class="subtext">dev legacy mode</span>
+      <p>
+        <code>npm run dev-legacy</code>
+      </p>
+    </div>
+    <!--//code-block-->
+    <div class="code-block">
+      <h6>bundle dev with system settings</h6>
+      <span class="subtext">dev legacy mode with system settings</span>
+      <p>
+        <code>npm run dev-legacy-system</code>
+      </p>
+    </div>
+    <!--//code-block-->
+  </div>
+  <!--//section-block-->
+  <div id="legacy-prod" class="section-block">
+    <h3 class="block-title">Production</h3>
+    <p>Build legacy styles with postcss.</p>
+    <div class="code-block">
+      <h6>bundle prod</h6>
+      <span class="subtext">bundle prod legacy with dev settings</span>
+      <p>
+        <code>npm run prod-legacy</code>
+      </p>
+    </div>
+    <!--//code-block-->
+    <div class="code-block">
+      <h6>bundle prod with system settings</h6>
+      <span class="subtext">bundle prod legacy with system settings</span>
+      <p>
+        <code>npm run prod-legacy-system</code>
+      </p>
+    </div>
+    <!--//code-block-->
+  </div>
+  <!--//section-block-->
+</section>
+<!--//doc-section-->
+{% endmacro %}
+
+{% block preview %}
+{{ main() }}
+{% endblock %}

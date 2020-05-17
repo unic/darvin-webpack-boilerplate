@@ -1,0 +1,30 @@
+/* ==|====================
+   Settings / Animations/Transitions
+   ======================= */
+
+//== Duration
+//
+$transition-time-simple: 150ms;
+$transition-time-fade-in: 250ms;
+$transition-time-fade-out: 150ms;
+$transition-time-default: 250ms;
+$transition-time-morph: 500ms;
+
+// Area transition-timings
+$transition-time-area-small: 200ms;
+$transition-time-area-medium: 350ms;
+$transition-time-area-large: 500ms;
+
+//== Easing
+//
+$transition-easing-default: cubic-bezier(0.4, 0, 0.2, 1);
+$transition-easing-decelerate: cubic-bezier(0, 0, 0.2, 1);
+$transition-easing-accelerate: cubic-bezier(0.4, 0, 1, 1);
+
+//== Distances
+//
+// CSS Properties are set at runtime
+$transition-distance-xsmall: var(--size-curve-nano);
+$transition-distance-small: var(--size-curve-micro);
+$transition-distance-medium: var(--size-curve-tiny);
+$transition-distance-large: var(--size-curve-regular);

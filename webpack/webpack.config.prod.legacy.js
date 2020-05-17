@@ -5,23 +5,16 @@ require(`../config/.${process.env.DARVIN_CONF}.js`);
 const path = require('path');
 const basePath = process.cwd();
 const merge = require('webpack-merge');
-const WebpackMessages = require('webpack-messages');
-const WebpackShellPlugin = require('webpack-shell-plugin-next');
+const ExtendedAPIPlugin = require('webpack/lib/ExtendedAPIPlugin');
 
 const webpackConfig = require('../webpack.config');
-const { printFancy } = require('./helpers/darvin-helpers');
 const { getDarvinRC, createDynamicRequireArray } = require('./helpers/config-helpers');
+
+process.env.DARVIN_ENV = "darvinrc.legacy";
 
 let serverBase;
 let darvinRcString = getDarvinRC();
-
-// build legacy global
-if(global.build.legacy) {
-  process.env.DARVIN_LEGACY = global.build.legacy;
-}
-
 let dynamicRequireArr = createDynamicRequireArray(darvinRcString);
-
 
 for (var i = 0; i < dynamicRequireArr.length; i++) {
   eval(dynamicRequireArr[i]);
@@ -36,41 +29,23 @@ if(global.server.base==='') {
 const settings = {
   output: {
     devtoolLineToLine: false,
-    sourceMapFilename: global.server.assets + '/js/maps/[name].js.map',
+    sourceMapFilename: global.server.assets + '/scripts/maps/[name].js.map',
     path: path.resolve(basePath, 'dist'),
     pathinfo: false,
-    filename: global.server.assets + '/[name].[hash].js',
-    chunkFilename: global.server.assets + '/js/async/[name].[contenthash].js',
+    filename: global.server.assets + '/[name].legacy.[hash].js',
+    chunkFilename: global.server.assets + '/scripts/async/[name].legacy.[contenthash].js',
     publicPath: serverBase
   },
-  devtool: 'source-map',
+  devtool: false,
   stats: 'errors-only',
   plugins: [
-    /*new WebpackShellPlugin({
-      onBuildStart:{
-        scripts: ['echo \> START COMPILING'],
-        blocking: true,
-        parallel: false
-      },
-      onBuildEnd:{
-        scripts: ['echo \> COMPILING END'],
-        blocking: true,
-        parallel: false
-      }
-    }),*/
-    new WebpackMessages({
-      name: `${global.project} Production`,
-      logger: str => console.log(`DV#> ${str}`),
-      onComplete: ()=> {
-        console.log(`DV#> Build Done 💯`);
-      }
-    })
+    new ExtendedAPIPlugin()
   ],
   resolve: {
     alias: {
       '@root': basePath,
       '@src': path.resolve(basePath, 'src/'),
-      '@js': path.resolve(basePath, 'src/js/'),
+      '@scripts': path.resolve(basePath, 'src/scripts/'),
       '@css': path.resolve(basePath, 'src/styles/'),
       '@html': path.resolve(basePath, 'src/templates/')
     }
@@ -78,6 +53,6 @@ const settings = {
 };
 
 settings.entry = {};
-settings.entry[global.mainChunk] = [`./src/js/main.legacy.js`];
+settings.entry['scripts/main'] = [`./src/scripts/main.legacy.js`];
 
 module.exports = eval('merge(' + darvinRcString + ')');

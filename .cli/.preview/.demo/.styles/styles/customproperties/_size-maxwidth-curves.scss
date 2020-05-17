@@ -1,0 +1,105 @@
+:root {
+  //== Create MaxWidth and Curve Media Queries
+  //
+  @each $breakpoint-name, $size in $breakpoints {
+    @if $breakpoint-name == 'zero' {
+      @if map-get($sizeCurveTiny, $breakpoint-name) {
+        --size-curve-tiny: #{rem(map-get($sizeCurveTiny, $breakpoint-name))};
+      }
+
+      @if map-get($sizeCurveSmall, $breakpoint-name) {
+        --size-curve-small: #{rem(map-get($sizeCurveSmall, $breakpoint-name))};
+      }
+
+      @if map-get($sizeCurveSmallerRegular, $breakpoint-name) {
+        --size-curve-smaller-regular: #{rem(map-get($sizeCurveSmallerRegular, $breakpoint-name))};
+      }
+
+      @if map-get($sizeCurveRegular, $breakpoint-name) {
+        --size-curve-regular: #{rem(map-get($sizeCurveRegular, $breakpoint-name))};
+      }
+
+      @if map-get($sizeCurveSmallerMedium, $breakpoint-name) {
+        --size-curve-smaller-medium: #{rem(map-get($sizeCurveSmallerMedium, $breakpoint-name))};
+      }
+
+      @if map-get($sizeCurveMedium, $breakpoint-name) {
+        --size-curve-medium: #{rem(map-get($sizeCurveMedium, $breakpoint-name))};
+      }
+
+      @if map-get($sizeCurveLarge, $breakpoint-name) {
+        --size-curve-large: #{rem(map-get($sizeCurveLarge, $breakpoint-name))};
+      }
+
+      @if map-get($sizeCurveBig, $breakpoint-name) {
+        --size-curve-big: #{rem(map-get($sizeCurveBig, $breakpoint-name))};
+      }
+
+      @if map-get($maxWidthCurve, $breakpoint-name) {
+        --maxwidth-curve: #{rem(map-get($maxWidthCurve, $breakpoint-name))};
+      }
+
+      @if map-get($maxWidthCurveWide, $breakpoint-name) {
+        --maxwidth-curve-wide: #{rem(map-get($maxWidthCurveWide, $breakpoint-name))};
+      }
+
+      @if map-get($maxWidthCurveFull, $breakpoint-name) {
+        --maxwidth-curve-full: #{rem(map-get($maxWidthCurveFull, $breakpoint-name))};
+      }
+
+      @if map-get($offsetCurve, $breakpoint-name) {
+        --offset-curve: #{rem(map-get($offsetCurve, $breakpoint-name))};
+      }
+    } @else {
+      @include media-breakpoint-up($breakpoint-name) {
+        @if map-get($sizeCurveTiny, $breakpoint-name) {
+          --size-curve-tiny: #{rem(map-get($sizeCurveTiny, $breakpoint-name))};
+        }
+
+        @if map-get($sizeCurveSmall, $breakpoint-name) {
+          --size-curve-small: #{rem(map-get($sizeCurveSmall, $breakpoint-name))};
+        }
+
+        @if map-get($sizeCurveSmallerRegular, $breakpoint-name) {
+          --size-curve-smaller-regular: #{rem(map-get($sizeCurveSmallerRegular, $breakpoint-name))};
+        }
+
+        @if map-get($sizeCurveRegular, $breakpoint-name) {
+          --size-curve-regular: #{rem(map-get($sizeCurveRegular, $breakpoint-name))};
+        }
+
+        @if map-get($sizeCurveSmallerMedium, $breakpoint-name) {
+          --size-curve-smaller-medium: #{rem(map-get($sizeCurveSmallerMedium, $breakpoint-name))};
+        }
+
+        @if map-get($sizeCurveMedium, $breakpoint-name) {
+          --size-curve-medium: #{rem(map-get($sizeCurveMedium, $breakpoint-name))};
+        }
+
+        @if map-get($sizeCurveLarge, $breakpoint-name) {
+          --size-curve-large: #{rem(map-get($sizeCurveLarge, $breakpoint-name))};
+        }
+
+        @if map-get($sizeCurveBig, $breakpoint-name) {
+          --size-curve-big: #{rem(map-get($sizeCurveBig, $breakpoint-name))};
+        }
+
+        @if map-get($maxWidthCurve, $breakpoint-name) {
+          --maxwidth-curve: #{rem(map-get($maxWidthCurve, $breakpoint-name))};
+        }
+
+        @if map-get($maxWidthCurveWide, $breakpoint-name) {
+          --maxwidth-curve-wide: #{rem(map-get($maxWidthCurveWide, $breakpoint-name))};
+        }
+
+        @if map-get($maxWidthCurveFull, $breakpoint-name) {
+          --maxwidth-curve-full: #{rem(map-get($maxWidthCurveFull, $breakpoint-name))};
+        }
+
+        @if map-get($offsetCurve, $breakpoint-name) {
+          --offset-curve: #{rem(map-get($offsetCurve, $breakpoint-name))};
+        }
+      }
+    }
+  }
+}

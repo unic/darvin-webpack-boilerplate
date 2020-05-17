@@ -1,0 +1,24 @@
+{#
+    Components c00-colors
+    Tobias Frei - tobias.frei@unic.com
+#}
+
+{% macro main(colors = false) %}
+    <div class="darvin-prev-flexgrid darvin-prev-colors" data-module="lazy-prev-colors">
+    {% for color in colors %}
+      <div class="darvin-prev-flexgrid__item">
+        <a tabindex="0" class="darvin-prev-flexgrid__colorbox">
+          {{ colorLabel(color=color ) }}
+          <input type="text" value='var(--color-{{color.name}})'>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+{% endmacro %}
+
+{% macro colorLabel(color = false) %}
+  <div class="darvin-prev-flexgrid__colorboxbval" style="background-color:{{ color.value }};"></div>
+  <div class="darvin-prev-flexgrid__colorboxlabel">
+    {{color.name}}
+  </div>
+{% endmacro %}

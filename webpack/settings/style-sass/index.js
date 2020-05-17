@@ -1,7 +1,15 @@
 const MiniCssExtractPlugin = require("extract-css-chunks-webpack-plugin");
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const autoprefixer = require('autoprefixer');
-const Fiber = require('fibers');
+const OptimizeCssnanoPlugin = require('@intervolga/optimize-cssnano-plugin');
+const isDevServer = process.env.WEBPACK_DEV_SERVER;
+
+let outputDir = `${global.server.assets}/css/style.[hash].css`;
+
+// remove hash for devserver hot reload
+if(isDevServer) {
+  outputDir = `${global.server.assets}/css/style.css`;
+}
 
 const prod = {
   module: {
@@ -33,9 +41,8 @@ const prod = {
         {
           loader: 'sass-loader',
           options: {
-            implementation: require("sass"),
-            fiber: Fiber,
-            data: "$env: " + process.env.NODE_ENV + ";"
+            prependData: '$env: ' + process.env.NODE_ENV + ';',
+            webpackImporter: false,
           }
         },
         ],
@@ -52,7 +59,17 @@ const prod = {
       syntax: 'scss'
     }),
     new MiniCssExtractPlugin({
-      filename: global.server.assets + '/css/style.[hash].css'
+      filename: outputDir
+    }),
+    new OptimizeCssnanoPlugin({
+      cssnanoOptions: {
+        preset: ['default', {
+          calc: false,
+          discardComments: {
+            removeAll: true,
+          },
+        }],
+      },
     }),
   ]
 };
@@ -66,7 +83,7 @@ const dev = {
           loader: MiniCssExtractPlugin.loader,
           options: {
             hot: true,
-            reloadAll: true
+            reloadAll: false
           }
         },
         {
@@ -85,15 +102,14 @@ const dev = {
                 flexbox: 'no-2009'
               })
             ],
-            sourceMap: true,
+            sourceMap: false,
           },
         },
         {
           loader: 'sass-loader',
           options: {
-            implementation: require("sass"),
-            fiber: Fiber,
-            data: "$env: " + process.env.NODE_ENV + ";"
+            prependData: '$env: ' + process.env.NODE_ENV + ';',
+            webpackImporter: false,
           }
         },
         ],
@@ -110,7 +126,7 @@ const dev = {
       syntax: 'scss'
     }),
     new MiniCssExtractPlugin({
-      filename: global.server.assets + '/css/style.[hash].css',
+      filename: outputDir
     }),
   ]
 };
@@ -145,9 +161,8 @@ const prev = {
         {
           loader: 'sass-loader',
           options: {
-            implementation: require("sass"),
-            fiber: Fiber,
-            data: "$env: " + process.env.NODE_ENV + ";"
+            prependData: '$env: ' + process.env.NODE_ENV + ';',
+            webpackImporter: false,
           }
         },
         ],

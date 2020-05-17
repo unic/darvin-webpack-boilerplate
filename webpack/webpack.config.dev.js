@@ -1,29 +1,22 @@
-/* eslint-disable */
 require('./helpers/node-check');
 require(`../config/.${process.env.DARVIN_CONF}.js`);
 
 const path = require('path');
 const basePath = process.cwd();
 const merge = require('webpack-merge');
-const WebpackMessages = require('webpack-messages');
 
 const webpackConfig = require('../webpack.config');
-const { getDarvinRC, createDynamicRequireArray } = require('./helpers/config-helpers');
+const {getDarvinRC, createDynamicRequireArray} = require('./helpers/config-helpers');
 
 let serverBase;
 let darvinRcString = getDarvinRC();
 let dynamicRequireArr = createDynamicRequireArray(darvinRcString);
 
-// build legacy global
-if(global.build.legacy) {
-  process.env.DARVIN_LEGACY = global.build.legacy;
-}
-
 for (var i = 0; i < dynamicRequireArr.length; i++) {
   eval(dynamicRequireArr[i]);
 }
 
-if(global.server.base==='') {
+if (global.server.base === '') {
   serverBase = '/';
 } else {
   serverBase = global.server.base;
@@ -36,36 +29,54 @@ const settings = {
     pathinfo: false,
     filename: global.server.assets + '/[name].[hash].js',
     chunkFilename: global.server.assets + '/async/[name].[contenthash].js',
-    publicPath: serverBase
+    publicPath: serverBase,
+    jsonpFunction: 'cssJsonp'
   },
   devtool: 'cheap-module-eval-source-map',
+  stats: 'minimal',
   resolve: {
     alias: {
       '@root': basePath,
       '@src': path.resolve(basePath, 'src/'),
-      '@js': path.resolve(basePath, 'src/js/'),
+      '@scripts': path.resolve(basePath, 'src/scripts/'),
       '@css': path.resolve(basePath, 'src/styles/'),
       '@html': path.resolve(basePath, 'src/templates/'),
       '@webpack': path.resolve(basePath, 'webpack/'),
     }
   },
-  stats: 'errors-only',
-  plugins: [
-    new WebpackMessages({
-      name: `${global.project} Develop`,
-      logger: str => console.log(`DV#> ${str}`),
-      onComplete: ()=> {
-        console.log(`DV#> Build Done 💯`);
-      }
-    })
-  ],
-  watchOptions: {
-    aggregateTimeout: 300,
-    ignored: ['**/*.woff', '**/*.json', '**/*.woff2', '**/*.jpg', '**/*.png', '**/*.svg', 'node_modules'],
+  optimization: {
+    removeAvailableModules: false,
+    removeEmptyChunks: false,
+    splitChunks: false,
   },
+  watchOptions: {
+    ignored: [
+      '**/*.woff',
+      '**/*.json',
+      '**/*.woff2',
+      '**/*.jpg',
+      '**/*.png',
+      '**/*.svg',
+      'node_modules/**',
+      '.cli/**',
+      'tmp/**',
+      'webpack/**',
+      'preview/**',
+      'dist/**',
+      'log/**',
+      'api/**',
+      'config/**',
+      '*/\.*'
+    ],
+  }
 };
 
 settings.entry = {};
-settings.entry[global.mainChunk] = [`./src/${global.mainChunk}.js`];
+
+if (process.env.SCRIPT_ENV === 'legacy') {
+  settings.entry['scripts/main'] = [`./src/scripts/main.legacy.js`];
+} else {
+  settings.entry['scripts/main'] = [`./src/scripts/main.js`];
+}
 
 module.exports = eval('merge(' + darvinRcString + ')');

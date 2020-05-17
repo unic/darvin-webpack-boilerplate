@@ -12,7 +12,7 @@ const dev = {
       },
       startPath: 'index.html',
       port: global.port,
-      files: ['css/*.css', 'js/*.js'],
+      files: ['css/*.css', 'scripts/*.js'],
       open: true,
       https: false,
       notify: false,

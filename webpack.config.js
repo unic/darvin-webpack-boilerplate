@@ -1,14 +1,12 @@
 const path = require('path');
-const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
 
-const smp = new SpeedMeasurePlugin();
-
-const webpackConfig = smp.wrap({
+const webpackConfig = {
   resolve: {
-    modules: [
-      path.join(__dirname, 'node_modules'),
-    ]
+    modules: ['node_modules']
+  },
+  resolveLoader: {
+    modules: [path.resolve(__dirname, 'webpack/packages'), 'node_modules']
   }
-});
+};
 
 module.exports = webpackConfig;

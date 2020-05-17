@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "eslint-loader": "^2.2.1"
+  }
+}

@@ -9,8 +9,7 @@ $base-font-size-unit: 16;
 
 //== Font Family
 //
-$prev-font1: "barlow-semi-condensed", Arial, sans-serif;
-$prev-font2: "DroidSans", Verdana, Helvetica;
+$prev-font1: 'Roboto', Arial, sans-serif;
 
 //== Default Colors
 //
@@ -30,14 +29,12 @@ $colors: (
   activity-bg:#fafafa,
   activity-grid: #fafafa,
   activity-graph: #81c0b0,
-  activity-graph2:rgb(78, 255, 181)0,
+  activity-graph2:rgb(78, 255, 181) 0,
   card-footer-bg: #ebf0ef,
   card-footer-text: #577374,
   card-footer-text-hover: #494b40,
   card-title: #505a54,
   card-meta: #222,
-  dependency-stroke: #9b9b9b,
-  dependency-bg: #fff
 );
 $colors-dark: (
   main-dark: #000,
@@ -61,12 +58,7 @@ $colors-dark: (
   card-footer-text-hover: #bebebe,
   card-title: #c5c5c5,
   card-meta: #222,
-  dependency-stroke: #ceb0ba,
-  dependency-bg: #161414
 );
-$spinkit-spinner-margin: 40px auto;
-$spinkit-size: 40px;
-$spinkit-spinner-color: var(--main-bg-dark);
 
 //== Layout
 //
