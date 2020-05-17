@@ -19,7 +19,6 @@ const modern = {
   ],
   plugins: [
     "@babel/plugin-syntax-dynamic-import",
-    "@babel/plugin-proposal-class-properties",
     "transform-eval"
   ],
   comments: false,
@@ -42,7 +41,6 @@ const legacy = {
   ],
   plugins: [
     "@babel/plugin-syntax-dynamic-import",
-    "@babel/plugin-proposal-class-properties",
     "transform-eval"
   ],
   comments: false,

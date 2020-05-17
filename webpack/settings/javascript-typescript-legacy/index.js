@@ -5,13 +5,10 @@ const prod = {
     rules: [
       {
         test: /\.tsx?$/,
-        exclude: [
-          /node_modules|/,
-          /webpack\/packages/
-        ],
+        exclude: /node_modules/,
         use: [
           {
-            loader: 'babel-loader?cacheDirectory',
+            loader: 'babel-loader',
             options: babelConfig.legacy
           },
           {
@@ -36,11 +33,8 @@ const dev = {
   module: {
     rules: [
       {
-        test: /\.(vue|svelte|jsx).(ts|tsx)$/,
-        exclude: [
-          /node_modules|/,
-          /webpack\/packages/
-        ],
+        test: /\.vue.(ts|tsx)$/,
+        exclude: /node_modules/,
         enforce: 'pre',
         use: [
           {
@@ -51,9 +45,8 @@ const dev = {
       {
         test: /\.ts$/,
         exclude: [
-          /\.(vue|svelte|jsx).(ts|tsx)$/,
-          /node_modules/,
-          /webpack\/packages/
+          /\.vue.(ts|tsx)$/,
+          /node_modules/
         ],
         enforce: 'pre',
         use: [
@@ -67,13 +60,10 @@ const dev = {
       },
       {
         test: /\.tsx?$/,
-        exclude: [
-          /node_modules|/,
-          /webpack\/packages/
-        ],
+        exclude: /node_modules/,
         use: [
           {
-            loader: 'babel-loader?cacheDirectory',
+            loader: 'babel-loader',
             options: babelConfig.legacy
           },
           {

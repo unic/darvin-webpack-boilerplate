@@ -33,7 +33,7 @@ const settings = {
     path: path.resolve(basePath, 'dist'),
     pathinfo: false,
     filename: global.server.assets + '/[name].legacy.[hash].js',
-    chunkFilename: global.server.assets + '/scripts/async/[name].legacy.[contenthash].js',
+    chunkFilename: global.server.assets + '/async/[name].legacy.[contenthash].js',
     publicPath: serverBase
   },
   devtool: false,
