@@ -43,15 +43,6 @@ setScaffolding = (response, confirm) => {
 copyDirectoryWithContext = (confirm, inDir, outDir, vars, response) => {
   copyScaffolding(inDir, outDir, vars, (err, createdFiles) => {
     if (err) throw err
-
-    if(!confirm.preview) {
-      deleteFile(basePath + `/src/templates/${response.category}/${response.name}/${response.name}.preview.1.njk`);
-    }
-
-    if(!confirm.js) {
-      deleteFile(basePath + `/src/templates/${response.category}/${response.name}/main.js`);
-      deleteFile(basePath + `/src/templates/${response.category}/${response.name}/index.js`);
-    }
   })
 },
 getNextIncrementalNumber = (type) => {
@@ -86,8 +77,10 @@ getNextIncrementalNumber = (type) => {
 
   return `${alpha}${highestNumber.pad(2)}-`;
 },
-copyDemo = (engine) => {
-  fsCopy(path.join(process.cwd(), `.cli/.preview/.demo/.${engine}`), path.join(process.cwd(), `src`), 'demo files added');
+copyDemo = (engine, framework) => {
+  fsCopy(path.join(process.cwd(), `.cli/.preview/.demo/.styles`), path.join(process.cwd(), `src`), 'style files added');
+  fsCopy(path.join(process.cwd(), `.cli/.preview/.demo/.templates/.${engine}`), path.join(process.cwd(), `src`), 'template files added');
+  fsCopy(path.join(process.cwd(), `.cli/.preview/.demo/.scripts/.${framework !== '' ? 'default' : framework}`), path.join(process.cwd(), `src`), 'script files added');
 },
 copyPreview = (engine) => {
   fsCopy(path.join(process.cwd(), `.cli/.preview/.index/.${engine}/index.${engine}`), path.join(process.cwd(), `src/templates/index.${engine}`), 'preview index updated');
@@ -102,7 +95,10 @@ setConfig = (data) => {
 },
 copyConfigFile = (inDir, outDir, vars) => {
   copyScaffolding(inDir, outDir, vars, (err, createdFiles) => {
-    if (err) throw err
+    if (err) {
+      console.log('error in copyScaffolding');
+      throw err
+    }
   })
 };
 

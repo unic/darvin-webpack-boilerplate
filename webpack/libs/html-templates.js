@@ -1,44 +1,40 @@
-/* eslint-disable */
-const glob = require('glob');
-const path = require('path');
-
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 let { previewIndexObj, allIconsInDir } = require('./darvin-preview');
 
-let templates = [];
+let templatesArr = [];
 
+let templates = () => {
+    return templatesArr;
+};
 
-const dynamicSort = (property) => {
-  var sortOrder = 1;
-  if(property[0] === "-") {
-      sortOrder = -1;
-      property = property.substr(1);
-  }
-  return function (a,b) {
-      var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
-      return result * sortOrder;
-  }
-}
+const darvinParameters = {
+  config: global,
+  env: process.env.DARVIN_ENV,
+  mode: process.env.NODE_ENV
+};
 
-// iterate all elements and render previews
+// iterate elements and render previews
 Object.keys(previewIndexObj.payload).forEach(function (key) {
-  let items = previewIndexObj.payload[key];
+  const items = previewIndexObj.payload[key];
 
   Object.keys(items).forEach(function (keyItem) {
-    let elementObj = items[keyItem];
+    const elementObj = items[keyItem];
 
       elementObj.previews.forEach(function (preview) {
-        let targetPath = `${elementObj.path}/${preview}`;
+        const targetPath = `${elementObj.path}/${preview}`;
 
-        let obj = new HtmlWebpackPlugin({
+        const obj = new HtmlWebpackPlugin({
           filename: targetPath + `.html`,
           template: `${global.inputDirs.src}/${global.inputDirs.templates}/${targetPath}.${global.template.extIn}`,
-          hash: false,
-          inject: 'body',
+          hash: true,
+          inject: `body`,
           cache: true,
           chunks: [elementObj.chunkName],
-          templateParameters: elementObj,
+          templateParameters: {
+            darvin: elementObj,
+            sprite: allIconsInDir
+          },
           minify: {
             collapseWhitespace: false,
             conservativeCollapse: false,
@@ -54,20 +50,19 @@ Object.keys(previewIndexObj.payload).forEach(function (key) {
           }
         });
 
-        templates.push(obj)
+        templatesArr.push(obj);
       })
-
   });
 });
 
 // add index
-templates.push(new HtmlWebpackPlugin({
+templatesArr.push(new HtmlWebpackPlugin({
   filename: `${global.preview.indexFileOutput}`,
   template: `${global.inputDirs.src}/${global.inputDirs.templates}/${global.preview.indexFileInput}`,
   hash: false,
   inject: `body`,
   cache: true,
-  chunks: [`js/main`],
+  chunks: [`scripts/main`],
   minify: {
     collapseWhitespace: false,
     conservativeCollapse: false,
@@ -84,15 +79,16 @@ templates.push(new HtmlWebpackPlugin({
   templateParameters: {
     name: `${global.output.index}`,
     type: `preview`,
-    chunkName: `js/main`,
+    chunkName: `scripts/main`,
     template: `${global.inputDirs.src}/${global.inputDirs.templates}/${global.preview.indexFileInput}`,
     templateRel: `${global.preview.indexFileInput}`,
     target: `${global.preview.indexFileOutput}`,
     path: `/`,
     previews: `${global.output.index}`,
-    variants: 1
+    variants: 1,
+    index: previewIndexObj
   }
-}))
+}));
 
 module.exports = {
   imageSrc: `/${global.server.assets}/images/renditions/`,

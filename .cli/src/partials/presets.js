@@ -1,10 +1,8 @@
-/* eslint-disable */
 const inquirer = require('inquirer');
 const path = require('path');
-var merge = require('deepmerge');
 
 const { getDarvinPresets } = require('../../../webpack/helpers/config-helpers');
-const { readFile, writeFile } = require('../../../webpack/helpers/file-helpers');
+const { readFile } = require('../../../webpack/helpers/file-helpers');
 
 const _presets = (cliObj) => {
   return new Promise((resolve, reject) => {

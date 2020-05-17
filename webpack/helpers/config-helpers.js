@@ -1,33 +1,22 @@
-/* eslint-disable */
 const path = require('path');
 const basePath = process.cwd();
 
 const { writeFile, getDirs, readFile } = require('./../helpers/file-helpers');
 const { sortByKey } = require('./../helpers/darvin-helpers');
 
-const setDarvinRC = (rc) => {
+const writeDarvinRC = (rc) => {
   try{
     console.log("DV#> write darvinrc to /config");
-    writeFile(`./config/.darvinrc.all.json`, JSON.stringify(rc));
-
-    console.log("DV#> write darvinrc.legacy to /config");
+    writeFile(`./config/.darvinrc.modern.json`, JSON.stringify(rc));
 
     // replace sass with sasslegacy for ie dev
-    writeFile(`./config/.darvinrc.legacy.json`, JSON.stringify(rc).replace('sass',  'sasslegacy'));
-
-    // remove non sass tasks for ie prod
-    rc.settings.html = [];
-    rc.settings.devserver = [];
-    rc.settings.framework = [];
-    rc.settings.addons = [];
-
-    writeFile(`./config/.darvinrc.legacy.prod.json`, JSON.stringify(rc).replace('sass', 'sasslegacy'));
+    writeFile(`./config/.darvinrc.legacy.json`, JSON.stringify(rc).replace('sass',  'sasslegacy').replace('typescript',  'typescriptlegacy').replace('js',  'jslegacy'));
 
     return true;
   } catch (err){
+    console.log('error in writeDarvinRC');
     console.error(err);
     process.exit();
-    return false;
   }
 },
 getDarvinRC = () => {
@@ -38,7 +27,7 @@ getDarvinRC = () => {
   let rcData;
   let darvinEnv = process.env.DARVIN_ENV;
   if(!darvinEnv) {
-    darvinEnv = 'darvinrc.all';
+    darvinEnv = 'darvinrc.modern';
   }
 
   // read darvin rc config
@@ -54,7 +43,7 @@ getDarvinRC = () => {
   }
 
   // get array values and push to string array
-  const rcDataVal = Object.values(rcData.settings)
+  const rcDataVal = Object.values(rcData.settings);
   rcDataVal.forEach((array, i) => {
     if(array.length > 0) {
       array.forEach((item, i) => {
@@ -196,7 +185,7 @@ createDynamicRequireArray = (rcString) => {
 
 module.exports = {
   getDarvinRC: getDarvinRC,
-  setDarvinRC: setDarvinRC,
+  writeDarvinRC: writeDarvinRC,
   getDarvinSettings: getDarvinSettings,
   getSettingsStruct: getSettingsStruct,
   getDarvinPresets: getDarvinPresets,

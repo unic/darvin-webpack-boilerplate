@@ -13,11 +13,10 @@
     margin: auto;
     transform: translate3d(0, 0, 0);
     cursor: pointer;
-
     -webkit-tap-highlight-color: transparent;
 
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       top: -13px;
       left: -17px;
@@ -34,7 +33,6 @@
       z-index: 1;
       transform: translate3d(0, 0, 0);
       transition: all 0.2s ease;
-
       fill: none;
       stroke: #c8ccd4;
       stroke-linecap: round;
@@ -45,6 +43,7 @@
         stroke-dasharray: 60;
         stroke-dashoffset: 0;
       }
+
       polyline {
         stroke-dasharray: 22;
         stroke-dashoffset: 66;
@@ -55,6 +54,7 @@
       &::before {
         opacity: 1;
       }
+
       svg {
         stroke: var(--main-color);
       }
@@ -67,13 +67,12 @@
 
       path {
         transition: all 0.3s linear;
-
         stroke-dashoffset: 60;
       }
+
       polyline {
         transition: all 0.2s linear;
         transition-delay: 0.15s;
-
         stroke-dashoffset: 42;
       }
     }
@@ -107,7 +106,7 @@
   }
 
   &::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 0;

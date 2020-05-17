@@ -162,7 +162,7 @@
         font-weight: 500;
 
         .c-icon {
-          stroke-width: get-stroke('14', '16', '500');;
+          stroke-width: get-stroke('14', '16', '500');
         }
       }
 
@@ -269,7 +269,6 @@
 
         .c-icon {
           stroke-width: get-stroke('18', '20', '500');
-
         }
       }
 
@@ -557,10 +556,8 @@
     }
   }
 
-
   .all-px & {
     a {
-
       &:nth-child(1) {
         .c-icon {
           width: 8px;
@@ -568,6 +565,7 @@
           stroke-width: 1px;
         }
       }
+
       &:nth-child(2) {
         .c-icon {
           width: 16px;
@@ -575,6 +573,7 @@
           stroke-width: 1.25px;
         }
       }
+
       &:nth-child(3) {
         .c-icon {
           width: 20px;
@@ -582,6 +581,7 @@
           stroke-width: 1.5px;
         }
       }
+
       &:nth-child(4) {
         .c-icon {
           width: 24px;
@@ -589,6 +589,7 @@
           stroke-width: 1.5px;
         }
       }
+
       &:nth-child(5) {
         .c-icon {
           width: 32px;
@@ -596,6 +597,7 @@
           stroke-width: 1.5px;
         }
       }
+
       &:nth-child(6) {
         .c-icon {
           width: 40px;
@@ -603,6 +605,7 @@
           stroke-width: 1.5px;
         }
       }
+
       &:nth-child(7) {
         .c-icon {
           width: 48px;
@@ -610,6 +613,7 @@
           stroke-width: 1.75px;
         }
       }
+
       &:nth-child(8) {
         .c-icon {
           width: 64px;
@@ -617,6 +621,7 @@
           stroke-width: 2px;
         }
       }
+
       &:nth-child(9) {
         .c-icon {
           width: 96px;
@@ -626,5 +631,4 @@
       }
     }
   }
-
 }

@@ -10,12 +10,6 @@ const _rc = (cliObj, rcStruct) => {
     inquirer
     .prompt([
       {
-        type: 'list',
-        name: 'base',
-        message: 'Select the entry base:',
-        choices: rcStruct.base
-      },
-      {
         type: 'checkbox',
         message: 'Select the default loaders:',
         name: 'default',
@@ -35,11 +29,12 @@ const _rc = (cliObj, rcStruct) => {
         choices: rcStruct.html,
         validate: function(answer) {
           if (answer.length < 1) {
-            return 'You must choose at least one loader.';
+            return 'Darvin is a static builder. You must choose at least one html engine.';
           }
 
           return true;
         },
+        // move if preset proxy
         when: function(answers) {
           let ret = false;
           switch(cliObj.presets.preset) {
@@ -47,9 +42,6 @@ const _rc = (cliObj, rcStruct) => {
               ret = true;
               break;
             case "proxy":
-              ret = false;
-              break;
-            case "spa":
               ret = false;
               break;
           }
@@ -62,6 +54,7 @@ const _rc = (cliObj, rcStruct) => {
         message: 'Select your dev server:',
         choices: rcStruct.devserver,
         default: 'webpackdev',
+        // move if preset proxy
         when: function(answers) {
           let ret = false;
           switch(cliObj.presets.preset) {
@@ -71,15 +64,12 @@ const _rc = (cliObj, rcStruct) => {
             case "proxy":
               ret = false;
               break;
-            case "spa":
-              ret = false;
-              break;
           }
           return ret;
         }
       },
       {
-        type: 'checkbox',
+        type: 'list',
         message: 'Select the framework:',
         name: 'framework',
         choices: rcStruct.framework
@@ -95,6 +85,9 @@ const _rc = (cliObj, rcStruct) => {
     .then(data => {
       let packages = [];
 
+      // set base
+      data.base = ['js', 'typescript'];
+
       Object.keys(data).forEach(function(key) {
         if(Array.isArray(data[key])) {
           for (i = 0; i < data[key].length; i++) {
@@ -108,9 +101,6 @@ const _rc = (cliObj, rcStruct) => {
           packages.push(package);
         }
       })
-
-      let selectedObj = rcStruct.base.find(x => x.value === data.base);
-     // let selectedObj = rcStruct.default.find(x => x.value === data.default);
 
       resolve({ data: data, rcStruct: rcStruct, packages: packages });
     });

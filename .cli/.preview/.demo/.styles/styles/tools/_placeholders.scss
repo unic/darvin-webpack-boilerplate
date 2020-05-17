@@ -1,0 +1,156 @@
+/* ==|==================
+  Tools / Placeholders
+  ===================== */
+
+@each $curve-name, $curve in $typo-curves {
+  %#{$curve-name} {
+    margin: 0;
+    font-size: var(--#{$curve-name}-size);
+  }
+
+  %#{$curve-name}-text {
+    @extend %#{$curve-name};
+
+    line-height: var(--#{$curve-name}-lh-text);
+  }
+
+  %#{$curve-name}-heading {
+    @extend %#{$curve-name};
+
+    line-height: var(--#{$curve-name}-lh-heading);
+  }
+}
+
+%visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+%word-wrap {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-all; // webkit
+  word-break: break-word;
+}
+
+%headline {
+  @include loaded-font($font-1);
+  @extend %word-wrap;
+
+  font-weight: 500;
+}
+
+%h1 {
+  @extend %headline;
+  @extend %typo-curve-huge-heading;
+
+  margin-bottom: var(--typo-spacing-curve-large);
+}
+
+%h2 {
+  @extend %headline;
+  @extend %typo-curve-smaller-huge-heading;
+
+  margin-bottom: var(--typo-spacing-curve-medium);
+  border-bottom: 1px solid rgba($color-secondary-1, 0.2);
+  color: rgba($color-secondary-1, 0.7);
+}
+
+%h3 {
+  @extend %headline;
+  @extend %typo-curve-bigger-big-heading;
+
+  margin-bottom: var(--typo-spacing-curve-regular);
+  padding-top: var(--typo-spacing-curve-regular);
+}
+
+%h4 {
+  @extend %headline;
+  @extend %typo-curve-big-heading;
+
+  margin-bottom: var(--typo-spacing-curve-small);
+}
+
+%h5 {
+  @extend %headline;
+  @extend %typo-curve-large-heading;
+
+  margin-bottom: var(--typo-spacing-curve-tiny);
+}
+
+%h6 {
+  @extend %headline;
+  @extend %typo-curve-tiny-heading;
+
+  margin-bottom: var(--typo-spacing-curve-tiny);
+  border-bottom: 1px solid;
+  border-color: $color-main-4;
+  display: inline-block;
+  padding: 0 0 rem(3) 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+  color: $color-main-4;
+  font-weight: 600;
+}
+
+%text-lead {
+  @extend %typo-curve-smaller-big-text;
+  @include loaded-font($font-1);
+
+  font-weight: 500;
+  padding-bottom: var(--typo-spacing-curve-medium);
+}
+
+%antialiased {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+%ul-unstyled {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+
+  ul {
+    padding-left: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+
+%clearfix {
+  @include clearfix;
+}
+
+%clean-button {
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border: 0;
+}
+
+%pseudoreset {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+%module-level-one {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+
+  > .l-constrainer {
+    max-width: rem(920);
+    margin: auto;
+  }
+}

@@ -18,7 +18,7 @@ const dev = {
       },
     ]
   },
-}
+};
 
 module.exports = {
   prod: prod,

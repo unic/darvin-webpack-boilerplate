@@ -1,10 +1,19 @@
 {
   "settings": {
-    "base": ["js"],
-    "default": ["cleaner", "copy", "fonts", "images", "sprites", "modernizr", "sasslegacy"],
-    "devserver": ["devserver"],
-    "framework": ["vue"],
-    "addons": ["favicons", "analyzer", "markdown", "i18n"]
+    "base": ["jslegacy", "typescriptlegacy"],
+    "default": [
+      "cleaner",
+      "copy",
+      "fonts",
+      "images",
+      "sprites",
+      "modernizr",
+      "sasslegacy"
+    ],
+    "html": ["nunjucks"],
+    "devserver": ["browsersync"],
+    "framework": [],
+    "addons": ["favicons", "analyzer", "markdown", "i18n", "copyvendors"]
   },
   "name": "Darvin",
   "company": "Unic AG"

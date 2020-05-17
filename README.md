@@ -1,14 +1,17 @@
 ![](http://tobiasfrei.ch/github/darvin-boilerplate/darvin-MIT_(c)TobiasFrei.svg)
 
 
-static webpack boilerplate for templating and system theming with Nunjucks or Twig. Hot reload with DevServer or Browsersync, easy extendable webpack settings and frontend preview for shipping.
+html webpack boilerplate for professionals. templating and system theming with nunjucks or twig (twing). Hot reload with DevServer or Browsersync, easy extendable webpack settings and frontend preview for shipping.
 
 + lazy loading chunks
 + frontend preview
-+ templating with Nunjucks or Twig
++ fast nunjucks/twig loaders
++ easy loader ecosystem
++ multiple frameworks (react/vue/svelte)
++ typescript support (incl. typescript-vue)
 + easy extendable Webpack settings
-+ legacy mode with CSS Custom Properties and CSS Grid (IE11)
-+ project approved
++ polyfilled legacy mode (IE11)
++ project approved (up to 100+ components/modules)
 
 
 ## Documentation

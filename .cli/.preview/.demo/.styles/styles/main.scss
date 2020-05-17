@@ -1,0 +1,48 @@
+/* ==|===
+   Main
+   ====== */
+
+@import '../../node_modules/prismjs/themes/prism-tomorrow.css';
+@import '../../node_modules/normalize.css/normalize';
+
+// Assets
+@import 'tools/functions';
+@import 'tools/mixins';
+
+// Settings
+@import 'settings/settings';
+@import 'settings/fonts';
+@import 'settings/typo';
+@import 'settings/transitions';
+
+// Custom Properties
+@import 'customproperties/size-maxwidth-curves';
+@import 'customproperties/typo-curves';
+
+// Tools
+@import 'tools/placeholders';
+@import 'tools/transitions';
+@import 'tools/helpers';
+@import 'tools/sprites';
+@import 'tools/flying-focus';
+@import 'tools/dev'; // only for DEV
+
+// Base Styles
+@import 'base/base-elements';
+@import 'base/typo';
+
+// Layout
+@import 'layout/pagewrapper';
+@import 'layout/main';
+@import 'layout/modules';
+@import 'layout/content';
+
+// Components
+@import '../templates/components/c01-svg_icon/index';
+@import '../templates/components/c02-image/index';
+
+// Modules
+@import '../templates/modules/m01-header/index';
+@import '../templates/modules/m02-footer/index';
+@import '../templates/modules/m03-background/index';
+@import '../templates/modules/m04-manual/index';

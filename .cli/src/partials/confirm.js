@@ -1,4 +1,3 @@
-/* eslint-disable */
 const inquirer = require('inquirer');
 
 const _confirm = (cliObj) => {

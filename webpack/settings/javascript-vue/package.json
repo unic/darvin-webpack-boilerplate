@@ -1,7 +1,11 @@
 {
   "dependencies": {
-    "vue": "^2.6.10",
-    "vue-loader": "^15.7.1",
-    "vue-template-compiler": "^2.6.10"
+    "vue": "^2.6.11",
+    "vue-loader": "^15.9.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "vue-template-compiler": "^2.6.11",
+    "vue-class-component": "^7.2.3",
+    "vue-property-decorator": "^8.4.2",
+    "vue-tslint-loader": "^3.5.6"
   }
 }

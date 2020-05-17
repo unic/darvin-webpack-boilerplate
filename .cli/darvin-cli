@@ -1,23 +1,19 @@
 #!/usr/bin/env node
 
-const fs = require('fs-extra');
-const path = require('path');
-const originalCwd = process.cwd();
-
-const chalk = require('chalk')
+const chalk = require('chalk');
 const rl = require('readline');
 const low = require('lowdb');
-var Table = require("terminal-table");
+let Table = require('terminal-table');
 
-const FileSync = require('lowdb/adapters/FileSync')
+const FileSync = require('lowdb/adapters/FileSync');
 
 const { _init } = require('./src/init');
 const { _add } = require('./src/add');
 const { _clean } = require('./src/clean');
 
-const adapter = new FileSync('./config/.darvinrc.all.json')
-const db = low(adapter)
-const args = process.argv
+const adapter = new FileSync('./config/.darvinrc.modern.json');
+const db = low(adapter);
+const args = process.argv;
 
 // usage represents the help guide
 const _usage = function() {
@@ -30,22 +26,24 @@ const _usage = function() {
     init:     init boilerplate
     add:      scaffold new elements
     list:     show active settings
-  `
+  `;
 
-  console.log(usageText)
-}
+  // tslint:disable-next-line: no-console
+  console.log(usageText);
+};
 
 // used to log errors to the console in red color
 const errorLog = (error) => {
-  const eLog = chalk.red(error)
-  console.log(eLog)
-}
+  const eLog = chalk.red(error);
+  // tslint:disable-next-line: no-console
+  console.log(eLog);
+};
 
 // we make sure the length of the arguments is exactly three
 if (args.length > 3 && args[2] != 'complete') {
-  errorLog('only one argument can be accepted')
-  _usage()
-  return
+  errorLog('only one argument can be accepted');
+  _usage();
+  return;
 }
 
 const prompt = (question) => {
@@ -56,59 +54,59 @@ const prompt = (question) => {
   });
   return new Promise((resolve, error) => {
     r.question(question, answer => {
-      r.close()
-      resolve(answer)
+      r.close();
+      resolve(answer);
     });
-  })
+  });
 },
 _get = () => {
-  const settings = db.get('settings').value()
-  let index = 1;
-  var t = new Table({
+  const settings = db.get('settings').value();
+  let t = new Table({
     borderStyle: 0,
     border: {
-      sep: "║",
-      topLeft: "╔", topMid: "╦", top: "═", topRight: "╗",
-      midLeft: "╠", midMid: "╬", mid: "═", midRight: "╣",
-      botLeft: "╚", botMid: "╩", bot: "═", botRight: "╝"
+      sep: '║',
+      topLeft: '╔', topMid: '╦', top: '═', topRight: '╗',
+      midLeft: '╠', midMid: '╬', mid: '═', midRight: '╣',
+      botLeft: '╚', botMid: '╩', bot: '═', botRight: '╝'
     }
   });
 
   t.push(
-    ["   ", "Category", "Value"]
+    ['   ', 'Category', 'Value']
   );
 
-  t.attr(0, 1, { "color": "black", "bg": "white" })
-  t.attr(0, 2, { "color": "black", "bg": "white" })
+  t.attr(0, 1, { 'color': 'black', 'bg': 'white' });
+  t.attr(0, 2, { 'color': 'black', 'bg': 'white' });
 
   Object.keys(settings).forEach(key => {
-    let value = settings[key];
+    const value = settings[key];
     t.push(
-      [" ✔ ",key, value]
+      [' ✔ ',key, value]
     );
   });
 
-  console.log("" + t);
-  return
+  // tslint:disable-next-line: no-console
+  console.log('' + t);
+  return;
 };
 
 switch(args[2]) {
   case 'help':
-    _usage()
-    break
+    _usage();
+    break;
   case 'list':
-    _get()
-    break
+    _get();
+    break;
   case 'init':
-    _init()
-    break
+    _init();
+    break;
   case 'add':
-    _add()
-    break
+    _add();
+    break;
   case 'clean':
-    _clean()
-    break
+    _clean();
+    break;
   default:
-    errorLog('invalid command passed')
-    _usage()
+    errorLog('invalid command passed');
+    _usage();
 }

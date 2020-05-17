@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html class="no-js" lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>{{ title }}</title>
+  <script>
+    (function () {
+      const html = document.documentElement;
+      const fontsClass = 'fonts-loaded';
+
+      if (sessionStorage.fontsLoaded) {
+        html
+          .classList
+          .add(fontsClass);
+      } else {
+        const script = document.createElement("script");
+        // TODO: use from npm package
+        script.src = "{{ darvinEnv().server.base }}/{{ darvinEnv().server.assets }}/scripts/vendors/fontfaceobserver-2.1.0.js";
+        script.async = true;
+        script.onload = function () {
+          const fontFamilyA = 'Roboto'; // extend font familys here
+
+          const fontA500 = new FontFaceObserver(fontFamilyA, {weight: '500'});
+          const fontA700 = new FontFaceObserver(fontFamilyA, {weight: '700'});
+          // .. add extended font
+
+          Promise
+            .all([fontA500.load(), fontA700.load()]) // extend resolve list
+            .then(function () {
+              html
+                .classList
+                .add(fontsClass);
+              sessionStorage.fontsLoaded = true;
+            });
+        };
+        document
+          .head
+          .appendChild(script);
+      }
+    })();
+  </script>
+  <meta name="description" content="Lorem description">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ darvinEnv().server.base }}/{{ darvinEnv().server.assets }}/images/icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ darvinEnv().server.base }}/{{ darvinEnv().server.assets }}/images/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ darvinEnv().server.base }}/{{ darvinEnv().server.assets }}/images/icons/favicon-16x16.png">
+  <link rel="manifest" href="{{ darvinEnv().server.base }}/{{ darvinEnv().server.assets }}/images/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#092768">
+  <meta name="theme-color" content="#092768">
+
+  <meta property="og:url" content="http://www.unic.com"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="title lorem"/>
+  <meta property="og:description" content="lorem impsun"/>
+  <meta property="og:image" content="https://www.unic.com"/>
+  <meta property="og:locale" content="ch"/>
+</head>
+<body>
+  <div id="l-pagewrapper">
+    <!-- start header -->
+    {% block header %}{% endblock %}
+    <!-- start main -->
+    <main id="l-main" role="main">
+      <div id="l-content">
+        {% block content %}{% endblock %}
+      </div>
+    </main>
+    <!-- start footer -->
+    {% block footer %}{% endblock %}
+    <!-- demo -->
+    {% block background %}{% endblock %}
+  </div>
+</body>
+</html>

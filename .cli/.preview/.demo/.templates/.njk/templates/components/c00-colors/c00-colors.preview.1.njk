@@ -1,0 +1,16 @@
+{% extends "layouts/l00-preview/l00-preview.njk" %}
+
+{% import "components/c00-colors/c00-colors.njk" as colorTemplate %}
+
+{% set variantName = "default colors" %}
+{% set variantDescr = "color system" %}
+
+{% macro main() %}
+  <!-- START Preview - c00-colors -->
+  {{ colorTemplate.main(colors = [{ 'name': 'grey', 'value': '#efefef', 'name': 'black', 'value': '#000000' }]) }}
+  <!-- END Preview - c00-colors -->
+{% endmacro %}
+
+{% block preview %}
+  {{ main() }}
+{% endblock %}

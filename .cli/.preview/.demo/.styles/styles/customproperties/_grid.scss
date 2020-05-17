@@ -1,0 +1,23 @@
+@each $breakpoint, $value in $grid-gap-curve {
+  :root {
+    @if $breakpoint == 'zero' {
+      --grid-gap: #{map-get($grid-gap, $value)};
+    } @else {
+      @include media-breakpoint-up($breakpoint) {
+        --grid-gap: #{map-get($grid-gap, $value)};
+      }
+    }
+  }
+}
+
+@each $breakpoint, $value in $grid-col-curve {
+  :root {
+    @if $breakpoint == 'zero' {
+      --grid-cols: #{$value};
+    } @else {
+      @include media-breakpoint-up($breakpoint) {
+        --grid-cols: #{$value};
+      }
+    }
+  }
+}

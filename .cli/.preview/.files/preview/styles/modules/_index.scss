@@ -5,12 +5,6 @@
 $preview-index-spacer: 0.5rem;
 $preview-index-spacer-small: 0.25rem;
 
-.no-git {
-  .prev-m-index__item canvas {
-    background-color: var(--activity-bg);
-  }
-}
-
 .prev-m-index {
   display: flex;
   padding: 0 1rem;
@@ -135,6 +129,7 @@ $preview-index-spacer-small: 0.25rem;
     width: 100%;
     height: calc(100% - 18px);
     opacity: 1;
+    background-color: var(--main-bg-soft);
 
     .ie & {
       background-color: white;
@@ -271,7 +266,7 @@ $borderWidth: 1px;
 }
 
 .gradient-border::after {
-  content: "";
+  content: '';
   position: absolute;
   top: calc(-1 * #{$borderWidth});
   left: calc(-1 * #{$borderWidth});
@@ -290,9 +285,11 @@ $borderWidth: 1px;
   0% {
     background-position: 0 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 200% 50%;
   }

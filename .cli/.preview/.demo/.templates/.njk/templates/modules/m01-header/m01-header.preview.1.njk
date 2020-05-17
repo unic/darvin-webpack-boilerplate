@@ -1,0 +1,16 @@
+{% extends "layouts/l00-preview/l00-preview.njk" %}
+
+{% import "modules/m01-header/m01-header.njk" as mainTemplate %}
+
+{% set variantName = "Default Variant" %}
+{% set variantDescr = "default description" %}
+
+{% macro main() %}
+  <!-- START Preview - m01-header -->
+  {{ mainTemplate.main(title="Header Preview 1") }}
+  <!-- END Preview - m01-header -->
+{% endmacro %}
+
+{% block preview %}
+  {{ main() }}
+{% endblock %}

@@ -140,3 +140,5 @@ dependencies.json
 activity-graph.json
 entry.report.json
 _sprites.scss
+darvin.lock
+tmp/

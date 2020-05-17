@@ -1,4 +1,3 @@
-/* eslint-disable */
 const path = require('path');
 const sortPackageJson = require('sort-package-json');
 const merge = require('deepmerge');
@@ -9,20 +8,18 @@ const { _meta } = require('./partials/meta');
 const { _confirm } = require('./partials/confirm');
 
 const { search } = require('./helpers/cli-helpers');
-const { getSettingsStruct, setDarvinRC } = require('../../webpack/helpers/config-helpers');
-const { readFile, writeFile, deleteDir, fileExist } = require('../../webpack/helpers/file-helpers');
+const { getSettingsStruct, writeDarvinRC } = require('../../webpack/helpers/config-helpers');
+const { readFile, writeFile, deleteDir, fileExist, deleteFile } = require('../../webpack/helpers/file-helpers');
 const { setConfig, copyDemo, copyPreview } = require('../../webpack/helpers/scaff-helpers');
 
 let cliObj = {};
 let cliPackages = [];
-
 
 const _init = () => {
   cliObj = {};
   cliPackages.push(readFile(path.join(process.cwd(), `package.json`)));
   setPresets();
 }
-
 
 const setPresets = () => {
   const setPresets = _presets(cliObj);
@@ -40,7 +37,6 @@ hookPresets = (resultObj) => {
   cliPackages.push(resultObj.package);
   setRc();
 }
-
 
 const setRc = () => {
   let rcStruct = getSettingsStruct();
@@ -90,7 +86,6 @@ hookRc = (resultObj) => {
   _setMeta();
 };
 
-
 const _setMeta = () => {
   const setMeta = _meta(cliObj);
 
@@ -114,7 +109,6 @@ hookMeta = (data) => {
   _setConfirm(rc);
 };
 
-
 const _setConfirm = () => {
   const setConfirm = _confirm(cliObj);
 
@@ -125,23 +119,30 @@ const _setConfirm = () => {
 },
 hookConfirm = (data) => {
   cliObj.confirm = data;
+
   _action();
 };
 
-
 const _action = () => {
   if(cliObj.confirm.write) {
-
     let activeEngine = 'html';
 
     if(cliObj.confirm.preview) {
+
       activeEngine = cliObj.rc.settings.html[0];
       if(activeEngine == 'nunjucks') {
         activeEngine = 'njk';
       }
 
       if(cliObj.confirm.demo) {
-        copyDemo(activeEngine);
+        copyDemo(activeEngine, cliObj.rc.settings.framework[0]);
+      }
+
+      // add glsl loader for manual demo
+      if(cliObj.confirm.demo && (cliObj.rcSettings.addons.indexOf("glsl") < 0)) {
+        cliObj.rcSettings.addons.push('glsl');
+        let glslPackages = readFile(path.join(process.cwd(), `webpack/settings/addon-glsl/package.json`));
+        cliPackages.push(glslPackages);
       }
 
       copyPreview(activeEngine);
@@ -150,27 +151,49 @@ const _action = () => {
       cliPackages.push(package);
     }
 
-    setConfig({
-      name: cliObj.meta.name,
-      extIn: activeEngine,
-      entry: cliObj.meta.entry,
-      routerProd: cliObj.meta.routerProd,
-      routerDev: cliObj.meta.routerDev,
-      proxy: cliObj.meta.proxy,
-      port: cliObj.meta.port
-    })
+    let configVars = {
+      name: cliObj.meta.name ? cliObj.meta.name : 'Darvin Boilerplate',
+      extIn: activeEngine ? activeEngine : 'njk',
+      entry: cliObj.meta.entry ? cliObj.meta.entry : 'scripts/main',
+      routerProd: cliObj.meta.routerProd ? cliObj.meta.routerProd : '/htdocs/frontend/',
+      routerDev: cliObj.meta.routerDev ? cliObj.meta.routerDev : '',
+      proxy: cliObj.meta.proxy ? cliObj.meta.proxy : '',
+      port: cliObj.meta.port ? cliObj.meta.port : '8001'
+    };
 
-    setDarvinRC(cliObj.rc);
+    setConfig(configVars)
+
+    // add sass legacy
+    let rcString = JSON.stringify(cliObj.rc);
+    if(rcString.includes('sass')) {
+      let legacyStyle = readFile(path.join(process.cwd(), `webpack/settings/style-legacy/package.json`));
+      cliPackages.push(legacyStyle);
+    }
+
+    // add ts legacy
+    let legacyTS = readFile(path.join(process.cwd(), `webpack/settings/javascript-typescript-legacy/package.json`));
+    cliPackages.push(legacyTS);
+
+    // add js legacy
+    let legacyJS = readFile(path.join(process.cwd(), `webpack/settings/javascript-legacy/package.json`));
+    cliPackages.push(legacyJS);
+
+    // write Darvin RC File
+    writeDarvinRC(cliObj.rc);
 
     let mergedPackageJson = merge.all(cliPackages),
         mergedPackageJsonStr = JSON.stringify(sortPackageJson(mergedPackageJson), null, 2);
 
+    // merge all packages
     writeFile(path.join(process.cwd(), `package.json`), mergedPackageJsonStr );
 
     // remove git dir if no darvin.lock file exist
     if(!fileExist(path.join(process.cwd(), `darvin.lock`))) {
       deleteDir(path.join(process.cwd(), `.git`));
     }
+
+    // delete empty index.html
+    deleteFile(path.join(process.cwd(), '/src/templates/index.html'));
 
     console.log("DV#> 🔥 continue by typing 'npm start'");
   } else {

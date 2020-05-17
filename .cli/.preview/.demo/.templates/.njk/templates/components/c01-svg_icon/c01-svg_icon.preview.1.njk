@@ -1,0 +1,29 @@
+{#
+    Components c01 - Icon
+    Tobias Frei - tobias.frei@unic.com
+#}
+
+{% extends "layouts/l00-preview/l00-preview.njk" %}
+
+{% import "components/c01-svg_icon/c01-svg_icon.njk" as svgIcon %}
+
+{% set variantName = "Sprite Overview" %}
+{% set variantDescr = "Project Icons" %}
+
+{% macro main() %}
+  <div class="darvin-prev-flexgrid darvin-prev-icons" data-module="lazy-prev-icons">
+    {% for name in sprite.icons %}
+      <div class="darvin-prev-flexgrid__item">
+        <a tabindex="0" class="darvin-prev-flexgrid__iconbox">
+          {{ svgIcon.main(icon=name ) }}
+          <input type="text" value='svgIcon.main(icon="{{name}}" )'>
+        </a>
+        <span>{{ name }}</span>
+      </div>
+    {% endfor %}
+  </div>
+{% endmacro %}
+
+{% block preview %}
+  {{ main() }}
+{% endblock %}

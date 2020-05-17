@@ -1,13 +1,10 @@
-/* eslint-disable */
 const path = require('path');
 const basePath = process.cwd();
 
 const fs = require('fs-extra');
-const simpleGit = require('simple-git')(basePath);
 const crypto = require('crypto');
 
-const { filterCommitsInDateRange, getTemplateFiles, getSVGIcons } = require('../helpers/darvin-helpers');
-const { writeTemplateDependencies } = require('../helpers/nunjucks-helpers');
+const { getTemplateFiles, getSVGIcons } = require('../helpers/darvin-helpers');
 const { writeFile, getDirs } = require('../helpers/file-helpers');
 
 let webpackEntryObj = {},
@@ -16,10 +13,7 @@ let webpackEntryObj = {},
       payload: {}
     },
     dir = path.resolve(basePath, `${global.inputDirs.src}/${global.inputDirs.templates}`),
-    webpackEntryDefault = [`./${global.inputDirs.src}/${global.inputDirs.js}/main.js`],
-    activityDays = 20,
-    endDate = new Date(),
-    startDate = new Date(endDate.getTime() - (activityDays * 24 * 60 * 60 * 1000));
+    webpackEntryDefault = [`./${global.inputDirs.src}/${global.inputDirs.scripts}/main.js`];
 
 // get all categories
 previewIndexObj.types = getDirs(dir);
@@ -27,6 +21,7 @@ previewIndexObj.types = getDirs(dir);
 // exclude config folder from types
 previewIndexObj.types = previewIndexObj.types.filter(type => type !== 'config');
 previewIndexObj.types = previewIndexObj.types.filter(type => type !== 'layouts');
+previewIndexObj.types = previewIndexObj.types.filter(type => type !== 'helpers');
 
 // create payloads by types
 previewIndexObj.types.forEach((type) => {
@@ -47,13 +42,16 @@ previewIndexObj.types.forEach((type) => {
           id: crypto.createHash('md5').update(file).digest("hex"),
           name: file,
           type: type,
-          chunkName: `js/main`,
+          chunkName: `scripts/main`,
           template: templateObj.template,
           templateRel: templateObj.template.replace(`${global.inputDirs.src}/${global.inputDirs.templates}/`, ``),
           target: `${tmplPath}/${file}.html`,
           path: tmplPath,
           previews: templateObj.previews,
-          variants: templateObj.previews.length
+          variants: templateObj.previews.length,
+          server: global.server,
+          env: process.env.DARVIN_ENV,
+          mode: process.env.NODE_ENV
         }
 
         if (type === 'pages') {
@@ -62,7 +60,7 @@ previewIndexObj.types.forEach((type) => {
         }
 
         if (templateObj.previews.length == 0) {
-          previewIndexObj.payload[type][file].chunkName = 'js/main';
+          previewIndexObj.payload[type][file].chunkName = 'scripts/main';
         }
 
         // load element config file
@@ -77,11 +75,6 @@ previewIndexObj.types.forEach((type) => {
         }
 
         previewIndexObj.payload[type][file].config = config;
-
-        if(type!='pages') {
-          writeTemplateDependencies(file, type, templateObj.previews);
-        }
-
 
        /* const jsPath = `./src/templates/${type}/${file}/main.js`;
         let name = `${type}/${file}/${file}`;
@@ -102,34 +95,6 @@ previewIndexObj.types.forEach((type) => {
             previewIndexObj.payload[type][file].chunkName = `${tmplPath}/${file}`;
           }
         } catch (err) { }*/
-
-        // filter commits from last days
-        simpleGit.log({ 'file': `./${global.inputDirs.src}/${global.inputDirs.templates}/${type}/${file}/${file}.${global.template.extIn}` }, (err, log) => {
-
-          if(err) {
-            if (!fs.existsSync('./log')){
-              fs.mkdirSync('./log');
-            }
-          } else {
-            let obj = {};
-            let filteredCommits = filterCommitsInDateRange(startDate, endDate, log.all);
-
-            log.all = filteredCommits;
-
-            // get object to extend if exist
-            try {
-              obj = JSON.parse(fs.readFileSync('./log/activity-visualizer.json', 'utf8'));
-            } catch (err) {}
-
-            obj[file] = log;
-
-            if (!fs.existsSync('./log')){
-              fs.mkdirSync('./log');
-            }
-
-            writeFile('./log/activity-visualizer.json', JSON.stringify(obj));
-          }
-        });
       }
 
     }
@@ -138,7 +103,7 @@ previewIndexObj.types.forEach((type) => {
 });
 
 // add default main and preview entry
-webpackEntryObj['js/main'] = webpackEntryDefault;
+webpackEntryObj['scripts/main'] = webpackEntryDefault;
 
 if (!fs.existsSync('./log')){
   fs.mkdirSync('./log');

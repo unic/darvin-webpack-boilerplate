@@ -8,7 +8,7 @@ const prod = {
       prefix: global.server.assets + '/images/icons/',
       emitStats: true,
       statsFilename: 'iconstats.json',
-      persistentCache: false,
+      persistentCache: true,
       inject: false,
       background: '#fff',
       title: global.project,
