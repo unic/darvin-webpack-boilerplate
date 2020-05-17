@@ -1,4 +1,11 @@
 import loadPolyfills from '@scripts/helpers/polyfills';
+import {
+  DynamicImport,
+  ModuleDeclaration,
+  Module,
+  ModuleMap,
+  ModuleDeclarationMap
+} from '@scripts/models/models.d.ts';
 
 /**
  * createApp
@@ -7,15 +14,15 @@ import loadPolyfills from '@scripts/helpers/polyfills';
  * @return {Object} -
  */
 export class CreateApp {
-  modules = {};
+  modules: ModuleMap = {};
 
-  constructor(modules) {
+  constructor(modules: ModuleDeclarationMap) {
     // await loadPolyfills(['IntersectionObserver']);
 
     this.registerModules(modules.modules);
     this.initAllModules();
-    window.loadModule = (scope) => this.initModules(scope);
-    window.loadSpecificModule = (moduleName, scope) => this.initSpecificModules(moduleName, scope);
+    window.loadModule = (scope: HTMLElement) => this.initModules(scope);
+    window.loadSpecificModule = (moduleName: string, scope: HTMLElement) => this.initSpecificModules(moduleName, scope);
   }
 
   /* --- Private methods --- */
@@ -25,8 +32,8 @@ export class CreateApp {
    * @param {Object} module - Module to load
    * @return {Promise<void>} Resolved when loaded
    */
-  static loadModule(module) {
-    const queue = [];
+  static loadModule(module: Module): Promise<DynamicImport[]> {
+    const queue: DynamicImport[] = [];
 
     if (module.features) {
       queue.push(loadPolyfills(module.features));
@@ -71,7 +78,7 @@ export class CreateApp {
    * @param {Object} module -
    * @return {IntersectionObserver} intersectionObserver
    */
-  static createIntersectionObserver(module) {
+  static createIntersectionObserver(module: Module): IntersectionObserver {
     const config = {
       rootMargin: '500px 0px 500px', // Extends IntersectionObserver by 500px on top and on bottom of viewport
       threshold: 0.01,
@@ -98,8 +105,8 @@ export class CreateApp {
 
   /* --- Public methods --- */
   // TODO: change class of module to MarsModuleHandler
-  registerModule(name, module) {
-    this.modules[name] = {
+  registerModule(name: string, module: any) {
+    this.modules[name] = <Module> {
       name,
       selector: `[data-module~="${name}"]`,
       lazy: !!module.lazy, // Assign lazy when module should be lazy-initiated
@@ -112,13 +119,13 @@ export class CreateApp {
        * @param {Document|HTMLElement} scope - Scope of the module that should be initiated.
        * @return {Promise} -
        */
-      async init(scope) {
+      async init(scope: Document | HTMLElement = document) {
         let elements;
 
         if (scope === document) {
           elements = scope.querySelectorAll(this.selector);
         } else {
-          elements = scope.parentNode && scope.parentNode.querySelectorAll(this.selector);
+          elements = scope.parentNode && (<HTMLElement>scope.parentNode).querySelectorAll(this.selector);
         }
 
         if (elements.length) {
@@ -143,14 +150,14 @@ export class CreateApp {
     };
   }
 
-  registerModules(modules) {
+  registerModules(modules: ModuleDeclaration) {
     Object.entries(modules).forEach(([name, module]) => {
       this.registerModule(name, module);
     });
   }
 
-  initAllModules(scope = document) {
-    Object.keys(this.modules).forEach((name) => {
+  initAllModules(scope: Document | HTMLElement = document) {
+    Object.keys(this.modules).forEach((name: string) => {
       if (!this.modules[name]) {
         throw new Error(`The module '${name}' is not registered.`);
       }
@@ -158,11 +165,11 @@ export class CreateApp {
     });
   }
 
-  initSpecificModules(moduleName, scope) {
+  initSpecificModules(moduleName: string, scope: HTMLElement) {
     this.modules[moduleName].init(scope);
   }
 
-  initModules(scope) {
+  initModules(scope: HTMLElement) {
     this.initAllModules(scope);
   }
 }
