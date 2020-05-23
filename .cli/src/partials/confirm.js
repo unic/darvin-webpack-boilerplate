@@ -7,22 +7,6 @@ const _confirm = (cliObj) => {
     .prompt([
       {
         type: 'confirm',
-        name: 'preview',
-        message: 'Add frontend preview?',
-        when: () => {
-          return cliObj.presets.preset === 'static'
-        }
-      },
-      {
-        type: 'confirm',
-        name: 'demo',
-        message: 'Add sample files?',
-        when: (data) => {
-          return data.preview
-        }
-      },
-      {
-        type: 'confirm',
         name: 'write',
         message: 'Write settings?',
       },

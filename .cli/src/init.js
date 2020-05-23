@@ -129,19 +129,17 @@ const _action = () => {
   if(cliObj.confirm.write) {
     let activeEngine = 'html';
 
-    if(cliObj.confirm.preview) {
-
+    // add preview and samples
+    if(cliObj.presets.preset === 'static') {
       activeEngine = cliObj.rc.settings.html[0];
       if(activeEngine == 'nunjucks') {
         activeEngine = 'njk';
       }
 
-      if(cliObj.confirm.demo) {
-        copyDemo(activeEngine, cliObj.rc.settings.framework[0]);
-      }
+      copyDemo(activeEngine, cliObj.rc.settings.framework[0]);
 
       // add glsl loader for manual demo
-      if(cliObj.confirm.demo && (cliObj.rcSettings.addons.indexOf("glsl") < 0)) {
+      if(cliObj.rcSettings.addons.indexOf("glsl") < 0) {
         cliObj.rcSettings.addons.push('glsl');
         let glslPackages = readFile(path.join(process.cwd(), `webpack/settings/addon-glsl/package.json`));
         cliPackages.push(glslPackages);
