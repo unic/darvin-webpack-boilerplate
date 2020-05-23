@@ -28,7 +28,7 @@ const settings = {
     path: path.resolve(basePath, 'dist'),
     pathinfo: false,
     filename: global.server.assets + '/[name].[hash].js',
-    chunkFilename: global.server.assets + '/async/[name].[contenthash].js',
+    chunkFilename: global.server.assets + '/scripts/async/[name].[contenthash].js',
     publicPath: serverBase,
     jsonpFunction: 'cssJsonp'
   },
