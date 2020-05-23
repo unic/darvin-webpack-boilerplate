@@ -1,0 +1,44 @@
+/* ==|====================
+   Modules / m03-background
+======================= */
+
+.m-background {
+  width: 100vw;
+  position: fixed;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  padding: 0;
+  z-index: -1;
+}
+
+#background-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+#background-canvas2d {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background: white;
+  width: 100%;
+  opacity: 0;
+}
+
+.texture-import {
+  display: none;
+}
+
+div.tp-dfwv {
+  left: rem(8);
+  top: rem(10);
+  right: auto;
+  z-index: 2;
+  position: fixed;
+
+  @include media-breakpoint-down(large) {
+    display: none;
+  }
+}

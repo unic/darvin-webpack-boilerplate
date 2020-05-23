@@ -1,0 +1,66 @@
+/* ==|====================
+   Modules / m04-manual
+======================= */
+
+.m-manual {
+  .doc-section {
+    margin: 0 0 rem(82) 0;
+  }
+
+  .section-block {
+    margin: 0 0 rem(32) 0;
+  }
+
+  .list-block {
+    margin: 0 0 rem(24) 0;
+  }
+
+  .code-block {
+    margin-bottom: 1.5rem;
+  }
+
+  .list,
+  .chips {
+    @extend %ul-unstyled;
+  }
+
+  .chips {
+    display: inline-flex;
+    flex-wrap: wrap;
+
+    li {
+      font-size: rem(10);
+      padding: rem(2) rem(6) rem(1);
+      background-color: $color-main-5;
+      color: $color-secondary-1;
+      white-space: nowrap;
+      margin: 0 rem(6) rem(8) 0;
+      border-radius: rem(3);
+      letter-spacing: 0.025rem;
+      text-transform: uppercase;
+    }
+  }
+
+  .subtext {
+    font-size: rem(12);
+    display: flex;
+    margin-top: rem(-5);
+    padding-bottom: rem(7);
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .github-button {
+    margin-top: rem(24);
+    width: 150px;
+    height: 52px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid white;
+    border-radius: rem(3);
+    letter-spacing: 0.05rem;
+    font-size: rem(12);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+}

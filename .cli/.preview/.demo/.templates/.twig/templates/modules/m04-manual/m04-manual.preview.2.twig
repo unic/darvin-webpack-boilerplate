@@ -1,0 +1,312 @@
+{% extends "@layouts/l00-preview/l00-preview.twig" %}
+{% import _self as self %}
+
+{% set variantName = "Default Variant" %}
+{% set variantDescr = "default description" %}
+
+{% macro main() %}
+  {% import "@modules/m04-manual/m04-manual.njk" as mainTemplate %}
+  <!-- START Preview - m04-manual -->
+  {{ mainTemplate.main(html=self.markup()) }}
+  <!-- END Preview - m04-manual -->
+{% endmacro %}
+
+{% macro markup() %}
+<section id="loaders" class="doc-section">
+  <h2 class="section-title">Loaders</h2>
+
+  <div id="loader-1" class="section-block">
+    <p>There are several configurations for already existing loaders in the folder webpack/settings</p>
+    <div class="row" style="margin-top: 2rem;">
+      <div class="list-block">
+        <h6>Recommended</h6>
+        <ul class="list">
+          <li>assets-cleaner (clean-webpack-plugin)</li>
+          <li>assets-copy (copy-webpack-plugin)</li>
+          <li>assets-favicons (favicons-webpack-plugin)</li>
+          <li>assets-fonts (file-loader)</li>
+          <li>assets-images (image-webpack-loader)</li>
+          <li>assets-sprites (svg-spritemap-webpack-plugin)</li>
+          <li>bundler-analyzer (webpack-bundle-analyzer)</li>
+        </ul>
+      </div>
+      <div class="list-block">
+        <h6>Related</h6>
+        <ul class="list">
+          <li>server
+            <ul>
+              <li>env-browsersync (browser-sync-webpack-plugin)</li>
+              <li>env-devserver (webpack-dev-server)</li>
+            </ul>
+          </li>
+          <li>template
+            <ul>
+              <li>html-njk (nunjucks-loader)</li>
+              <li>html-twig (twig-loader/twing)</li>
+            </ul>
+          </li>
+          <li>styles
+            <ul>
+              <li>style-sass (sass-loader/postcss-css-variables)</li>
+              <li>style-sass-svelte (sass-loader-svelte) [undone]</li>
+            </ul>
+          </li>
+          <li>scripts
+            <ul>
+              <li>javascript-i18n (file-loader)</li>
+              <li>javascript-modernizr (webpack-modernizr-loader)</li>
+              <li>javascript-typescript (ts-loader)</li>
+              <li>javascript-vue (vue-loader)</li>
+              <li>javascript-react (react-loader)</li>
+              <li>javascript-svelte (svelte-loader)</li>
+            </ul>
+          </li>
+          <li>html-markdown (markdown-loader)</li>
+        </ul>
+      </div>
+    </div>
+    <!--//row-->
+  </div>
+  <!--//end-loader-->
+
+  <div id="loader-2" class="section-block">
+    <h3 class="block-title">Bind Loader</h3>
+    <p>Open 'config/.darvinrc.all.json' and check which loaders are binded. You can extend this configuration file.</p>
+    <div class="code-block">
+      <h6>config/.darvinrc.modern.json</h6>
+<pre class=" language-javascript"><code class=" language-javascript"><span class="token punctuation">{</span>
+  <span class="token string">"settings"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"base"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"js"</span><span class="token punctuation">,</span> <span class="token string">"typescript"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token string">"default"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"cleaner"</span><span class="token punctuation">,</span> <span class="token string">"copy"</span><span class="token punctuation">,</span> <span class="token string">"fonts"</span><span class="token punctuation">,</span> <span class="token string">"images"</span><span class="token punctuation">,</span> <span class="token string">"sprites"</span><span class="token punctuation">,</span> <span class="token string">"modernizr"</span><span class="token punctuation">,</span> <span class="token string">"sass"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token string">"html"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"nunjucks"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token string">"devserver"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"webpackdev"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token string">"framework"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"vue"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token string">"addons"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"favicons"</span><span class="token punctuation">,</span> <span class="token string">"analyzer"</span><span class="token punctuation">,</span> <span class="token string">"markdown"</span><span class="token punctuation">,</span> <span class="token string">"i18n"</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"My Project"</span><span class="token punctuation">,</span>
+  <span class="token string">"company"</span><span class="token punctuation">:</span> <span class="token string">"Unic AG"</span>
+<span class="token punctuation">}</span></code></pre>
+    </div>
+    <!--//code-block-->
+
+    <p>Each Webpack Loader Config has a Darvin setting file with the name, value and type of the setting. The keywords above are referenced to this value:</p>
+    <div class="code-block">
+    <h6>Example</h6>
+    <span class="subtext">webpack/settings/javascript-vue/.dv.settings</span>
+<pre class=" language-javascript"><code class=" language-javascript"><span class="token punctuation">{</span>
+  <span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"Vue.js"</span><span class="token punctuation">,</span>
+  <span class="token string">"value"</span><span class="token punctuation">:</span> <span class="token string">"vue"</span><span class="token punctuation">,</span>
+  <span class="token string">"type"</span><span class="token punctuation">:</span> <span class="token string">"framework"</span>
+<span class="token punctuation">}</span></code></pre>
+      <table class="table" style="margin-top: 2rem;">
+        <thead>
+          <tr>
+            <th>Key</th>
+            <th>Scope</th>
+            <th>Usage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">name</th>
+            <td>CLI</td>
+            <td>Information for CLI Setup</td>
+          </tr>
+          <tr>
+            <th scope="row">value</th>
+            <td>config/.darvinrc.*</td>
+            <td>Key for darvin configuration</td>
+          </tr>
+          <tr>
+            <th scope="row">type</th>
+            <td>CLI</td>
+            <td>Group for CLI Setup</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--//code-block-->
+  </div>
+  <!--//end-loader-->
+
+  <div id="loader-3" class="section-block">
+    <h3 class="block-title">Add new loader</h3>
+    <p>This is how to add new webpack loaders to darvin</p>
+    <div class="code-block">
+      <h3>1. Create Dir</h3>
+      <p>Navigate to the settings and create folder</p>
+      <p>
+        <code>cd webpack/settings<br>mkdir javascript-react</code>
+      </p>
+    </div>
+    <!--//code-block-->
+    <div class="code-block">
+      <h3>2. Add Dependencies</h3>
+      <p>Create a package.json inside the new directory and add dependencies.</p>
+      <h6>Example</h6>
+      <span class="subtext">webpack/settings/javascript-react/package.json</span>
+<pre class=" language-javascript"><code class=" language-javascript"><span class="token punctuation">{</span>
+  <span class="token string">"dependencies"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"react"</span><span class="token punctuation">:</span> <span class="token string">"^16.9.0"</span><span class="token punctuation">,</span>
+    <span class="token string">"@babel/preset-react"</span><span class="token punctuation">:</span> <span class="token string">"^7.0.0"</span><span class="token punctuation">,</span>
+    <span class="token string">"react-dom"</span><span class="token punctuation">:</span> <span class="token string">"^16.9.0"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+    </div>
+    <!--//code-block-->
+    <div class="code-block">
+      <h3>3. Add Darvin Config</h3>
+      <p>Add a new darvin configuration and set the type for CLI purpose.</p>
+      <h6>Example</h6>
+      <span class="subtext">webpack/settings/javascript-react/.dv.settings</span>
+<pre class=" language-javascript"><code class=" language-javascript"><span class="token punctuation">{</span>
+    <span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"React"</span><span class="token punctuation">,</span>
+    <span class="token string">"value"</span><span class="token punctuation">:</span> <span class="token string">"react"</span><span class="token punctuation">,</span>
+    <span class="token string">"type"</span><span class="token punctuation">:</span> <span class="token string">"framework"</span>
+<span class="token punctuation">}</span>
+
+</code></pre>
+    </div>
+    <!--//code-block-->
+    <div class="code-block">
+      <h3>4. Add webpack settings</h3>
+      <p>Create index.js and set the webpack config for dev, prod and prev.</p>
+      <h6>Example</h6>
+      <span class="subtext">webpack/settings/javascript-react/index.js</span>
+<pre class=" language-javascript"><code class=" language-javascript"><span class="token keyword">const</span> prod <span class="token operator">=</span> <span class="token punctuation">{</span>
+  plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token keyword">new</span> <span class="token class-name"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span></span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> dev <span class="token operator">=</span> <span class="token punctuation">{</span>
+  plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token keyword">new</span> <span class="token class-name"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span></span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> prev <span class="token operator">=</span> <span class="token punctuation">{</span>
+  plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+    <span class="token keyword">new</span> <span class="token class-name"><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span></span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span>
+</code></pre>
+    </div>
+    <!--//code-block-->
+    <div class="code-block">
+      <h3>5. Hook into lifecycle</h3>
+      <p>Add your new setting to build process by adding the value under defined type array.</p>
+      <h6>Example</h6>
+      <span class="subtext">config/.darvinrc.*.json</span>
+<pre class=" language-javascript"><code class=" language-javascript"><span class="token punctuation">{</span>
+  <span class="token string">"settings"</span><span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token string">"base"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"js"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token string">"default"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"cleaner"</span><span class="token punctuation">,</span> <span class="token string">"fonts"</span><span class="token punctuation">,</span> <span class="token string">"images"</span><span class="token punctuation">,</span> <span class="token string">"sass"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token string">"html"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"twig"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token string">"devserver"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"browsersync"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token string">"framework"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"react"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token string">"addons"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"analyzer"</span><span class="token punctuation">,</span> <span class="token string">"markdown"</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token string">"name"</span><span class="token punctuation">:</span> <span class="token string">"My Project"</span><span class="token punctuation">,</span>
+  <span class="token string">"company"</span><span class="token punctuation">:</span> <span class="token string">"Unic AG"</span>
+<span class="token punctuation">}</span></code></pre>
+    </div>
+      <!--//code-block-->
+  </div>
+</section>
+<section id="settings" class="doc-section">
+  <h2 class="section-title">Build Parameter</h2>
+  <div id="param-1" class="section-block">
+    <p>There's a configuration file for your local build and one for the system build.</p>
+    <div class="code-block">
+    <h6>Example</h6>
+    <span class="subtext">config/.darvinconf.*.js</span>
+<pre class=" language-javascript"><code class=" language-javascript">global<span class="token punctuation">.</span>project <span class="token operator">=</span> <span class="token string">'Darvin'</span><span class="token punctuation">;</span>
+global<span class="token punctuation">.</span>mainChunk <span class="token operator">=</span> <span class="token string">'js/main'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// other entrypoints can be defined in the webpack.config.*.js -&gt; settings.entry[global.mainChunk]</span>
+global<span class="token punctuation">.</span>proxy <span class="token operator">=</span> <span class="token string">'unic.local'</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// used proxy if boilerplate initialised with thirdparty</span>
+global<span class="token punctuation">.</span>port <span class="token operator">=</span> <span class="token number">8001</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// dev server port</span>
+global<span class="token punctuation">.</span>template <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token string">'extIn'</span><span class="token punctuation">:</span> <span class="token string">'njk'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// template extensions for HTML Engine</span>
+  <span class="token string">'extOut'</span><span class="token punctuation">:</span> <span class="token string">'html'</span> <span class="token comment" spellcheck="true">// rendered extensions for HTML Engine</span>
+<span class="token punctuation">}</span>
+global<span class="token punctuation">.</span>preview <span class="token operator">=</span> <span class="token punctuation">{</span>
+  indexFileInput<span class="token punctuation">:</span> <span class="token string">'index.njk'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// preview template file</span>
+  indexFileOutput<span class="token punctuation">:</span> <span class="token string">'index.html'</span> <span class="token comment" spellcheck="true">// rendered preview file</span>
+<span class="token punctuation">}</span>
+global<span class="token punctuation">.</span>inputDirs <span class="token operator">=</span> <span class="token punctuation">{</span>
+  src<span class="token punctuation">:</span> <span class="token string">'src'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// source directory in project root</span>
+  assets<span class="token punctuation">:</span> <span class="token string">'assets'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// asset directory in source directory</span>
+  templates<span class="token punctuation">:</span> <span class="token string">'templates'</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// html templates in source directory</span>
+  scripts<span class="token punctuation">:</span> <span class="token string">'scripts'</span> <span class="token comment" spellcheck="true">// directory for scripts and entrypoint</span>
+<span class="token punctuation">}</span>
+global<span class="token punctuation">.</span>output <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token string">'index'</span><span class="token punctuation">:</span> <span class="token string">'index'</span> <span class="token comment" spellcheck="true">// start index name</span>
+<span class="token punctuation">}</span>
+global<span class="token punctuation">.</span>server <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token string">'base'</span><span class="token punctuation">:</span> <span class="token punctuation">(</span>process<span class="token punctuation">.</span>env<span class="token punctuation">.</span>NODE_ENV <span class="token operator">===</span> <span class="token string">'dev'</span><span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token string">''</span> <span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// root path to assets directory (different on system config)</span>
+  <span class="token string">'assets'</span><span class="token punctuation">:</span> <span class="token string">'assets'</span> <span class="token comment" spellcheck="true">// name of systems assets directory</span>
+<span class="token punctuation">}</span>
+global<span class="token punctuation">.</span>build <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token string">'legacy'</span><span class="token punctuation">:</span> <span class="token boolean">true</span> <span class="token comment" spellcheck="true">// build IE11 styles</span>
+<span class="token punctuation">}</span>
+</code></pre>
+    </div>
+    <!--//code-block-->
+  </div>
+</section>
+<!--//doc-section-->
+<section id="cli" class="doc-section">
+  <h2 class="section-title">Command Line Interface</h2>
+  <div id="cli-1" class="section-block">
+    <p>The Darvin-CLI is useful for project initialisation and scaffolding:</p>
+    <div class="code-block">
+      <h6>bind CLI</h6>
+      <p>
+        <code>npm link</code>
+      </p>
+    </div>
+    <!--//code-block-->
+    <div class="code-block">
+      <h6>show commands</h6>
+      <p>
+        <code>darvin-cli usage</code>
+      </p>
+    </div>
+    <!--//code-block-->
+    <div class="code-block">
+      <h6>add new module to project</h6>
+      <p>
+        <code>darvin-cli add</code>
+      </p>
+    </div>
+    <!--//code-block-->
+    <div class="code-block">
+      <h6>show settings</h6>
+      <p>
+        <code>darvin-cli list</code>
+      </p>
+    </div>
+    <!--//code-block-->
+    <div class="code-block">
+      <h6>init settings</h6>
+      <p>
+        <code>darvin-cli init</code>
+      </p>
+    </div>
+    <!--//code-block-->
+  </div>
+  <!--//section-block-->
+</section>
+<!--//doc-section-->
+{% endmacro %}
+
+{% block preview %}
+  {{ main() }}
+{% endblock %}
