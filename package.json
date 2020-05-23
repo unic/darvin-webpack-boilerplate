@@ -100,7 +100,9 @@
     "core-js": "^3.6.5",
     "fastdom": "^1.0.9",
     "intersection-observer": "^0.10.0",
-    "mdn-polyfills": "^5.20.0"
+    "mdn-polyfills": "^5.20.0",
+    "picturefill": "^3.0.3",
+    "svg4everybody": "^2.1.9"
   },
   "browserslist": [
     "> 1% in CH",
