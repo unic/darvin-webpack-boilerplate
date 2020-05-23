@@ -10,7 +10,7 @@ const { _confirm } = require('./partials/confirm');
 const { search } = require('./helpers/cli-helpers');
 const { getSettingsStruct, writeDarvinRC } = require('../../webpack/helpers/config-helpers');
 const { readFile, writeFile, deleteDir, fileExist, deleteFile } = require('../../webpack/helpers/file-helpers');
-const { setConfig, copyDemo, copyPreview } = require('../../webpack/helpers/scaff-helpers');
+const { setConfig, copyDemo, copyProxy, copyPreview } = require('../../webpack/helpers/scaff-helpers');
 
 let cliObj = {};
 let cliPackages = [];
@@ -78,6 +78,8 @@ hookRc = (resultObj) => {
     let package = readFile(path.join(process.cwd(), `webpack/settings/env-browsersync/package.json`));
     cliPackages.push(package);
     data.devserver = ['browsersync'];
+
+    copyProxy();
   }
 
   // save transformed rc settings

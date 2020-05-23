@@ -87,6 +87,9 @@ copyPreview = (engine) => {
   fsCopy(path.join(process.cwd(), `.cli/.preview/.files`), process.cwd(), 'preview files updated');
   fsCopy(path.join(process.cwd(), `.cli/.preview/.layouts/.${engine}`), path.join(process.cwd(), `src/templates/layouts`), 'preview layouts updated');
 },
+copyProxy = () => {
+  fsCopy(path.join(process.cwd(), `.cli/.presets/.proxy/.files/`), process.cwd(), 'add proxy settings');
+},
 setConfig = (data) => {
   const inDir = path.join(process.cwd(), `.cli/.config`);
   const outDir = path.join(process.cwd(), `config`);
@@ -108,5 +111,6 @@ module.exports = {
   getNextIncrementalNumber: getNextIncrementalNumber,
   copyDemo: copyDemo,
   copyPreview: copyPreview,
+  copyProxy: copyProxy,
   setConfig: setConfig
 };
