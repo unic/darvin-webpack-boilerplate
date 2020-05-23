@@ -4,11 +4,10 @@ const basePath = process.cwd();
 const htmlTemplates = require('../../libs/html-templates');
 
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
-const templates = htmlTemplates.templates;
 
 const twigOptions = JSON.stringify({
   searchPaths: `${basePath}/src/templates/`,
-  context: htmlTemplates,
+  context: htmlTemplates.templates(),
   namespaces: {
     'layouts': `${basePath}/src/templates/layouts`,
     'components': `${basePath}/src/templates/components`,
@@ -27,7 +26,7 @@ const prod = {
     ]
   },
   plugins: [
-    ...templates,
+    ...htmlTemplates.templates(),
     new ScriptExtHtmlWebpackPlugin({
       defaultAttribute: 'async'
     })
@@ -44,7 +43,7 @@ const dev = {
     ]
   },
   plugins: [
-    ...templates,
+    ...htmlTemplates.templates(),
     new ScriptExtHtmlWebpackPlugin({
       defaultAttribute: 'async'
     })
