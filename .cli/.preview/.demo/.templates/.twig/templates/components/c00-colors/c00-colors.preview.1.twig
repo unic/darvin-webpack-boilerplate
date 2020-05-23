@@ -6,8 +6,11 @@
 
 {% macro main() %}
   {% import "@components/c00-color/c00-color.twig" as colorComponent %}
+
+  {% set cols = {'name': 'grey', 'value': '#efefef', 'name': 'black', 'value': '#000000'} %}
+
   <!-- START Preview - c00-colors -->
-  {{ colorComponent.main(colors = [{ 'name': 'grey', 'value': '#efefef', 'name': 'black', 'value': '#000000' }]) }}
+  {{ colorComponent.main(cols) }}
   <!-- END Preview - c00-colors -->
 {% endmacro %}
 

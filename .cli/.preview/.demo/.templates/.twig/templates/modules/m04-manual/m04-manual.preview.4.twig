@@ -5,9 +5,12 @@
 {% set variantDescr = "default description" %}
 
 {% macro main() %}
-  {% import "@modules/m04-manual/m04-manual.njk" as mainTemplate %}
+  {% import "@modules/m04-manual/m04-manual.twig" as mainTemplate %}
+
+  {% set markup = self.markup() %}
+
   <!-- START Preview - m04-manual -->
-  {{ mainTemplate.main(html=self.markup()) }}
+  {{ mainTemplate.main(markup) }}
   <!-- END Preview - m04-manual -->
 {% endmacro %}
 
@@ -32,5 +35,5 @@
 {% endmacro %}
 
 {% block preview %}
-  {{ main() }}
+  {{ self.main() }}
 {% endblock %}

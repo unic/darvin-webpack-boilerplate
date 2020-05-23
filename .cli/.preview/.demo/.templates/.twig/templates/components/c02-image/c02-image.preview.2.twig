@@ -8,12 +8,12 @@
   {% import "@components/c02-image/c02-image.twig" as mainTemplate %}
   <!-- START Preview - c02-image -->
   {{ mainTemplate.picture(
-    classes = [
+    [
       'c-image--demo-fullwidth'
     ],
-    lazy = true,
-    dataSrc = '/assets/images/16-9-1600.png',
-    sources = [
+    true,
+    '/assets/images/16-9-1600.png',
+    [
       {
         dataSrcset: '
           /assets/images/16-9-300.png 300w,
@@ -43,8 +43,8 @@
         sizes: '100vw'
       }
     ],
-    alt = 'Demo alt-text',
-    focusPoint = false
+    'Demo alt-text',
+    false
   ) }}
   <!-- END Preview - c02-image -->
 {% endmacro %}

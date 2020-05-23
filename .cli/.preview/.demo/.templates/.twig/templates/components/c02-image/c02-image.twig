@@ -36,7 +36,7 @@
   <!-- Spans are used, so these images can also be used inside elements where no block elements like divs are allowed -->
   <span class="c-image{% for class in classes %} {{class}}{% endfor %}"{% if lazy %} data-module="{{ modulename }}"{% endif %}>
     {% if lazy %}
-      {{ self.loader(loaderColor = loaderColor) }}
+      {{ self.loader(loaderColor) }}
     {% endif %}
 
     <img class="c-image__image{% if focusPoint %} c-image__image--{{focusPoint}}{% endif %}"{% if lazy %} data-image="image"{% endif %}
