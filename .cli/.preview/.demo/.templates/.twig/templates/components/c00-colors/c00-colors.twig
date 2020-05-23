@@ -8,7 +8,7 @@
     {% for color in colors %}
       <div class="darvin-prev-flexgrid__item">
         <a tabindex="0" class="darvin-prev-flexgrid__colorbox">
-          {{ colorLabel(color=color ) }}
+          {{ colorLabel(color) }}
           <input type="text" value='var(--color-{{color.name}})'>
         </a>
       </div>

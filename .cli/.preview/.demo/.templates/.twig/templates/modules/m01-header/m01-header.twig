@@ -5,18 +5,18 @@
 
 {% import _self as self %}
 
-{% macro main(title = 'Darvin Boilerplate') %}
+{% macro main() %}
   <!-- START - m01-header -->
     <div class="m-header header">
       <div class="l-constrainer">
         <ul class="header__nav">
-          {{ self.navitem(title = 'Install', id = 'install', href = '#install') }}
-          {{ self.navitem(title = 'Startup', id = 'startup', href = '#startup') }}
-          {{ self.navitem(title = 'Publish', id = 'publish', href = '#publish') }}
-          {{ self.navitem(title = 'Loaders', id = 'loaders', href = '#loaders') }}
-          {{ self.navitem(title = 'Settings', id = 'settings', href = '#settings') }}
-          {{ self.navitem(title = 'CLI', id = 'cli', href = '#cli') }}
-          {{ self.navitem(title = 'Develop', id = 'develop', href = '#develop') }}
+          {{ self.navitem('Install','install', '#install') }}
+          {{ self.navitem('Startup','startup', '#startup') }}
+          {{ self.navitem('Publish','publish', '#publish') }}
+          {{ self.navitem('Loaders','loaders', '#loaders') }}
+          {{ self.navitem('Settings','settings', '#settings') }}
+          {{ self.navitem('CLI','cli', '#cli') }}
+          {{ self.navitem('Develop','develop', '#develop') }}
         </ul>
       </div>
     </div>
