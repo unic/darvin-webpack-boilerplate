@@ -1,6 +1,6 @@
 {
   "name": "darvin-boilerplate",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "html5 webpack boilerplate with loader ecosystem, polyfilled legacy build, preview for shipping and cli scaffolding.",
   "author": "Tobias Frei",
   "email": "tobias.frei@unic.com",
