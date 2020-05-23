@@ -15,7 +15,7 @@
       } else {
         const script = document.createElement("script");
         // TODO: use from npm package
-        script.src = "{{ darvinEnv().server.base }}/{{ darvinEnv().server.assets }}/scripts/vendors/fontfaceobserver-2.1.0.js";
+        script.src = "{{ darvin.config.server.base }}/{{ darvin.config.server.assets }}/scripts/vendors/fontfaceobserver-2.1.0.js";
         script.async = true;
         script.onload = function () {
           const fontFamilyA = 'Roboto'; // extend font familys here
@@ -44,10 +44,10 @@
   <meta name="format-detection" content="telephone=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <link rel="apple-touch-icon" sizes="180x180" href="{{ darvinEnv().server.base }}/{{ darvinEnv().server.assets }}/images/icons/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ darvinEnv().server.base }}/{{ darvinEnv().server.assets }}/images/icons/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="{{ darvinEnv().server.base }}/{{ darvinEnv().server.assets }}/images/icons/favicon-16x16.png">
-  <link rel="manifest" href="{{ darvinEnv().server.base }}/{{ darvinEnv().server.assets }}/images/icons/manifest.json">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ darvin.config.server.base }}/{{ darvin.config.server.assets }}/images/icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ darvin.config.server.base }}/{{ darvin.config.server.assets }}/images/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ darvin.config.server.base }}/{{ darvin.config.server.assets }}/images/icons/favicon-16x16.png">
+  <link rel="manifest" href="{{ darvin.config.server.base }}/{{ darvin.config.server.assets }}/images/icons/manifest.json">
   <meta name="msapplication-TileColor" content="#092768">
   <meta name="theme-color" content="#092768">
 

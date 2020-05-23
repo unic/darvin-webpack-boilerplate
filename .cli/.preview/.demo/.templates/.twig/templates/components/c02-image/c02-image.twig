@@ -3,7 +3,6 @@
     Christian Sany - christian.sany@unic.com
 #}
 
-{% import _self as self %}
 {% set base64gif = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' %}
 
 {% macro loader(loaderColor = '#000000') %}
@@ -11,6 +10,7 @@
 {% endmacro %}
 
 {% macro image(settings) %}
+  {% import _self as self %}
   <!-- START - c02-image -->
   <!-- Spans are used, so these images can also be used inside elements where no block elements like divs are allowed -->
   <span class="c-image{% for class in settings.classes %} {{class}}{% endfor %}"{% if settings.lazy %} data-module="{{ modulename }}"{% endif %}>
@@ -18,7 +18,7 @@
       {{ self.loader(settings.loaderColor) }}
     {% endif %}
 
-    <img class="c-image__image{% if focusPoint %} c-image__image--{{settings.focusPoint}}{% endif %}"{% if settings.lazy %} data-image="image"{% endif %}
+    <img class="c-image__image{% if settings.focusPoint %} c-image__image--{{settings.focusPoint}}{% endif %}"{% if settings.lazy %} data-image="image"{% endif %}
       src="{{ base64gif }}"
       {% if settings.dataSrc %} data-src="{{settings.dataSrc}}"{% endif %}
       {% if settings.srcset %} srcset="{{ base64gif ~ ' 1w' }}"{% endif %}

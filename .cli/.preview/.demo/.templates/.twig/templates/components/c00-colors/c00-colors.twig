@@ -4,11 +4,12 @@
 #}
 
 {% macro main(colors = false) %}
+    {% import _self as self %}
     <div class="darvin-prev-flexgrid darvin-prev-colors" data-module="lazy-prev-colors">
     {% for color in colors %}
       <div class="darvin-prev-flexgrid__item">
         <a tabindex="0" class="darvin-prev-flexgrid__colorbox">
-          {{ colorLabel(color) }}
+          {{ self.colorLabel(color) }}
           <input type="text" value='var(--color-{{color.name}})'>
         </a>
       </div>

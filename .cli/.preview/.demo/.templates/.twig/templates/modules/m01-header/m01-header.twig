@@ -3,9 +3,12 @@
     Demo Usage
 #}
 
-{% import _self as self %}
+{% macro navitem(title, id, href) %}
+    <li class="header__navitem"><a data-id="{{ id }}" href="{{ href }}">{{ title }}</a></li>
+{% endmacro %}
 
 {% macro main() %}
+  {% import _self as self %}
   <!-- START - m01-header -->
     <div class="m-header header">
       <div class="l-constrainer">
@@ -21,8 +24,4 @@
       </div>
     </div>
   <!-- END - m02-header -->
-{% endmacro %}
-
-{% macro navitem(href = '#', id = '', title = 'Item') %}
-    <li class="header__navitem"><a data-id="{{ id }}" href="{{ href }}">{{ title }}</a></li>
 {% endmacro %}
