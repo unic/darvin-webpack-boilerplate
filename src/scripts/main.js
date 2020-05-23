@@ -9,8 +9,6 @@
  * @author Unic AG
  */
 
-import Vue from 'vue';
-
 // Bundle Config
 import '@root/webpack/settings/javascript-modernizr/config/.modernizrrc';
 import '@scripts/libs/modernizr-custom-tests';
@@ -26,12 +24,6 @@ import image from '../templates/components/c02-image';
 
 import devTools from '@scripts/helpers/dev-tools';
 
-// Global vue-components
-import ResponsiveSwitch from './vue-components/ResponsiveSwitch.vue';
-
-// Register global vue-components
-Vue.component('ResponsiveSwitch', ResponsiveSwitch);
-
 // store hash
 if (process.env.NODE_ENV === 'production') {
   process.env.WEBPACK_MODERN = __webpack_hash__;
@@ -44,7 +36,6 @@ window.apps.main = new CreateApp({
     image
   }
 });
-
 
 // start devtools
 if (process.env.NODE_ENV === 'development') {
