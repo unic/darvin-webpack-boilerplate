@@ -20,7 +20,7 @@
     "tapedwn gmbh"
   ],
   "engines": {
-    "node": "14.1.0"
+    "node": "14.3.0"
   },
   "bin": {
     "darvin-cli": "./.cli/darvin-cli"
