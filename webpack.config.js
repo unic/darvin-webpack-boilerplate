@@ -21,4 +21,4 @@ const webpackConfigProd ={
   }
 };
 
-module.exports = process.env.NODE_ENV === 'development' ? webpackConfigDev : webpackConfigProd;
+module.exports = process.env.NODE_ENV === 'dev' ? webpackConfigDev : webpackConfigProd;

@@ -51,7 +51,7 @@ import devTools from '@scripts/helpers/dev-tools';
 svg4everybody();
 
 // load postcss transpiled IE Stylesheet if available
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'prod') {
   process.env.WEBPACK_LEGACY = __webpack_hash__;
   const fileHash = __webpack_hash__;
   let ieStylesheet = document.createElement('link');
@@ -74,6 +74,6 @@ window.apps.main = new CreateApp({
 });
 
 // start devtools
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'dev') {
   new devTools;
 }
