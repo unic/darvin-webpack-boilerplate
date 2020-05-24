@@ -13,12 +13,16 @@ const filter = new TwingFilter('size', filterSize);
 module.exports = async function(content) {
   this.cacheable();
 
-  const loaderPath = this.resourcePath.split('src/templates/')[1],
+  let loaderPath = this.resourcePath.split('src/templates/')[1],
         loaderPathRel = loaderPath.substring(0, loaderPath.lastIndexOf("/")),
         callback = this.async(),
         opt = utils.parseQuery(this.query),
         twigSearchPaths = opt.searchPaths,
         twigNamespaces = opt.namespaces;
+
+  if(loaderPathRel === '') {
+    loaderPathRel = '/';
+  }
 
   let loader,
       html,
