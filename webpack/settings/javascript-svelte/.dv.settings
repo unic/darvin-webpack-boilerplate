@@ -1,5 +1,6 @@
 {
   "name": "Svelte",
   "value": "svelte",
-  "type": "framework"
+  "type": "framework",
+  "disabled": "work in progress"
 }
