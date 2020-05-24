@@ -1,0 +1,28 @@
+{% extends "@layouts/l00-default/l00-default.twig" %}
+
+{% import "@modules/m01-header/m01-header.twig" as headerModule %}
+{% import "@modules/m02-footer/m02-footer.twig" as footerModule %}
+{% import "@modules/m03-background/m03-background.twig" as bgModule %}
+
+{% import "@modules/m04-manual/m04-manual.twig" as manualModule %}
+{% import "@modules/m04-manual/m04-manual.preview.1.twig" as manualModulePreview1 %}
+{% import "@modules/m04-manual/m04-manual.preview.2.twig" as manualModulePreview2 %}
+{% import "@modules/m04-manual/m04-manual.preview.3.twig" as manualModulePreview3 %}
+{% import "@modules/m04-manual/m04-manual.preview.4.twig" as manualModulePreview4 %}
+
+{% block header %}
+  {{ headerModule.main('Demo Page') }}
+{% endblock %}
+
+{% block content %}
+  {% set content = manualModulePreview1.markup() ~ manualModulePreview2.markup() ~ manualModulePreview3.markup() ~ manualModulePreview4.markup() %}
+  {{ manualModule.main(content) }}
+{% endblock %}
+
+{% block footer %}
+  {{ footerModule.main('Demo Footer') }}
+{% endblock %}
+
+{% block background %}
+  {{ bgModule.main() }}
+{% endblock %}

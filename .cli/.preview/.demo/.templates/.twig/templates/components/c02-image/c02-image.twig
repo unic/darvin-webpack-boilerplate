@@ -1,0 +1,32 @@
+{#
+    Components c02-image
+    Christian Sany - christian.sany@unic.com
+#}
+
+{% set base64gif = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' %}
+
+{% macro loader(loaderColor) %}
+  <span class="c-image__loader" style="background-color: {{ loaderColor }}"></span>
+{% endmacro %}
+
+{% macro image(settings) %}
+  {% import _self as self %}
+  <!-- START - c02-image -->
+  <!-- Spans are used, so these images can also be used inside elements where no block elements like divs are allowed -->
+  <span class="c-image{% for class in settings.classes %} {{class}}{% endfor %}"{% if settings.lazy %} data-module="{{ modulename }}"{% endif %}>
+    {% if settings.lazy %}
+      {{ self.loader(settings.loaderColor) }}
+    {% endif %}
+
+    <img class="c-image__image{% if settings.focusPoint %} c-image__image--{{settings.focusPoint}}{% endif %}"{% if settings.lazy %} data-image="image"{% endif %}
+      src="{{ base64gif }}"
+      {% if settings.dataSrc %} data-src="{{settings.dataSrc}}"{% endif %}
+      {% if settings.srcset %} srcset="{{ base64gif ~ ' 1w' }}"{% endif %}
+      {% if settings.dataSrcset %} data-srcset="{{settings.dataSrcset}}"{% endif %}
+      {% if settings.sizes %} sizes="{{settings.sizes}}"{% endif %}
+      {% if settings.alt %} alt="{{ settings.alt }}"{% endif %}
+      {% if settings.attributes %}{% for attribute in settings.attributes %} {{attribute.attribute}}="{{attribute.value}}"{% endfor %}{% endif %}
+    >
+  </span>
+  <!-- END - c02-image -->
+{% endmacro %}

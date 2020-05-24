@@ -1,0 +1,14 @@
+{#
+    Module m04-manual
+    Demo Usage
+#}
+
+{% macro main(html = '') %}
+  <!-- START - m04-manual -->
+    <div class="m-manual manual" data-module="manual">
+      <div class="l-constrainer">
+        {{ html | raw }}
+      </div>
+    </div>
+  <!-- END - m04-manual -->
+{% endmacro %}

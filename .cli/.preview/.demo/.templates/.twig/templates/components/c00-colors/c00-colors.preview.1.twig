@@ -1,0 +1,19 @@
+{% extends "@layouts/l00-preview/l00-preview.twig" %}
+{% import _self as self %}
+
+{% set variantName = "Color Overview" %}
+{% set variantDescr = "Project Icons" %}
+
+{% macro main() %}
+  {% import "@components/c00-colors/c00-colors.twig" as colorComponent %}
+
+  {% set cols = {'name': 'grey', 'value': '#efefef', 'name': 'black', 'value': '#000000'} %}
+
+  <!-- START Preview - c00-colors -->
+  {{ colorComponent.main(cols) }}
+  <!-- END Preview - c00-colors -->
+{% endmacro %}
+
+{% block preview %}
+  {{ self.main() }}
+{% endblock %}

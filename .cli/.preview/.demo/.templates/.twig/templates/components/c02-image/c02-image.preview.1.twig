@@ -1,0 +1,38 @@
+{% extends "@layouts/l00-preview/l00-preview.twig" %}
+{% import _self as self %}
+
+{% set variantName = "Image" %}
+{% set variantDescr = "Project Icons" %}
+
+{% macro main() %}
+  {% import "@components/c02-image/c02-image.twig" as mainTemplate %}
+
+  {% set settings = {
+      classes: false,
+      attributes: false,
+      lazy: true,
+      dataSrc: '/assets/images/16-9-1600.png',
+      dataSrcset: '
+        /assets/images/16-9-300.png 300w,
+        /assets/images/16-9-400.png 400w,
+        /assets/images/16-9-600.png 600w,
+        /assets/images/16-9-800.png 800w,
+        /assets/images/16-9-1200.png 1200w,
+        /assets/images/16-9-1600.png 1600w,
+        /assets/images/16-9-2000.png 2000w
+      ',
+      sizes: '100vw',
+      alt: 'Demo alt-text',
+      focusPoint: false,
+      modulename: 'image',
+      loaderColor: '#f9f7f6'
+    } %}
+
+  <!-- START Preview - c02-image -->
+  {{ mainTemplate.image(settings) }}
+  <!-- END Preview - c02-image -->
+{% endmacro %}
+
+{% block preview %}
+  {{ self.main() }}
+{% endblock %}

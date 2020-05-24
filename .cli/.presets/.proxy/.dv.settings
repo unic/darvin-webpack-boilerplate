@@ -1,5 +1,5 @@
 {
-  "name": "Third Party Proxy",
+  "name": "Proxy (external HTML)",
   "value": "proxy",
   "type": "preset"
 }

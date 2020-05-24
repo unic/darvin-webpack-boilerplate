@@ -1,0 +1,16 @@
+{% extends "@layouts/l00-preview/l00-preview.twig" %}
+{% import _self as self %}
+
+{% set variantName = "Default Variant" %}
+{% set variantDescr = "default description" %}
+
+{% macro main() %}
+  {% import "@modules/m03-background/m03-background.twig" as mainTemplate %}
+  <!-- START Preview - m02-footer -->
+  {{ mainTemplate.main() }}
+  <!-- END Preview - m02-footer -->
+{% endmacro %}
+
+{% block preview %}
+  {{ self.main() }}
+{% endblock %}

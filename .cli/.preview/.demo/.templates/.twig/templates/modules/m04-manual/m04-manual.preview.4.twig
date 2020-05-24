@@ -1,0 +1,39 @@
+{% extends "@layouts/l00-preview/l00-preview.twig" %}
+
+{% set variantName = "Default Variant" %}
+{% set variantDescr = "default description" %}
+
+{% macro main() %}
+  {% import _self as self %}
+  {% import "@modules/m04-manual/m04-manual.twig" as mainTemplate %}
+
+  {% set markup = self.markup() %}
+
+  <!-- START Preview - m04-manual -->
+  {{ mainTemplate.main(markup) }}
+  <!-- END Preview - m04-manual -->
+{% endmacro %}
+
+{% macro markup() %}
+<section id="contrib" class="doc-section">
+  <h3>Author</h3>
+  <p><a href="mailto:tobias.frei@unic.com">Tobias Frei</a>, Unic AG</p>
+  <h3>Contribution</h3>
+  <p>Christian Sany, Pascal Giehl, Pascal Kuster</p>
+  <h5>Shader Example</h5>
+  <p>fragment code partly based on srtuss example (shadertoy)</p>
+  <h3>Repo</h3>
+  <p>https://github.com/unic/darvin-webpack-boilerplate</p>
+
+  <h3>Links</h3>
+  <ul class="linklist">
+    <li><a href="https://unic.com/" target="_blank">unic.com</a></li>
+    <li><a href="https://www.accessibility-developer-guide.com/" target="_blank">accessibility-developer-guide.com</a></li>
+    <li><a href="https://webglfundamentals.org/" target="_blank">webglfundamentals.org</a></li>
+  </ul>
+</section><!--//doc-section-->
+{% endmacro %}
+
+{% block preview %}
+  {{ self.main() }}
+{% endblock %}
