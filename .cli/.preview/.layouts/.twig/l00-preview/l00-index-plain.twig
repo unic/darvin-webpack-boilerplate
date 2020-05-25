@@ -1,36 +1,30 @@
 <!DOCTYPE html>
 <html class="no-js" lang="de">
-   <head>
-      <meta charset="utf-8">
-      <meta http-equiv="x-ua-compatible" content="ie=edge">
-      <title>{{ title }}</title>
-      <meta name="description" content="Lorem description">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <meta name="format-detection" content="telephone=no">
-      <link href="{{ darvin.config.server.base }}/preview/styles/preview.css" rel="stylesheet">
-   </head>
-   <body class="preview preview--index">
-      <article id="prev-l-pagewrapper">
-        <!-- start preview header -->
-        <header id="prev-l-header">
-          <div class="prev-l-constrainer">
-            <div class="prev-m-title"><h1>Darvin Boilerplate</h1></div>
-            <nav class="prev-m-servicenav">
-              <div class="prev-m-servicenav__item">
-                <a class="prev-m-servicenav__link prev-m-servicenav__link--bundle" href="report.html" target="_blank">
-                  <i class="i i-chart"></i>
-                </a>
-              </div>
-            </nav>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{{ title }}</title>
+    <meta name="description" content="Lorem description">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="format-detection" content="telephone=no">
+    <link href="{{ darvin.config.server.base }}/preview/styles/preview.css" rel="stylesheet">
+  </head>
+  <body class="preview preview--index">
+    <article id="prev-l-pagewrapper">
+      <!-- start preview header -->
+      <header id="prev-l-header">
+        <div class="prev-l-constrainer">
+          <div class="prev-m-title">
+            <h1 class="prev-h1">Darvin Boilerplate</h1>
           </div>
-        </header>
-        <!-- start main -->
-        <main id="prev-l-main" class="l-main--preview">
-          <div id="prev-l-content">
-            {% block preview %}
-            {% endblock %}
-          </div>
-        </main>
-      </article>
-    </body>
+        </div>
+      </header>
+      <!-- start main -->
+      <main id="prev-l-main" class="l-main--preview">
+        <div id="prev-l-content">
+          {% block preview %}{% endblock %}
+        </div>
+      </main>
+    </article>
+  </body>
 </html>

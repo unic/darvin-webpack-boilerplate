@@ -30,10 +30,5 @@ $output-bourbon-deprecation-warnings: false;
 @import 'modules/servicenav';
 @import 'modules/index';
 @import 'modules/overlay';
-@import 'modules/filterbar';
 @import 'modules/flexgrid';
 @import 'modules/flextable';
-
-// Components
-@import 'components/led';
-@import 'components/minibtn';

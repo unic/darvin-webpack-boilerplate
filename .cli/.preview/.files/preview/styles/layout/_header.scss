@@ -10,8 +10,8 @@
   width: 100%;
   height: 4rem;
   font-family: $prev-font1;
-  background-color: var(--main-bg-dark);
-  border-bottom: 3px solid var(--main-border);
+  background-color: $color-main-1;
+  border-bottom: 2px solid $color-main-5;
   transform: translateY(0);
 
   .prev-l-constrainer {
@@ -20,7 +20,7 @@
     align-items: center;
     height: 100%;
     padding: 0 1.25rem;
-    color: var(--main-shadow);
+    color: $color-main-3;
   }
 
   .prev-m-title {
