@@ -22,7 +22,7 @@
   font-size: rem(16px);
   line-height: 1.2;
   font-family: $prev-font1;
-  color: rgba(var(--main-bright), 0.5);
+  color: rgba($color-main-3, 0.5);
   letter-spacing: 0.025rem;
 
   @media #{$medium-up} {
@@ -36,7 +36,7 @@
   font-weight: 400;
   font-size: rem(13px);
   line-height: 1.3;
-  color: var(--main-bright);
+  color: $color-main-3;
 }
 
 %text-base-small {
@@ -44,7 +44,7 @@
 
   font-weight: 600;
   font-size: rem(14px);
-  color: var(--main-bright);
+  color: $color-main-3;
 }
 
 %text-base-large {
@@ -53,7 +53,7 @@
   font-weight: 400;
   font-size: rem(17px);
   line-height: 1.275;
-  color: var(--main-bright);
+  color: $color-main-3;
 }
 
 %nav {
@@ -62,7 +62,7 @@
   font-weight: 600;
   font-size: rem(16px);
   line-height: 1.275;
-  color: var(--main-bright);
+  color: $color-main-3;
 
   @media #{$wide-up} {
     font-size: rem(18px);

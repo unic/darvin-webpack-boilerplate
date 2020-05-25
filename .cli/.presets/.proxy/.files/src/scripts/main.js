@@ -43,7 +43,7 @@ import { CreateApp } from '@scripts/libs/create-app';
 import devTools from '@scripts/helpers/dev-tools';
 
 // store hash
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'prod') {
   process.env.WEBPACK_MODERN = __webpack_hash__;
 }
 
@@ -55,6 +55,6 @@ window.apps.main = new CreateApp({
 });
 
 // start devtools
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'dev') {
   new devTools;
 }

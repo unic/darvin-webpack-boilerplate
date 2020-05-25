@@ -67,7 +67,7 @@
   align-items: center !important;
   width: 44px !important;
   height: 44px !important;
-  color: rgba(var(--main-bright), 0.5) !important;
+  color: rgba($color-main-3, 0.5) !important;
   border-radius: 4px !important;
   cursor: pointer;
   transition: color 120ms linear !important;
@@ -81,7 +81,7 @@
     left: 50%;
     width: 48px;
     height: 48px;
-    background: rgba(var(--main-ambiance), 0.05) !important;
+    background: rgba($color-main-4, 0.05) !important;
     border-radius: 50%;
     transform: translate(-50%, -50%) !important;
     opacity: 0 !important;
@@ -93,8 +93,8 @@
   }
 
   &:hover:not(.prev-m-servicenav__link--active) {
-    color: var(--main-color);
-    // box-shadow: inset 0 1px 2px rgba(var(--main-dark),0.19), 0 -1px 1px var(--main-bg-dark), 0 1px 0 rgba(var(--main-shadow), 0.14);
+    color: $color-main-1;
+    // box-shadow: inset 0 1px 2px rgba($color-main-6,0.19), 0 -1px 1px $color-main-4, 0 1px 0 rgba($color-main-3, 0.14);
 
     &::before {
       opacity: 1;
@@ -120,8 +120,8 @@
 }
 
 .prev-m-servicenav__link--active {
-  color: var(--main-bright);
-  background-color: var(--main-color);
+  color: $color-main-3;
+  background-color: $color-main-1;
 
   .prev-m-servicenav__lbl {
     font-size: 12px;

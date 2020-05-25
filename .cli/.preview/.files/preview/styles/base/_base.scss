@@ -2,31 +2,29 @@
   Preview Base
 ======================= */
 
-:root {
-  @each $name, $color in $colors {
-    --#{$name}: #{$color};
+body.preview {
+  ::selection {
+    color: $color-main-3;
+    background-color: $color-main-1;
   }
 
-  body.preview.darkmode {
-    @each $name, $color in $colors-dark {
-      --#{$name}: #{$color};
+  a {
+    color: $color-main-6;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $color-main-5 !important;
     }
   }
-}
 
-::selection {
-  color: var(--main-bright);
-  background-color: var(--main-color);
-}
-
-body.preview {
   .leader-line {
     z-index: 100;
   }
 
   .tippy-tooltip.darvin-theme {
-    background-color: var(--main-color);
-    color: var(--main-bright);
+    background-color: $color-main-1;
+    color: $color-main-3;
 
     .tippy-content {
       font-size: rem(13);
@@ -38,7 +36,7 @@ body.preview {
   }
 
   .tippy-tooltip.darvin-theme .tippy-backdrop {
-    background-color: var(--main-color);
+    background-color: $color-main-1;
   }
 
   &.preview__content--off {
@@ -128,16 +126,5 @@ body.preview {
       font-size: rem(22);
     }
   }
-}
 
-// ribbon demo
-.demo-box {
-  position: relative;
-  max-width: rem(600);
-  width: 90%;
-  height: rem(400);
-  background: #fff;
-  box-shadow: 0 0 rem(15) rgba(0, 0, 0, 0.1);
-  margin-top: rem(32);
-  margin-left: rem(32);
 }
