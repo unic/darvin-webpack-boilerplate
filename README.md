@@ -1,9 +1,9 @@
-![](https://darvin.dev/darvin-boilerplate-logo-MIT_(c).svg | width=500)
+![](https://darvin.dev/darvin-boilerplate-logo-MIT_(c).svg)
 
 
 html webpack boilerplate for professionals. templating and system theming with nunjucks or twig (twing). Hot reload with DevServer or Browsersync, easy extendable webpack settings and frontend preview for shipping.
  
-![](https://darvin.dev/darvin2-cli.gif | width=780)
+![](https://darvin.dev/darvin2-cli.gif)
  
 + lazy loading chunks
 + frontend preview
