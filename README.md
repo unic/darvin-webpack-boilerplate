@@ -13,7 +13,7 @@ html webpack boilerplate for professionals. templating and system theming with n
 + polyfilled legacy mode (IE11)
 + project approved (up to 100+ components/modules)
  
- 
+### CLI Setup
 ![](https://darvin.dev/darvin2-cli.gif)
  
  
