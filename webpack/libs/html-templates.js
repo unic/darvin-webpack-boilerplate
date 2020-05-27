@@ -15,14 +15,19 @@ const darvinParameters = {
 };
 
 // iterate elements and render previews
-Object.keys(previewIndexObj.payload).forEach(function (key) {
+Object.keys(previewIndexObj.payload).forEach(key => {
   const items = previewIndexObj.payload[key];
 
-  Object.keys(items).forEach(function (keyItem) {
+
+  Object.keys(items).forEach(keyItem => {
     const elementObj = items[keyItem];
 
-      elementObj.previews.forEach(function (preview) {
+      elementObj.previews.forEach((preview, j) => {
+        const elementObjClone = JSON.parse(JSON.stringify(elementObj));
         const targetPath = `${elementObj.path}/${preview}`;
+
+        // add origin filename
+        elementObjClone['filepath'] = preview;
 
         const obj = new HtmlWebpackPlugin({
           filename: targetPath + `.html`,
@@ -30,9 +35,9 @@ Object.keys(previewIndexObj.payload).forEach(function (key) {
           hash: true,
           inject: `body`,
           cache: true,
-          chunks: [elementObj.chunkName],
+          chunks: [elementObjClone.chunkName],
           templateParameters: {
-            darvin: elementObj,
+            darvin: elementObjClone,
             sprite: allIconsInDir
           },
           minify: {
