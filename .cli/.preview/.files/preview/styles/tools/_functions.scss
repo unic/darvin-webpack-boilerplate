@@ -59,11 +59,11 @@
 // Assumes $em-base is the font-size of <html>
 @function rem($pixels, $context: $base-font-size-unit) {
   @if (unitless($pixels)) {
-    $pixels: $pixels * XTFR;
+    $pixels: $pixels * 1px;
   }
 
   @if (unitless($context)) {
-    $context: $context * XTFR;
+    $context: $context * 1px;
   }
 
   @return $pixels;
@@ -71,11 +71,11 @@
 
 @function em($pixels, $context: $base-font-size-unit) {
   @if (unitless($pixels)) {
-    $pixels: $pixels * XTFR;
+    $pixels: $pixels * 1px;
   }
 
   @if (unitless($context)) {
-    $context: $context * XTFR;
+    $context: $context * 1px;
   }
 
   @return ($pixels / $context) * 1em;
