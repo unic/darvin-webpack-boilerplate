@@ -32,6 +32,9 @@ export default createModule({
 
     // Private Functions
     const clickHandler = (e) => {
+      [...triggerBtns].forEach((el) => {
+        el.classList.remove('is-open');
+      });
       let targetOverlay = e.currentTarget.getAttribute('data-target');
       if(targetOverlay=='readme') {
         if(document.body.getAttribute('data-active') ==='readme') {
@@ -55,10 +58,6 @@ export default createModule({
       document.body.setAttribute('data-active', '');
       document.querySelector('.prev-m-overlay').classList.remove('is-active');
       document.body.classList.remove('preview__content--off');
-
-      [...triggerBtns].forEach((el) => {
-        el.classList.remove('is-open');
-      });
     },
     getReadme = (el) => {
       let overlay = document.querySelector('.prev-m-overlay'),

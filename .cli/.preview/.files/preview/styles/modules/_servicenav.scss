@@ -18,7 +18,7 @@
     flex-wrap: wrap;
     justify-content: flex-end;
     width: 100%;
-    padding: 5px;
+    padding: rem(5);
     background: black;
   }
 
@@ -54,51 +54,33 @@
     @media screen and (max-width: 42rem) {
       display: block;
       width: 100%;
-      height: 1px;
+      height: XTFR;
     }
   }
 }
 
 .prev-m-servicenav__link {
-  position: relative !important;
-  display: flex !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-  align-items: center !important;
-  width: 44px !important;
-  height: 44px !important;
-  color: rgba($color-main-3, 0.5) !important;
-  border-radius: 4px !important;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: rem(44);
+  height: rem(44);
+  color: rgba($color-main-3, 0.5);
+  border-radius: rem(4);
   cursor: pointer;
-  transition: color 120ms linear !important;
-  user-select: none !important;
-  text-decoration: none !important;
+  transition: color 120ms linear;
+  user-select: none;
+  text-decoration: none;
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 48px;
-    height: 48px;
-    background: rgba($color-main-4, 0.05) !important;
-    border-radius: 50%;
-    transform: translate(-50%, -50%) !important;
-    opacity: 0 !important;
-    transition: opacity 0.2s ease;
+  &.is-open,
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
   }
 
   &:focus {
     outline: 0;
-  }
-
-  &:hover:not(.prev-m-servicenav__link--active) {
-    color: $color-main-1;
-    // box-shadow: inset 0 1px 2px rgba($color-main-6,0.19), 0 -1px 1px $color-main-4, 0 1px 0 rgba($color-main-3, 0.14);
-
-    &::before {
-      opacity: 1;
-    }
   }
 }
 
@@ -112,7 +94,7 @@
 
 .prev-m-servicenav__lbl {
   font-weight: 400;
-  font-size: 12px;
+  font-size: rem(12);
   line-height: 1.1;
   text-transform: uppercase;
   opacity: 0;
@@ -124,33 +106,33 @@
   background-color: $color-main-1;
 
   .prev-m-servicenav__lbl {
-    font-size: 12px;
+    font-size: rem(12);
   }
 }
 
 .prev-m-servicenav__link--bundle {
   i::before {
-    width: 44px;
-    font-size: 32px;
+    width: rem(44);
+    font-size: rem(32);
     text-align: center;
   }
 }
 
 .prev-m-servicenav__link {
   .i::before {
-    margin-top: 6px;
-    font-size: 20px;
+    margin-top: rem(6);
+    font-size: rem(20);
   }
 
   .i.i-close::before {
-    margin-top: 2px;
-    font-size: 12px;
+    margin-top: rem(2);
+    font-size: rem(12);
   }
 }
 
 .prev-m-servicenav__link--readme {
   .i::before {
-    margin-top: 4px;
-    font-size: 17px;
+    margin-top: rem(4);
+    font-size: rem(17);
   }
 }

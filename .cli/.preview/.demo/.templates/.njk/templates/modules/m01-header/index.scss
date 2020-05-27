@@ -22,6 +22,13 @@
     display: inline-flex;
     list-style: none;
     height: rem(44);
+    width: 100%;
+    justify-content: space-around;
+
+    @include media-breakpoint-up(large) {
+      justify-content: flex-start;
+      width: auto;
+    }
   }
 
   .header__navitem {
@@ -32,7 +39,7 @@
       align-items: center;
       color: $color-secondary-1;
       text-decoration: none;
-      padding: 0 rem(16);
+      padding: 0 rem(7);
 
       &.is-active {
         background-color: rgba(255, 255, 255, 0.3);
@@ -40,6 +47,10 @@
 
       @include hover('.is-disabled') {
         background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      @include media-breakpoint-up(large) {
+        padding: 0 rem(16);
       }
     }
   }

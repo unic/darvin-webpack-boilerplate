@@ -13,20 +13,23 @@
       <div class="prev-m-index__items">
 
       {% for itemKey, item in catObj %}
-
+        {% set name = item.name.split('-') %}
         <article class="prev-m-index__item" data-name="{{ item.name }}" data-type="{{ item.type }}" data-path="{{ item.path }}" data-dep="{{ item.dep }}">
           <div class="prev-m-index__panel">
             <div class="prev-m-index__itemcol prev-m-index__itemcol--grow">
               <div class="prev-m-index__itemrow">
                 {% if item.variants > 0 %}
-                <a class="prev-m-index__itemtitle" href="{{ item.path }}/{{ item.previews[0] }}.html">{{ item.name }}</a>
+                <a class="prev-m-index__itemtitle" href="{{ item.path }}/{{ item.previews[0] }}.html">{{ name[1] }}</a>
                 {% else %}
-                <span class="prev-m-index__itemtitle">{{ item.name }}</span>
+                <span class="prev-m-index__itemtitle"><span>{{ name[1] }}</span></span>
                 {% endif %}
               </div>
             </div>
           </div>
           <footer class="prev-m-index__itemfooter">
+            <div class="prev-m-index__itemrow">
+              <div class="prev-m-index__number" data-number="{{ name[0] }}"></div>
+            </div>
             <div class="prev-m-index__itemrow">
               {% if item.config.design.length > 2 %}
               <a class="prev-m-index__speclink prev-m-index__flag prev-m-index__flag--design" href="{{ item.config.design }}" target="_blank">D</a>

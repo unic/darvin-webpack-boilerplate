@@ -5,8 +5,13 @@
 #l-main {
   position: relative;
   flex: 1;
-  top: 0;
+  top: 40vh;
   right: 0;
   width: 100%;
   height: 100%;
+  background-color: rgba($color-main-6, 0.86);
+
+  @include media-breakpoint-up(medium) {
+    top: 0;
+  }
 }

@@ -3,5 +3,13 @@
    ======================= */
 
 #l-content {
-  padding: 7rem 5rem 3rem;
+  padding: 3rem 2rem 1rem;
+
+  @include media-breakpoint-up(large) {
+    padding: 5rem 3rem 1.5rem;
+  }
+
+  @include media-breakpoint-up(wide) {
+    padding: 7rem 5rem 3rem;
+  }
 }

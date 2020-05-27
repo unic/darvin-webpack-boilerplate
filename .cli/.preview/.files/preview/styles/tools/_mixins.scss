@@ -9,3 +9,29 @@
     clear: both;
   }
 }
+
+@mixin hover($not: null) {
+  @if $not == null {
+    &:hover:not(.is-disabled):not([aria-disabled='true']):not(:disabled) {
+      .no-touchdevice & {
+        @content;
+      }
+    }
+
+    &.is-focus:not(.is-disabled):not([aria-disabled='true']):not(:disabled),
+    &:focus:not(.is-disabled):not([aria-disabled='true']):not(:disabled) {
+      @content;
+    }
+  } @else {
+    &:hover:not(.is-disabled):not([aria-disabled='true']):not(:disabled):not(#{$not}) {
+      .no-touchdevice & {
+        @content;
+      }
+    }
+
+    &.is-focus:not(.is-disabled):not([aria-disabled='true']):not(:disabled):not(#{$not}),
+    &:focus:not(.is-disabled):not([aria-disabled='true']):not(:disabled):not(#{$not}) {
+      @content;
+    }
+  }
+}

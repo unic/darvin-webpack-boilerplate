@@ -4,12 +4,12 @@
 
 //== Variables
 //
-$screen-micro: 375px;
-$screen-small: 540px;
-$screen-medium: 768px;
-$screen-large: 1024px;
-$screen-wide: $max-container-width; // 1420px
-$screen-ultra: 1920px;
+$screen-micro: rem(375);
+$screen-small: rem(540);
+$screen-medium: rem(768);
+$screen-large: rem(1024);
+$screen-wide: $max-container-width; // rem(1420)
+$screen-ultra: rem(1920);
 
 //== keywords
 //
@@ -24,22 +24,22 @@ $ultra: 'only screen and (min-width: #{em($screen-ultra)})';
 //== keywords range
 //
 $zero-up: $zero;
-$zero-only: '#{$zero} and (max-width: #{em($screen-micro - 1px)})';
+$zero-only: '#{$zero} and (max-width: #{em($screen-micro - XTFR)})';
 $micro-up: $micro;
-$micro-down: '(max-width: #{em($screen-micro - 1px)})';
-$micro-only: '#{$micro} and (max-width: #{em($screen-small - 1px)})';
+$micro-down: '(max-width: #{em($screen-micro - XTFR)})';
+$micro-only: '#{$micro} and (max-width: #{em($screen-small - XTFR)})';
 $small-up: $small;
-$small-down: '(max-width: #{em($screen-small - 1px)})';
-$small-only: '#{$small} and (max-width: #{em($screen-medium - 1px)})';
+$small-down: '(max-width: #{em($screen-small - XTFR)})';
+$small-only: '#{$small} and (max-width: #{em($screen-medium - XTFR)})';
 $medium-up: $medium;
-$medium-down: '(max-width: #{em($screen-medium - 1px)})';
-$medium-only: '#{$medium} and (max-width:#{em($screen-large - 1px)})';
+$medium-down: '(max-width: #{em($screen-medium - XTFR)})';
+$medium-only: '#{$medium} and (max-width:#{em($screen-large - XTFR)})';
 $large-up: $large;
-$large-down: '(max-width: #{em($screen-large - 1px)})';
-$large-only: '#{$large} and (max-width:#{em($screen-wide - 1px)})';
+$large-down: '(max-width: #{em($screen-large - XTFR)})';
+$large-only: '#{$large} and (max-width:#{em($screen-wide - XTFR)})';
 $wide-up: $wide;
-$wide-down: '(max-width: #{em($screen-wide - 1px)})';
-$wide-only: '#{$wide} and (max-width:#{em($screen-ultra - 1px)})';
+$wide-down: '(max-width: #{em($screen-wide - XTFR)})';
+$wide-only: '#{$wide} and (max-width:#{em($screen-ultra - XTFR)})';
 $ultra-up: $ultra;
 
 //== define mobile breakpoint
