@@ -2,16 +2,13 @@
 
 {% set title = 'Custom Preview' %}
 
-
 {% block preview %}
 
   <div class="prev-m-index">
-
   {% for category, catObj in darvin.index.payload %}
     <div class="prev-m-index__col prev-m-index--{{category}}">
       <h2 class="prev-m-index__title prev-h2">{{category}}</h2>
       <div class="prev-m-index__items">
-
       {% for itemKey, item in catObj %}
         {% set name = item.name|split('-') %}
         <article class="prev-m-index__item" data-name="{{ item.name }}" data-type="{{ item.type }}" data-path="{{ item.path }}" data-dep="{{ item.dep }}">

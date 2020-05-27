@@ -14,11 +14,11 @@ module.exports = async function(content) {
   this.cacheable();
 
   let loaderPath = this.resourcePath.split('src/templates/')[1],
-        loaderPathRel = loaderPath.substring(0, loaderPath.lastIndexOf("/")),
-        callback = this.async(),
-        opt = utils.parseQuery(this.query),
-        twigSearchPaths = opt.searchPaths,
-        twigNamespaces = opt.namespaces;
+      loaderPathRel = loaderPath.substring(0, loaderPath.lastIndexOf("/")),
+      callback = this.async(),
+      opt = utils.parseQuery(this.query),
+      twigSearchPaths = opt.searchPaths,
+      twigNamespaces = opt.namespaces;
 
   if(loaderPathRel === '') {
     loaderPathRel = '/';
@@ -33,14 +33,13 @@ module.exports = async function(content) {
 
   // bind specific template param context
   twigContext.forEach((template) => {
-    if (template.options.templateParameters.path === loaderPathRel) {
-      darvin = template.options.templateParameters;
+    if (template.options.templateParameters.darvin.path === loaderPathRel) {
+      darvin = template.options.templateParameters.darvin;
     }
   });
 
   // eslint-disable-next-line no-useless-escape
   darvin.filepath = loaderPath.replace(/^.*[\\\/]/, '').replace('.twig', ''); // remove file extension
-  darvin.config = global;
 
   dependencies = await addDependencies(loaderPath, this, twigNamespaces);
 
@@ -53,9 +52,33 @@ module.exports = async function(content) {
 
   twing = new TwingEnvironment(loader, {strict_variables: false, debug: true, auto_reload: true, cache: false /*path.join(process.cwd(), '/tmp/cache/twing')*/});
 
+  // debug flag
   twing.addExtension(new TwingExtensionDebug());
 
-  // debug flag
+  /* darvin ==>
+    {
+      id: '9a5315cd2df3770ac151769cc6eb8c75',
+      name: 'm04-manual',
+      type: 'modules',
+      chunkName: 'scripts/main',
+      template: 'src/templates/modules/m04-manual/m04-manual.twig',
+      templateRel: 'modules/m04-manual/m04-manual.twig',
+      target: 'modules/m04-manual/m04-manual.html',
+      path: 'modules/m04-manual',
+      previews: [
+        'm04-manual.preview.1',
+        'm04-manual.preview.2',
+        'm04-manual.preview.3',
+        'm04-manual.preview.4'
+      ],
+      variants: 4,
+      server: { base: '', assets: 'assets' },
+      env: 'darvinrc.modern',
+      mode: 'dev',
+      config: { flag: false, design: '#', jira: '#', confluence: '#' },
+      filepath: 'm04-manual.preview.3'
+    }
+  */
   twing.addGlobal("darvin", darvin);
   twing.addGlobal("sprite", twigContext.sprite);
   twing.addFilter(filter)

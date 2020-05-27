@@ -46,14 +46,13 @@
    </head>
    <body class="preview" data-ext="twig" data-name="{{ darvin.name }}" data-filepath="{{ darvin.filepath }}" data-path="{{ darvin.path }}" data-chunk="{{ darvin.chunk }}">
       <article id="prev-l-pagewrapper">
-
         <!-- start preview header -->
         <header id="prev-l-header" class="preview__content--off">
           <div class="prev-l-constrainer">
             <div class="prev-m-header{% if variantName %} prev-m-header--column{% endif %}">
               <div class="prev-headertitle">
-                <div class="prev-m-title">{{ darvin.name }}</div>
-                <div class="prev-m-subtitle">{{ variantName }}</div>
+                <div class="prev-m-title">{{ variantName }}</div>
+                <div class="prev-m-subtitle">{{ variantDescr }}</div>
               </div>
             </div>
             <nav class="prev-m-servicenav" data-module="lazy-prev-bar">
