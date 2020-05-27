@@ -1,0 +1,130 @@
+/* ==|====================
+  Preview Base
+======================= */
+
+body.preview {
+  ::selection {
+    color: $color-main-5;
+    background-color: $color-main-6;
+  }
+
+  a {
+    color: $color-main-6;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $color-main-5 !important;
+    }
+  }
+
+  .leader-line {
+    z-index: 100;
+  }
+
+  .tippy-tooltip.darvin-theme {
+    background-color: $color-main-1;
+    color: $color-main-3;
+
+    .tippy-content {
+      font-size: rem(13);
+    }
+  }
+
+  .tippy-tooltip.darvin-theme[data-animatefill] {
+    background-color: transparent;
+  }
+
+  .tippy-tooltip.darvin-theme .tippy-backdrop {
+    background-color: $color-main-1;
+  }
+
+  &.preview__content--off {
+    &[data-active='source'] {
+      .prev-m-overlay__item[data-source] {
+        display: block;
+      }
+
+      .prev-m-servicenav__link--source {
+        .prev-m-servicenav__linklbl {
+          display: none;
+        }
+
+        .prev-m-servicenav__linklbl--active {
+          display: flex;
+          margin-top: 4px;
+        }
+      }
+    }
+
+    &[data-active='readme'] {
+      .prev-m-overlay__item[data-readme] {
+        display: block;
+      }
+
+      .prev-m-servicenav__link--readme {
+        .prev-m-servicenav__linklbl {
+          display: none;
+        }
+
+        .prev-m-servicenav__linklbl--active {
+          display: flex;
+          margin-top: 3px;
+        }
+      }
+    }
+
+    #l-content {
+      display: none;
+    }
+
+    .prev-m-overlay {
+      display: block;
+    }
+  }
+
+  pre[class*='language-'] {
+    padding: 0 0 1em 0;
+    margin: 0 !important;
+    border-radius: 0;
+    font-family: $prev-font1;
+    overflow-x: auto;
+  }
+
+  .prev-h1 {
+    @extend %header-base;
+
+    margin: 0;
+    padding: $space-medium 0;
+    font-weight: 300;
+    font-size: 18px;
+    line-height: 1.2;
+
+    &.prev-m-index__title {
+      margin: 0 0 1.5rem;
+    }
+
+    @media screen and (min-width: 42rem) {
+      font-size: 24px;
+    }
+  }
+
+  .prev-h2 {
+    @extend %header-base;
+
+    margin: 0;
+    padding: $space-small 0;
+    font-weight: 300;
+    font-size: rem(14);
+    line-height: 1.2;
+
+    &.prev-m-index__title {
+      margin: 0 0 1rem;
+    }
+
+    @media screen and (min-width: 42rem) {
+      font-size: rem(22);
+    }
+  }
+
+}

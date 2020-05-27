@@ -1,0 +1,25 @@
+/* ==|====================
+   Layout / Modules
+   ======================= */
+
+%module-grid {
+  @extend %module-level-one;
+
+  &.l-wide {
+    > .l-constrainer {
+      max-width: var(--maxwidth-curve-wide);
+    }
+  }
+
+  &.l-full {
+    > .l-constrainer {
+      max-width: var(--maxwidth-curve-full);
+    }
+  }
+}
+
+#l-content {
+  *[class^='m-'] {
+    @extend %module-grid;
+  }
+}

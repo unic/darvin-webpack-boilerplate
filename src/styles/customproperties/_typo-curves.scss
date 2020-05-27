@@ -1,0 +1,40 @@
+//== Typo Curves & Typo Spaces - CSS Properties
+//
+@each $breakpoint, $value in $breakpoints {
+  :root {
+    @if $breakpoint == 'zero' {
+      @each $curve-name, $curve in $typo-curves {
+        @if map-has-key($curve, $breakpoint) {
+          --#{$curve-name}-size: #{map-get(map-get($curve, $breakpoint), 'size')};
+          --#{$curve-name}-lh-text: #{map-get(map-get($curve, $breakpoint), 'line-height-text')};
+          --#{$curve-name}-lh-heading: #{map-get(map-get($curve, $breakpoint), 'line-height-heading')};
+          --#{$curve-name}-spacing: #{map-get(map-get($curve, $breakpoint), 'spacing')};
+        }
+      }
+
+      @each $curve-name, $curve in $typo-spacing-curves {
+        @if map-has-key($curve, $breakpoint) {
+          --#{$curve-name}: #{rem(map-get($curve, $breakpoint))};
+        }
+      }
+    }
+    @else {
+      @include media-breakpoint-up($breakpoint) {
+        @each $curve-name, $curve in $typo-curves {
+          @if map-has-key($curve, $breakpoint) {
+            --#{$curve-name}-size: #{map-get(map-get($curve, $breakpoint), 'size')};
+            --#{$curve-name}-lh-text: #{map-get(map-get($curve, $breakpoint), 'line-height-text')};
+            --#{$curve-name}-lh-heading: #{map-get(map-get($curve, $breakpoint), 'line-height-heading')};
+            --#{$curve-name}-spacing: #{map-get(map-get($curve, $breakpoint), 'spacing')};
+          }
+        }
+
+        @each $curve-name, $curve in $typo-spacing-curves {
+          @if map-has-key($curve, $breakpoint) {
+            --#{$curve-name}: #{rem(map-get($curve, $breakpoint))};
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,53 @@
+/* ==|====================
+   Settings / Preview Vars
+   ======================= */
+
+//== Base
+//
+$base-font-size: 16px;
+$base-font-size-unit: 16;
+
+//== Font Family
+//
+$prev-font1: 'Roboto', Arial, sans-serif;
+
+//== Colors
+//
+$color-main-1: #a4c400;
+$color-main-2: #ffffff;
+$color-main-3: #f2f2f2;
+$color-main-4: #9e9a9a;
+$color-main-5: #666363;
+$color-main-6: #404142;
+
+//== Layout
+//
+$max-container-width: 1420px;
+
+//== Gutters
+//
+$gutter-zero: 7vw;
+$gutter-micro: 6vw;
+$gutter-small: 5vw;
+$gutter-medium: 3vw;
+$gutter-large: 3.2vw;
+$gutter-wide: 2.8vw;
+$gutter-ultra: 2vw;
+
+//== Spacings
+//
+$space-micro: rem(8px);
+$space-small: rem(24px);
+$space-medium: rem(32px);
+$space-large: rem(48px);
+$space-wide: rem(96px);
+$space-ultra: rem(128px);
+
+//== Transitions
+//
+$transition-time-default: 340ms;
+$transition-time-fancy: 140ms;
+$basic-easing: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+$fancy-easing: cubic-bezier(0.19, 1, 0.22, 1);
+$basic-transition: $transition-time-default $basic-easing;
+$fancy-transition: $transition-time-fancy $fancy-easing;

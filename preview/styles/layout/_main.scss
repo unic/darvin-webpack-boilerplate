@@ -1,0 +1,15 @@
+/* ==|====================
+   Layout / Main
+   ======================= */
+
+.l-main--preview {
+  margin-top: 4rem;
+
+  .preview--index & {
+    background-color: $color-main-2;
+  }
+}
+
+#prev-l-main {
+  flex: 1;
+}

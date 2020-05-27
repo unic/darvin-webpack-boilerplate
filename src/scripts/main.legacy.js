@@ -9,9 +9,8 @@
  * @author Unic AG
  */
 
-import '@scripts/helpers/polyfills';
-
 // Polyfills
+import '@scripts/helpers/polyfills';
 import svg4everybody from 'svg4everybody';
 
 // Bundle Config
@@ -24,9 +23,29 @@ import '@scripts/main.config';
 import '@scripts/helpers/flying-focus';
 
 import { CreateApp } from '@scripts/libs/create-app';
-import image from '../templates/components/c02-image';
-
 import devTools from '@scripts/helpers/dev-tools';
+
+/*
+  BOILERPLATE
+**/
+
+// store hash
+if (process.env.NODE_ENV === 'prod') {
+  process.env.WEBPACK_MODERN = __webpack_hash__;
+}
+
+// start devtools
+if (process.env.NODE_ENV === 'dev') {
+  new devTools;
+}
+
+/*
+  MODULES
+**/
+
+import image from '../templates/components/c02-image/index';
+import background from '../templates/modules/m03-background/index';
+import manual from '../templates/modules/m04-manual/index';
 
 // Init svg4everybody before module initiation
 svg4everybody();
@@ -50,15 +69,12 @@ if (process.env.NODE_ENV === 'prod') {
 window.apps = {};
 window.apps.main = new CreateApp({
   modules: {
-    // Directly integrate module
     image: {
       features: ['IntersectionObserver', 'picture'],
       handler: image,
-    }
+    },
+    manual
   },
 });
 
-// start devtools
-if (process.env.NODE_ENV === 'dev') {
-  new devTools;
-}
+background.init();

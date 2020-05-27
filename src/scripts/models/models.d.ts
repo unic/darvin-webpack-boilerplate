@@ -55,3 +55,35 @@ export interface ModuleHandlerExtended {
 }
 
 export type ModuleHandlerSimple = Function;
+
+
+/* DEMO */
+
+export interface ImageProps extends IModuleState {
+  options: {
+    domSelectors: {
+      image: string;
+    };
+  };
+  state: ImageInstance;
+}
+
+export interface ImageInstance extends IModuleInstance {
+  ui: {
+    image: Element | null;
+  };
+}
+
+export interface ImageConfig {
+  domSelectors: {
+    moduleRoot: string;
+  };
+  stateClasses: {
+    prepareLoading: string;
+    loading: string;
+  };
+  hooks: {
+    onBeforeLoad: Function;
+    onLoad: Function;
+  } | undefined;
+}

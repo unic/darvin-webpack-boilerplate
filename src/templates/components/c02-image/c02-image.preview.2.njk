@@ -1,0 +1,54 @@
+{% extends "layouts/l00-preview/l00-preview.njk" %}
+
+{% import "components/c02-image/c02-image.njk" as mainTemplate %}
+
+{% set variantName = "Picture" %}
+{% set variantDescr = "" %}
+
+{% macro main() %}
+  <!-- START Preview - c02-image -->
+  {{ mainTemplate.picture(
+    classes = [
+      'c-image--demo-fullwidth'
+    ],
+    lazy = true,
+    dataSrc = '/assets/images/16-9-1600.png',
+    sources = [
+      {
+        dataSrcset: '
+          /assets/images/16-9-300.png 300w,
+          /assets/images/16-9-400.png 400w,
+          /assets/images/16-9-600.png 600w,
+          /assets/images/16-9-800.png 800w,
+          /assets/images/16-9-1200.png 1200w,
+          /assets/images/16-9-1600.png 1600w,
+          /assets/images/16-9-2000.png 2000w
+        ',
+        type: 'image/png',
+        media: '(min-width: 37.5em)',
+        sizes: '100vw'
+      },
+      {
+        dataSrcset: '
+          /assets/images/300.png 200w,
+          /assets/images/400.png 400w,
+          /assets/images/600.png 600w,
+          /assets/images/800.png 800w,
+          /assets/images/1200.png 1200w,
+          /assets/images/1600.png 1600w,
+          /assets/images/2000.png 2000w
+        ',
+        type: 'image/png',
+        media: false,
+        sizes: '100vw'
+      }
+    ],
+    alt = 'Demo alt-text',
+    focusPoint = false
+  ) }}
+  <!-- END Preview - c02-image -->
+{% endmacro %}
+
+{% block preview %}
+  {{ main() }}
+{% endblock %}

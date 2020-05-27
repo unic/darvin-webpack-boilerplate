@@ -1,0 +1,145 @@
+/* ==|====================
+   Components / c02-image
+======================= */
+
+.c-image {
+  position: relative;
+  z-index: z-index(image);
+  display: block;
+  width: 100%;
+  padding-top: $aspect-ratio-16-9;
+  overflow: hidden;
+
+  &__loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: z-index(image, loader);
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    // TODO: Discuss with Design
+    // TODO: Add correct static placeholder svg or something
+    background: $color-secondary-1;
+  }
+
+  &__image {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: z-index(image, image);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    // Necessary for IE11 support (used by polyfill)
+    // stylelint-disable-next-line
+    font-family: 'object-fit: cover;';
+
+    // TODO: Discuss object-fit with Team
+    // -> Is this even necessary???
+    $object-positions: (
+      'top-left': 0% 0%,
+      'top-center': 50% 0%,
+      'top-right': 100% 0%,
+      'center-left': 0% 50%,
+      'center-center': 50% 50%,
+      'center-right': 100% 50%,
+      'bottom-left': 0% 100%,
+      'bottom-center': 50% 100%,
+      'bottom-right': 100% 100%
+    );
+
+    @each $name, $value in $object-positions {
+      &--#{$name} {
+        object-position: $value;
+
+        // Necessary for IE11 support (used by polyfill)
+        // stylelint-disable-next-line
+        font-family: 'object-fit: cover; object-position: #{$value};';
+      }
+    }
+
+    .c-image__image {
+      will-change: transform;
+    }
+  }
+
+  &.enter-prepare {
+    .c-image__image {
+      opacity: 0;
+    }
+  }
+
+  &.enter-active {
+    .c-image__image {
+      transition: opacity 120ms linear;
+      will-change: opacity;
+    }
+  }
+
+  // Add specific image ratios for modules here:
+  &--ratio-1-1 {
+    padding-top: $aspect-ratio-1-1;
+  }
+
+  &--ratio-2-1 {
+    padding-top: $aspect-ratio-2-1;
+  }
+
+  &--ratio-4-3 {
+    padding-top: $aspect-ratio-4-3;
+  }
+
+  &--ratio-3-4 {
+    padding-top: $aspect-ratio-3-4;
+  }
+
+  &--ratio-21-9 {
+    padding-top: $aspect-ratio-21-9;
+  }
+
+  &--ratio-16-9 {
+    padding-top: $aspect-ratio-16-9;
+  }
+
+  &--ratio-5-7 {
+    padding-top: $aspect-ratio-5-7;
+  }
+
+  @if ($env == 'dev') {
+    // TODO: This is for demo purpose only and can be removed, once a real module is using this mechanic
+    &--fixed-demo {
+      width: 400px;
+      height: 500px;
+      padding-top: 0; // Reset from default version
+    }
+
+    // Demonstrates a ratio-change depending on breakpoint
+    &--demo-fullwidth {
+      padding-top: $aspect-ratio-4-3;
+
+      @include media-breakpoint-up(small) {
+        padding-top: $aspect-ratio-16-9;
+      }
+    }
+  }
+
+  &[class*='--ratio-original'] {
+    padding-top: 0;
+
+    &,
+    .c-image__loader {
+      line-height: 0;
+    }
+
+    .c-image__image {
+      position: relative;
+      width: 100%;
+      height: auto;
+    }
+  }
+}

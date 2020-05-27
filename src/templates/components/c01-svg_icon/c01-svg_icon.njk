@@ -1,0 +1,10 @@
+{#
+    Components c01-icons
+    Tobias Frei - tobias.frei@unic.com
+#}
+
+{% macro main(icon="", classes=[], attr=[]) %}
+  <svg focusable="false" class="c-icon c-icon-{{ icon }}{% for class in classes %} {{ class }}{% endfor %}"{% for attribute in attr %} {{ attribute | safe }}{% endfor %}>
+      <use xlink:href="{{ darvinEnv().server.base }}/{{ darvinEnv().server.assets }}/images/svg-sprite.svg#sprite-{{ icon }}"></use>
+  </svg>
+{% endmacro %}

@@ -1,0 +1,27 @@
+{% extends "layouts/l00-default/l00-default.njk" %}
+
+{% import "modules/m01-header/m01-header.njk" as headerModule %}
+{% import "modules/m02-footer/m02-footer.njk" as footerModule %}
+{% import "modules/m03-background/m03-background.njk" as bgModule %}
+
+{% import "modules/m04-manual/m04-manual.njk" as manualModule %}
+{% import "modules/m04-manual/m04-manual.preview.1.njk" as manualModulePreview1 %}
+{% import "modules/m04-manual/m04-manual.preview.2.njk" as manualModulePreview2 %}
+{% import "modules/m04-manual/m04-manual.preview.3.njk" as manualModulePreview3 %}
+{% import "modules/m04-manual/m04-manual.preview.4.njk" as manualModulePreview4 %}
+
+{% block header %}
+  {{ headerModule.main(title = 'Demo Page') }}
+{% endblock %}
+
+{% block content %}
+  {{ manualModule.main(html=manualModulePreview1.markup() + manualModulePreview2.markup() + manualModulePreview3.markup() + manualModulePreview4.markup()) }}
+{% endblock %}
+
+{% block footer %}
+  {{ footerModule.main(title = 'Demo Footer') }}
+{% endblock %}
+
+{% block background %}
+  {{ bgModule.main() }}
+{% endblock %}}

@@ -1,0 +1,124 @@
+{#
+    Components c02-image
+    Christian Sany - christian.sany@unic.com
+#}
+
+{% set base64gif = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7' %}
+
+{% macro loader(loaderColor = '#000000') %}
+  <span class="c-image__loader" style="background-color: {{ loaderColor }}"></span>
+{% endmacro %}
+
+{% macro image(
+  classes = false,
+  attributes = false,
+  lazy = true,
+  src = base64gif,
+  dataSrc = '/assets/images/16-9-1600.png',
+  srcset = base64gif + ' 1w',
+  dataSrcset = '
+    /assets/images/16-9-300.png 300w,
+    /assets/images/16-9-400.png 400w,
+    /assets/images/16-9-600.png 600w,
+    /assets/images/16-9-800.png 800w,
+    /assets/images/16-9-1200.png 1200w,
+    /assets/images/16-9-1600.png 1600w,
+    /assets/images/16-9-2000.png 2000w
+  ',
+  sizes = '100vw',
+  alt = 'Demo alt-text',
+  focusPoint = false,
+  modulename = 'image',
+  loaderColor = '#f9f7f6'
+) %}
+  <!-- START - c02-image -->
+  <!-- Spans are used, so these images can also be used inside elements where no block elements like divs are allowed -->
+  <span class="c-image{% for class in classes %} {{class}}{% endfor %}"{% if lazy %} data-module="{{ modulename }}"{% endif %}>
+    {% if lazy %}
+      {{ loader(loaderColor = loaderColor) }}
+    {% endif %}
+
+    <img class="c-image__image{% if focusPoint %} c-image__image--{{focusPoint}}{% endif %}"{% if lazy %} data-image="image"{% endif %}
+      src="{{ src }}"
+      {% if dataSrc %} data-src="{{dataSrc}}"{% endif %}
+      {% if srcset %} srcset="{{srcset}}"{% endif %}
+      {% if dataSrcset %} data-srcset="{{dataSrcset}}"{% endif %}
+      {% if sizes %} sizes="{{sizes}}"{% endif %}
+      {% if alt %} alt="{{ alt }}"{% endif %}
+      {% if attributes %}{% for attribute in attributes %} {{attribute.attribute}}="{{attribute.value}}"{% endfor %}{% endif %}
+    >
+  </span>
+  <!-- END - c02-image -->
+{% endmacro %}
+
+
+{% macro picture(
+  classes = [],
+  attributes = false,
+  lazy = true,
+  src = base64gif,
+  dataSrc = '/assets/images/16-9-1600.png',
+  sources = [
+    {
+      srcset: base64gif + ' 1w',
+      dataSrcset: '
+        /assets/images/16-9-300.png 300w,
+        /assets/images/16-9-400.png 400w,
+        /assets/images/16-9-600.png 600w,
+        /assets/images/16-9-800.png 800w,
+        /assets/images/16-9-1200.png 1200w,
+        /assets/images/16-9-1600.png 1600w,
+        /assets/images/16-9-2000.png 2000w
+      ',
+      type: 'image/png',
+      media: '(min-width: 37.5em)',
+      sizes: '100vw'
+    },
+    {
+      srcset: base64gif + ' 1w',
+      dataSrcset: '
+        /assets/images/300.png 200w,
+        /assets/images/400.png 400w,
+        /assets/images/600.png 600w,
+        /assets/images/800.png 800w,
+        /assets/images/1200.png 1200w,
+        /assets/images/1600.png 1600w,
+        /assets/images/2000.png 2000w
+      ',
+      type: 'image/png',
+      media: false,
+      sizes: '100vw'
+    }
+  ],
+  alt = 'Demo alt-text',
+  focusPoint = false,
+  modulename = 'image',
+  loaderColor = '#f9f7f6'
+) %}
+  <!-- START - c02-picture -->
+  <!-- Spans are used, so these images can also be used inside elements where no block elements like divs are allowed -->
+  <span class="c-image{% for class in classes %} {{class}}{% endfor %}"{% if lazy %} data-module="{{ modulename }}"{% endif %}>
+    {% if lazy %}
+      {{ loader(loaderColor = loaderColor) }}
+    {% endif %}
+
+    <picture>
+      {% for source in sources %}
+        <source srcset="{% if source.srcset %}{{source.srcset}}{% else %}{{ base64gif }} 1w{% endif %}"
+          {% if source.dataSrcset %} data-srcset="{{source.dataSrcset}}"{% endif %}
+          {% if source.type %} type="{{source.type}}"{% endif %}
+          {% if source.media %} media="{{source.media}}"{% endif %}
+          {% if source.sizes %} sizes="{{source.sizes}}"{% endif %}
+        >
+      {% endfor %}
+
+      <img class="c-image__image{% if focusPoint %} c-image__image--{{focusPoint}}{% endif %}"{% if lazy %} data-image="image"{% endif %}
+        src="{{ src }}"
+        {% if dataSrc %} data-src="{{dataSrc}}"{% endif %}
+        {% if alt %} alt="{{ alt }}"{% endif %}
+        {% if attributes %}{% for attribute in attributes %} {{attribute.attribute}}="{{attribute.value}}"{% endfor %}{% endif %}
+      >
+    </picture>
+  </span>
+  <!-- END - c02-picture -->
+{% endmacro %}

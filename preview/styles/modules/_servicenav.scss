@@ -1,0 +1,138 @@
+/* ==|====================
+   Layout / Servicenav
+   ======================= */
+
+.prev-m-servicenav {
+  display: flex;
+  font-family: $prev-font1;
+
+  @media screen and (max-width: 42rem) {
+    position: absolute;
+    top: 4rem;
+    right: 0.5rem;
+
+    /* bottom: 0; */
+    left: 0;
+    z-index: 90;
+    display: none;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 5px;
+    background: black;
+  }
+
+  .servicenav--show & {
+    @media screen and (max-width: 42rem) {
+      display: flex;
+    }
+  }
+}
+
+.prev-m-servicenavtrigger {
+  display: none;
+
+  @media screen and (max-width: 42rem) {
+    display: flex;
+  }
+}
+
+.prev-m-servicenav__item {
+  margin-right: 0.5rem;
+
+  &:last-child {
+    margin-right: 0;
+
+    @media screen and (max-width: 42rem) {
+      margin-right: 0.5rem;
+    }
+  }
+
+  + .break {
+    display: none;
+
+    @media screen and (max-width: 42rem) {
+      display: block;
+      width: 100%;
+      height: 1px;
+    }
+  }
+}
+
+.prev-m-servicenav__link {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  color: rgba($color-main-3, 0.5);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: color 120ms linear;
+  user-select: none;
+  text-decoration: none;
+
+  &.is-open,
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+.prev-m-servicenav__linklbl {
+  display: flex;
+}
+
+.prev-m-servicenav__linklbl--active {
+  display: none;
+}
+
+.prev-m-servicenav__lbl {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: color 120ms linear, opacity 240ms ease-in;
+}
+
+.prev-m-servicenav__link--active {
+  color: $color-main-3;
+  background-color: $color-main-1;
+
+  .prev-m-servicenav__lbl {
+    font-size: 12px;
+  }
+}
+
+.prev-m-servicenav__link--bundle {
+  i::before {
+    width: 44px;
+    font-size: 32px;
+    text-align: center;
+  }
+}
+
+.prev-m-servicenav__link {
+  .i::before {
+    margin-top: 6px;
+    font-size: 20px;
+  }
+
+  .i.i-close::before {
+    margin-top: 2px;
+    font-size: 12px;
+  }
+}
+
+.prev-m-servicenav__link--readme {
+  .i::before {
+    margin-top: 4px;
+    font-size: 17px;
+  }
+}

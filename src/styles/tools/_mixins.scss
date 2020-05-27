@@ -1,0 +1,49 @@
+/* ==|============
+ Tools / Mixins
+=============== */
+
+@import 'mixins/breakpoints';
+
+@mixin clearfix {
+  &::after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin loaded-font($font-family, $font-weight: null) {
+  .fonts-loaded & {
+    font-family: $font-family;
+
+    @if $font-weight {
+      font-weight: $font-weight;
+    }
+  }
+}
+
+@mixin hover($not: null) {
+  @if $not == null {
+    &:hover:not(.is-disabled):not([aria-disabled='true']):not(:disabled) {
+      .no-touchdevice & {
+        @content;
+      }
+    }
+
+    &.is-focus:not(.is-disabled):not([aria-disabled='true']):not(:disabled),
+    &:focus:not(.is-disabled):not([aria-disabled='true']):not(:disabled) {
+      @content;
+    }
+  } @else {
+    &:hover:not(.is-disabled):not([aria-disabled='true']):not(:disabled):not(#{$not}) {
+      .no-touchdevice & {
+        @content;
+      }
+    }
+
+    &.is-focus:not(.is-disabled):not([aria-disabled='true']):not(:disabled):not(#{$not}),
+    &:focus:not(.is-disabled):not([aria-disabled='true']):not(:disabled):not(#{$not}) {
+      @content;
+    }
+  }
+}

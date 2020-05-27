@@ -21,7 +21,7 @@ global.output = {
   'index': 'index'
 }
 global.server = {
-  'base': '/dist/',
+  'base': '/htdocs/frontend/',
   'assets': 'assets'
 }
 global.breakpoints = [

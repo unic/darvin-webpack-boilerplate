@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html class="no-js" lang="de">
+   <head>
+      <meta charset="utf-8">
+      <title>{{ darvin.name }}</title>
+      <script>
+        (function () {
+          const html = document.documentElement;
+          const fontsClass = 'fonts-loaded';
+
+          if (sessionStorage.fontsLoaded) {
+            html
+              .classList
+              .add(fontsClass);
+          } else {
+            const script = document.createElement("script");
+            // TODO: use from npm package
+            script.src = "{{ darvinEnv().server.base }}/{{ darvinEnv().server.assets }}/scripts/vendors/fontfaceobserver-2.1.0.js";
+            script.async = true;
+            script.onload = function () {
+              const fontFamilyA = 'Roboto'; // extend font familys here
+
+              const fontA500 = new FontFaceObserver(fontFamilyA, {weight: '500'});
+              const fontA700 = new FontFaceObserver(fontFamilyA, {weight: '700'});
+              // .. add extended font
+
+              Promise
+                .all([fontA500.load(), fontA700.load()]) // extend resolve list
+                .then(function () {
+                  html
+                    .classList
+                    .add(fontsClass);
+                  sessionStorage.fontsLoaded = true;
+                });
+            };
+            document
+              .head
+              .appendChild(script);
+          }
+        })();
+      </script>
+      <meta name="description" content="Lorem description">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="format-detection" content="telephone=no">
+      <link href="{{ darvinEnv().server.base }}/preview/styles/preview.css" rel="stylesheet">
+   </head>
+   <body class="preview" data-ext="njk" data-name="{{ darvin.name }}" data-filepath="{{ darvin.filepath }}" data-path="{{ darvin.path }}" data-chunk="{{ darvin.chunk }}">
+      <article id="prev-l-pagewrapper">
+
+        <!-- start preview header -->
+        <header id="prev-l-header">
+          <div class="prev-l-constrainer">
+            <div class="prev-m-header{% if variantName %} prev-m-header--column{% endif %}">
+              <div class="prev-logo">
+                  <!-- change logo here -->
+                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+                  <defs>
+                      <style>.u-lp{fill:#fff;}</style>
+                  </defs>
+                  <path class="u-lp" d="M149.5,94.1a6.2,6.2,0,0,0,3.2.9,6.77,6.77,0,0,0,5.1-2.3,8.05,8.05,0,0,0,2.1-5.5,7,7,0,0,0-2-4.9,7.55,7.55,0,0,0-1.4-1.1c-.1,0-.1-.1-.2-.1h-.1a6.71,6.71,0,0,0-3.5-.8,6.51,6.51,0,0,0-4.9,2.3,7.57,7.57,0,0,0-2.1,5.3,7.28,7.28,0,0,0,2.1,5.1C148.3,93.3,148.9,93.8,149.5,94.1Z"/>
+                  <path class="u-lp" d="M167.2,160.1c-3,0-6.4-.8-7.5-3.8a4.81,4.81,0,0,1-.4-2.2V109l-.8-.8a60.78,60.78,0,0,1-12.5,1.5c-2.2.1-4.5.1-6.8.1v3.7c4.9,0,9.4.6,9.8,5.6V154c0,4.8-4.3,6.1-7.9,6.1s-7.9-1.2-7.9-6.1h0V125.7c0-5.4-1.3-9.7-3.8-13s-7.2-4.9-12.4-4.9c-6.4,0-13,1.3-18.9,6.1a34.25,34.25,0,0,0-3.3,3.2h-.3v-7.7l-.8-.8-17.4,1.2v3.6c3.5,0,7.5,1.1,7.9,5.5V150a13.58,13.58,0,0,1-1.7,2.4c-3.8,4-12.5,7.4-17.7,6.6-2.6-.4-4.6-1-6.3-3s-2.6-4.9-2.6-8.9V109.3l-.8-.8-17.5,1.2v3.6h0c3.4,0,7.5,1.1,7.9,5.3v27.8c0,6,1.3,10.6,3.8,13.7s6.4,4.7,11.5,4.9c11,.3,16.1-2.9,20.3-6a21.21,21.21,0,0,0,3-3h.2s-.1,7.4,8.2,7.4h10v-3.6h0c-3.2,0-6.9-1-7.7-4.6a6.05,6.05,0,0,1-.2-1.5V123.8s.4-1.4,2.8-3.7c4.4-3.9,9.6-6.1,14.6-6.1,3.8,0,6.3,1,8.2,3.1s2.7,5.1,2.7,8.9v28h0c0,4.8-4.3,6.1-7.9,6.1h0v3.6h52.3l-.1-3.6Z"/>
+                  <path class="u-lp" d="M214.6,149.8a24.12,24.12,0,0,1-6.1,6.8,15.2,15.2,0,0,1-9,2.6,13.55,13.55,0,0,1-6.7-1.6,15.07,15.07,0,0,1-5.2-4.9q-4.5-6.45-4.5-16.8a41,41,0,0,1,1.3-11.2,21.74,21.74,0,0,1,3.3-7.5,12.56,12.56,0,0,1,10.6-5.3c3.2,0,5.2.8,6.5,1.9a6.19,6.19,0,0,0-.8,2.4,6.62,6.62,0,0,0,1.1,4.5,6.14,6.14,0,0,0,3.8,2.4,5,5,0,0,0,1.7.1,5.38,5.38,0,0,0,2.5-.9,5.24,5.24,0,0,0,2.2-3.9,6.32,6.32,0,0,0-1.2-4.6,4,4,0,0,1-.3-.4c-.6-.6-1.2-1.2-1.9-1.8-.4-.3-.9-.6-1.3-.9-3.1-2-7.1-3-12.2-2.9a26.26,26.26,0,0,0-11.7,2.4,24.63,24.63,0,0,0-8.2,6.3,28.36,28.36,0,0,0-5.2,9.1,31.21,31.21,0,0,0-1.8,10.7c0,8.8,2.2,15.8,6.7,21a21.44,21.44,0,0,0,5.7,4.8,25.8,25.8,0,0,0,12.8,3.1,23,23,0,0,0,12.3-3.8,28.29,28.29,0,0,0,9.5-10.2,10.91,10.91,0,0,0,.6-1.1Z"/>
+                </svg>
+              </div>
+              <div class="prev-headertitle">
+                <div class="prev-m-title">{{ darvin.name }}</div>
+                <div class="prev-m-subtitle">{{ variantName }}</div>
+              </div>
+            </div>
+            <nav class="prev-m-servicenav" data-module="lazy-prev-bar">
+              {% if darvin.previews.length > 1 %}
+                  {% for link in darvin.previews %}
+                    {% set linkNumber = loop.index %}
+                    <div class="prev-m-servicenav__item variant">
+                      {% if link!=darvin.filepath %}
+                        <a class="prev-m-servicenav__link" href="{{ link }}.html">{{ linkNumber }}</a>
+                      {% else %}
+                        <span class="prev-m-servicenav__link prev-m-servicenav__link--active">{{ linkNumber }}</span>
+                      {% endif %}
+                    </div>
+                  {% endfor %}
+              {% endif %}
+              <div class="break"></div>
+              <div class="prev-m-servicenav__item">
+                <a class="prev-m-servicenav__link prev-m-servicenav__link--readme" tabindex="0" data-target="readme" data-trigger>
+                  <span class="prev-m-servicenav__linklbl"><i class="i i-info"></i></span><span class="prev-m-servicenav__linklbl prev-m-servicenav__linklbl--active"><i class="i i-close"></i></span>
+                </a>
+              </div>
+              <div class="prev-m-servicenav__item">
+                <a class="prev-m-servicenav__link prev-m-servicenav__link--source" tabindex="0" data-target="source" data-trigger>
+                  <span class="prev-m-servicenav__linklbl"><i class="i i-source"></i></span><span class="prev-m-servicenav__linklbl prev-m-servicenav__linklbl--active"><i class="i i-close"></i></span>
+                </a>
+              </div>
+              <div class="prev-m-servicenav__item">
+                <a href="/" class="prev-m-servicenav__link prev-m-servicenav__link--index">
+                  <i class="i i-nav"></i>
+                </a>
+              </div>
+            </nav>
+            <nav class="prev-m-servicenavtrigger">
+                <a href="#" class="prev-m-servicenav__link prev-m-servicenav__link--servicenav" data-target="servicenav" data-trigger>
+                  <i class="i i-maximize"></i>
+                </a>
+            </nav>
+          </div>
+        </header>
+        <!-- start main -->
+        <main id="prev-l-main" class="l-main--preview">
+          <div id="l-content">
+            {% block preview %}
+            {% endblock %}
+          </div>
+          <div class="prev-m-overlay">
+            <div class="prev-l-constrainer">
+              <div class="prev-m-overlay__item" data-readme>
+
+              </div>
+              <div class="prev-m-overlay__item" data-source>
+
+              </div>
+            </div>
+          </div>
+        </main>
+      </article>
+
+      <script type="text/javascript" src="{{ darvinEnv().server.base }}/preview/preview.js" async></script>
+    </body>
+</html>
