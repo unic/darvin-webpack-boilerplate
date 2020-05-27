@@ -10,17 +10,32 @@
   width: 100%;
   height: 4rem;
   font-family: $prev-font1;
-  background-color: $color-main-1;
-  border-bottom: 2px solid $color-main-5;
+  background-color: $color-main-3;
   transform: translateY(0);
+  color: $color-main-6;
 
   .prev-l-constrainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 100%;
-    padding: 0 1.25rem;
-    color: $color-main-3;
+    padding: 0 rem(20 );
+  }
+
+  .prev-logo {
+    width: rem(80);
+    height: rem(80);
+    background-color: #a4c400;
+    margin-top: calc((80px - 62px) / 2);
+  }
+
+  .prev-m-header {
+    display: flex;
+    align-items: center;
+  }
+
+  .prev-headertitle {
+    padding-left: rem(20);
   }
 
   .prev-m-title {

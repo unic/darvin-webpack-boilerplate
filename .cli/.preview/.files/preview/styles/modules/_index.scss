@@ -21,7 +21,7 @@ $preview-index-spacer-small: 0.25rem;
 }
 
 .prev-m-index__title {
-  color: $color-main-3;
+  color: $color-main-5;
 }
 
 .prev-m-index__col {
@@ -36,12 +36,9 @@ $preview-index-spacer-small: 0.25rem;
 .prev-m-index__itemcol {
   display: flex;
   flex-direction: column;
-  padding: 4px 11px 10px;
+  padding: rem(4) rem(11) rem(10);
 }
 
-.prev-m-index__itemcol--grow {
-  flex: 1;
-}
 
 .prev-m-index__items {
   display: flex;
@@ -62,11 +59,10 @@ $preview-index-spacer-small: 0.25rem;
   flex-wrap: wrap;
   width: calc(100% - 2 * #{$preview-index-spacer-small});
   margin: 0 $preview-index-spacer-small 0.5rem $preview-index-spacer-small;
-  background-color: $color-main-4;
-  border-radius: 4px;
+  background-color: $color-main-3;
+  border-radius: rem(4);
   user-select: none;
-  padding: 10px 8px;
-  min-height: 108px;
+  min-height: rem(86);
 
   @media screen and (min-width: 420px) {
     width: calc(50% - 2 * #{$preview-index-spacer-small});
@@ -96,22 +92,22 @@ $preview-index-spacer-small: 0.25rem;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding: 2px 8px;
   line-height: 1;
   font-family: $prev-font1;
   color: $color-main-1;
-  background-color: $color-main-4;
   z-index: 20;
+  position: absolute;
+  bottom: 0;
 }
 
 .prev-m-index__speclink {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 32px;
-  height: 32px;
+  width: rem(24);
+  height: rem(24);
   font-weight: 400;
-  font-size: 11px;
+  font-size: rem(11);
   font-family: $prev-font1;
   color: $color-main-1;
   text-transform: uppercase;
@@ -119,11 +115,10 @@ $preview-index-spacer-small: 0.25rem;
   background-color: rgba($color-main-2, 0.3);
   cursor: pointer;
   text-decoration: none;
-  margin-right: 0.5rem;
 
   &:hover {
     color: $color-main-6;
-    background-color: $color-main-3;
+    background-color: $color-main-1;
   }
 
   &:last-child {
@@ -131,9 +126,42 @@ $preview-index-spacer-small: 0.25rem;
   }
 }
 
+.prev-m-index__number {
+  position: absolute;
+  bottom: 0;
+  left: rem(4);
+  min-width: rem(24);
+  height: rem(24);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:after {
+    content: attr(data-number);
+    font-size: rem(11);
+    color: black;
+    padding: 0 rem(4);
+  }
+}
+
 .prev-m-index__itemtitle {
-  font-size: 18px;
-  padding-bottom: 16px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+
+  &:hover {
+    span {
+      color: $color-main-1;
+    }
+  }
+
+  span {
+    font-size: rem(18);
+    padding-top: rem(8);
+    padding-left: rem(8);
+    padding-right: rem(8);
+    display: inline-block;
+  }
 }
 
 .prev-m-index__itemrow {

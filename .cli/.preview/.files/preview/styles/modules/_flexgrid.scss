@@ -12,14 +12,14 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 140px;
+  width: rem(140);
   padding: 1rem;
 
   span {
     display: block;
     width: 100%;
-    padding-top: 3px;
-    font-size: 12px;
+    padding-top: rem(3);
+    font-size: rem(12);
     text-align: center;
   }
 }
@@ -28,8 +28,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100px;
-  height: 100px;
+  width: rem(100);
+  height: rem(100);
   overflow: hidden;
 
   &:hover {
@@ -46,15 +46,15 @@
   input {
     position: absolute;
     top: -30%;
-    font-size: 7px;
+    font-size: rem(7);
   }
 
   svg.c-icon {
     margin-right: 0;
 
     body.preview & {
-      width: 50px;
-      height: 50px;
+      width: rem(50);
+      height: rem(50);
     }
   }
 }
@@ -63,8 +63,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100px;
-  height: 120px;
+  width: rem(100);
+  height: rem(120);
   overflow: hidden;
   position: relative;
   flex-direction: column;
@@ -79,15 +79,15 @@
   input {
     position: absolute;
     top: -30%;
-    font-size: 7px;
+    font-size: rem(7);
   }
 }
 
 .darvin-prev-flexgrid__colorboxbval {
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 100%;
-  width: 100px;
-  height: 100px;
+  width: rem(100);
+  height: rem(100);
 }
 
 .darvin-prev-flexgrid__colorboxlabel {
@@ -95,7 +95,7 @@
   left: 0;
   width: 100%;
   text-align: center;
-  font-size: 11px;
+  font-size: rem(11);
 }
 
 .darvin-prev-flexgrid__item.icontest {
@@ -113,7 +113,7 @@
     }
 
     a {
-      font-size: 14px;
+      font-size: rem(14);
 
       &:nth-child(1) {
         font-weight: 300;
@@ -148,7 +148,7 @@
     }
 
     a {
-      font-size: 14px;
+      font-size: rem(14);
 
       &:nth-child(1) {
         font-weight: 300;
@@ -183,7 +183,7 @@
     }
 
     a {
-      font-size: 16px;
+      font-size: rem(16);
 
       &:nth-child(1) {
         font-weight: 300;
@@ -218,7 +218,7 @@
     }
 
     a {
-      font-size: 18px;
+      font-size: rem(18);
 
       &:nth-child(1) {
         font-weight: 300;
@@ -253,7 +253,7 @@
     }
 
     a {
-      font-size: 18px;
+      font-size: rem(18);
       color: white;
 
       &:nth-child(1) {
@@ -289,7 +289,7 @@
     }
 
     a {
-      font-size: 14px;
+      font-size: rem(14);
 
       &:nth-child(1) {
         font-weight: 300;
@@ -324,7 +324,7 @@
     }
 
     a {
-      font-size: 16px;
+      font-size: rem(16);
 
       &:nth-child(1) {
         font-weight: 300;
@@ -359,7 +359,7 @@
     }
 
     a {
-      font-size: 18px;
+      font-size: rem(18);
 
       &:nth-child(1) {
         font-weight: 300;
@@ -394,7 +394,7 @@
     }
 
     a {
-      font-size: 20px;
+      font-size: rem(20);
 
       &:nth-child(1) {
         font-weight: 300;
@@ -429,14 +429,14 @@
     }
 
     a {
-      font-size: 24px;
+      font-size: rem(24);
 
       &:nth-child(1) {
         font-weight: get-stroke('24', '24', '700');
         font-family: 'Museo';
 
         .c-icon {
-          stroke-width: 2.5px;
+          stroke-width: rem(2.5);
         }
       }
     }
@@ -448,7 +448,7 @@
     }
 
     a {
-      font-size: 28px;
+      font-size: rem(28);
 
       &:nth-child(1) {
         font-weight: 500;
@@ -467,7 +467,7 @@
     }
 
     a {
-      font-size: 32px;
+      font-size: rem(32);
 
       &:nth-child(1) {
         font-weight: 500;
@@ -486,7 +486,7 @@
     }
 
     a {
-      font-size: 40px;
+      font-size: rem(40);
 
       &:nth-child(1) {
         font-weight: 500;
@@ -505,7 +505,7 @@
     }
 
     a {
-      font-size: 48px;
+      font-size: rem(48);
 
       &:nth-child(1) {
         font-weight: 500;
@@ -524,7 +524,7 @@
     }
 
     a {
-      font-size: 18px;
+      font-size: rem(18);
       color: white;
 
       &:nth-child(1) {
@@ -543,7 +543,7 @@
     }
 
     a {
-      font-size: 18px;
+      font-size: rem(18);
       color: white;
 
       &:nth-child(1) {
@@ -560,73 +560,73 @@
     a {
       &:nth-child(1) {
         .c-icon {
-          width: 8px;
-          height: 8px;
+          width: rem(8);
+          height: rem(8);
           stroke-width: 1px;
         }
       }
 
       &:nth-child(2) {
         .c-icon {
-          width: 16px;
-          height: 16px;
-          stroke-width: 1.25px;
+          width: rem(16);
+          height: rem(16);
+          stroke-width: rem(1.25);
         }
       }
 
       &:nth-child(3) {
         .c-icon {
-          width: 20px;
-          height: 20px;
-          stroke-width: 1.5px;
+          width: rem(20);
+          height: rem(20);
+          stroke-width: rem(1.5);
         }
       }
 
       &:nth-child(4) {
         .c-icon {
-          width: 24px;
-          height: 24px;
-          stroke-width: 1.5px;
+          width: rem(24);
+          height: rem(24);
+          stroke-width: rem(1.5);
         }
       }
 
       &:nth-child(5) {
         .c-icon {
-          width: 32px;
-          height: 32px;
-          stroke-width: 1.5px;
+          width: rem(32);
+          height: rem(32);
+          stroke-width: rem(1.5);
         }
       }
 
       &:nth-child(6) {
         .c-icon {
-          width: 40px;
-          height: 40px;
-          stroke-width: 1.5px;
+          width: rem(40);
+          height: rem(40);
+          stroke-width: rem(1.5);
         }
       }
 
       &:nth-child(7) {
         .c-icon {
-          width: 48px;
-          height: 48px;
-          stroke-width: 1.75px;
+          width: rem(48);
+          height: rem(48);
+          stroke-width: rem(1.75);
         }
       }
 
       &:nth-child(8) {
         .c-icon {
-          width: 64px;
-          height: 64px;
-          stroke-width: 2px;
+          width: rem(64);
+          height: rem(64);
+          stroke-width: rem(2);
         }
       }
 
       &:nth-child(9) {
         .c-icon {
-          width: 96px;
-          height: 96px;
-          stroke-width: 4px;
+          width: rem(96);
+          height: rem(96);
+          stroke-width: rem(4);
         }
       }
     }

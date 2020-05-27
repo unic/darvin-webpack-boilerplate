@@ -4,39 +4,45 @@
 
 body.preview {
   ::selection {
-    color: $color-main-3;
-    background-color: $color-main-1;
+    color: $color-main-5;
+    background-color: $color-main-6;
   }
 
-  a {
-    color: $color-main-6;
+  &.preview--index,
+  .preview__content--off {
+    a {
+      color: $color-main-6;
 
-    &:hover,
-    &:active,
-    &:focus {
-      color: $color-main-5 !important;
+      @include hover('.is-disabled') {
+        color: $color-main-5;
+      }
+
+      &:active,
+      &:focus {
+        color: $color-main-5;
+      }
     }
-  }
 
-  .leader-line {
-    z-index: 100;
-  }
-
-  .tippy-tooltip.darvin-theme {
-    background-color: $color-main-1;
-    color: $color-main-3;
-
-    .tippy-content {
-      font-size: rem(13);
+    .leader-line {
+      z-index: 100;
     }
-  }
 
-  .tippy-tooltip.darvin-theme[data-animatefill] {
-    background-color: transparent;
-  }
+    .tippy-tooltip.darvin-theme {
+      background-color: $color-main-1;
+      color: $color-main-3;
 
-  .tippy-tooltip.darvin-theme .tippy-backdrop {
-    background-color: $color-main-1;
+      .tippy-content {
+        font-size: rem(13);
+      }
+    }
+
+    .tippy-tooltip.darvin-theme[data-animatefill] {
+      background-color: transparent;
+    }
+
+    .tippy-tooltip.darvin-theme .tippy-backdrop {
+      background-color: $color-main-1;
+    }
   }
 
   &.preview__content--off {
@@ -52,7 +58,7 @@ body.preview {
 
         .prev-m-servicenav__linklbl--active {
           display: flex;
-          margin-top: 4px;
+          margin-top: rem(4);
         }
       }
     }
@@ -69,7 +75,7 @@ body.preview {
 
         .prev-m-servicenav__linklbl--active {
           display: flex;
-          margin-top: 3px;
+          margin-top: rem(3);
         }
       }
     }
@@ -97,7 +103,7 @@ body.preview {
     margin: 0;
     padding: $space-medium 0;
     font-weight: 300;
-    font-size: 18px;
+    font-size: rem(18);
     line-height: 1.2;
 
     &.prev-m-index__title {
@@ -105,7 +111,7 @@ body.preview {
     }
 
     @media screen and (min-width: 42rem) {
-      font-size: 24px;
+      font-size: rem(24);
     }
   }
 

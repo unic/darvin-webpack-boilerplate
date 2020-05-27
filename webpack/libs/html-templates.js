@@ -15,14 +15,42 @@ const darvinParameters = {
 };
 
 // iterate elements and render previews
-Object.keys(previewIndexObj.payload).forEach(function (key) {
+Object.keys(previewIndexObj.payload).forEach(key => {
   const items = previewIndexObj.payload[key];
 
-  Object.keys(items).forEach(function (keyItem) {
+  Object.keys(items).forEach(keyItem => {
+
+    /* elementObj ==>
+      {
+        id: '9a5315cd2df3770ac151769cc6eb8c75',
+        name: 'm04-manual',
+        type: 'modules',
+        chunkName: 'scripts/main',
+        template: 'src/templates/modules/m04-manual/m04-manual.twig',
+        templateRel: 'modules/m04-manual/m04-manual.twig',
+        target: 'modules/m04-manual/m04-manual.html',
+        path: 'modules/m04-manual',
+        previews: [
+          'm04-manual.preview.1',
+          'm04-manual.preview.2',
+          'm04-manual.preview.3',
+          'm04-manual.preview.4'
+        ],
+        variants: 4,
+        server: { base: '', assets: 'assets' },
+        env: 'darvinrc.modern',
+        mode: 'dev',
+        config: { flag: false, design: '#', jira: '#', confluence: '#' }
+      }
+    */
     const elementObj = items[keyItem];
 
-      elementObj.previews.forEach(function (preview) {
+      elementObj.previews.forEach((preview, j) => {
+        const elementObjClone = JSON.parse(JSON.stringify(elementObj));
         const targetPath = `${elementObj.path}/${preview}`;
+
+        // add origin looped preview filename
+        elementObjClone['filepath'] = preview;
 
         const obj = new HtmlWebpackPlugin({
           filename: targetPath + `.html`,
@@ -30,9 +58,9 @@ Object.keys(previewIndexObj.payload).forEach(function (key) {
           hash: true,
           inject: `body`,
           cache: true,
-          chunks: [elementObj.chunkName],
+          chunks: [elementObjClone.chunkName],
           templateParameters: {
-            darvin: elementObj,
+            darvin: elementObjClone,
             sprite: allIconsInDir
           },
           minify: {
@@ -77,16 +105,18 @@ templatesArr.push(new HtmlWebpackPlugin({
     removeOptionalTags: false
   },
   templateParameters: {
-    name: `${global.output.index}`,
-    type: `preview`,
-    chunkName: `scripts/main`,
-    template: `${global.inputDirs.src}/${global.inputDirs.templates}/${global.preview.indexFileInput}`,
-    templateRel: `${global.preview.indexFileInput}`,
-    target: `${global.preview.indexFileOutput}`,
-    path: `/`,
-    previews: `${global.output.index}`,
-    variants: 1,
-    index: previewIndexObj
+    darvin: {
+      name: `${global.output.index}`,
+      type: `preview`,
+      chunkName: `scripts/main`,
+      template: `${global.inputDirs.src}/${global.inputDirs.templates}/${global.preview.indexFileInput}`,
+      templateRel: `${global.preview.indexFileInput}`,
+      target: `${global.preview.indexFileOutput}`,
+      path: `/`,
+      previews: `${global.output.index}`,
+      variants: 1,
+      index: previewIndexObj
+    }
   }
 }));
 

@@ -4,12 +4,12 @@
 
 //== Variables
 //
-$screen-micro: 375px;
-$screen-small: 540px;
-$screen-medium: 768px;
-$screen-large: 1024px;
-$screen-wide: $max-container-width; // 1420px
-$screen-ultra: 1920px;
+$screen-micro: rem(375);
+$screen-small: rem(540);
+$screen-medium: rem(768);
+$screen-large: rem(1024);
+$screen-wide: $max-container-width; // rem(1420)
+$screen-ultra: rem(1920);
 
 //== keywords
 //
