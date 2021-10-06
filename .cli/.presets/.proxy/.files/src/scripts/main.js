@@ -19,7 +19,7 @@
 
   # remove hash
   *************
-  remove [hash] from settings.output.filename in all webpack configs:
+  remove [fullhash] from settings.output.filename in all webpack configs:
 
   - webpack\webpack.config.dev.js
   - webpack\webpack.config.prod.modern.js

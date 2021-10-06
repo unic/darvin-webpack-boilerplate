@@ -35,9 +35,6 @@ const settings = {
     publicPath: serverBase,
   },
   stats: 'errors-only',
-  plugins: [
-    new webpack.ExtendedAPIPlugin();
-  ],
   resolve: {
     mainFields: ['browser', 'module', 'main'],
     modules: [

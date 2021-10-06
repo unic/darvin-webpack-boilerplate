@@ -6,7 +6,7 @@ const prod = {
         use: [{
           loader: 'file-loader',
           options: {
-            name: 'images/[name].[ext]?[hash]',
+            name: 'images/[name].[ext]?[fullhash]',
           },
         },
         {
@@ -47,7 +47,7 @@ const dev = {
         use: [{
           loader: 'file-loader',
           options: {
-            name: 'images/[name].[ext]?[hash]',
+            name: 'images/[name].[ext]?[fullhash]',
           },
         }
         ],

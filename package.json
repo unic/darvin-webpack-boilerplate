@@ -34,6 +34,9 @@
     "lint-style": "stylelint \"src/**/*.{scss,vue}\" --fix",
     "tslint": "tslint  --project tsconfig.json src/**/**.ts"
   },
+  "peerDependencies": {
+    "favicons": "^6.2.2"
+  },
   "devDependencies": {
     "@babel/core": "^7.15.5",
     "@babel/plugin-proposal-class-properties": "^7.14.5",

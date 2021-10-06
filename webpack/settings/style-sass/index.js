@@ -3,7 +3,7 @@ const StyleLintPlugin = require('stylelint-webpack-plugin');
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const isDevServer = process.env.WEBPACK_DEV_SERVER;
 
-let outputDir = `${global.server.assets}/css/style.[hash].css`;
+let outputDir = `${global.server.assets}/css/style.[fullhash].css`;
 let outputDirPreview = `styles/preview.css`;
 
 // remove hash for devserver hot reload
