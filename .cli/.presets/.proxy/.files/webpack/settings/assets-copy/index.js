@@ -3,53 +3,61 @@ const basePath = process.cwd();
 
 const prod = {
   plugins: [
-    new CopyWebpackPlugin([
-      {
-        from: `${basePath}/changelog.md`,
-        to: `${global.server.assets}/log/`,
-        flatten: true,
-        cache: true
-      },
-      {
-        from: `${basePath}/${global.inputDirs.src}/${global.server.assets}/images/renditions/**/*.{png,gif,jpg,svg}`,
-        to: global.server.assets + '/images/',
-        flatten: true,
-        cache: true
-      },
-      {
-        from: `${basePath}/${global.inputDirs.src}/${global.server.assets}/images/favicons/favicon-dev.ico`,
-        flatten: true,
-        transformPath () {
-          return 'favicon.ico';
-        }
-      },
-    ], {})
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: `${basePath}/changelog.md`,
+          noErrorOnMissing: true,
+          to() {
+            return `${global.server.assets}/log/[name][ext]`;
+          },
+        },
+        {
+          from: `${basePath}/${global.inputDirs.src}/${global.server.assets}/images/renditions/**/*.{png,gif,jpg,svg}`,
+          noErrorOnMissing: true,
+          to() {
+            return `${global.server.assets}/images/[name][ext]`;
+          },
+        },
+        {
+          from: `${basePath}/${global.inputDirs.src}/${global.server.assets}/images/favicons/favicon-dev.ico`,
+          noErrorOnMissing: true,
+          to({ context, absoluteFilename }) {
+            return `${global.server.assets}/[name][ext]`;
+          },
+        },
+      ]
+    })
   ],
 };
 
 const dev = {
   plugins: [
-    new CopyWebpackPlugin([
-      {
-        from: `${basePath}/changelog.md`,
-        to: `${global.server.assets}/log/`,
-        flatten: true,
-        cache: true
-      },
-      {
-        from: `${basePath}/${global.inputDirs.src}/${global.server.assets}/images/renditions/**/*.{png,gif,jpg,svg}`,
-        to: global.server.assets + '/images/',
-        flatten: true,
-        cache: true
-      },
-      {
-        from: `${basePath}/${global.inputDirs.src}/${global.server.assets}/images/favicons/favicon-dev.ico`,
-        flatten: true,
-        transformPath () {
-          return 'favicon.ico';
-        }
-      },
-    ], {})
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: `${basePath}/changelog.md`,
+          noErrorOnMissing: true,
+          to() {
+            return `${global.server.assets}/log/[name][ext]`;
+          },
+        },
+        {
+          from: `${basePath}/${global.inputDirs.src}/${global.server.assets}/images/renditions/**/*.{png,gif,jpg,svg}`,
+          noErrorOnMissing: true,
+          to() {
+            return `${global.server.assets}/images/[name][ext]`;
+          },
+        },
+        {
+          from: `${basePath}/${global.inputDirs.src}/${global.server.assets}/images/favicons/favicon-dev.ico`,
+          noErrorOnMissing: true,
+          to({ context, absoluteFilename }) {
+            return `${global.server.assets}/[name][ext]`;
+          },
+        },
+      ]
+    })
   ],
 }
 
