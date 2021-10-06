@@ -5,5 +5,5 @@
   },
   "peerDependencies": {
     "favicons": "^6.2.2"
-  },
+  }
 }
