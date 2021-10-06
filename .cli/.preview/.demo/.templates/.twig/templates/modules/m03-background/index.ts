@@ -5,7 +5,7 @@
  *
  */
 
-const Tweakpane = require('tweakpane');
+import { Pane } from 'tweakpane';
 
 // @ts-ignore
 import vertexWobble from '@scripts/glsl/demo.glsl.vert';
@@ -308,7 +308,7 @@ const createShader = (type: number, source: string) => {
     }
 
     // params panel
-    const pane = new Tweakpane();
+    const pane = new Pane();
     pane.addInput(PARAMS, 'pulse').on('change', () => {
       localStorage.setItem('darvindoc-params', JSON.stringify(PARAMS));
     });
