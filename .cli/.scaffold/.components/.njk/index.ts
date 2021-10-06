@@ -5,7 +5,7 @@
  *
  */
 
-import { IModuleInstance } from '@scripts/models/models.d.ts';
+import { IModuleInstance } from '@scripts/models/models.d';
 import createModule from '@scripts/libs/create-module';
 import BreakpointManager from '@scripts/helpers/breakpoint-manager';
 

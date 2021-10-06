@@ -5,7 +5,7 @@ import {
   Module,
   ModuleMap,
   ModuleDeclarationMap
-} from '@scripts/models/models.d.ts';
+} from '@scripts/models/models.d';
 
 /**
  * createApp

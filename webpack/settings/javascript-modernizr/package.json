@@ -1,10 +1,10 @@
 {
   "devDependencies": {
     "@types/modernizr": "^3.5.3",
-    "expose-loader": "^0.7.5",
+    "expose-loader": "^3.0.0",
     "webpack-modernizr-loader": "^5.0.0"
   },
   "dependencies": {
-    "modernizr": "^3.11.0"
+    "modernizr": "^3.11.8"
   }
 }

@@ -1,11 +1,7 @@
 {
   "name": "darvin-boilerplate",
-  "version": "2.0.2",
-  "description": "html5 webpack boilerplate with loader ecosystem, polyfilled legacy build, preview for shipping and cli scaffolding.",
-  "author": "Tobias Frei",
-  "email": "tobias.frei@unic.com",
-  "homepage": "http://www.darvin.dev",
-  "license": "MIT",
+  "version": "3.0.0",
+  "description": "html5 webpack boilerplate for modern browsers with loader ecosystem, preview for shipping and cli scaffolding.",
   "keywords": [
     "webpack",
     "typescript",
@@ -30,12 +26,22 @@
     "url": "github.com/unic"
   },
   "scripts": {
-    "start": "npm install; npm link; darvin-cli init",
+    "dev": "cross-env NODE_ENV=dev SCRIPT_ENV=modern DARVIN_ENV=darvinrc.modern DARVIN_CONF=darvinconf.dev webpack-dev-server --hot --mode development --config webpack/webpack.config.dev.js",
+    "dev-bundle": "npm run prev-prod; cross-env SCRIPT_ENV=modern NODE_ENV=dev DARVIN_ENV=darvinrc.modern DARVIN_CONF=darvinconf.dev webpack --mode development --config webpack/webpack.config.dev.js",
+    "dev-bundle-system": "npm run prev-prod; cross-env SCRIPT_ENV=modern NODE_ENV=dev DARVIN_ENV=darvinrc.modern DARVIN_CONF=darvinconf.prod webpack --mode development --config webpack/webpack.config.dev.js",
     "lint": "lint-staged",
     "lint-prev-script": "eslint \"preview/**/*.js\" --fix",
     "lint-prev-style": "stylelint \"preview/**/*.scss\" --fix",
-    "lint-script": "eslint -c .eslintrc.js --ext ts,js,vue \"src/**/*.{js,ts,vue}\" --fix",
-    "lint-style": "stylelint \"src/**/*.{scss,vue}\" --fix",
+    "lint-script": "eslint -c .eslintrc.js --ext ts,js,jsx,vue,svelve \"src/**/*.{js,mjs,jsx,ts,vue,svelve}\" --fix",
+    "lint-style": "stylelint \"src/**/*.{js,mjs,jsx,vue,svelve}\" --fix",
+    "prev-dev": "cross-env NODE_ENV=dev DARVIN_ENV=darvinrc.modern DARVIN_CONF=darvinconf.dev webpack --mode development --config  webpack/webpack.preview.js --watch",
+    "prev-prod": "cross-env NODE_ENV=prod DARVIN_ENV=darvinrc.modern DARVIN_CONF=darvinconf.dev webpack --mode production --config  webpack/webpack.preview.js",
+    "prod": "npm run prev-prod; cross-env NODE_ENV=prod DARVIN_CONF=darvinconf.dev webpack --mode production --config webpack/webpack.config.prod.js",
+    "prod-modern": "cross-env SCRIPT_ENV=modern NODE_ENV=prod DARVIN_ENV=darvinrc.modern DARVIN_CONF=darvinconf.dev webpack --mode production --config webpack/webpack.config.prod.modern.js",
+    "prod-modern-system": "cross-env SCRIPT_ENV=modern NODE_ENV=prod DARVIN_ENV=darvinrc.modern DARVIN_CONF=darvinconf.prod webpack --mode production --config webpack/webpack.config.prod.modern.js",
+    "prod-system": "npm run prev-prod; cross-env NODE_ENV=prod DARVIN_CONF=darvinconf.prod webpack --mode production --config webpack/webpack.config.prod.js",
+    "prod-with-dev": "cross-env NODE_ENV=dev DARVIN_ENV=darvinrc.modern DARVIN_CONF=darvinconf.dev webpack-dev-server --hot --mode production --config webpack/webpack.config.dev.js",
+    "start": "npm install -g cross-env; npm install; npm run prev-prod; npm run dev",
     "tslint": "tslint  --project tsconfig.json src/**/**.ts"
   },
   "devDependencies": {

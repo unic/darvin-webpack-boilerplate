@@ -163,21 +163,6 @@ const _action = () => {
 
     setConfig(configVars)
 
-    // add sass legacy
-    let rcString = JSON.stringify(cliObj.rc);
-    if(rcString.includes('sass')) {
-      let legacyStyle = readFile(path.join(process.cwd(), `webpack/settings/style-legacy/package.json`));
-      cliPackages.push(legacyStyle);
-    }
-
-    // add ts legacy
-    let legacyTS = readFile(path.join(process.cwd(), `webpack/settings/javascript-typescript-legacy/package.json`));
-    cliPackages.push(legacyTS);
-
-    // add js legacy
-    let legacyJS = readFile(path.join(process.cwd(), `webpack/settings/javascript-legacy/package.json`));
-    cliPackages.push(legacyJS);
-
     // write Darvin RC File
     writeDarvinRC(cliObj.rc);
 

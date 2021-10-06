@@ -1,3 +1,6 @@
+import Modernizr from 'modernizr';
+
+
 Modernizr.addTest('safari', function () {
   const isSafari = navigator.userAgent.indexOf('Safari') > -1,
       isChrome = navigator.userAgent.indexOf('Chrome') > -1;

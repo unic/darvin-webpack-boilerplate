@@ -2,9 +2,11 @@ const prod = {
   module: {
     rules: [
       {
-        test: /modernizrrc\.js$/,
-        loader: 'expose-loader?Modernizr!webpack-modernizr-loader',
-      },
+        loader: "webpack-modernizr-loader",
+        test: /\.modernizrrc\.js$/
+        // Uncomment this when you use `JSON` format for configuration
+        // type: 'javascript/auto'
+      }
     ]
   },
 };
@@ -13,9 +15,11 @@ const dev = {
   module: {
     rules: [
       {
-        test: /modernizrrc\.js$/,
-        loader: 'expose-loader?Modernizr!webpack-modernizr-loader',
-      },
+        loader: "webpack-modernizr-loader",
+        test: /\.modernizrrc\.js$/
+        // Uncomment this when you use `JSON` format for configuration
+        // type: 'javascript/auto'
+      }
     ]
   },
 };

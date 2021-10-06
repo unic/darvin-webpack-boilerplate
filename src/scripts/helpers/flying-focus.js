@@ -9,6 +9,7 @@
 
 import fastdom from 'fastdom';
 import pubsub from './pubsub';
+import Modernizr from 'modernizr';
 
 const flyingFocus = () => {
   const { documentElement, body } = document;

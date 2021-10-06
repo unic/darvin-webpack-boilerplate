@@ -3,7 +3,7 @@ require(`../config/.${process.env.DARVIN_CONF}.js`);
 
 const path = require('path');
 const basePath = process.cwd();
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 
 const webpackConfig = require('../webpack.config');
 const {getDarvinRC, createDynamicRequireArray} = require('./helpers/config-helpers');
@@ -24,17 +24,19 @@ if (global.server.base === '') {
 
 const settings = {
   output: {
-    devtoolLineToLine: false,
     path: path.resolve(basePath, 'dist'),
     pathinfo: false,
-    filename: global.server.assets + '/[name].[hash].js',
-    chunkFilename: global.server.assets + '/scripts/async/[name].[contenthash].js',
+    filename: global.server.assets + '/[name].[fullhash].js',
+    chunkFilename: global.server.assets + '/js/scripts/[name].[contenthash].chunk.js',
     publicPath: serverBase,
-    jsonpFunction: 'cssJsonp'
   },
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'eval',
   stats: 'minimal',
   resolve: {
+    mainFields: ['browser', 'module', 'main'],
+    modules: [
+      'node_modules'
+    ],
     alias: {
       '@root': basePath,
       '@src': path.resolve(basePath, 'src/'),
@@ -42,7 +44,23 @@ const settings = {
       '@css': path.resolve(basePath, 'src/styles/'),
       '@html': path.resolve(basePath, 'src/templates/'),
       '@webpack': path.resolve(basePath, 'webpack/'),
-    }
+      process: 'process/browser',
+      stream: 'stream-browserify',
+      zlib: 'browserify-zlib',
+      modernizr$: path.resolve(basePath, '/.modernizrrc.js')
+    },
+    fallback: {
+      'fs': false,
+      'path': require.resolve('path-browserify'),
+      'buffer': require.resolve('buffer'),
+      'tls': false,
+      'net': false,
+      'zlib': false,
+      'http': false,
+      'https': false,
+      'stream': false,
+      'crypto': false
+     }
   },
   optimization: {
     removeAvailableModules: false,
@@ -71,12 +89,8 @@ const settings = {
   }
 };
 
+// add main script file
 settings.entry = {};
-
-if (process.env.SCRIPT_ENV === 'legacy') {
-  settings.entry['scripts/main'] = [`./src/scripts/main.legacy.js`];
-} else {
-  settings.entry['scripts/main'] = [`./src/scripts/main.js`];
-}
+settings.entry['scripts/main'] = [`./src/scripts/main.js`];
 
 module.exports = eval('merge(' + darvinRcString + ')');

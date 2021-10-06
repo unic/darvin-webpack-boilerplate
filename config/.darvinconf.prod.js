@@ -1,4 +1,4 @@
-global.project = 'Darvin';
+global.project = 'Darvin Webpack Boilerplate';
 global.mainChunk = 'scripts/main';
 global.proxy = '';
 global.port = '8001';
@@ -21,7 +21,7 @@ global.output = {
   'index': 'index'
 }
 global.server = {
-  'base': '/dist/',
+  'base': '/dist',
   'assets': 'assets'
 }
 global.breakpoints = [

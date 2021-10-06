@@ -10,7 +10,7 @@ html webpack boilerplate for professionals. templating and system theming with n
 + multiple frameworks (react/vue/svelte)
 + typescript support (incl. typescript-vue)
 + easy extendable Webpack settings
-+ polyfilled legacy mode (IE11)
++ ~~polyfilled legacy mode (IE11)~~ [removed in version 3.0.0]
 + project approved (up to 100+ components/modules)
  
 ### CLI Setup

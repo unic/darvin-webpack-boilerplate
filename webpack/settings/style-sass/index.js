@@ -1,10 +1,10 @@
-const MiniCssExtractPlugin = require("extract-css-chunks-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const StyleLintPlugin = require('stylelint-webpack-plugin');
-const autoprefixer = require('autoprefixer');
-const OptimizeCssnanoPlugin = require('@intervolga/optimize-cssnano-plugin');
+const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const isDevServer = process.env.WEBPACK_DEV_SERVER;
 
 let outputDir = `${global.server.assets}/css/style.[hash].css`;
+let outputDirPreview = `styles/preview.css`;
 
 // remove hash for devserver hot reload
 if(isDevServer) {
@@ -12,12 +12,23 @@ if(isDevServer) {
 }
 
 const prod = {
+  optimization: {
+    minimizer: [
+      // For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`)
+      `...`,
+      new CssMinimizerPlugin(),
+    ],
+  },
   module: {
     rules: [
       {
         test: /\.(css|sass|scss)$/,
         use: [{
           loader: MiniCssExtractPlugin.loader,
+          options: {
+            esModule: true,
+            emit: true
+          }
         },
         {
           loader: 'css-loader',
@@ -29,24 +40,18 @@ const prod = {
         {
           loader: 'postcss-loader',
           options: {
-            plugins: () => [
-              autoprefixer({
-                grid: 'autoplace',
-                flexbox: 'no-2009'
-              })
-            ],
             sourceMap: false,
           },
         },
         {
           loader: 'sass-loader',
           options: {
-            prependData: '$env: ' + process.env.NODE_ENV + ';',
+            additionalData: '$env: ' + process.env.NODE_ENV + ';',
             webpackImporter: false,
           }
         },
         ],
-      },
+      }
     ]
   },
   plugins: [
@@ -59,18 +64,9 @@ const prod = {
       syntax: 'scss'
     }),
     new MiniCssExtractPlugin({
-      filename: outputDir
-    }),
-    new OptimizeCssnanoPlugin({
-      cssnanoOptions: {
-        preset: ['default', {
-          calc: false,
-          discardComments: {
-            removeAll: true,
-          },
-        }],
-      },
-    }),
+      filename: outputDir,
+      chunkFilename: "[id].css"
+    })
   ]
 };
 
@@ -82,8 +78,7 @@ const dev = {
         use: [{
           loader: MiniCssExtractPlugin.loader,
           options: {
-            hot: true,
-            reloadAll: false
+            esModule: false,
           }
         },
         {
@@ -96,24 +91,19 @@ const dev = {
         {
           loader: 'postcss-loader',
           options: {
-            plugins: () => [
-              autoprefixer({
-                grid: 'autoplace',
-                flexbox: 'no-2009'
-              })
-            ],
+
             sourceMap: false,
           },
         },
         {
           loader: 'sass-loader',
           options: {
-            prependData: '$env: ' + process.env.NODE_ENV + ';',
+            additionalData: '$env: ' + process.env.NODE_ENV + ';',
             webpackImporter: false,
           }
         },
         ],
-      },
+      }
     ]
   },
   plugins: [
@@ -126,53 +116,69 @@ const dev = {
       syntax: 'scss'
     }),
     new MiniCssExtractPlugin({
-      filename: outputDir
+      filename: outputDir,
+      chunkFilename: "[id].css"
     }),
   ]
 };
 
+
 const prev = {
+  optimization: {
+    minimizer: [
+      // For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`)
+      `...`,
+      new CssMinimizerPlugin(),
+    ],
+  },
   module: {
     rules: [
       {
         test: /\.(css|sass|scss)$/,
         use: [{
           loader: MiniCssExtractPlugin.loader,
+          options: {
+            esModule: true,
+            emit: true
+          }
         },
         {
           loader: 'css-loader',
           options: {
-            sourceMap: true,
+            sourceMap: false,
             importLoaders: 2,
           },
         },
         {
           loader: 'postcss-loader',
           options: {
-            plugins: () => [
-              autoprefixer({
-                grid: 'autoplace',
-                flexbox: 'no-2009'
-              })
-            ],
-            sourceMap: true,
+            sourceMap: false,
           },
         },
         {
           loader: 'sass-loader',
           options: {
-            prependData: '$env: ' + process.env.NODE_ENV + ';',
+            additionalData: '$env: ' + process.env.NODE_ENV + ';',
             webpackImporter: false,
           }
         },
         ],
-      },
+      }
     ]
   },
   plugins: [
-    new MiniCssExtractPlugin({
-      filename: 'styles/preview.css',
+    new StyleLintPlugin({
+      context: 'src',
+      configFile: '.stylelintrc',
+      files: '**/*.scss',
+      failOnError: false,
+      quiet: false,
+      syntax: 'scss'
     }),
+    new MiniCssExtractPlugin({
+      filename: outputDirPreview,
+      chunkFilename: "[id].css"
+    })
   ]
 };
 

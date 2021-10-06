@@ -55,7 +55,7 @@ const prod = {
     ]
   },
   resolve: {
-    extensions: ['.ts', '.js']
+    extensions: ['.ts', '.js', '.ts']
   },
 };
 
@@ -101,7 +101,7 @@ const dev = {
     ]
   },
   resolve: {
-    extensions: ['.ts', '.js']
+    extensions: ['.ts', '.js', '.ts']
   }
 };
 

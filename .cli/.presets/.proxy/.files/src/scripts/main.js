@@ -16,8 +16,6 @@
 
   <!-- main bundle -->
   <script type="module" src="/assets/scripts/main.c03ae30586c259403fcb.js"></script>
-  <!-- polyfilled legacy browser -->
-  <script nomodule src="/assets/scripts/main.legacy.9bb922f8841fae8e52e4.js" defer></script>
 
   # remove hash
   *************
@@ -25,7 +23,6 @@
 
   - webpack\webpack.config.dev.js
   - webpack\webpack.config.prod.modern.js
-  - webpack\webpack.config.prod.legacy.js
 
 */
 

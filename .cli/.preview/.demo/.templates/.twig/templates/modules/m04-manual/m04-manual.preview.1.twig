@@ -17,13 +17,13 @@
 
 {% macro markup() %}
 <section id="download" class="doc-section">
-  <h2 class="section-title">Webpack HTML Boilerplate</h2>
+  <h2 class="section-title">Webpack 5 - HTML Boilerplate</h2>
   <div class="section-block">
-    <p>Useful for static prototyping, gpu rendering and shipping modular html. Extendable webpack ecosystem and config, default loaders and preview features.</p>
+    <p>This Darvin HTML boilerplate served as frontend codebase for the "Best of Swiss Web Master 2021" (www.css.ch) and has already served its purpose. The current Darvin version is called DarvinDuck and operate as a large-scalable React boilerplate with Express.js renderer (currently closed alpha)</p>
     <ul class="chips">
-      <li>Node 14</li>
+      <li>NODE 14 LTS</li>
       <li>Npm 6</li>
-      <li>Webpack 4</li>
+      <li>Webpack 5</li>
       <li>Babel 7</li>
       <li>Modernizr</li>
       <li>Typescript</li>
@@ -62,7 +62,7 @@
         <code style="text-align:left;">
           git clone https://github.com/unic/darvin-webpack-boilerplate.git myProject<br>
           cd myProject<br>
-          nvm install 14.3.0; nvm use 14.3.0<br>
+          nvm install 14.17.5; nvm use 14.17.5<br>
           npm start
         </code>
     </div>
@@ -88,7 +88,7 @@
     <div class="code-block">
       <h6>Install Node.js</h6>
       <p>
-        <code>nvm install 14.3.0</code>
+        <code>nvm install 14.17.5</code>
       </p>
     </div>
     <!--//code-block-->
@@ -236,7 +236,7 @@
     <p>Bundle local and system builds in production mode.</p>
     <div class="code-block">
       <h6>bundle dev</h6>
-      <span class="subtext">dual bundle prod-modern and prod-legacy with dev settings</span>
+      <span class="subtext">bundle prod with dev settings</span>
       <p>
         <code>npm run prod</code>
       </p>
@@ -244,55 +244,9 @@
     <!--//code-block-->
     <div class="code-block">
       <h6>bundle prod</h6>
-      <span class="subtext">dual bundle prod-modern and prod-legacy with system settings</span>
+      <span class="subtext">bundle prod-modern with system settings</span>
       <p>
         <code>npm run prod-system</code>
-      </p>
-    </div>
-    <!--//code-block-->
-  </div>
-  <!--//section-block-->
-</section>
-<!--//doc-section-->
-<section>
-  <h2 class="section-title">Legacy Build (IE11)</h2>
-  <div id="legacy-dev" class="section-block">
-    <h3 class="block-title">Develop</h3>
-    <p>Only run legacy scripts</p>
-    <div class="code-block">
-      <h6>bundle dev</h6>
-      <span class="subtext">dev legacy mode</span>
-      <p>
-        <code>npm run dev-legacy</code>
-      </p>
-    </div>
-    <!--//code-block-->
-    <div class="code-block">
-      <h6>bundle dev with system settings</h6>
-      <span class="subtext">dev legacy mode with system settings</span>
-      <p>
-        <code>npm run dev-legacy-system</code>
-      </p>
-    </div>
-    <!--//code-block-->
-  </div>
-  <!--//section-block-->
-  <div id="legacy-prod" class="section-block">
-    <h3 class="block-title">Production</h3>
-    <p>Build legacy styles with postcss.</p>
-    <div class="code-block">
-      <h6>bundle prod</h6>
-      <span class="subtext">bundle prod legacy with dev settings</span>
-      <p>
-        <code>npm run prod-legacy</code>
-      </p>
-    </div>
-    <!--//code-block-->
-    <div class="code-block">
-      <h6>bundle prod with system settings</h6>
-      <span class="subtext">bundle prod legacy with system settings</span>
-      <p>
-        <code>npm run prod-legacy-system</code>
       </p>
     </div>
     <!--//code-block-->

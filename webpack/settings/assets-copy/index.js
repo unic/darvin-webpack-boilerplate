@@ -1,134 +1,128 @@
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const path = require("path");
 const basePath = process.cwd();
 
 const prod = {
   plugins: [
-    new CopyWebpackPlugin([
-      {
-        from: `${basePath}/changelog.md`,
-        to: `${global.server.assets}/log/`,
-        flatten: true,
-        cache: true
-      },
-      {
-        from: `${basePath}/log/*.{md,json}`,
-        to: `${global.server.assets}/log/`,
-        flatten: true,
-        cache: true
-      },
-      {
-        from: `${basePath}/${global.inputDirs.src}/${global.inputDirs.templates}/**/meta/**/*.{md,json}`,
-        to: '/',
-        flatten: false,
-        transformPath (targetPath) {
-          return targetPath.split(`/${global.inputDirs.src}/${global.inputDirs.templates}/`)[1];
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: `${basePath}/changelog.md`,
+          noErrorOnMissing: true,
+          to() {
+            return `${global.server.assets}/log/[name][ext]`;
+          },
         },
-        cache: true
-      },
-      {
-        from: `${basePath}/${global.inputDirs.src}/${global.inputDirs.templates}/**/log/*.{md,json}`,
-        to: '/',
-        flatten: false,
-        transformPath (targetPath) {
-          return targetPath.split(`/${global.inputDirs.src}/${global.inputDirs.templates}/`)[1];
+        {
+          from: `${basePath}/log/*.{md,json}`,
+          noErrorOnMissing: true,
+          to() {
+            return `${global.server.assets}/log/[name][ext]`;
+          },
         },
-        cache: true
-      },
-      {
-        from: `${basePath}/${global.inputDirs.src}/${global.inputDirs.templates}/modules/**/*.${global.template.extIn}`,
-        to: '/',
-        flatten: false,
-        transformPath (targetPath) {
-          return targetPath.split(`/${global.inputDirs.src}/${global.inputDirs.templates}/`)[1];
+        {
+          from: `${basePath}/${global.inputDirs.src}/${global.inputDirs.templates}/**/meta/**/*.{md,json}`,
+          noErrorOnMissing: true,
+          to({ context, absoluteFilename }) {
+            return `${global.server.assets}/static/${absoluteFilename.split(`/${global.inputDirs.src}/${global.inputDirs.templates}/`)[1]}`;
+          },
         },
-        cache: true
-      },
-      {
-        from: `${basePath}/${global.inputDirs.src}/${global.inputDirs.templates}/components/**/*.${global.template.extIn}`,
-        to: '/',
-        flatten: false,
-        transformPath (targetPath) {
-          return targetPath.split(`/${global.inputDirs.src}/${global.inputDirs.templates}/`)[1];
+        {
+          from: `${basePath}/${global.inputDirs.src}/${global.inputDirs.templates}/**/log/*.{md,json}`,
+          noErrorOnMissing: true,
+          to({ context, absoluteFilename }) {
+            return `${global.server.assets}/static/${absoluteFilename.split(`/${global.inputDirs.src}/${global.inputDirs.templates}/`)[1]}`;
+          },
         },
-        cache: true
-      },
-      {
-        from: `${basePath}/${global.inputDirs.src}/${global.server.assets}/images/renditions/**/*.{png,gif,jpg,svg}`,
-        to: global.server.assets + '/images/',
-        flatten: true,
-        cache: true
-      }
-    ], {})
+        {
+          from: `${basePath}/${global.inputDirs.src}/${global.inputDirs.templates}/modules/**/*.${global.template.extIn}`,
+          noErrorOnMissing: true,
+          to({ context, absoluteFilename }) {
+            return `${global.server.assets}/static/${absoluteFilename.split(`/${global.inputDirs.src}/${global.inputDirs.templates}/`)[1]}`;
+          },
+        },
+        {
+          from: `${basePath}/${global.inputDirs.src}/${global.inputDirs.templates}/components/**/*.${global.template.extIn}`,
+          noErrorOnMissing: true,
+          to({ context, absoluteFilename }) {
+            return `${global.server.assets}/static/${absoluteFilename.split(`/${global.inputDirs.src}/${global.inputDirs.templates}/`)[1]}`;
+          },
+        },
+        {
+          from: `${basePath}/${global.inputDirs.src}/${global.server.assets}/images/renditions/**/*.{png,gif,jpg,svg}`,
+          noErrorOnMissing: true,
+          to({ context, absoluteFilename }) {
+            return `${global.server.assets}/images/[name][ext]`;
+          },
+        },
+    ]})
   ],
 };
 
 const dev = {
   plugins: [
-    new CopyWebpackPlugin([
-      {
-        from: `${basePath}/changelog.md`,
-        to: `${global.server.assets}/log/`,
-        flatten: true,
-        cache: true
-      },
-      {
-        from: `${basePath}/log/*.{md,json}`,
-        to: `${global.server.assets}/log/`,
-        flatten: true,
-        cache: true
-      },
-      {
-        from: `${basePath}/${global.inputDirs.src}/${global.inputDirs.templates}/**/meta/**/*.{md,json}`,
-        to: '/',
-        flatten: false,
-        transformPath (targetPath) {
-          return targetPath.split(`/${global.inputDirs.src}/${global.inputDirs.templates}/`)[1];
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: `${basePath}/changelog.md`,
+          noErrorOnMissing: true,
+          to() {
+            return `${global.server.assets}/log/[name][ext]`;
+          },
         },
-        cache: true
-      },
-      {
-        from: `${basePath}/${global.inputDirs.src}/${global.inputDirs.templates}/**/log/*.{md,json}`,
-        to: '/',
-        flatten: false,
-        transformPath (targetPath) {
-          return targetPath.split(`/${global.inputDirs.src}/${global.inputDirs.templates}/`)[1];
+        {
+          from: `${basePath}/log/*.{md,json}`,
+          noErrorOnMissing: true,
+          to() {
+            return `${global.server.assets}/log/[name][ext]`;
+          },
         },
-        cache: true
-      },
-      {
-        from: `${basePath}/${global.inputDirs.src}/${global.inputDirs.templates}/modules/**/*.${global.template.extIn}`,
-        to: '/',
-        flatten: false,
-        transformPath (targetPath) {
-          return targetPath.split(`/${global.inputDirs.src}/${global.inputDirs.templates}/`)[1];
+        {
+          from: `${basePath}/${global.inputDirs.src}/${global.inputDirs.templates}/**/meta/**/*.{md,json}`,
+          noErrorOnMissing: true,
+          to({ context, absoluteFilename }) {
+            return `${global.server.assets}/static/${absoluteFilename.split(`/${global.inputDirs.src}/${global.inputDirs.templates}/`)[1]}`;
+          },
         },
-        cache: true
-      },
-      {
-        from: `${basePath}/${global.inputDirs.src}/${global.inputDirs.templates}/components/**/*.${global.template.extIn}`,
-        to: '/',
-        flatten: false,
-        transformPath (targetPath) {
-          return targetPath.split(`/${global.inputDirs.src}/${global.inputDirs.templates}/`)[1];
+        {
+          from: `${basePath}/${global.inputDirs.src}/${global.inputDirs.templates}/**/log/*.{md,json}`,
+          noErrorOnMissing: true,
+          to({ context, absoluteFilename }) {
+            return `${global.server.assets}/static/${absoluteFilename.split(`/${global.inputDirs.src}/${global.inputDirs.templates}/`)[1]}`;
+          },
         },
-        cache: true
-      },
-      {
-        from: `${basePath}/${global.inputDirs.src}/${global.server.assets}/images/renditions/**/*.{png,gif,jpg,svg}`,
-        to: global.server.assets + '/images/',
-        flatten: true,
-        cache: true
-      },
-      {
-        from: `${basePath}/${global.inputDirs.src}/${global.server.assets}/images/favicons/favicon-dev.ico`,
-        flatten: true,
-        transformPath () {
-          return 'favicon.ico';
-        }
-      },
-    ], {})
+        {
+          from: `${basePath}/${global.inputDirs.src}/${global.inputDirs.templates}/modules/**/*.${global.template.extIn}`,
+          noErrorOnMissing: true,
+          to({ context, absoluteFilename }) {
+            return `${global.server.assets}/static/${absoluteFilename.split(`/${global.inputDirs.src}/${global.inputDirs.templates}/`)[1]}`;
+          },
+        },
+        {
+          from: `${basePath}/${global.inputDirs.src}/${global.inputDirs.templates}/components/**/*.${global.template.extIn}`,
+          noErrorOnMissing: true,
+          to({ context, absoluteFilename }) {
+            return `${global.server.assets}/static/${absoluteFilename.split(`/${global.inputDirs.src}/${global.inputDirs.templates}/`)[1]}`;
+          },
+        },
+        {
+          from: `${basePath}/${global.inputDirs.src}/${global.server.assets}/images/renditions/**/*.{png,gif,jpg,svg}`,
+          noErrorOnMissing: true,
+          to({ context, absoluteFilename }) {
+            return `${global.server.assets}/images/[name][ext]`;
+          },
+        },
+        {
+          from: `${basePath}/${global.inputDirs.src}/${global.server.assets}/images/favicons/favicon-dev.ico`,
+          noErrorOnMissing: true,
+          to({ context, absoluteFilename }) {
+            return `${global.server.assets}/[name][ext]`;
+          },
+        },
+    ]})
   ],
-}
+};
+
 
 module.exports = {
   prod: prod,

@@ -8,10 +8,6 @@ const writeDarvinRC = (rc) => {
   try{
     console.log("DV#> write darvinrc to /config");
     writeFile(`./config/.darvinrc.modern.json`, JSON.stringify(rc));
-
-    // replace sass with sasslegacy for ie dev
-    writeFile(`./config/.darvinrc.legacy.json`, JSON.stringify(rc).replace('sass',  'sasslegacy').replace('typescript',  'typescriptlegacy').replace('js',  'jslegacy'));
-
     return true;
   } catch (err){
     console.log('error in writeDarvinRC');
