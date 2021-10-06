@@ -41,7 +41,7 @@ const onBeforeLoad = (image: HTMLImageElement) => new Promise((resolve) => {
     if (root) {
       root.classList.add(config.stateClasses.prepareLoading);
     }
-    fastdom.measure(resolve);
+    fastdom.measure(() => resolve);
   });
 });
 
@@ -82,7 +82,7 @@ const onLoad = async (image: HTMLImageElement) => new Promise((resolve) => {
     }
 
     objectFitImages(image); // Trigger object fit polyfill for images for IE11
-    fastdom.measure(resolve);
+    fastdom.measure(() => resolve);
   });
 });
 

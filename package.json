@@ -66,6 +66,7 @@
     "lowdb": "1.0.0",
     "mkdirp": "^1.0.4",
     "noop2": "^2.0.0",
+    "normalize.css": "^8.0.1",
     "pump": "^3.0.0",
     "readdirp": "^3.6.0",
     "replace-in-file": "^6.2.0",
