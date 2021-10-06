@@ -1,7 +1,7 @@
 {
   "name": "darvin-boilerplate",
-  "version": "3.0.0",
-  "description": "html5 webpack boilerplate for modern browsers with loader ecosystem, preview for shipping and cli scaffolding.",
+  "version": "3.0.1",
+  "description": "pure html webpack boilerplate for modern browsers with loader ecosystem, preview for shipping and cli scaffolding.",
   "keywords": [
     "webpack",
     "typescript",
@@ -16,7 +16,7 @@
     "tapedwn gmbh"
   ],
   "engines": {
-    "node": "14.3.0"
+    "node": "14.17.5"
   },
   "bin": {
     "darvin-cli": "./.cli/darvin-cli"

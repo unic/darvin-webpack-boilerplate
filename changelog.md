@@ -2,7 +2,10 @@
 
 ## v3.0.0
 - upgrade settings to webpack 5
-- remove legacy scripts
+- add latest packages [2021/10/06]
+- update node to lts
+- remove legacy browser support
+- downgrade lowdb to 1.0.0 indue of es conflicts
 
 ## v2.0.2
 - clean copy assets for proxy
