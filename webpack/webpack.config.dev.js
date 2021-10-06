@@ -51,8 +51,6 @@ const settings = {
     },
     fallback: {
       'fs': false,
-      'path': require.resolve('path-browserify'),
-      'buffer': require.resolve('buffer'),
       'tls': false,
       'net': false,
       'zlib': false,
